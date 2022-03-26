@@ -1,0 +1,109 @@
+.main__admin {
+    // display: flex;
+    // flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    width: 100%;
+    min-width: 36rem;
+    max-width:90rem ;
+    margin: 0 auto;
+    height: 50rem;
+    font-size: 1.2rem;
+    font-family: 'Montserrat';
+    font-weight: 700;
+    text-align: center;
+
+    .button__volver {
+        display: flex;
+        width: 6rem;
+        height: 3rem;
+        margin-top: 2rem;
+        margin-left: 10%;
+        margin-bottom: 1rem;
+        background-color: rgb(255, 0, 0);
+        border-radius: 10rem;
+
+        .volver {
+            display: flex;
+            width: 6rem;
+            height: 3rem;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-family: "Montserrat";
+            font-weight: 700;
+            color: white;
+        }
+
+    }
+
+    h1 {
+        text-align: center;
+        width: 70%;
+        font-size: 1.5rem;
+        margin: 0 auto;
+        padding-top: 2rem;
+        padding-bottom: 5rem;
+    }
+
+    .main__module {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+
+
+            ul {
+                display: flex;
+                height: 40rem ;
+                flex-direction: column;
+                width: 70%;
+                justify-content: center;
+                text-align: center;
+                align-self: center;
+                text-decoration: none;
+                list-style: none;
+
+                li {
+                    display: flex;
+                    width: 100%;
+                    max-width: 50rem;
+                    height: 16.6%;
+                    justify-content: center;
+                    align-items: center;
+                    align-self: center;
+                    margin-bottom: 1rem;
+                    padding: 10px;
+                    border: 0.2rem solid black;
+                    border-radius: 10rem;
+
+
+                    a {
+                        display: flex;
+                        justify-content: center;
+                        width: 100%;
+                        height: 100%;
+                        font-size: 1.2rem;
+                        text-decoration: none;
+                        color: black;
+                        align-items: center;
+                    }
+                }
+
+                li:hover {
+                    background-color: black;
+                    color: white;
+                    border-radius: 10rem;
+                    border: solid 0.2rem black;
+                    cursor: pointer;
+
+                    a {
+                        color: white;
+                        cursor: pointer;
+
+                    }
+
+                }
+            }
+        }
+
+    }

@@ -1,19 +1,19 @@
 <?php
 
-    session_start();
+    //Sesion
 
-    $auth = $_SESSION['login'];
-    $idUsuarios = $_SESSION['idUsuarios'];
-
-    if(!$auth){
-        header('Location:../../../index.php');
-    }
+    require '../../sesion.php';
 
     //Conexión a la base de datos
 
     require '../../../includes/config/database.php';
 
     $db = conectarDB();
+
+
+    // Funcion para la limpieza de datos
+
+    require '../../limpieza.php';
 
     $queryEmpleado = "SELECT * FROM empleado WHERE $idUsuarios = empleado.Usuarios_idUsuarios";
 
@@ -33,9 +33,19 @@
 
     $errores = [];
 
+    $queryOficina = "SELECT * FROM oficina ORDER BY idOficina DESC";
+    $resultadoOficina = mysqli_query($db, $queryOficina);
+
  
 
-
+    if(isset($_GET['del'])) {
+        $idOficina = $_GET['del'];
+        $queryBorrarOficina = "DELETE FROM oficina WHERE idOficina = $idOficina";
+        $queryEditarEmpleado = "UPDATE empleado SET Oficina_idOficina = 3 WHERE Oficina_idOficina = $idOficina";
+        $resultadoEditarEmpleado = mysqli_query($db, $queryEditarEmpleado);
+        $resultadoBorrar = mysqli_query($db, $queryBorrarOficina);
+        header('Location: index.php');
+    }
 
 
 
@@ -43,16 +53,30 @@
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $direccion = mysqli_real_escape_string($db, $_POST['direccion']);
-        $oficina = mysqli_real_escape_string($db, $_POST['oficina']);
-
-
-        $queryNewOficina = "INSERT INTO oficina (Nombre_Oficina, Direccion_Oficina,  Activo) VALUES ('$oficina', '$direccion', '1')";
-
-        $resultadoNewOficina = mysqli_query($db, $queryNewOficina);
-
-        if($resultadoNewOficina) {
-        header('Location:../Listado/index.php');
+        if (isset( $_POST['Activo'])){
+            
+            $idOficina = (int)$_POST['Activo'];
+    
+            $queryOficinaActivo = "SELECT Activo FROM oficina WHERE idOficina = $idOficina";
+            $resultadoOficinaActivo = mysqli_query($db, $queryOficinaActivo);
+            $resultadoOficinaActivo = mysqli_fetch_assoc($resultadoOficinaActivo);
+            
+            
+            
+            if ($resultadoOficinaActivo['Activo'] == 1){
+                $queryDesactivar = "UPDATE oficina SET Activo = 0 WHERE idOficina = $idOficina";
+                $resultadoDesactivar = mysqli_query($db, $queryDesactivar);
+                header('Location:index.php');
+                
+            }
+            else {
+                $queryActivar = "UPDATE oficina SET Activo = 1 WHERE idOficina = $idOficina";
+                $resultadoDesactivar = mysqli_query($db, $queryActivar);
+                header('Location:index.php');
+                
+            }
+            
+            
         }
     }
 
@@ -70,7 +94,7 @@
     <link rel="stylesheet" href="CSS/MOBILE/mobile.css" media="(max-width: 840px)">
     <link rel="stylesheet" href="CSS/MEDIUM/mobile.css" media="(min-width: 840px )">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap" rel="stylesheet"/>
-    <title>Unika|Nueva Oficina</title>
+    <title>Unika|Nuevo Contrato</title>
 </head>
 <body>
 <header class="header__propiedades">
@@ -103,55 +127,106 @@
 
         <section class="main__content">
 
-        <section class="main__nav" id="main__nav">
-            <nav>
-                <ul>
-                    <li><a href="../../Propiedades/Listado/index.php">Inmuebles</a></li>
-                    <li><a href="">Vender</a></li>
-                    <li><a href="">Comprar</a></li>
-                    <li><a href="">Rentar</a></li>
-                    <li><a href="">Mensaje</a></li>
-                    <li><a href="">Empleados</a></li>
-                    <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
-                </ul>
-            </nav>
-        </section>
-
-
-        <?php foreach($errores as $error):?>
-
-        <div class="error"><p><?php  echo $error ?></p></div>
-
-        <?php endforeach?>
-        <section class="formulario__content">
-        <section class="formulario">
-
-        <form action="" method="POST">
-
-            
-            <label for="oficina">
-                <span>Oficina</span>
-                <input type="text" id= "oficina" name="oficina" placeholder = "Oficina Name" required maxlength="50">
-            </label>
-
-            <label for="direccion">
-                <span>Direccion</span>
-                <input type="text" id= "direccion" name="direccion" placeholder = "Direccion" required maxlength="100">
-            </label>
-
-            <section class="content__buttons">
-                
-                
-                <a class="signup__submit" href="../Listado/index.php">Volver</a>
-                <input type="submit" value = "Registrar" class = "signup__submit">
-               
-                
-                
-
+            <section class="main__nav" id="main__nav">
+                <nav>
+                    <ul>
+                        <li><a href="../../Propiedades/Listado/index.php"><span>Inmuebles</span></a></li>
+                        <li><a href=""><span>VoBo Inmuebles</span></a></li>
+                        <li><a href="../Listado/index.php">Asesores</a></li>
+                        <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
+                        <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
+                    </ul>
+                </nav>
             </section>
-            
-        </form>
-        </section>
+
+            <section class="main__table">
+
+                <section class="table__buttons">
+                    <div class="button__volver">
+                        <a class="volver" href="../Nuevo/index.php">Volver</a>
+                    </div>
+                    <div class="button__new">
+                        <a class="new" href="NuevaOficina/index.php">Nueva Oficina</a>
+                    </div>
+                </section>
+
+                <section  class="table__title">
+                    <table>
+                        <tr>
+                            <td>Ubicacion</td>
+                            <td>Dirección</td>
+                            <td>Editar</td>
+                            <td>Activo</td>
+                            <td>Borrar</td>
+                        </tr>
+
+                    </table>
+
+                </section table__title="" >
+
+                <?php while($row = mysqli_fetch_assoc($resultadoOficina)): ?>
+
+
+                <section class="table__content">
+
+                    <table>
+                        <tr>
+
+                            <td><?php  echo $row['Nombre_Oficina']?></td>
+                            <td><?php  echo $row['Direccion_Oficina']?></td>
+                            <td class="table__editar">
+                                <a href="EditarOficina/index.php?id=<?php echo $row['idOficina']?>">
+                                    <img src="../../../Assets/editar.png" alt="">
+                                </a>
+                            </td>
+                            <td class="table__editar">
+                                <form method="POST">
+                                <?php
+
+                                if($row['Activo'] == 1){
+
+                                    ?>
+                                    <a href="">
+                                        <input type="hidden"  class="input-activar" name="Activo" value="<?php echo $row['idOficina']?>">
+                                        <input type="submit" class="input-activar" alt="" >
+                                    </a>
+                                    
+                                <?php
+                                }
+                                else{
+
+                                ?>
+                                    <a href="">
+                                        <input type="hidden"  class="input-desactivar" name="Activo" value="<?php echo $row['idOficina']?>">
+                                        <input type="submit" class="input-desactivar" alt="" >
+                                    </a>
+                                <?php
+
+                                }
+                                ?>
+                                </form>
+                            </td>
+
+                            <td class="table__editar">
+
+                                        <input type="hidden"  class="input-borrar" onclick="preguntar(<?php echo $row['idOficina']?>)" >
+                                        <input type="button" class="input-borrar" alt="" onclick="preguntar(<?php echo $row['idOficina']?>)">
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+
+                <?php endwhile; ?>
+
+                    
+
+
+            </section main__table="" >
+
+
+
+
+
         </section>
 
     </main>
@@ -162,6 +237,16 @@
 require '../../../includes/footer.php'
 
 ?>
+
+<script type="text/javascript">
+
+function preguntar(id){
+    if(confirm('¿Estas seguro que deseas borrar esta oficina?')){
+        window.location.href = "index.php?del=" + id;
+    }
+}
+
+</script>
 <script src="JS/menu.js" ></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>

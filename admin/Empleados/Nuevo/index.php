@@ -1,19 +1,17 @@
 <?php
 
-    session_start();
-
-    $auth = $_SESSION['login'];
-    $idUsuarios = $_SESSION['idUsuarios'];
-
-    if(!$auth){
-        header('Location:../../../index.php');
-    }
+    require '../../sesion.php';
 
     //Conexión a la base de datos
 
     require '../../../includes/config/database.php';
 
     $db = conectarDB();
+
+
+    // Funcion para la limpieza de datos
+
+    require '../limpieza.php';
 
     $queryEmpleado = "SELECT * FROM empleado WHERE $idUsuarios = empleado.Usuarios_idUsuarios";
 
@@ -59,11 +57,11 @@
 
         // Asignación de variables y escape de datos para la prevención de inyección SQL
 
-        $nombre = mysqli_real_escape_string($db, $_POST['nombre']);
-        $correo = mysqli_real_escape_string($db, $_POST['correo']);
+        $nombre = limpieza( mysqli_real_escape_string($db, $_POST['nombre']));
+        $correo = limpieza( mysqli_real_escape_string($db, $_POST['correo']));
         $password = mysqli_real_escape_string($db, $_POST['password']);
         $telefono = mysqli_real_escape_string($db, $_POST['telefono']);
-        $doc_identidad = mysqli_real_escape_string( $db, $_POST['doc_identidad']);
+        $doc_identidad = limpieza( mysqli_real_escape_string( $db, $_POST['doc_identidad']));
         $Cargo_idCargo = $_POST['cargo'];
         $Rol_idRol = $_POST['rol'];
         $Oficina_idOficina = $_POST['oficina'];
@@ -182,12 +180,10 @@
         <section class="main__nav" id="main__nav">
             <nav>
                 <ul>
-                    <li><a href="../../Propiedades/Listado/index.php">Inmuebles</a></li>
-                    <li><a href="">Vender</a></li>
-                    <li><a href="">Comprar</a></li>
-                    <li><a href="">Rentar</a></li>
-                    <li><a href="">Mensaje</a></li>
-                    <li><a href="">Empleados</a></li>
+                    <li><a href="../../Propiedades/Listado/index.php"><span>Inmuebles</span></a></li>
+                    <li><a href=""><span>VoBo Inmuebles</span></a></li>
+                    <li><a href="../Listado/index.php">Asesores</a></li>
+                    <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
                     <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
                 </ul>
             </nav>
@@ -231,34 +227,44 @@
 
 
             <section class="select">
-            <span>Rol</span>
-            <select name="rol" id="">
-                <option value="0"><--Selecciona--></option>
-                <?php while($row = mysqli_fetch_assoc($resultadoRol)) : ?>
-                    <option value="<?php echo $row['idRol']; ?>"><?php echo $row['Nombre_rol']; ?></option>
-                <?php endwhile; ?>
-            </select>
+                <span>Rol</span>
+                <select name="rol" id="">
+                    <option value="0"><--Selecciona--></option>
+                    <?php while($row = mysqli_fetch_assoc($resultadoRol)) : ?>
+                        <option value="<?php echo $row['idRol']; ?>"><?php echo $row['Nombre_rol']; ?></option>
+                    <?php endwhile; ?>
+                </select>
+                <div class="button__new">
+                    <a class="new" href="../Rol/index.php">Nuevo Rol</a>
+                </div>
             </section>
 
             <section class="select">
-            <span>Cargo</span>
-            <select name="cargo" id="">
-                <option ><--Selecciona--></option>
-                <?php while($row = mysqli_fetch_assoc($resultadoCargo)) : ?>
-                    <option value="<?php echo $row['idCargo']; ?>"><?php echo $row['Nombre_Cargo']; ?></option>
-                <?php endwhile; ?>
+                <span>Cargo</span>
+                <select name="cargo" id="">
+                    <option ><--Selecciona--></option>
+                    <?php while($row = mysqli_fetch_assoc($resultadoCargo)) : ?>
+                        <option value="<?php echo $row['idCargo']; ?>"><?php echo $row['Nombre_Cargo']; ?></option>
+                    <?php endwhile; ?>
 
-            </select>
+                </select>
+
+                <div class="button__new">
+                    <a class="new" href="../Cargo/index.php">Nuevo Cargo</a>
+                </div>
             </section>
 
             <section class="select">
-            <span>Oficina</span>
-            <select name="oficina" id="">
-                <option><--Selecciona--></option>
-                <?php while($row = mysqli_fetch_assoc($resultadoOficina)) : ?>
-                    <option required value="<?php echo $row['idOficina']; ?>"><?php echo $row['Nombre_Oficina']; ?></option>
-                <?php endwhile; ?>
-            </select>
+                <span>Oficina</span>
+                <select name="oficina" id="">
+                    <option><--Selecciona--></option>
+                    <?php while($row = mysqli_fetch_assoc($resultadoOficina)) : ?>
+                        <option required value="<?php echo $row['idOficina']; ?>"><?php echo $row['Nombre_Oficina']; ?></option>
+                    <?php endwhile; ?>
+                </select>
+                <div class="button__new">
+                    <a class="new" href="../Oficina/index.php">Nueva Oficina</a>
+                </div>
             </section>
 
             <section class="content__buttons">

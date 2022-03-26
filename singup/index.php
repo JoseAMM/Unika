@@ -11,28 +11,73 @@
 
 
 
+    require '../admin/limpieza.php';
 
 
 
+    // Consulta de los tipos de roles para el select
+
+    $consultaRol = "SELECT idRol, Nombre_rol FROM rol WHERE idRol IN(2,3)";
+    $resultadoRol = mysqli_query($db, $consultaRol);
+
+    // Consulta de los tipos de cargos para el select
+
+    $consultaCargo = "SELECT idCargo, Nombre_Cargo FROM cargo";
+    $resultadoCargo = mysqli_query($db, $consultaCargo);
+
+    // Consulta de las oficinas para el select
+
+    $consultaOficina = "SELECT idOficina, Nombre_Oficina FROM oficina WHERE idOficina > 0;";
+    $resultadoOficina = mysqli_query($db, $consultaOficina);
 
 
 
+    
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         // Asignación de variables y escape de datos para la prevención de inyección SQL
 
-        $nombre = mysqli_real_escape_string($db, $_POST['nombre']);
-        $correo = mysqli_real_escape_string($db, $_POST['correo']);
+        $nombre = limpieza(mysqli_real_escape_string($db, $_POST['nombre']));
+        $apellido = limpieza(mysqli_real_escape_string($db, $_POST['apellido']));
+        $correo = limpieza(mysqli_real_escape_string($db, $_POST['correo']));
         $password = mysqli_real_escape_string($db, $_POST['password']);
-        $telefono = mysqli_real_escape_string($db, $_POST['telefono']);
+        $telefono = limpieza(mysqli_real_escape_string($db, $_POST['telefono']));
+        $ine = limpieza(mysqli_real_escape_string($db, $_POST['ine']));
+        $rol = limpieza(mysqli_real_escape_string($db, $_POST['rol']));
+        $cargo = limpieza(mysqli_real_escape_string($db, $_POST['cargo']));
+        $oficina = limpieza(mysqli_real_escape_string($db, $_POST['oficina']));
         $Usuarios_idUsuarios = null;
-        $rol = 3;
         $ip = $_SERVER['REMOTE_ADDR'];
         $captcha = $_POST['g-recaptcha-response'];
         $secretkey = "6Lf8UqUeAAAAAGRvq7HxYsF16nTp-TJjK2s1cm9y";
         $respuesta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretkey&response=$captcha&remoteip=$ip");
         $atributos = json_decode($respuesta, TRUE);
+
+
+        
+
+        function validar_clave($password){
+            if(strlen($password) < 8){
+               return false;
+            }
+            if (!preg_match('`[a-z]`',$password)){
+               
+               return false;
+            }
+            if (!preg_match('`[A-Z]`',$password)){
+               
+               return false;
+            }
+            if (!preg_match('`[0-9]`',$password)){
+              
+               return false;
+            }
+            
+            return true;
+         }
+
+         $validar = validar_clave($password,$errores);
 
         // Sanitización de datos
 
@@ -41,7 +86,7 @@
         $queryComprobacion = "SELECT Correo FROM usuarios WHERE Correo = '$correo' ";
         $resultadoComprobacion = mysqli_fetch_assoc( mysqli_query($db, $queryComprobacion));
 
-        if($resultadoComprobacion == NULL){
+        if($resultadoComprobacion == NULL && $validar == true ){
 
             if(!$atributos['success']){
 
@@ -88,19 +133,55 @@
 
 
 
+                if($rol == 2){
+                    
+                    // Insertar la información de empleado en la base de datos 
+                    $queryAsesor = "INSERT INTO empleado (Nombre_Apellido, Documento_Identidad, Telefono, Usuarios_idUsuarios, Cargo_idCargo, Rol_idRol, Oficina_idOficina, Activo)
+                    VALUES ('$nombre', '$ine','$telefono', '$Usuarios_idUsuarios', '$cargo', '$rol', '$oficina', 0  )";
+                    $resultado = mysqli_query($db, $queryAsesor);
+                    if($resultado){
+                        header('Location: ../index.php');
+                    }
+                    
+                }
+                if($rol == 3){
+                    $queryEmpleado = "INSERT INTO cliente (Nombre, Apellido, INE, Telefono, Correo, Cliente_idUsuarios, Cliente_idRol, Activo)
+                    VALUES ('$nombre', '$apellido','$ine','$telefono', '$correo', '$Usuarios_idUsuarios', '$rol', 0)";
+                    $resultado = mysqli_query($db, $queryEmpleado);
+                    if($resultado){
+                        header('Location: ../index.php');
+                    }
+                }
+           
 
-            // Insertar la información de empleado en la base de datos
-
-            $queryEmpleado = "INSERT INTO cliente (Nombre,Telefono, Correo, Cliente_idUsuarios, Cliente_idRol)
-            VALUES ('$nombre','$telefono', '$correo', '$Usuarios_idUsuarios', '$rol')";
-
-
-
-            $resultado = mysqli_query($db, $queryEmpleado);
             }
         } else {
-            $errores[] = "El usuario ya existe, intenta con otro correo";
+
+            if(!$resultadoComprobacion == NULL){
+                $errores[] = "El usuario ya existe, intenta con otro correo";
+            }
+
+            if( !$validar == true){
+                if(strlen($password) < 8){
+                    $errores[] = "La clave debe tener al menos 8 caracteres";
+                    
+                 }
+                 if (!preg_match('`[a-z]`',$password)){
+                    $errores[] = "La clave debe tener al menos una letra minúscula";
+                    
+                 }
+                 if (!preg_match('`[A-Z]`',$password)){
+                    $errores[] = "La clave debe tener al menos una letra mayúscula";
+                    
+                 }
+                 if (!preg_match('`[0-9]`',$password)){
+                    $errores[] = "La clave debe tener al menos un caracter numérico";
+                    
+                 }
+            }
         }
+
+        
 
 
     }
@@ -143,9 +224,15 @@
         <form action="" method="POST">
 
             <label for="nombre">
-                <span>Nombre y Apellido</span>
-                <input type="text" id= "nombre" name="nombre" placeholder = "Nombre y Apellido" required maxlength="50">
+                <span>Nombre</span>
+                <input type="text" id= "nombre" name="nombre" placeholder = "Nombre" required maxlength="45">
             </label>
+
+            <label for="apellido">
+                <span>Apellido</span>
+                <input type="text" id= "apellido" name="apellido" placeholder = "Apellido" required maxlength="45">
+            </label>
+
 
             <label for="correo">
                 <span>Correo Electrónico</span>
@@ -161,6 +248,46 @@
                 <span>Teléfono</span>
                 <input maxlength="10" class="form__buttonNumber" type="tel" id= "telefono" name="telefono" placeholder = "Teléfono" required >
             </label>
+
+            <label for="ine">
+                <span>INE</span>
+                <input type="text" id= "ine" name="ine" placeholder = "INE" required maxlength="45">
+            </label>
+
+            <label for="">
+                <span>Rol</span>
+                <select name="rol" id="">
+                    <option value="0"><--Selecciona--></option>
+                    <?php while($row = mysqli_fetch_assoc($resultadoRol)) : ?>
+                        <option value="<?php echo $row['idRol']; ?>"><?php echo $row['Nombre_rol']; ?></option>
+                    <?php endwhile; ?>
+                </select>
+            </label>
+
+            <label for="">
+                <span>Cargo</span>
+                <select name="cargo" id="">
+                    <option ><--Selecciona--></option>
+                    <?php while($row = mysqli_fetch_assoc($resultadoCargo)) : ?>
+                        <option value="<?php echo $row['idCargo']; ?>"><?php echo $row['Nombre_Cargo']; ?></option>
+                    <?php endwhile; ?>
+
+                </select>
+            </label>
+
+ 
+
+            <label for="">
+                <span>Oficina</span>
+                <select name="oficina" id="">
+                    <option><--Selecciona--></option>
+                    <?php while($row = mysqli_fetch_assoc($resultadoOficina)) : ?>
+                        <option required value="<?php echo $row['idOficina']; ?>"><?php echo $row['Nombre_Oficina']; ?></option>
+                    <?php endwhile; ?>
+                </select>
+            </label>
+
+
 
             
             <section class="content__buttons">

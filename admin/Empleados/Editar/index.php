@@ -1,12 +1,5 @@
 <?php
-    session_start();
-
-    $auth = $_SESSION['login'];
-    $idUsuarios = $_SESSION['idUsuarios'];
-
-    if(!$auth){
-        header('Location:../../../index.php');
-    }
+    require '../../sesion.php';
 
     $idEmpleado = $_GET['id'];
     $idEmpleado = filter_var($idEmpleado, FILTER_VALIDATE_INT);
@@ -20,6 +13,10 @@
     require '../../../includes/config/database.php';
 
     $db = conectarDB();
+
+    // Funcion para la limpieza de datos
+
+    require '../../limpieza.php';
 
 
     $errores = [];
@@ -69,10 +66,11 @@
 
         // Asignación de variables y escape de datos para la prevención de inyección SQL
 
-        $nombre = mysqli_real_escape_string($db, $_POST['nombre']);
-        $correo = mysqli_real_escape_string($db, $_POST['correo']);
+        $nombre = limpieza( mysqli_real_escape_string($db, $_POST['nombre']));
+        $correo = limpieza( mysqli_real_escape_string($db, $_POST['correo']));
+        $password = mysqli_real_escape_string($db, $_POST['password']);
         $telefono = mysqli_real_escape_string($db, $_POST['telefono']);
-        $doc_identidad = mysqli_real_escape_string( $db, $_POST['doc_identidad']);
+        $doc_identidad = limpieza( mysqli_real_escape_string( $db, $_POST['doc_identidad']));
         $Cargo_idCargo = $_POST['cargo'];
         $Rol_idRol = $_POST['rol'];
         $Oficina_idOficina = $_POST['oficina'];
@@ -137,7 +135,7 @@
     <link rel="stylesheet" href="CSS/SMALL/mobile.css">
     
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap" rel="stylesheet"/>
-    <title>Unika|Nuevo Empleado</title>
+    <title>Unika|Editar Asesor</title>
 </head>
 <body>
     <header class="header__propiedades">

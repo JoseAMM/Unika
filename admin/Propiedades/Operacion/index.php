@@ -1,19 +1,19 @@
 <?php
 
-    session_start();
+    //Sesion
 
-    $auth = $_SESSION['login'];
-    $idUsuarios = $_SESSION['idUsuarios'];
-
-    if(!$auth){
-        header('Location:../../../index.php');
-    }
+    require '../../sesion.php';
 
     //Conexión a la base de datos
 
     require '../../../includes/config/database.php';
 
     $db = conectarDB();
+
+
+    // Funcion para la limpieza de datos
+
+    require '../../limpieza.php';
 
     $queryEmpleado = "SELECT * FROM empleado WHERE $idUsuarios = empleado.Usuarios_idUsuarios";
 
@@ -33,9 +33,19 @@
 
     $errores = [];
 
+    $queryOperacion = "SELECT * FROM tipo_operacion ORDER BY idTipo_Operacion DESC";
+    $resultadoOperacion = mysqli_query($db, $queryOperacion);
+
  
 
-
+    if(isset($_GET['del'])) {
+        $idTipo_Operacion = $_GET['del'];
+        $queryBorrarOperacion = "DELETE from tipo_operacion where idTipo_Operacion = $idTipo_Operacion";
+        $queryEditarInmueble = "UPDATE inmueble SET idTipo_Operacion = 7 WHERE idTipo_Operacion = $idTipo_Operacion";
+        $resultadoEditarInmueble = mysqli_query($db, $queryEditarInmueble);
+        $resultadoBorrar = mysqli_query($db, $queryBorrarOperacion);
+        header('Location: index.php');
+    }
 
 
 
@@ -43,15 +53,31 @@
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $operacion = mysqli_real_escape_string($db, $_POST['operacion']);
 
-
-        $queryNewOperacion = "INSERT INTO tipo_operacion (Nombre_Operacion, Activo) VALUES ('$operacion', '1')";
-
-        $resultadoNewOperacion = mysqli_query($db, $queryNewOperacion);
-
-        if($resultadoNewOperacion) {
-        header('Location:../Listado/index.php');
+        if (isset( $_POST['Activo'])){
+            
+            $idTipo_Operacion = (int)$_POST['Activo'];
+    
+            $queryTipoOperacionActivo = "SELECT Activo FROM tipo_operacion WHERE idTipo_Operacion = $idTipo_Operacion";
+            $resultadoTipoOperacionActivo = mysqli_query($db, $queryTipoOperacionActivo);
+            $resultadoTipoOperacionActivo = mysqli_fetch_assoc($resultadoTipoOperacionActivo);
+            
+            
+            
+            if ($resultadoTipoOperacionActivo['Activo'] == 1){
+                $queryDesactivar = "UPDATE tipo_operacion SET Activo = 0 WHERE idTipo_Operacion = $idTipo_Operacion";
+                $resultadoDesactivar = mysqli_query($db, $queryDesactivar);
+                header('Location:index.php');
+                
+            }
+            else {
+                $queryActivar = "UPDATE tipo_operacion SET Activo = 1 WHERE idTipo_Operacion = $idTipo_Operacion";
+                $resultadoDesactivar = mysqli_query($db, $queryActivar);
+                header('Location:index.php');
+                
+            }
+            
+            
         }
     }
 
@@ -69,7 +95,7 @@
     <link rel="stylesheet" href="CSS/MOBILE/mobile.css" media="(max-width: 840px)">
     <link rel="stylesheet" href="CSS/MEDIUM/mobile.css" media="(min-width: 840px )">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap" rel="stylesheet"/>
-    <title>Unika|Nueva Operación</title>
+    <title>Unika|Nuevo Contrato</title>
 </head>
 <body>
 <header class="header__propiedades">
@@ -102,50 +128,106 @@
 
         <section class="main__content">
 
-        <section class="main__nav" id="main__nav">
-            <nav>
-                <ul>
-                    <li><a href="../../Propiedades/Listado/index.php">Inmuebles</a></li>
-                    <li><a href="">Vender</a></li>
-                    <li><a href="">Comprar</a></li>
-                    <li><a href="">Rentar</a></li>
-                    <li><a href="">Mensaje</a></li>
-                    <li><a href="">Empleados</a></li>
-                    <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
-                </ul>
-            </nav>
-        </section>
-
-
-        <?php foreach($errores as $error):?>
-
-        <div class="error"><p><?php  echo $error ?></p></div>
-
-        <?php endforeach?>
-        <section class="formulario__content">
-        <section class="formulario">
-
-        <form action="" method="POST">
-
-            <label for="operacion">
-                <span>Operación</span>
-                <input type="text" id= "operacion" name="operacion" placeholder = "Operación Name" required maxlength="50">
-            </label>
-
-
-            <section class="content__buttons">
-                
-                
-                <a class="signup__submit" href="../Listado/index.php">Volver</a>
-                <input type="submit" value = "Registrar" class = "signup__submit">
-               
-                
-                
-
+            <section class="main__nav" id="main__nav">
+                <nav>
+                    <ul>
+                        <li><a href="../Listado/index.php"><span>Inmuebles</span></a></li>
+                        <li><a href=""><span>VoBo Inmuebles</span></a></li>
+                        <li><a href="../../Empleados/Listado/index.php">Asesores</a></li>
+                        <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
+                        <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
+                    </ul>
+                </nav>
             </section>
-            
-        </form>
-        </section>
+
+            <section class="main__table">
+
+                <section class="table__buttons">
+                    <div class="button__volver">
+                        <a class="volver" href="../Publicar/index.php">Volver</a>
+                    </div>
+                    <div class="button__new">
+                        <a class="new" href="NuevaOperacion/index.php">Nueva Operación</a>
+                    </div>
+                </section>
+
+                <section  class="table__title">
+                    <table>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Descripcion</td>
+                            <td>Editar</td>
+                            <td>Activo</td>
+                            <td>Borrar</td>
+                        </tr>
+
+                    </table>
+
+                </section table__title="" >
+
+                <?php while($row = mysqli_fetch_assoc($resultadoOperacion)): ?>
+
+
+                <section class="table__content">
+
+                    <table>
+                        <tr>
+
+                            <td><?php  echo $row['Nombre_Operacion']?></td>
+                            <td><?php  echo $row['Descripcion']?></td>
+                            <td class="table__editar">
+                                <a href="EditarOperacion/index.php?id=<?php echo $row['idTipo_Operacion']?>">
+                                    <img src="../../../Assets/editar.png" alt="">
+                                </a>
+                            </td>
+                            <td class="table__editar">
+                                <form method="POST">
+                                <?php
+
+                                if($row['Activo'] == 1){
+
+                                    ?>
+                                    <a href="">
+                                        <input type="hidden"  class="input-activar" name="Activo" value="<?php echo $row['idTipo_Operacion']?>">
+                                        <input type="submit" class="input-activar" alt="" >
+                                    </a>
+                                    
+                                <?php
+                                }
+                                else{
+
+                                ?>
+                                    <a href="">
+                                        <input type="hidden"  class="input-desactivar" name="Activo" value="<?php echo $row['idTipo_Operacion']?>">
+                                        <input type="submit" class="input-desactivar" alt="" >
+                                    </a>
+                                <?php
+
+                                }
+                                ?>
+                                </form>
+                            </td>
+
+                            <td class="table__editar">
+
+                                        <input type="hidden"  class="input-borrar" onclick="preguntar(<?php echo $row['idTipo_Operacion']?>)" >
+                                        <input type="button" class="input-borrar" alt="" onclick="preguntar(<?php echo $row['idTipo_Operacion']?>)">
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+
+                <?php endwhile; ?>
+
+                    
+
+
+            </section main__table="" >
+
+
+
+
+
         </section>
 
     </main>
@@ -156,6 +238,16 @@
 require '../../../includes/footer.php'
 
 ?>
+
+<script type="text/javascript">
+
+function preguntar(id){
+    if(confirm('¿Estas seguro que deseas borrar el tipo de operación?')){
+        window.location.href = "index.php?del=" + id;
+    }
+}
+
+</script>
 <script src="JS/menu.js" ></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>

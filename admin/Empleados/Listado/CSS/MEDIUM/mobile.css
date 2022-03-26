@@ -107,14 +107,27 @@ main {
   text-align: center;
   margin: 0 auto;
   font-family: "Montserrat";
+  background-image: url("../../../../../Assets/fondo.jpeg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
-main .main__menu {
-  width: 0px;
-  height: 0px;
+main .main__menu--content {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
 }
-main .main__menu i a img {
-  width: 0px;
-  height: 0px;
+main .main__menu--content .main__menu {
+  width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 2rem;
+  -webkit-transition: all 500ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: all 500ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+}
+main .main__menu--content .main__menu i a img {
+  width: 30px;
+  height: 30px;
 }
 main .main__content {
   display: -webkit-box;
@@ -125,7 +138,11 @@ main .main__content .main__nav {
   width: 20%;
   height: auto;
   margin: 0;
-  background-color: rgba(255, 255, 255, 0.7);
+  position: relative;
+  z-index: -100;
+  -webkit-transition: all 200ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  transition: all 200ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  background-color: white;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
 }
@@ -168,9 +185,7 @@ main .main__content .main__nav nav ul li {
   margin: 0.2rem;
 }
 main .main__content .main__nav nav ul li a {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  display: block;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
@@ -198,7 +213,8 @@ main .main__content .main__nav nav ul .nav__logout:hover {
 main .main__content .main__table {
   width: 80%;
   margin: 0 auto;
-  max-width: 100rem;
+  position: absolute;
+  left: 10%;
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 2rem;
@@ -207,17 +223,16 @@ main .main__content .main__table {
   margin-top: 2rem;
 }
 main .main__content .main__table .table__title {
-  width: 90%;
-  max-width: 100rem;
+  width: 100%;
   margin: 0 auto;
 }
 main .main__content .main__table .table__title .table__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   width: 100%;
 }
 main .main__content .main__table .table__title .table__buttons .button__volver {
@@ -404,9 +419,8 @@ main .main__content .main__table .table__title table tr {
   color: black;
 }
 main .main__content .main__table .table__content {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-  max-width: 100rem;
 }
 main .main__content .main__table .table__content table {
   width: 100%;
@@ -421,7 +435,6 @@ main .main__content .main__table .table__content table tr {
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
   text-align: center;
-  border: ridge;
 }
 main .main__content .main__table .table__content table tr td {
   display: -webkit-box;
@@ -504,4 +517,16 @@ main .main__content .main__table .table__content table tr:hover {
   color: red;
   padding: 0.3rem;
   cursor: pointer;
+}
+
+.menu__move {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  background-color: red;
+  padding-right: 2rem;
+}
+
+.main__menu:hover {
+  background-color: rgba(255, 0, 0, 0.275);
 }

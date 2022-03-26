@@ -321,6 +321,7 @@ main .main__content .formulario__content .formulario form .select select {
 }
 main .main__content .formulario__content .formulario form .select span {
   width: 50%;
+  font-family: "Arial", sans-serif;
   text-align: center;
   font-size: 1rem;
 }

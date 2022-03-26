@@ -1,19 +1,19 @@
 <?php
 
-    session_start();
+    //Sesion
 
-    $auth = $_SESSION['login'];
-    $idUsuarios = $_SESSION['idUsuarios'];
-
-    if(!$auth){
-        header('Location:../../../index.php');
-    }
+    require '../../sesion.php';
 
     //Conexión a la base de datos
 
     require '../../../includes/config/database.php';
 
     $db = conectarDB();
+
+
+    // Funcion para la limpieza de datos
+
+    require '../../limpieza.php';
 
     $queryEmpleado = "SELECT * FROM empleado WHERE $idUsuarios = empleado.Usuarios_idUsuarios";
 
@@ -33,9 +33,21 @@
 
     $errores = [];
 
+    $queryRol = "SELECT * FROM rol ORDER BY idRol DESC";
+    $resultadoRol = mysqli_query($db, $queryRol);
+
  
 
-
+    if(isset($_GET['del'])) {
+        $idRol = $_GET['del'];
+        $queryBorrarRol = "DELETE FROM rol WHERE idRol = $idRol";
+        $queryEditarEmpleado = "UPDATE empleado SET Rol_idRol = 6 WHERE Rol_idRol = $idRol";
+        $queryEditarCliente = "UPDATE cliente SET Cliente_idRol = 6 WHERE Cliente_idRol = $idRol";
+        $resultadoEditarEmpleado = mysqli_query($db, $queryEditarEmpleado);
+        $resultadoEditarCliente = mysqli_query($db, $queryEditarCliente);
+        $resultadoBorrar = mysqli_query($db, $queryBorrarRol);
+        header('Location: index.php');
+    }
 
 
 
@@ -43,15 +55,31 @@
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        $rol = mysqli_real_escape_string($db, $_POST['rol']);
 
-
-        $queryNewRol = "INSERT INTO rol (Nombre_rol, Activo) VALUES ('$rol', '1')";
-
-        $resultadoNewRol = mysqli_query($db, $queryNewRol);
-
-        if($resultadoNewRol) {
-        header('Location:../Listado/index.php');
+        if (isset( $_POST['Activo'])){
+            
+            $idRol = (int)$_POST['Activo'];
+    
+            $queryRolActivo = "SELECT Activo FROM rol WHERE idRol = $idRol";
+            $resultadoRolActivo = mysqli_query($db, $queryRolActivo);
+            $resultadoRolActivo = mysqli_fetch_assoc($resultadoRolActivo);
+            
+            
+            
+            if ($resultadoRolActivo['Activo'] == 1){
+                $queryDesactivar = "UPDATE rol SET Activo = 0 WHERE idRol = $idRol";
+                $resultadoDesactivar = mysqli_query($db, $queryDesactivar);
+                header('Location:index.php');
+                
+            }
+            else {
+                $queryActivar = "UPDATE rol SET Activo = 1 WHERE idRol = $idRol";
+                $resultadoDesactivar = mysqli_query($db, $queryActivar);
+                header('Location:index.php');
+                
+            }
+            
+            
         }
     }
 
@@ -69,7 +97,7 @@
     <link rel="stylesheet" href="CSS/MOBILE/mobile.css" media="(max-width: 840px)">
     <link rel="stylesheet" href="CSS/MEDIUM/mobile.css" media="(min-width: 840px )">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap" rel="stylesheet"/>
-    <title>Unika|Nuevo Cargo</title>
+    <title>Unika|Nuevo Contrato</title>
 </head>
 <body>
 <header class="header__propiedades">
@@ -102,50 +130,104 @@
 
         <section class="main__content">
 
-        <section class="main__nav" id="main__nav">
-            <nav>
-                <ul>
-                    <li><a href="../../Propiedades/Listado/index.php">Inmuebles</a></li>
-                    <li><a href="">Vender</a></li>
-                    <li><a href="">Comprar</a></li>
-                    <li><a href="">Rentar</a></li>
-                    <li><a href="">Mensaje</a></li>
-                    <li><a href="">Empleados</a></li>
-                    <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
-                </ul>
-            </nav>
-        </section>
-
-
-        <?php foreach($errores as $error):?>
-
-        <div class="error"><p><?php  echo $error ?></p></div>
-
-        <?php endforeach?>
-        <section class="formulario__content">
-        <section class="formulario">
-
-        <form action="" method="POST">
-
-            <label for="rol">
-                <span>Rol</span>
-                <input type="text" id= "rol" name="rol" placeholder = "Role Name" required maxlength="50">
-            </label>
-
-
-            <section class="content__buttons">
-                
-                
-                <a class="signup__submit" href="../Listado/index.php">Volver</a>
-                <input type="submit" value = "Registrar" class = "signup__submit">
-               
-                
-                
-
+            <section class="main__nav" id="main__nav">
+                <nav>
+                    <ul>
+                        <li><a href="../../Propiedades/Listado/index.php"><span>Inmuebles</span></a></li>
+                        <li><a href=""><span>VoBo Inmuebles</span></a></li>
+                        <li><a href="../Listado/index.php">Asesores</a></li>
+                        <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
+                        <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
+                    </ul>
+                </nav>
             </section>
-            
-        </form>
-        </section>
+
+            <section class="main__table">
+
+                <section class="table__buttons">
+                    <div class="button__volver">
+                        <a class="volver" href="../Nuevo/index.php">Volver</a>
+                    </div>
+                    <div class="button__new">
+                        <a class="new" href="NuevoRol/index.php">Nuevo Rol</a>
+                    </div>
+                </section>
+
+                <section  class="table__title">
+                    <table>
+                        <tr>
+                            <td>Nombre</td>
+                            <td>Editar</td>
+                            <td>Activo</td>
+                            <td>Borrar</td>
+                        </tr>
+
+                    </table>
+
+                </section table__title="" >
+
+                <?php while($row = mysqli_fetch_assoc($resultadoRol)): ?>
+
+
+                <section class="table__content">
+
+                    <table>
+                        <tr>
+
+                            <td><?php  echo $row['Nombre_rol']?></td>
+                            <td class="table__editar">
+                                <a href="EditarRol/index.php?id=<?php echo $row['idRol']?>">
+                                    <img src="../../../Assets/editar.png" alt="">
+                                </a>
+                            </td>
+                            <td class="table__editar">
+                                <form method="POST">
+                                <?php
+
+                                if($row['Activo'] == 1){
+
+                                    ?>
+                                    <a href="">
+                                        <input type="hidden"  class="input-activar" name="Activo" value="<?php echo $row['idRol']?>">
+                                        <input type="submit" class="input-activar" alt="" >
+                                    </a>
+                                    
+                                <?php
+                                }
+                                else{
+
+                                ?>
+                                    <a href="">
+                                        <input type="hidden"  class="input-desactivar" name="Activo" value="<?php echo $row['idRol']?>">
+                                        <input type="submit" class="input-desactivar" alt="" >
+                                    </a>
+                                <?php
+
+                                }
+                                ?>
+                                </form>
+                            </td>
+
+                            <td class="table__editar">
+
+                                        <input type="hidden"  class="input-borrar" onclick="preguntar(<?php echo $row['idRol']?>)" >
+                                        <input type="button" class="input-borrar" alt="" onclick="preguntar(<?php echo $row['idRol']?>)">
+                            </td>
+                        </tr>
+                    </table>
+                </section>
+
+                <?php endwhile; ?>
+
+                    
+
+
+            </section main__table="" >
+
+
+
+
+
         </section>
 
     </main>
@@ -156,6 +238,16 @@
 require '../../../includes/footer.php'
 
 ?>
+
+<script type="text/javascript">
+
+function preguntar(id){
+    if(confirm('¿Estas seguro que deseas borrar el Rol?')){
+        window.location.href = "index.php?del=" + id;
+    }
+}
+
+</script>
 <script src="JS/menu.js" ></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>

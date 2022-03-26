@@ -7,7 +7,7 @@
 
 html {
   font-size: 62.5%;
-  background-image: url("../../../../../Assets/fondo.jpeg");
+  background-image: url("../../../../../../Assets/fondo.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -104,7 +104,7 @@ html {
 main {
   width: 100%;
   min-width: 36rem;
-  height: auto;
+  height: 100vh;
   text-align: center;
   font-family: "Montserrat";
   background-image: url("../../../../../Assets/fondo.jpeg");
@@ -117,7 +117,7 @@ main .main__menu--content {
   background-color: rgba(255, 255, 255, 0.7);
 }
 main .main__menu--content .main__menu {
-  width: 40%;
+  width: 20%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -134,18 +134,19 @@ main .main__content {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 main .main__content .main__nav {
-  width: 40%;
+  width: 20%;
   height: auto;
   margin: 0;
-  background-color: white;
+  z-index: -100;
+  background-color: rgba(255, 255, 255, 0.7);
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
-  position: relative;
-  z-index: -200;
-  -webkit-transition: all 200ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-  transition: all 200ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 }
 main .main__content .main__nav nav {
   width: 100%;
@@ -238,123 +239,247 @@ main .main__content .error p {
   color: black;
   font-weight: 700;
 }
-main .main__content .formulario__content {
+
+.main__table {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
   position: absolute;
-}
-main .main__content .formulario__content .formulario {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 80%;
-  height: auto;
-  margin: 0 auto;
-  background-color: rgba(255, 255, 255, 0.7);
-  margin-top: 5rem;
-  border-radius: 2rem;
-  padding: 2rem;
-}
-main .main__content .formulario__content .formulario form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   width: 100%;
+  margin: 0 auto;
+  margin-top: 5rem;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2rem;
+  border-radius: 2rem;
 }
-main .main__content .formulario__content .formulario form label {
+.main__table .table__buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   width: 100%;
+  margin: 0 auto;
+}
+.main__table .table__buttons .button__volver {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-main .main__content .formulario__content .formulario form label input {
-  width: 50%;
-  font-family: "Arial", sans-serif;
-  outline: 0;
-  background-color: rgba(253, 151, 99, 0.4);
-  border: 0;
+  width: 9rem;
+  height: 3rem;
+  background-color: red;
   border-radius: 1rem;
-  margin: 0 0 1.5rem;
-  padding: 1.5rem;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-size: 1rem;
-}
-main .main__content .formulario__content .formulario form label span {
-  font-family: "Arial", sans-serif;
-  width: 50%;
-  text-align: center;
-  font-size: 1rem;
-}
-main .main__content .formulario__content .formulario form .select {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-main .main__content .formulario__content .formulario form .select select {
-  width: 50%;
-  font-family: "Arial", sans-serif;
-  outline: 0;
-  background-color: rgba(253, 151, 99, 0.4);
-  border: 0;
-  border-radius: 1rem;
-  margin: 0 0 1.5rem;
-  padding: 1.5rem;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-size: 1rem;
-}
-main .main__content .formulario__content .formulario form .select span {
-  width: 50%;
-  text-align: center;
-  font-size: 1rem;
-}
-main .main__content .formulario__content .formulario form .content__buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
-  background-color: transparent;
-  height: auto;
-  margin: 0;
-}
-main .main__content .formulario__content .formulario form .content__buttons .signup__submit {
-  width: 40%;
-  font-family: "Arial", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #4CAF50;
   opacity: 0.7;
-  border: 0;
-  border-radius: 10px;
   text-align: center;
-  padding: 15px;
-  margin-top: 10px;
-  color: #FFFFFF;
-  font-size: 1rem;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: 100;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
-main .main__content .formulario__content .formulario form .content__buttons .signup__submit:hover {
+.main__table .table__buttons .button__volver .volver {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 7rem;
+  height: 4rem;
+  margin: 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 1rem;
+  text-decoration: none;
+  font-family: "Montserrat";
+  font-weight: 700;
+  color: white;
+}
+.main__table .table__buttons .button__new {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 9rem;
+  height: 3rem;
+  background-color: #4CAF50;
+  opacity: 0.7;
+  border-radius: 1rem;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.main__table .table__buttons .button__new .new {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 9rem;
+  height: 4rem;
+  margin: 0 auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: 1rem;
+  text-decoration: none;
+  font-family: "Montserrat";
+  font-weight: 700;
+  color: white;
+}
+.main__table .table__title {
+  width: 100%;
+  margin: 0 auto;
+  border-spacing: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.main__table .table__title table {
+  width: 100%;
+}
+.main__table .table__title table tr {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  text-align: center;
+}
+.main__table .table__title table tr td {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 25%;
+  font-size: 1rem;
+  font-family: "Montserrat";
+  font-weight: 700;
+  border: ridge;
+}
+.main__table .table__title table tr {
+  color: black;
+}
+.main__table .table__content {
+  width: 100%;
+  margin: 0 auto;
+}
+.main__table .table__content table {
+  width: 100%;
+  margin: 0 auto;
+}
+.main__table .table__content table tr {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  text-align: center;
+}
+.main__table .table__content table tr td {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 25%;
+  font-size: 0.8rem;
+  font-family: "Montserrat";
+  font-weight: 700;
+  border: ridge;
+}
+.main__table .table__content table tr td a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.main__table .table__content table tr td a img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20px;
+}
+.main__table .table__content table tr td .table__editar:hover {
+  background-color: white;
+}
+.main__table .table__content table tr td .input-borrar {
+  width: 20px;
+  height: 20px;
+  color: transparent;
+  border: 0px;
+  background-color: transparent;
+  background-image: url("../../../../../Assets/borrar.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.main__table .table__content table tr td .input-borrar:hover {
+  width: 25px;
+  height: 25px;
+  color: transparent;
+  border: 0px;
+  background-color: transparent;
+  background-image: url("../../../../../Assets/borrar-open.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.main__table .table__content table tr td .input-activar {
+  width: 30px;
+  height: 15px;
+  color: transparent;
+  border: 0px;
+  background-color: transparent;
+  background-image: url("../../../../../Assets/activo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.main__table .table__content table tr td .input-desactivar {
+  width: 30px;
+  height: 15px;
+  color: transparent;
+  border: 0px;
+  background-color: transparent;
+  background-image: url("../../../../../Assets/inactivo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+.main__table .table__content table tr:hover {
+  color: red;
+  padding: 0.1rem;
   cursor: pointer;
 }
 

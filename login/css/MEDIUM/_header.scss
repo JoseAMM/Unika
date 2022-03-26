@@ -1,0 +1,73 @@
+.header__global {
+  display: flex;
+  width: 100%;
+  height: auto;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 360px;
+  font-size: 1.2rem;
+  font-family: 'Montserrat';
+  font-weight: 700;
+  background-color: rgba(255,255,255,0.7);
+
+
+  section {
+    display: flex;
+    width: 30%;
+    height: auto;
+    justify-content: center;
+
+    img {
+      align-self: center;
+      width: 20rem;
+      height: 9.4rem;
+    }
+  }
+
+
+  nav {
+    display: flex;
+    width: 70%;
+    height: 60px;
+    text-align: center;
+    justify-content: center;
+    
+    border-bottom: solid black 3px;
+
+    ul {
+      display: flex;
+      width: 90%;
+      justify-content: center;
+      text-align: center;
+      align-self: center;
+      text-decoration: none;
+      list-style: none;
+
+      li {
+        width: 25%;
+        padding: 10px;
+
+        a {
+          
+          text-decoration: none;
+          color: black;
+        }
+      }
+
+      li:hover {
+        background-color: black;
+        color: white;
+        border-radius: 1rem;
+        border: solid  0.2rem black;
+        cursor: pointer;
+
+        a {
+          color: white;
+          cursor: pointer;
+
+        }
+
+      }
+    }
+  }
+}

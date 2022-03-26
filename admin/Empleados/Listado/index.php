@@ -1,8 +1,8 @@
 <?php
-session_start();
+//Sesion
 
-$auth = $_SESSION['login'];
-$idUsuarios = $_SESSION['idUsuarios'];
+require '../../sesion.php';
+
 
 if(!$auth){
     header('Location:../../../index.php');
@@ -19,6 +19,7 @@ $queryEmpleado = "SELECT * FROM empleado WHERE $idUsuarios = empleado.Usuarios_i
 $resultadoEmpleadoNombre = mysqli_query($db, $queryEmpleado);
 
 $resultadoEmpleadoNombre = mysqli_fetch_assoc($resultadoEmpleadoNombre);
+
 
 $idRolEmpleado = $resultadoEmpleadoNombre['Rol_idRol'];
 
@@ -81,8 +82,35 @@ $rol = null;
 $oficina = null;
 $activo =  null;
 
-
-
+if(isset ($_GET['del'])){
+    $idEmpleado = (int)$_GET['del'];
+    $queryConsultarInmuebles = "SELECT idInmueble FROM inmueble WHERE id_Empleado = $idEmpleado";
+    $resultadoConsularInmuebles = mysqli_query($db, $queryConsultarInmuebles);
+    
+    while ($row = mysqli_fetch_assoc($resultadoConsularInmuebles)) {
+        
+        $inmueble = (int)$row['idInmueble'];
+        
+        $queryBorrarDatosBasicos = "DELETE from datos_basicos where Inmueble_idInmueble = $inmueble";
+        $queryBorrarCaracteristicas = "DELETE from caracteristicas where idInmueble = $inmueble";
+        $resultadoBorrar = mysqli_query($db, $queryBorrarDatosBasicos);
+        $resultadoBorrar = mysqli_query($db, $queryBorrarCaracteristicas);
+        # code...
+    }
+    $queryBorrarInmueble = "DELETE from inmueble where id_Empleado = $idEmpleado";
+    $queryBorrarEmpleado = "DELETE FROM empleado WHERE idEmpleado = $idEmpleado";
+    $queryConsultaUsuario = "SELECT Usuarios_idUsuarios FROM empleado WHERE idEmpleado = $idEmpleado";
+    
+    
+    $resultadoConsultaUsuario = mysqli_query($db, $queryConsultaUsuario);
+    $resultadoConsultaUsuario = mysqli_fetch_assoc($resultadoConsultaUsuario);
+    $resultadoConsultaUsuario = $resultadoConsultaUsuario['Usuarios_idUsuarios'];
+    $queryBorrarUsuario = "DELETE FROM usuarios WHERE  idUsuarios = $resultadoConsultaUsuario";
+    $resultadoBorrar = mysqli_query($db, $queryBorrarInmueble);
+    $resultadoBorrarEmpleado = mysqli_query($db, $queryBorrarEmpleado);
+    $resultadoBorrarUsuario = mysqli_query($db, $queryBorrarUsuario);
+    header('Location:index.php');
+}
 
 
 
@@ -152,35 +180,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-        if(isset ($_POST['borrar'])){
-            $idEmpleado = (int)$_POST['borrar'];
-            $queryConsultarInmuebles = "SELECT idInmueble FROM inmueble WHERE id_Empleado = $idEmpleado";
-            $resultadoConsularInmuebles = mysqli_query($db, $queryConsultarInmuebles);
-            
-            while ($row = mysqli_fetch_assoc($resultadoConsularInmuebles)) {
-                
-                $inmueble = (int)$row['idInmueble'];
-                
-                $queryBorrarDatosBasicos = "DELETE from datos_basicos where Inmueble_idInmueble = $inmueble";
-                $queryBorrarCaracteristicas = "DELETE from caracteristicas where idInmueble = $inmueble";
-                $resultadoBorrar = mysqli_query($db, $queryBorrarDatosBasicos);
-                $resultadoBorrar = mysqli_query($db, $queryBorrarCaracteristicas);
-                # code...
-            }
-            $queryBorrarInmueble = "DELETE from inmueble where id_Empleado = $idEmpleado";
-            $queryBorrarEmpleado = "DELETE FROM empleado WHERE idEmpleado = $idEmpleado";
-            $queryConsultaUsuario = "SELECT Usuarios_idUsuarios FROM empleado WHERE idEmpleado = $idEmpleado";
-            
-            
-            $resultadoConsultaUsuario = mysqli_query($db, $queryConsultaUsuario);
-            $resultadoConsultaUsuario = mysqli_fetch_assoc($resultadoConsultaUsuario);
-            $resultadoConsultaUsuario = $resultadoConsultaUsuario['Usuarios_idUsuarios'];
-            $queryBorrarUsuario = "DELETE FROM usuarios WHERE  idUsuarios = $resultadoConsultaUsuario";
-            $resultadoBorrar = mysqli_query($db, $queryBorrarInmueble);
-            $resultadoBorrarEmpleado = mysqli_query($db, $queryBorrarEmpleado);
-            $resultadoBorrarUsuario = mysqli_query($db, $queryBorrarUsuario);
-            header('Location:index.php');
-        }
+
 
         if (isset($_POST['Activo'])){
 
@@ -262,12 +262,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         <section class="main__nav" id="main__nav">
             <nav>
                 <ul>
-                    <li><a href="../../Propiedades/Listado/index.php">Inmuebles</a></li>
-                    <li><a href="">Vender</a></li>
-                    <li><a href="">Comprar</a></li>
-                    <li><a href="">Rentar</a></li>
-                    <li><a href="">Mensaje</a></li>
-                    <li><a href="">Empleados</a></li>
+                    <li><a href="../../Propiedades/Listado/index.php"><span>Inmuebles</span></a></li>
+                    <li><a href=""><span>VoBo Inmuebles</span></a></li>
+                    <li><a href="index.php">Asesores</a></li>
+                    <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
                     <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
                 </ul>
             </nav>
@@ -279,20 +277,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         <section class="table__buttons">
-            <div class="button__new">
-                <a class="new" href="../Cargo/index.php">Nuevo Cargo</a>
-            </div>
 
             <div class="button__new">
-                <a class="new" href="../Rol/index.php">Nuevo Rol</a>
-            </div>
-            
-            <div class="button__new">
-                <a class="new" href="../Oficina/index.php">Nueva Oficina</a>
+                <a class="new" href="../Mensaje/index.php">Nuevo Mensaje</a>
             </div>
             <div class="button__new">
-                <a class="new" href="../Nuevo/index.php">Nuevo Empleado</a>
+                <a class="new" href="../Nuevo/index.php">Nuevo Asesor</a>
             </div>
+
+
         </section>
 
         <form method="POST" class="table__search">
@@ -456,15 +449,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </td>
 
                     <td class="table__editar">
-                        <form method="POST">
                             
-                                <input type="hidden"  class="input-borrar" name="borrar" value="<?php echo $row['idEmpleado']?>">
-                                <input type="submit" class="input-borrar" alt="" >
-                            
-
-
-                        </form>
-
+                                <input type="hidden"  class="input-borrar" name="borrar" onclick="preguntar(<?php echo $row['idEmpleado']?>)">
+                                <input type="submit" class="input-borrar" alt=""  onclick="preguntar(<?php echo $row['idEmpleado']?>)">
                     </td>
                 </tr>
             </table>
@@ -475,6 +462,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     </section>
 
     </main>
-    <script src="JS/menu.js" ></script>
+    <script type="text/javascript">
+
+    function preguntar(id){
+        if(confirm('¿Estas seguro que deseas borrar este empleado?')){
+            window.location.href = "index.php?del=" + id;
+        }
+    }
+
+    </script>
+        <script src="JS/menu.js" ></script>
 </body>
 </html>

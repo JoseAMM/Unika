@@ -192,6 +192,19 @@ html {
   text-align: center;
   font-size: 1.8rem;
 }
+.main__signup section form select {
+  width: 50%;
+  font-family: "Arial", sans-serif;
+  outline: 0;
+  background-color: rgba(253, 151, 99, 0.4);
+  border: 0;
+  border-radius: 1rem;
+  margin: 0 0 1.5rem;
+  padding: 1.5rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 1.4rem;
+}
 .main__signup section form .content__buttons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -224,4 +237,9 @@ html {
 }
 .main__signup section form .content__buttons .signup__submit:hover {
   cursor: pointer;
+}
+
+.captcha {
+  margin: 0 auto;
+  margin-top: 1rem;
 }

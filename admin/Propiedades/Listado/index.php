@@ -1,13 +1,9 @@
 <?php
 
-session_start();
+//Sesion
 
-$auth = $_SESSION['login'];
-$idUsuarios = $_SESSION['idUsuarios'];
+require '../../sesion.php';
 
-if(!$auth){
-    header('Location:../../../index.php');
-}
 
 //Conexión a la base de datos
 
@@ -38,13 +34,16 @@ Fecha_Registro,
 Nombre_Apellido,
 Nombre_Contrato,
 Nombre_Tipo_Inmueble,
-Nombre_Operacion
+Nombre_Operacion,
+datos_basicos.Fotos_idFotos1,
+datos_basicos.Direccion
 FROM
 inmueble
 INNER JOIN empleado ON idEmpleado = id_Empleado
 INNER JOIN tipo_contrato ON inmueble.idTipo_Contrato   = tipo_contrato.idTipo_Contrato
 INNER JOIN tipo_inmueble ON inmueble.idTipo_Inmueble   = tipo_inmueble.idTipo_Inmueble
-INNER JOIN tipo_operacion ON inmueble.idTipo_Operacion = tipo_operacion.idTipo_Operacion ORDER BY idInmueble ASC";
+INNER JOIN tipo_operacion ON inmueble.idTipo_Operacion = tipo_operacion.idTipo_Operacion
+INNER JOIN datos_basicos ON inmueble.idInmueble = datos_basicos.Inmueble_idInmueble WHERE VoBo = 1 ORDER BY idInmueble ASC";
 
 $resultadoInmueble = mysqli_query($db, $queryInmueble);
 
@@ -71,7 +70,7 @@ $resultadoTipoInmueble = mysqli_query($db, $consultaTipoInmueble);
 
 // Consulta de los tipos de operación activos para el select
 
-$consultaOperacion = "SELECT idTipo_Operacion, Nombre_Operacion, Activo FROM tipo_operacion WHERE Activo = 1;";
+$consultaOperacion = "SELECT idTipo_Operacion, Nombre_Operacion, Activo FROM tipo_operacion";
 $resultadoOperacion = mysqli_query($db, $consultaOperacion);
 
 
@@ -83,24 +82,40 @@ $id = null;
 $activo = null;
 
 
+if(isset($_GET['del'])) {
+    $idInmueble = $_GET['del'];
+    $queryBorrarInmueble = "DELETE from inmueble where idInmueble = $idInmueble";
+    $queryBorrarDatosBasicos = "DELETE from datos_basicos where Inmueble_idInmueble = $idInmueble";
+    $queryBorrarCaracteristicas = "DELETE from caracteristicas where idInmueble = $idInmueble";
+    $resultadoBorrar = mysqli_query($db, $queryBorrarDatosBasicos);
+    $resultadoBorrar = mysqli_query($db, $queryBorrarCaracteristicas);
+    $resultadoBorrar = mysqli_query($db, $queryBorrarInmueble);
+    header('Location: index.php');
+}
+
+
+
 
 
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    // isset($_POST['id_Empleado']) != NULL OR isset($_POST['idTipo_Contrato']) != NULL OR isset($_POST['idTipo_Inmueble']) != NULL OR isset($_POST['idTipo_Operacion']) != NULL OR isset($_POST['idInmueble']) != NULL OR isset($_POST['activo']) != NULL
+    // isset($_POST['id_Empleado']) != NULL OR isset($_POST['idTipo_Contrato']) != NULL OR isset($_POST['idTipo_Inmueble']) != NULL OR isset($_POST['idTipo_Operacion']) != NULL OR isset($_POST['idInmueble']) != NULL OR isset($_POST['activo']) != NULL OR  isset($_POST['Superficie_Terreno']) != NULL OR isset($_POST['Superficie_Construccion']) != NULL
     // $_POST['id_Empleado']!= NULL OR $_POST['idTipo_Contrato'] != NULL OR $_POST['idTipo_Inmueble'] != NULL OR $_POST['idTipo_Operacion'] != NULL OR $_POST['idInmueble'] != NULL OR $_POST['activo'] != NULL
 
-    if(isset($_POST['id_Empleado']) != NULL OR isset($_POST['idTipo_Contrato']) != NULL OR isset($_POST['idTipo_Inmueble']) != NULL OR isset($_POST['idTipo_Operacion']) != NULL OR isset($_POST['idInmueble']) != NULL OR isset($_POST['activo']) != NULL) {
+    if($_POST['idTipo_Contrato'] != NULL OR $_POST['idTipo_Inmueble'] != NULL OR $_POST['idTipo_Operacion'] != NULL OR  $_POST['activo'] != NULL OR $_POST['Superficie_Terreno'] != NULL OR $_POST['Superficie_Construccion'] != NULL) {
 
 
     // Asignación de variables y escape de datos para la prevención de inyección SQL
-        $asesor = (int)$_POST['id_Empleado'];
+
         $contrato = (int)$_POST['idTipo_Contrato'];
         $inmueble = (int)$_POST['idTipo_Inmueble'];
         $operacion = (int)$_POST['idTipo_Operacion'];
-        $id = (int)$_POST['idInmueble'];
         $activo = (int)$_POST['activo'];
+        $terreno = (int)$_POST['Superficie_Terreno'];
+        $construccion = (int)$_POST['Superficie_Construccion'];
+        $habitaciones = (int)$_POST['Habitaciones'];
+        $estacionamiento = (int)$_POST['Puestos_Estacionamiento'];
 
         $queryInmueble = $queryInmueble ." WHERE ";
 
@@ -114,19 +129,32 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
         $queryBuscar = "SELECT
-        idInmueble,
+        inmueble.idInmueble,
         inmueble.Activo,
         Fecha_Registro,
         Nombre_Apellido,
         Nombre_Contrato,
         Nombre_Tipo_Inmueble,
-        Nombre_Operacion
+        Nombre_Operacion,
+        caracteristicas.Superficie_Construccion,
+        caracteristicas.Superficie_Terreno,
+        caracteristicas.Habitaciones,
+        caracteristicas.Puestos_Estacionamiento,
+        datos_basicos.Fotos_idFotos1,
+        datos_basicos.Direccion
+
         FROM
+
         inmueble
+
         INNER JOIN empleado ON idEmpleado = id_Empleado
-        INNER JOIN tipo_contrato ON inmueble.idTipo_Contrato   = tipo_contrato.idTipo_Contrato
-        INNER JOIN tipo_inmueble ON inmueble.idTipo_Inmueble   = tipo_inmueble.idTipo_Inmueble
-        INNER JOIN tipo_operacion ON inmueble.idTipo_Operacion = tipo_operacion.idTipo_Operacion WHERE ";
+        INNER JOIN tipo_contrato ON inmueble.idTipo_Contrato = tipo_contrato.idTipo_Contrato
+        INNER JOIN tipo_inmueble ON inmueble.idTipo_Inmueble = tipo_inmueble.idTipo_Inmueble
+        INNER JOIN tipo_operacion ON inmueble.idTipo_Operacion = tipo_operacion.idTipo_Operacion
+        INNER JOIN caracteristicas ON inmueble.idInmueble = caracteristicas.idInmueble
+        INNER JOIN datos_basicos ON inmueble.idInmueble = datos_basicos.Inmueble_idInmueble
+
+        WHERE ";
 
         foreach ($_POST as $key => $value) {
 
@@ -136,15 +164,36 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if(count($_POST) > 1 ) {
 
-                $queryBuscar = $queryBuscar ."inmueble.". $key . " = " . $value . " AND " ;
-                unset($_POST[$key]);
+                if($key == "Superficie_Terreno" OR $key == "Superficie_Construccion" OR $key == "Habitaciones" OR $key == "Puestos_Estacionamiento"){
+                    $queryBuscar = $queryBuscar ."caracteristicas.". $key . " = " . $value . " AND " ;
+                    unset($_POST[$key]);
+                } else {
+
+                    $queryBuscar = $queryBuscar ."inmueble.". $key . " = " . $value . " AND " ;
+                    unset($_POST[$key]);
+                }
 
             } else if (count($_POST) == 1){
 
-                $queryBuscar = $queryBuscar ."inmueble.". $key . " = " . $value ;
-                unset($_POST[$key]);
+                if($key == "Superficie_Terreno" OR $key == "Superficie_Construccion" OR $key == "Habitaciones" OR $key == "Puestos_Estacionamiento"){
+                    $queryBuscar = $queryBuscar ."caracteristicas.". $key . " = " . $value . " AND VoBo = 1";
+                    unset($_POST[$key]);
+                }
+                else {                
+                    
+                    $queryBuscar = $queryBuscar ."inmueble.". $key . " = " . $value . " AND VoBo = 1" ;
+                    unset($_POST[$key]);}
+
+
             }
         }
+
+        // echo '<pre>';
+        // var_dump($queryBuscar);
+        // echo '</pre>';
+
+
+        
 
 
         $resultadoBuscar = mysqli_query($db, $queryBuscar);
@@ -152,17 +201,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-        if(isset ($_POST['idInmuebles'])){
-            $idInmueble = (int)$_POST['idInmuebles'];
-            var_dump($idInmueble);
-            $queryBorrarInmueble = "DELETE from inmueble where idInmueble = $idInmueble";
-            $queryBorrarDatosBasicos = "DELETE from datos_basicos where Inmueble_idInmueble = $idInmueble";
-            $queryBorrarCaracteristicas = "DELETE from caracteristicas where idInmueble = $idInmueble";
-            $resultadoBorrar = mysqli_query($db, $queryBorrarDatosBasicos);
-            $resultadoBorrar = mysqli_query($db, $queryBorrarCaracteristicas);
-            $resultadoBorrar = mysqli_query($db, $queryBorrarInmueble);
-            header('Location: index.php');
-        }
+
         
         if (isset( $_POST['Activo'])){
             
@@ -228,6 +267,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     <main>
 
+
         <section class="main__menu--content">
         <section class="main__menu" id="main__menu">
             <i>
@@ -243,12 +283,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         <section class="main__nav" id="main__nav" >
             <nav>
                 <ul>
-                    <li><a href=""><span>Inmuebles</span></a></li>
-                    <li><a href="">Vender</a></li>
-                    <li><a href="">Comprar</a></li>
-                    <li><a href="">Rentar</a></li>
-                    <li><a href="">Mensaje</a></li>
-                    <li><a href="../../Empleados/Listado/index.php">Empleados</a></li>
+                    <li><a href="index.php"><span>Inmuebles</span></a></li>
+                    <li><a href="../VoBo/index.php"><span>VoBo Inmuebles</span></a></li>
+                    <li><a href="../../Empleados/Listado/index.php">Asesores</a></li>
+                    <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
                     <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
                 </ul>
             </nav>
@@ -259,21 +297,12 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-    <section class="table__title ">
+
+
+    <section class="table__config ">
 
         <section class="table__buttons">
             
-
-            <div class="button__new">
-                <a class="new" href="../Operacion/index.php">Nueva Operación</a>
-            </div>
-
-            <div class="button__new">
-                <a class="new" href="../T.Inmueble/index.php">Nuevo Tipo Inmueble</a>
-            </div>
-            <div class="button__new">
-                <a class="new" href="../Contrato/index.php">Nuevo Contrato</a>
-            </div>
             
             <div class="button__new">
                 <a class="new" href="../Publicar/index.php">Nuevo Inmueble</a>
@@ -286,16 +315,29 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             </div>
 
                 <div class="search__element">
-                    <span>ID</span>
-                    <select name="idInmueble" id="">
-                        <option value=""><----></option>
-                        <?php while($row = mysqli_fetch_assoc($resultadoIdImbueble)) : ?>
-                            <option <?php echo $id == $row['idInmueble'] ? 'selected' : '' ; ?>value="<?php echo $row['idInmueble']; ?>"><?php echo $row['idInmueble']; ?></option>
-                        <?php endwhile; ?>
-                    </select>
+                    <span>Super. Terreno</span>
+                    <input type="number" name="Superficie_Terreno" placeholder = "En m2">
 
                 </div>
 
+                <div class="search__element">
+                    <span>Super. Construcción</span>
+                    <input type="number" name="Superficie_Construccion" placeholder = "En m2">
+
+                </div>
+                
+                <div class="search__element">
+                    <span>Habitaciones</span>
+                    <input type="number" name="Habitaciones" placeholder = "#">
+
+                </div>
+                
+                <div class="search__element">
+                    <span>Estacionamiento</span>
+                    <input type="number" name="Puestos_Estacionamiento" placeholder = "#">
+
+                </div>
+                
 
                 <div class="search__element">
 
@@ -306,7 +348,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <option value="<?php echo $row['idEmpleado']; ?>"><?php echo $row['Nombre_Apellido']; ?></option>
                             <?php endwhile; ?>
                         </select>
-
                 </div>
 
                 <div class="search__element">
@@ -364,10 +405,11 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
 
-        <table>
+        <table class="table__title">
             <tr>
-                <td class="table__id">ID</td>
-                <td class="table__fecha">Fecha</td>
+                <td>Ver</td>
+                <td>Foto</td>
+                <td>Direccion</td>
                 <td>Asesor</td>
                 <td>Contrato</td>
                 <td>Tipo de Inmueble</td>
@@ -384,11 +426,23 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php while($row = mysqli_fetch_assoc($resultadoInmueble)): ?>
 
 
+
+
+
         <section class="table__content">
+
             <table>
                 <tr>
-                    <td class="table__id"><?php echo $row['idInmueble']?></td>
-                    <td class="table__fecha"><?php echo$row['Fecha_Registro']?></td>
+                    <td class="content__ver">
+                        <a  class="input-view" href="../Ver/index.php?id=<?php echo $row['idInmueble']?>"></a>
+                    </td>
+                    <td ><img class="content__imagen" src="../Imagenes/<?php 
+                    if($row['Fotos_idFotos1'] == NULL){
+                        echo "vacio.png";
+                    } else {
+                        echo $row['Fotos_idFotos1'];
+                    }?>" alt=""></td>
+                    <td><?php  echo $row['Direccion']?></td>
                     <td><?php  echo $row['Nombre_Apellido']?></td>
                     <td><?php  echo $row['Nombre_Contrato']?></td>
                     <td><?php  echo $row['Nombre_Tipo_Inmueble']?></td>
@@ -399,10 +453,6 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <img src="../../../Assets/editar.png" alt="">
                         </a>
                     </td>
-
-
-
-
                     <td class="table__editar">
                         <form method="POST">
                         <?php
@@ -445,15 +495,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </td>
 
                     <td class="table__editar">
-                        <form method="POST">
-                            
-                                <input type="hidden"  class="input-borrar" name="idInmuebles" value="<?php echo $row['idInmueble']?>">
-                                <input type="submit" class="input-borrar" alt="" >
-                            
 
-
-                        </form>
-
+                                <input type="hidden"  class="input-borrar" onclick="preguntar(<?php echo $row['idInmueble']?>)" >
+                                <input type="button" class="input-borrar" alt="" onclick="preguntar(<?php echo $row['idInmueble']?>)">
                     </td>
                 </tr>
             </table>
@@ -464,8 +508,17 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     </section>
 
     </main>
+    <script type="text/javascript">
+
+        function preguntar(id){
+            if(confirm('¿Estas seguro que deseas borrar el inmueble?')){
+                window.location.href = "index.php?del=" + id;
+            }
+        }
+
+    </script>
 
     <script src="JS/menu.js" ></script>
+    <script src="JS/borrar.js" ></script>
 </body>
 </html>
-
