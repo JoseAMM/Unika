@@ -54,9 +54,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
     $consultaOperacion = "SELECT idTipo_Operacion, Nombre_Operacion, Activo FROM tipo_operacion WHERE Activo = 1;";
     $resultadoOperacion = mysqli_query($db, $consultaOperacion);
 
-// Consulta de las colonias para el select
-    $consultaColonia = "SELECT idColonias, Nombre_Colonia FROM colonias WHERE Codigo_Postal = 3100 ";
-    $resultadoColonia = mysqli_query($db, $consultaColonia);
+
 
 
     

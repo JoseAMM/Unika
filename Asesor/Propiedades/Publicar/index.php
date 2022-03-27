@@ -54,192 +54,190 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
     $consultaOperacion = "SELECT idTipo_Operacion, Nombre_Operacion, Activo FROM tipo_operacion WHERE Activo = 1;";
     $resultadoOperacion = mysqli_query($db, $consultaOperacion);
 
-// Consulta de las colonias para el select
-    $consultaColonia = "SELECT idColonias, Nombre_Colonia FROM colonias WHERE Codigo_Postal = 3100 ";
-    $resultadoColonia = mysqli_query($db, $consultaColonia);
+
 
 
     
     $errores = [];
 
 
-    if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-        $direccion =  limpieza( mysqli_real_escape_string($db, $_POST['direccion']));
-        $ubicacion = limpieza( mysqli_real_escape_string($db, $_POST['ubicacion']));
+    //     $direccion =  limpieza( mysqli_real_escape_string($db, $_POST['direccion']));
+    //     $ubicacion = limpieza( mysqli_real_escape_string($db, $_POST['ubicacion']));
 
-        $queryBuscarInmueble = "SELECT Direccion FROM datos_basicos WHERE Direccion = '$direccion' AND Ubicacion_Maps = '$ubicacion'";
-        $resultadoBuscarInmueble = mysqli_fetch_assoc( mysqli_query($db, $queryBuscarInmueble));
-
-
-        if($resultadoBuscarInmueble == NULL) {
-             // Asignación de variables y escape de datos para la prevención de inyección SQL
-            $asesor = $_POST['asesor'];
-            $contrato = $_POST['contrato'];
-            $inmueble = $_POST['inmueble'];
-            $operacion = $_POST['operacion'];
-            $colonia = $_POST['colonia'];
+    //     $queryBuscarInmueble = "SELECT Direccion FROM datos_basicos WHERE Direccion = '$direccion' AND Ubicacion_Maps = '$ubicacion'";
+    //     $resultadoBuscarInmueble = mysqli_fetch_assoc( mysqli_query($db, $queryBuscarInmueble));
 
 
-            
-            $carpetaImagenes = "../Imagenes/";
-            
-            if(!is_dir($carpetaImagenes)){
-                mkdir($carpetaImagenes);
-            }
-            
-            
-            
-            
-            
-            $superficie_terreno = filter_var(mysqli_real_escape_string($db, $_POST['superficie_terreno']), FILTER_SANITIZE_NUMBER_FLOAT);
-            $superficie_construccion = filter_var(mysqli_real_escape_string($db, $_POST['superficie_construccion']), FILTER_SANITIZE_NUMBER_FLOAT);
-            $habitaciones = filter_var(mysqli_real_escape_string($db, $_POST['habitaciones']), FILTER_SANITIZE_NUMBER_INT);
-            $estacionamiento = filter_var(mysqli_real_escape_string($db, $_POST['estacionamiento']), FILTER_SANITIZE_NUMBER_INT);
-            $otras = limpieza( mysqli_real_escape_string($db, $_POST['otras']));
-            $precio = filter_var(mysqli_real_escape_string($db, $_POST['precio']), FILTER_SANITIZE_NUMBER_FLOAT);
-            
-            $urlAnuncio = limpieza( filter_var(mysqli_real_escape_string($db, $_POST['urlAnuncio']), FILTER_SANITIZE_URL));
-            $urlVideo = limpieza( filter_var(mysqli_real_escape_string($db, $_POST['urlVideo']), FILTER_SANITIZE_URL));
-            
-            
-            $queryInmueble = "INSERT INTO inmueble (Activo, idTipo_Contrato, idTipo_Inmueble, idTipo_Operacion, id_Empleado, VoBo) VALUES (1, $contrato, $inmueble, $operacion, $asesor, '0')";
-            $resultadoInmueble = mysqli_query($db, $queryInmueble);
-            
-            
-            
-            // $resultadoInmueble = mysqli_fetch_assoc($resultadoContrato);
-            
-            // echo "<pre>";
-            // var_dump($_FILES['foto2']);
-            // echo "</pre>";
-            
-            
-            $queryAsignarFK = "SELECT idInmueble FROM inmueble ORDER BY idInmueble DESC LIMIT 1";
-            $resultadoAsignarFK = mysqli_query($db, $queryAsignarFK);
-            $resultadoAsignarFK = mysqli_fetch_assoc($resultadoAsignarFK);
-            $resultadoAsignarFK = (int)$resultadoAsignarFK['idInmueble'];
-            
-            
-            
+    //     if($resultadoBuscarInmueble == NULL) {
+    //          // Asignación de variables y escape de datos para la prevención de inyección SQL
+    //         $asesor = $_POST['asesor'];
+    //         $contrato = $_POST['contrato'];
+    //         $inmueble = $_POST['inmueble'];
+    //         $operacion = $_POST['operacion'];
+    //         $colonia = $_POST['colonia'];
 
 
             
+    //         $carpetaImagenes = "../Imagenes/";
+            
+    //         if(!is_dir($carpetaImagenes)){
+    //             mkdir($carpetaImagenes);
+    //         }
             
             
             
             
             
-            $queryCaracteristicas = "INSERT INTO caracteristicas (Superficie_Terreno,
-            Superficie_Construccion,
-            Habitaciones,
-            Puestos_Estacionamiento,
-            Otras_Caracteristicas,
-            idInmueble) VALUES ($superficie_terreno,
-            $superficie_construccion,
-            $habitaciones,
-            $estacionamiento,
-            '$otras',
-            $resultadoAsignarFK);";
-            $resultadoCaracteristicas = mysqli_query($db, $queryCaracteristicas);
+    //         $superficie_terreno = filter_var(mysqli_real_escape_string($db, $_POST['superficie_terreno']), FILTER_SANITIZE_NUMBER_FLOAT);
+    //         $superficie_construccion = filter_var(mysqli_real_escape_string($db, $_POST['superficie_construccion']), FILTER_SANITIZE_NUMBER_FLOAT);
+    //         $habitaciones = filter_var(mysqli_real_escape_string($db, $_POST['habitaciones']), FILTER_SANITIZE_NUMBER_INT);
+    //         $estacionamiento = filter_var(mysqli_real_escape_string($db, $_POST['estacionamiento']), FILTER_SANITIZE_NUMBER_INT);
+    //         $otras = limpieza( mysqli_real_escape_string($db, $_POST['otras']));
+    //         $precio = filter_var(mysqli_real_escape_string($db, $_POST['precio']), FILTER_SANITIZE_NUMBER_FLOAT);
+            
+    //         $urlAnuncio = limpieza( filter_var(mysqli_real_escape_string($db, $_POST['urlAnuncio']), FILTER_SANITIZE_URL));
+    //         $urlVideo = limpieza( filter_var(mysqli_real_escape_string($db, $_POST['urlVideo']), FILTER_SANITIZE_URL));
+            
+            
+    //         $queryInmueble = "INSERT INTO inmueble (Activo, idTipo_Contrato, idTipo_Inmueble, idTipo_Operacion, id_Empleado, VoBo) VALUES (1, $contrato, $inmueble, $operacion, $asesor, '0')";
+    //         $resultadoInmueble = mysqli_query($db, $queryInmueble);
+            
+            
+            
+    //         // $resultadoInmueble = mysqli_fetch_assoc($resultadoContrato);
+            
+    //         // echo "<pre>";
+    //         // var_dump($_FILES['foto2']);
+    //         // echo "</pre>";
+            
+            
+    //         $queryAsignarFK = "SELECT idInmueble FROM inmueble ORDER BY idInmueble DESC LIMIT 1";
+    //         $resultadoAsignarFK = mysqli_query($db, $queryAsignarFK);
+    //         $resultadoAsignarFK = mysqli_fetch_assoc($resultadoAsignarFK);
+    //         $resultadoAsignarFK = (int)$resultadoAsignarFK['idInmueble'];
+            
             
             
 
 
+            
+            
+            
+            
+            
+            
+    //         $queryCaracteristicas = "INSERT INTO caracteristicas (Superficie_Terreno,
+    //         Superficie_Construccion,
+    //         Habitaciones,
+    //         Puestos_Estacionamiento,
+    //         Otras_Caracteristicas,
+    //         idInmueble) VALUES ($superficie_terreno,
+    //         $superficie_construccion,
+    //         $habitaciones,
+    //         $estacionamiento,
+    //         '$otras',
+    //         $resultadoAsignarFK);";
+    //         $resultadoCaracteristicas = mysqli_query($db, $queryCaracteristicas);
+            
+            
+
+
 
             
-            $queryDatos = "INSERT INTO datos_basicos (Direccion,
-            Precio,
-            Inmueble_idInmueble,
-            Colonias_idColonias,
-            Ubicacion_Maps,
-            Url_anuncio_web,
-            Url_video) VALUES ('$direccion',
-            $precio,
-            $resultadoAsignarFK,
-            $colonia,
-            '$ubicacion',
-            '$urlAnuncio',
-            '$urlVideo')";
+    //         $queryDatos = "INSERT INTO datos_basicos (Direccion,
+    //         Precio,
+    //         Inmueble_idInmueble,
+    //         Colonias_idColonias,
+    //         Ubicacion_Maps,
+    //         Url_anuncio_web,
+    //         Url_video) VALUES ('$direccion',
+    //         $precio,
+    //         $resultadoAsignarFK,
+    //         $colonia,
+    //         '$ubicacion',
+    //         '$urlAnuncio',
+    //         '$urlVideo')";
 
-            $resultadoDatos = mysqli_query($db, $queryDatos);
+    //         $resultadoDatos = mysqli_query($db, $queryDatos);
 
            
 
-            if($_FILES['foto1']['size'] != 0){
-                $imagen1 = $_FILES['foto1'];
-                $nombreImagen = 'inmueble_'.$resultadoAsignarFK . 'foto1'. '.jpg';
-                move_uploaded_file($imagen1['tmp_name'], $carpetaImagenes . $nombreImagen);
-                $queryFotos = "INSERT INTO fotos1 (idFotos1) VALUES ('$nombreImagen')";
-                $resultadoFotos = mysqli_query($db, $queryFotos);
-                $queryFoto = "UPDATE datos_basicos SET Fotos_idFotos1 = '$nombreImagen' WHERE Inmueble_idInmueble = $resultadoAsignarFK";
-                $resultadoFoto = mysqli_query($db, $queryFoto);
-            }
+    //         if($_FILES['foto1']['size'] != 0){
+    //             $imagen1 = $_FILES['foto1'];
+    //             $nombreImagen = 'inmueble_'.$resultadoAsignarFK . 'foto1'. '.jpg';
+    //             move_uploaded_file($imagen1['tmp_name'], $carpetaImagenes . $nombreImagen);
+    //             $queryFotos = "INSERT INTO fotos1 (idFotos1) VALUES ('$nombreImagen')";
+    //             $resultadoFotos = mysqli_query($db, $queryFotos);
+    //             $queryFoto = "UPDATE datos_basicos SET Fotos_idFotos1 = '$nombreImagen' WHERE Inmueble_idInmueble = $resultadoAsignarFK";
+    //             $resultadoFoto = mysqli_query($db, $queryFoto);
+    //         }
 
-            if($_FILES['foto2']['size'] != 0) {
-                $imagen2 = $_FILES['foto2'];
-                $nombreImagen = 'inmueble_'.$resultadoAsignarFK . 'foto2'. '.jpg';
-                move_uploaded_file($imagen2['tmp_name'], $carpetaImagenes . $nombreImagen);
+    //         if($_FILES['foto2']['size'] != 0) {
+    //             $imagen2 = $_FILES['foto2'];
+    //             $nombreImagen = 'inmueble_'.$resultadoAsignarFK . 'foto2'. '.jpg';
+    //             move_uploaded_file($imagen2['tmp_name'], $carpetaImagenes . $nombreImagen);
 
-                $queryFotos = "INSERT INTO fotos2 (idFotos2) VALUES ('$nombreImagen')";
-                $resultadoFotos = mysqli_query($db, $queryFotos);
+    //             $queryFotos = "INSERT INTO fotos2 (idFotos2) VALUES ('$nombreImagen')";
+    //             $resultadoFotos = mysqli_query($db, $queryFotos);
 
-                $queryFoto = "UPDATE datos_basicos SET Fotos_idFotos2 = '$nombreImagen' WHERE Inmueble_idInmueble = $resultadoAsignarFK";
-                $resultadoFoto = mysqli_query($db, $queryFoto);
+    //             $queryFoto = "UPDATE datos_basicos SET Fotos_idFotos2 = '$nombreImagen' WHERE Inmueble_idInmueble = $resultadoAsignarFK";
+    //             $resultadoFoto = mysqli_query($db, $queryFoto);
 
-            }
-            if($_FILES['foto3']['size'] != 0) {
+    //         }
+    //         if($_FILES['foto3']['size'] != 0) {
 
-                $imagen3 = $_FILES['foto3'];
-                $nombreImagen = 'inmueble_'.$resultadoAsignarFK . 'foto3'. '.jpg';
-                move_uploaded_file($imagen3['tmp_name'], $carpetaImagenes . $nombreImagen);
+    //             $imagen3 = $_FILES['foto3'];
+    //             $nombreImagen = 'inmueble_'.$resultadoAsignarFK . 'foto3'. '.jpg';
+    //             move_uploaded_file($imagen3['tmp_name'], $carpetaImagenes . $nombreImagen);
 
-                $queryFotos = "INSERT INTO fotos3 (idFotos3) VALUES ('$nombreImagen')";
-                $resultadoFotos = mysqli_query($db, $queryFotos);
+    //             $queryFotos = "INSERT INTO fotos3 (idFotos3) VALUES ('$nombreImagen')";
+    //             $resultadoFotos = mysqli_query($db, $queryFotos);
 
-                $queryFoto = "UPDATE datos_basicos SET Fotos_idFotos3 = '$nombreImagen' WHERE Inmueble_idInmueble = $resultadoAsignarFK";
-                $resultadoFoto = mysqli_query($db, $queryFoto);
+    //             $queryFoto = "UPDATE datos_basicos SET Fotos_idFotos3 = '$nombreImagen' WHERE Inmueble_idInmueble = $resultadoAsignarFK";
+    //             $resultadoFoto = mysqli_query($db, $queryFoto);
 
-            }
-            if($_FILES['foto4']['size'] != 0) {
+    //         }
+    //         if($_FILES['foto4']['size'] != 0) {
 
-                $imagen4 = $_FILES['foto4'];
-                $nombreImagen = 'inmueble_'.$resultadoAsignarFK . 'foto4'. '.jpg';
-                move_uploaded_file($imagen4['tmp_name'], $carpetaImagenes . $nombreImagen);
+    //             $imagen4 = $_FILES['foto4'];
+    //             $nombreImagen = 'inmueble_'.$resultadoAsignarFK . 'foto4'. '.jpg';
+    //             move_uploaded_file($imagen4['tmp_name'], $carpetaImagenes . $nombreImagen);
 
-                $queryFotos = "INSERT INTO fotos4 (idFotos4) VALUES ('$nombreImagen')";
-                $resultadoFotos = mysqli_query($db, $queryFotos);
+    //             $queryFotos = "INSERT INTO fotos4 (idFotos4) VALUES ('$nombreImagen')";
+    //             $resultadoFotos = mysqli_query($db, $queryFotos);
 
-                $queryFoto = "UPDATE datos_basicos SET Fotos_idFotos4 = '$nombreImagen' WHERE Inmueble_idInmueble = $resultadoAsignarFK";
-                $resultadoFoto = mysqli_query($db, $queryFoto);
+    //             $queryFoto = "UPDATE datos_basicos SET Fotos_idFotos4 = '$nombreImagen' WHERE Inmueble_idInmueble = $resultadoAsignarFK";
+    //             $resultadoFoto = mysqli_query($db, $queryFoto);
                 
 
-            }
-            if($_FILES['foto5']['size'] != 0) {
+    //         }
+    //         if($_FILES['foto5']['size'] != 0) {
 
-                $imagen5 = $_FILES['foto5'];
-                $nombreImagen = 'inmueble_'.$resultadoAsignarFK . 'foto5'. '.jpg';
-                move_uploaded_file($imagen5['tmp_name'], $carpetaImagenes . $nombreImagen);
+    //             $imagen5 = $_FILES['foto5'];
+    //             $nombreImagen = 'inmueble_'.$resultadoAsignarFK . 'foto5'. '.jpg';
+    //             move_uploaded_file($imagen5['tmp_name'], $carpetaImagenes . $nombreImagen);
 
-                $queryFotos = "INSERT INTO fotos5 (idFotos5) VALUES ('$nombreImagen')";
-                $resultadoFotos = mysqli_query($db, $queryFotos);
+    //             $queryFotos = "INSERT INTO fotos5 (idFotos5) VALUES ('$nombreImagen')";
+    //             $resultadoFotos = mysqli_query($db, $queryFotos);
 
-                $queryFoto = "UPDATE datos_basicos SET Fotos_idFotos5 = '$nombreImagen' WHERE Inmueble_idInmueble = $resultadoAsignarFK";
-                $resultadoFoto = mysqli_query($db, $queryFoto);
+    //             $queryFoto = "UPDATE datos_basicos SET Fotos_idFotos5 = '$nombreImagen' WHERE Inmueble_idInmueble = $resultadoAsignarFK";
+    //             $resultadoFoto = mysqli_query($db, $queryFoto);
                 
 
-            }
-        if($resultadoInmueble){
-            header('Location:../Listado/index.php');
-                    }
+    //         }
+    //     if($resultadoInmueble){
+    //         header('Location:../Listado/index.php');
+    //                 }
  
 
-        } else {
-            $errores[] = "No se puede registar el inmueble con las mismas coordenadas y dirección";
+    //     } else {
+    //         $errores[] = "No se puede registar el inmueble con las mismas coordenadas y dirección";
             
-        }
-    }
+    //     }
+    // }
 
 
 
@@ -307,7 +305,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
         <?php endforeach?>
 
-            <form action="../PublicarCompleto/index.php" method="GET" enctype="multipart/form-data">
+            <form action="../PublicarCompleto/index.php" method="POST" enctype="multipart/form-data">
 
 
                 <section class="select">

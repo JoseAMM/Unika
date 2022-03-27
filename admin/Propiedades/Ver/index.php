@@ -77,7 +77,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
         $colonia = $consultaDatosBasicos['Colonias_idColonias'];
 
-        $consultaColonia = "SELECT Nombre_Colonia, Codigo_Postal FROM colonias WHERE idColonias = '$colonia'";
+        $consultaColonia = "SELECT nombre, Codigo_postal FROM colonias WHERE id = '$colonia'";
         $consultaColonia = mysqli_fetch_assoc(mysqli_query($db, $consultaColonia));
 
 
@@ -95,7 +95,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
     $ubicacion = $consultaDatosBasicos['Ubicacion_Maps'];
     $urlAnuncio = $consultaDatosBasicos['Url_anuncio_web'];
     $urlVideo = $consultaDatosBasicos['Url_video'];
-    $colonia = $consultaColonia['Nombre_Colonia'];
+    $colonia = $consultaColonia['nombre'];
 
     $foto1 = $consultaDatosBasicos['Fotos_idFotos1'];
     $foto2 = $consultaDatosBasicos['Fotos_idFotos2'];

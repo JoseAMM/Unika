@@ -115,13 +115,13 @@ $errores = [];
     $colonia = $consultaDatosBasicos['Colonias_idColonias'];
 
     // Consulta de las colonias para el select
-    $consultaColonia = "SELECT Codigo_Postal FROM colonias WHERE idColonias = $colonia";
+    $consultaColonia = "SELECT Codigo_postal FROM colonias WHERE id = $colonia";
     $resultadoColonia = mysqli_query($db, $consultaColonia);
     $resultadoColonia = mysqli_fetch_assoc($resultadoColonia);
-    $resultadoColonia = $resultadoColonia['Codigo_Postal'];
+    $resultadoColonia = $resultadoColonia['Codigo_postal'];
     $cp = $resultadoColonia;
 
-    $consultaColonia = "SELECT idColonias, Nombre_Colonia, Codigo_Postal FROM colonias WHERE Codigo_Postal = $resultadoColonia";
+    $consultaColonia = "SELECT id, nombre, Codigo_postal FROM colonias WHERE Codigo_postal = $resultadoColonia";
     $resultadoColonia = mysqli_query($db, $consultaColonia);
 
 
@@ -528,7 +528,7 @@ $errores = [];
                     <select name="colonia" id=""required>
                         <option value=""><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoColonia)) : ?>
-                            <option <?php echo $colonia == $row['idColonias'] ? 'selected' : '' ; ?> value="<?php echo $row['idColonias']; ?>"><?php echo $row['Nombre_Colonia']; ?></option>
+                            <option <?php echo $colonia == $row['id'] ? 'selected' : '' ; ?> value="<?php echo $row['id']; ?>"><?php echo $row['nombre']; ?></option>
                             <?php endwhile; ?>
                         </select>
                     </section>

@@ -55,20 +55,19 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
     $resultadoOperacion = mysqli_query($db, $consultaOperacion);
 
 
-    // Consulta de las colonias para el select
-    $cp = $_GET['cp'];
-    $consultaColonia = "SELECT idColonias, Nombre_Colonia FROM colonias WHERE Codigo_Postal = $cp ";
-    $resultadoColonia = mysqli_query($db, $consultaColonia);
-
-    $asesor = $_GET['asesor'];
-    $contrato = $_GET['contrato'];
-    $inmueble = $_GET['inmueble'];
-    $operacion = $_GET['operacion'];
-    $superficie_terreno = filter_var(mysqli_real_escape_string($db, $_GET['superficie_terreno']), FILTER_SANITIZE_NUMBER_FLOAT);
-    $superficie_construccion = filter_var(mysqli_real_escape_string($db, $_GET['superficie_construccion']), FILTER_SANITIZE_NUMBER_FLOAT);
-    $habitaciones = filter_var(mysqli_real_escape_string($db, $_GET['habitaciones']), FILTER_SANITIZE_NUMBER_INT);
-    $estacionamiento = filter_var(mysqli_real_escape_string($db, $_GET['estacionamiento']), FILTER_SANITIZE_NUMBER_INT);
-    $otras = limpieza( mysqli_real_escape_string($db, $_GET['otras']));
+    // // Consulta de las colonias para el select
+    // $cp = $_POST['cp'];
+    // $asesor = $_POST['asesor'];
+    // $consultaColonia = "SELECT idColonias, Nombre_Colonia FROM colonias WHERE Codigo_Postal = $cp ";
+    // $resultadoColonia = mysqli_query($db, $consultaColonia);
+    // $contrato = $_POST['contrato'];
+    // $inmueble = $_POST['inmueble'];
+    // $operacion = $_POST['operacion'];
+    // $superficie_terreno = filter_var(mysqli_real_escape_string($db, $_POST['superficie_terreno']), FILTER_SANITIZE_NUMBER_FLOAT);
+    // $superficie_construccion = filter_var(mysqli_real_escape_string($db, $_POST['superficie_construccion']), FILTER_SANITIZE_NUMBER_FLOAT);
+    // $habitaciones = filter_var(mysqli_real_escape_string($db, $_POST['habitaciones']), FILTER_SANITIZE_NUMBER_INT);
+    // $estacionamiento = filter_var(mysqli_real_escape_string($db, $_POST['estacionamiento']), FILTER_SANITIZE_NUMBER_INT);
+    // $otras = limpieza( mysqli_real_escape_string($db, $_POST['otras']));
     
 
 
@@ -78,17 +77,37 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+        if(isset($_POST['cp']) AND isset($_POST['asesor']) AND isset($_POST['contrato']) AND isset($_POST['inmueble']) AND isset($_POST['direccion']) == FALSE){
+            
+            $cp = $_POST['cp'];
+            $asesor = $_POST['asesor'];
+            $consultaColonia = "SELECT id, nombre FROM colonias WHERE Codigo_postal = $cp ";
+            $resultadoColonia = mysqli_query($db, $consultaColonia);
+            $contrato = $_POST['contrato'];
+            $inmueble = $_POST['inmueble'];
+            $operacion = $_POST['operacion'];
+            $superficie_terreno = filter_var(mysqli_real_escape_string($db, $_POST['superficie_terreno']), FILTER_SANITIZE_NUMBER_FLOAT);
+            $superficie_construccion = filter_var(mysqli_real_escape_string($db, $_POST['superficie_construccion']), FILTER_SANITIZE_NUMBER_FLOAT);
+            $habitaciones = filter_var(mysqli_real_escape_string($db, $_POST['habitaciones']), FILTER_SANITIZE_NUMBER_INT);
+            $estacionamiento = filter_var(mysqli_real_escape_string($db, $_POST['estacionamiento']), FILTER_SANITIZE_NUMBER_INT);
+            $otras = limpieza( mysqli_real_escape_string($db, $_POST['otras']));
+            
+        } else {
+            
+            $direccion =  limpieza( mysqli_real_escape_string($db, $_POST['direccion']));
+            $ubicacion = limpieza( mysqli_real_escape_string($db, $_POST['ubicacion']));
 
-        $direccion =  limpieza( mysqli_real_escape_string($db, $_POST['direccion']));
-        $ubicacion = limpieza( mysqli_real_escape_string($db, $_POST['ubicacion']));
-
-        $queryBuscarInmueble = "SELECT Direccion FROM datos_basicos WHERE Direccion = '$direccion' AND Ubicacion_Maps = '$ubicacion'";
-        $resultadoBuscarInmueble = mysqli_fetch_assoc( mysqli_query($db, $queryBuscarInmueble));
+            $queryBuscarInmueble = "SELECT Direccion FROM datos_basicos WHERE Direccion = '$direccion' AND Ubicacion_Maps = '$ubicacion'";
+            $resultadoBuscarInmueble = mysqli_fetch_assoc( mysqli_query($db, $queryBuscarInmueble));
+            
 
 
         if($resultadoBuscarInmueble == NULL) {
              // Asignación de variables y escape de datos para la prevención de inyección SQL
+             
+
             $asesor = $_POST['asesor'];
+
             $contrato = $_POST['contrato'];
             $inmueble = $_POST['inmueble'];
             $operacion = $_POST['operacion'];
@@ -96,7 +115,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
 
             
-            $carpetaImagenes = "../Imagenes/";
+            $carpetaImagenes = "../../../admin/Propiedades/Imagenes/";
             
             if(!is_dir($carpetaImagenes)){
                 mkdir($carpetaImagenes);
@@ -117,17 +136,14 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             $urlVideo = limpieza( filter_var(mysqli_real_escape_string($db, $_POST['urlVideo']), FILTER_SANITIZE_URL));
             
             
-            $queryInmueble = "INSERT INTO inmueble (Activo, idTipo_Contrato, idTipo_Inmueble, idTipo_Operacion, id_Empleado, VoBo) VALUES (1, $contrato, $inmueble, $operacion, $asesor, '0')";
+            $queryInmueble = "INSERT INTO inmueble (Activo, idTipo_Contrato, idTipo_Inmueble, idTipo_Operacion, id_Empleado, VoBo) VALUES (1, $contrato, $inmueble, $operacion, $asesor, 0)";
             $resultadoInmueble = mysqli_query($db, $queryInmueble);
             
             
             
+            
             // $resultadoInmueble = mysqli_fetch_assoc($resultadoContrato);
-            
-            // echo "<pre>";
-            // var_dump($_FILES['foto2']);
-            // echo "</pre>";
-            
+        
             
             $queryAsignarFK = "SELECT idInmueble FROM inmueble ORDER BY idInmueble DESC LIMIT 1";
             $resultadoAsignarFK = mysqli_query($db, $queryAsignarFK);
@@ -138,7 +154,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             
 
 
-            
+    
             
             
             
@@ -156,8 +172,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             '$otras',
             $resultadoAsignarFK);";
             $resultadoCaracteristicas = mysqli_query($db, $queryCaracteristicas);
-            
-            
+
 
 
 
@@ -177,8 +192,8 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             '$urlVideo')";
 
             $resultadoDatos = mysqli_query($db, $queryDatos);
+            
 
-           
 
             if($_FILES['foto1']['size'] != 0){
                 $imagen1 = $_FILES['foto1'];
@@ -252,6 +267,11 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             $errores[] = "No se puede registar el inmueble con las mismas coordenadas y dirección";
             
         }
+        }
+
+
+
+        
     }
 
 
@@ -304,7 +324,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                 <nav>
                     <ul>
                         <li><a href="../Listado/index.php"><span>Inmuebles</span></a></li>
-                        <li><a href="../VoBo/index.php"><span>VoBo Inmuebles</span></a></li>
+                        <li><a href=""><span>VoBo Inmuebles</span></a></li>
                         <li><a href="../../Empleados/Listado/index.php">Asesores</a></li>
                         <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
                         <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
@@ -328,7 +348,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                     <select name="asesor" id="" required>
                         <option value=""><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoAsesor)) : ?>
-                            <option <?php echo $asesor == $asesor ? 'selected' : '' ; ?> value="<?php echo $row['idEmpleado']; ?>"><?php echo $row['Nombre_Apellido']; ?></option>
+                            <option <?php echo $asesor == $row['idEmpleado']  ? 'selected' : '' ; ?> value="<?php echo $row['idEmpleado']; ?>"><?php echo $row['Nombre_Apellido']; ?></option>
                         <?php endwhile; ?>
                     </select>
                     
@@ -338,7 +358,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                     <select name="contrato" id="" required>
                         <option value=""><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoContrato)) : ?>
-                            <option <?php echo $contrato == $contrato ? 'selected' : '' ; ?> value="<?php echo $row['idTipo_Contrato']; ?>"><?php echo $row['Nombre_Contrato']; ?></option>
+                            <option <?php echo $contrato == $row['idTipo_Contrato'] ? 'selected' : '' ; ?> value="<?php echo $row['idTipo_Contrato']; ?>"><?php echo $row['Nombre_Contrato']; ?></option>
                         <?php endwhile; ?>
                     </select>
                     <div class="button__new">
@@ -350,7 +370,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                     <select name="inmueble" id="" required>
                         <option value=""><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoInmueble)) : ?>
-                            <option <?php echo $inmueble == $inmueble ? 'selected' : '' ; ?> value="<?php echo $row['idTipo_Inmueble']; ?>"><?php echo $row['Nombre_Tipo_Inmueble']; ?></option>
+                            <option <?php echo $inmueble == $row['idTipo_Inmueble'] ? 'selected' : '' ; ?> value="<?php echo $row['idTipo_Inmueble']; ?>"><?php echo $row['Nombre_Tipo_Inmueble']; ?></option>
                         <?php endwhile; ?>
                     </select>
                     <div class="button__new">
@@ -362,7 +382,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                     <select name="operacion" id="" required>
                         <option value=""><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoOperacion)) : ?>
-                            <option <?php echo $operacion == $operacion ? 'selected' : '' ; ?> value="<?php echo $row['idTipo_Operacion']; ?>"><?php echo $row['Nombre_Operacion']; ?></option>
+                            <option <?php echo $operacion == $row['idTipo_Operacion'] ? 'selected' : '' ; ?> value="<?php echo $row['idTipo_Operacion']; ?>"><?php echo $row['Nombre_Operacion']; ?></option>
                         <?php endwhile; ?>
                     </select>
                     <div class="button__new">
@@ -401,10 +421,10 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
                 <section class="select">
                     <span>Colonia* </span>
-                    <select name="colonia" id="" required>
-                        <option value="" ><--Selecciona--></option>
+                    <select name="colonia" id="">
+                        <option><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoColonia)) : ?>
-                            <option required value="<?php echo $row['idColonias']; ?>"><?php echo $row['Nombre_Colonia']; ?></option>
+                            <option required value="<?php echo $row['id']; ?>"><?php echo $row['nombre']; ?></option>
                             <?php endwhile; ?>
                         </select>
                     </section>

@@ -103,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     // isset($_POST['id_Empleado']) != NULL OR isset($_POST['idTipo_Contrato']) != NULL OR isset($_POST['idTipo_Inmueble']) != NULL OR isset($_POST['idTipo_Operacion']) != NULL OR isset($_POST['idInmueble']) != NULL OR isset($_POST['activo']) != NULL OR  isset($_POST['Superficie_Terreno']) != NULL OR isset($_POST['Superficie_Construccion']) != NULL
     // $_POST['id_Empleado']!= NULL OR $_POST['idTipo_Contrato'] != NULL OR $_POST['idTipo_Inmueble'] != NULL OR $_POST['idTipo_Operacion'] != NULL OR $_POST['idInmueble'] != NULL OR $_POST['activo'] != NULL
 
-    if($_POST['idTipo_Contrato'] != NULL OR $_POST['idTipo_Inmueble'] != NULL OR $_POST['idTipo_Operacion'] != NULL OR  $_POST['activo'] != NULL OR $_POST['Superficie_Terreno'] != NULL OR $_POST['Superficie_Construccion'] != NULL) {
+    if(isset($_POST['idTipo_Contrato']) != NULL OR isset($_POST['idTipo_Inmueble']) != NULL OR isset($_POST['idTipo_Operacion']) != NULL OR  isset($_POST['activo']) != NULL OR isset($_POST['Superficie_Terreno']) != NULL OR isset($_POST['Superficie_Construccion']) != NULL) {
 
 
     // Asignación de variables y escape de datos para la prevención de inyección SQL

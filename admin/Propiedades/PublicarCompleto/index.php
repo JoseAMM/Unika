@@ -63,11 +63,11 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if(isset($_POST['cp']) AND isset($_POST['asesor']) AND isset($_POST['contrato']) AND isset($_POST['inmueble']) AND isset($_POST['direccion']) == FALSE){
-            echo "hola";
+            
             $cp = $_POST['cp'];
             $asesor = $_POST['asesor'];
-            echo $asesor;
-            $consultaColonia = "SELECT idColonias, Nombre_Colonia FROM colonias WHERE Codigo_Postal = $cp ";
+            
+            $consultaColonia = "SELECT id, nombre FROM colonias WHERE Codigo_postal = $cp ";
             $resultadoColonia = mysqli_query($db, $consultaColonia);
             $contrato = $_POST['contrato'];
             $inmueble = $_POST['inmueble'];
@@ -407,7 +407,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                     <select name="colonia" id="">
                         <option><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoColonia)) : ?>
-                            <option required value="<?php echo $row['idColonias']; ?>"><?php echo $row['Nombre_Colonia']; ?></option>
+                            <option required value="<?php echo $row['id']; ?>"><?php echo $row['nombre']; ?></option>
                             <?php endwhile; ?>
                         </select>
                     </section>

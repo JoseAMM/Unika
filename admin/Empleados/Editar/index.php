@@ -68,7 +68,6 @@
 
         $nombre = limpieza( mysqli_real_escape_string($db, $_POST['nombre']));
         $correo = limpieza( mysqli_real_escape_string($db, $_POST['correo']));
-        $password = mysqli_real_escape_string($db, $_POST['password']);
         $telefono = mysqli_real_escape_string($db, $_POST['telefono']);
         $doc_identidad = limpieza( mysqli_real_escape_string( $db, $_POST['doc_identidad']));
         $Cargo_idCargo = $_POST['cargo'];
