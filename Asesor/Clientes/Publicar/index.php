@@ -214,6 +214,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                         <li><a href="../../Propiedades/VoBo/index.php"><span>VoBo Inmuebles</span></a></li>
                         <li><a href="../Listado/index.php">Clientes</a></li>
                         <li><a href="../../Mensaje/index.php">Mensaje</a></li>
+                        <li><a href="../../Propiedades/Documentos/index.php">Documentos/Inmuebles</a></li>
                         <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </nav>

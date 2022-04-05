@@ -76,6 +76,19 @@
                 }
             }
 
+            select {
+                width: 50%;
+                font-family: "Arial", sans-serif;
+                outline: 0;
+                background-color: rgba(253, 151, 99, 0.4);
+                border: 0;
+                border-radius: 1rem;
+                margin: 0 0 1.5rem;
+                padding: 1.5rem;
+                box-sizing: border-box;
+                font-size: 1.2rem;
+            }
+
             .content__buttons {
                 display: flex;
                 width: 100%;

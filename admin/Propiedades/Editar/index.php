@@ -61,6 +61,11 @@ $errores = [];
     $consultaOperacion = "SELECT idTipo_Operacion, Nombre_Operacion, Activo FROM tipo_operacion WHERE Activo = 1;";
     $resultadoOperacion = mysqli_query($db, $consultaOperacion);
 
+// Consulta de los clientes activos para el select 
+
+    $consultaCliente = "SELECT idCliente, Correo FROM cliente WHERE Activo = 1;";
+    $resultadoCliente = mysqli_query($db, $consultaCliente);
+
 
 
 
@@ -70,7 +75,8 @@ $errores = [];
             empleado.idEmpleado,
             tipo_contrato.idTipo_Contrato,
             tipo_inmueble.idTipo_Inmueble,
-            tipo_operacion.idTipo_Operacion
+            tipo_operacion.idTipo_Operacion,
+            inmueble.idCliente
         FROM
             (
                 (
@@ -102,6 +108,7 @@ $errores = [];
     $contrato = $consultaDatosInmueble['idTipo_Contrato'];
     $inmueble = $consultaDatosInmueble['idTipo_Inmueble'] ;
     $operacion = $consultaDatosInmueble['idTipo_Operacion'];
+    $cliente = $consultaDatosInmueble['idCliente'];
     $superficie_terreno = (int)$consultaCaracteristicas['Superficie_Terreno'];
     $superficie_construccion = (int)$consultaCaracteristicas['Superficie_Construccion'];
     $habitaciones = $consultaCaracteristicas['Habitaciones'];
@@ -166,6 +173,7 @@ $errores = [];
         $inmueble = $_POST['inmueble'];
         $operacion = $_POST['operacion'];
         $colonia = $_POST['colonia'];
+        $cliente = $_POST['cliente'];
 
         $superficie_terreno = filter_var(mysqli_real_escape_string($db, $_POST['superficie_terreno']), FILTER_SANITIZE_NUMBER_FLOAT);
         $superficie_construccion = filter_var(mysqli_real_escape_string($db, $_POST['superficie_construccion']), FILTER_SANITIZE_NUMBER_FLOAT);
@@ -184,9 +192,7 @@ $errores = [];
             mkdir($carpetaImagenes);
         }
 
-            // echo "<pre>";
-            // var_dump($_FILES);
-            // echo "</pre>";
+
 
         if($_FILES['foto1']['size'] != 0) {
 
@@ -340,6 +346,9 @@ $errores = [];
         $queryInmueble = "UPDATE inmueble SET id_Empleado = $asesor WHERE idInmueble = $idInmueble";
         $resultadoInmueble = mysqli_query($db, $queryInmueble);
 
+        $queryInmueble = "UPDATE inmueble SET idCliente = $cliente WHERE idInmueble = $idInmueble";
+        $resultadoInmueble = mysqli_query($db, $queryInmueble);
+
         $queryCaracteristicas = "UPDATE caracteristicas SET Superficie_Terreno = $superficie_terreno WHERE idInmueble = '$idInmueble'";
         $resultadoCaracteristicas = mysqli_query($db, $queryCaracteristicas);
 
@@ -428,9 +437,10 @@ $errores = [];
                 <nav>
                     <ul>
                         <li><a href="../Listado/index.php"><span>Inmuebles</span></a></li>
-                        <li><a href=""><span>VoBo Inmuebles</span></a></li>
+                        <li><a href="../VoBo/index.php"><span>VoBo Inmuebles</span></a></li>
                         <li><a href="../../Empleados/Listado/index.php">Asesores</a></li>
                         <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
+                        <li><a href="../Documentos/index.php">Documentos/Inmuebles</a></li>
                         <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </nav>
@@ -449,7 +459,7 @@ $errores = [];
 
                 <section class="select">
                 <span>Asesor</span>
-                    <select name="asesor" id="">
+                    <select name="asesor" id="" required>
                         <option value="0"><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoAsesor)) : ?>
                             <option <?php echo $asesor == $row['idEmpleado'] ? 'selected' : '' ; ?> value="<?php echo $row['idEmpleado']; ?>"><?php echo $row['Nombre_Apellido']; ?></option>
@@ -459,7 +469,7 @@ $errores = [];
                 </section>
                 <section class="select__config">
                     <span>Tipo de Contrato</span>
-                    <select name="contrato" id="">
+                    <select name="contrato" id="" required>
                         <option ><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoContrato)) : ?>
                             <option <?php echo $contrato == $row['idTipo_Contrato'] ? 'selected' : '' ; ?> value="<?php echo $row['idTipo_Contrato']; ?>"><?php echo $row['Nombre_Contrato']; ?></option>
@@ -471,7 +481,7 @@ $errores = [];
                 </section>
                 <section class="select__config">
                     <span>Tipo de Inmueble</span>
-                    <select name="inmueble" id="">
+                    <select name="inmueble" id="" required>
                         <option><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoInmueble)) : ?>
                             <option <?php echo $inmueble == $row['idTipo_Inmueble'] ? 'selected' : '' ; ?> value="<?php echo $row['idTipo_Inmueble']; ?>"><?php echo $row['Nombre_Tipo_Inmueble']; ?></option>
@@ -483,7 +493,7 @@ $errores = [];
                 </section>
                 <section class="select__config">
                     <span>Tipo de Operación</span>
-                    <select name="operacion" id="">
+                    <select name="operacion" id="" required>
                         <option><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoOperacion)) : ?>
                             <option <?php echo $operacion == $row['idTipo_Operacion'] ? 'selected' : '' ; ?> value="<?php echo $row['idTipo_Operacion']; ?>"><?php echo $row['Nombre_Operacion']; ?></option>
@@ -491,6 +501,19 @@ $errores = [];
                     </select>
                     <div class="button__new">
                         <a class="new" href="../Operacion/index.php">Nueva Operación</a>
+                    </div>
+                </section>
+
+                <section class="select__config">
+                    <span>Cliente*</span>
+                    <select name="cliente" id="" required>
+                        <option value=''><--Selecciona--></option>
+                        <?php while($row = mysqli_fetch_assoc($resultadoCliente)) : ?>
+                            <option <?php echo $cliente == $row['idCliente'] ? 'selected' : ''; ?> required value="<?php echo $row['idCliente']; ?>"><?php echo $row['Correo']; ?></option>
+                        <?php endwhile; ?>
+                    </select>
+                    <div class="button__new">i
+                        <a class="new" href="../../Empleados/Nuevo/index.php">Nuevo Cliente</a>
                     </div>
                 </section>
                 <label for="superficie_terreno">

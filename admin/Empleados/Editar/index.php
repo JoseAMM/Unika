@@ -146,7 +146,7 @@
         </div>
 
         <section class="header__tittle">
-            <p>Nuevo Empleado</p>
+            <p>Editar Empleado</p>
         </section>
     </header>
 

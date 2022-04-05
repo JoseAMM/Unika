@@ -8,7 +8,7 @@ if(isset($_SESSION['login'])){
 
 
 if(!isset($auth)){
-    header('Location:../../../index.php');
+    header('Location:../../../login/index.php');
 } else {
     if ((time() -  $time) > 1800) {
         header('Location: ../../cerrar-sesion.php');

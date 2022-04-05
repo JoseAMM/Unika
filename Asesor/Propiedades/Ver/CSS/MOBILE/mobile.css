@@ -242,7 +242,7 @@ main .main__content .main__formulario {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 100%;
+  width: 80%;
   height: auto;
   position: absolute;
   left: 10%;
@@ -267,7 +267,7 @@ main .main__content .main__formulario form {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-main .main__content .main__formulario form label {
+main .main__content .main__formulario form .normal {
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -279,7 +279,7 @@ main .main__content .main__formulario form label {
       -ms-flex-align: center;
           align-items: center;
 }
-main .main__content .main__formulario form label input {
+main .main__content .main__formulario form .normal input {
   width: 50%;
   font-family: "Arial", sans-serif;
   outline: 0;
@@ -291,14 +291,18 @@ main .main__content .main__formulario form label input {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 1rem;
+  overflow: hidden;
 }
-main .main__content .main__formulario form label span {
+main .main__content .main__formulario form .normal span {
   font-family: "Arial", sans-serif;
   width: 50%;
   text-align: center;
   font-size: 1rem;
 }
-main .main__content .main__formulario form label p {
+main .main__content .main__formulario form .normal a {
+  overflow: hidden;
+}
+main .main__content .main__formulario form .normal p {
   width: 50%;
   font-family: "Arial", sans-serif;
   outline: 0;
@@ -311,67 +315,81 @@ main .main__content .main__formulario form label p {
           box-sizing: border-box;
   font-size: 1rem;
 }
-main .main__content .main__formulario form label p img {
+main .main__content .main__formulario form .normal p img {
   width: 8rem;
 }
-main .main__content .main__formulario form label .select {
+main .main__content .main__formulario form .input__download {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2rem;
+}
+main .main__content .main__formulario form .input__download span {
+  font-family: "Arial", sans-serif;
+  width: 50%;
+  text-align: center;
+  font-size: 1rem;
+}
+main .main__content .main__formulario form .input__download section {
+  width: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
-main .main__content .main__formulario form label .select select {
-  width: 50%;
-  font-family: "Arial", sans-serif;
+main .main__content .main__formulario form .input__download section input {
   outline: 0;
-  background-color: rgba(253, 151, 99, 0.4);
-  border: 0;
-  border-radius: 1rem;
-  margin: 0 0 1.5rem;
-  padding: 1.5rem;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  font-size: 1rem;
-}
-main .main__content .main__formulario form label .select span {
-  width: 50%;
-  font-family: "Arial", sans-serif;
-  text-align: center;
-  font-size: 1rem;
-}
-main .main__content .main__formulario form label .content__buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  border: none;
   background-color: transparent;
-  height: auto;
-  margin: 0;
-}
-main .main__content .main__formulario form label .content__buttons .signup__submit {
-  width: 40%;
-  font-family: "Arial", sans-serif;
-  text-transform: uppercase;
-  outline: 0;
-  background: #4CAF50;
-  opacity: 0.7;
-  border: 0;
-  border-radius: 10px;
   text-align: center;
-  padding: 15px;
   margin-top: 10px;
-  color: #FFFFFF;
-  font-size: 1rem;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: 100;
 }
-main .main__content .main__formulario form label .content__buttons .signup__submit:hover {
+main .main__content .main__formulario form .input__download section a {
+  width: 2rem;
+  height: 2rem;
+  padding: 1rem;
+  background-image: url("../../../../../Assets/download.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+main .main__content .main__formulario form .input__download section .download {
+  width: 2rem;
+  height: 2rem;
+  padding: 1rem;
+  background-image: url("../../../../../Assets/download.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+main .main__content .main__formulario form .input__download section .share {
+  width: 2rem;
+  height: 2rem;
+  padding: 1rem;
+  background-image: url("../../../../../Assets/share.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+main .main__content .main__formulario form .input__download section .print {
+  width: 2rem;
+  height: 2rem;
+  padding: 1rem;
+  background-image: url("../../../../../Assets/print.png");
+  background-size: contain;
+  background-repeat: no-repeat;
   cursor: pointer;
 }
 
@@ -385,4 +403,11 @@ main .main__content .main__formulario form label .content__buttons .signup__subm
 
 .main__menu:hover {
   background-color: rgba(255, 0, 0, 0.275);
+}
+
+footer {
+  display: block;
+  width: 100%;
+  height: 30vh;
+  margin-top: 230rem;
 }

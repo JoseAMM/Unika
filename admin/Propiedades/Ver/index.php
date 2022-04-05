@@ -47,7 +47,8 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             empleado.Nombre_Apellido,
             tipo_contrato.Nombre_Contrato,
             tipo_inmueble.Nombre_Tipo_Inmueble,
-            tipo_operacion.Nombre_Operacion
+            tipo_operacion.Nombre_Operacion,
+            inmueble.Activo
 
         FROM
             (
@@ -71,6 +72,16 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
         $consultaCaracteristicas = "SELECT * FROM caracteristicas WHERE idInmueble = $idInmueble";
         $consultaCaracteristicas = mysqli_fetch_assoc(mysqli_query($db, $consultaCaracteristicas));
 
+        $queryDocuments = "SELECT * FROM documentos WHERE id_Inmueble_Documentos = $idInmueble";
+        $resultadoDocuments = mysqli_query($db, $queryDocuments);
+
+
+        $queryCountDocuments = "SELECT COUNT(id_Inmueble_Documentos) FROM documentos WHERE id_Inmueble_Documentos = $idInmueble";
+        $resultadoCountDocuments = mysqli_query($db, $queryCountDocuments);
+        $resultadoCountDocuments = mysqli_fetch_assoc($resultadoCountDocuments);
+        $resultadoCountDocuments = $resultadoCountDocuments['COUNT(id_Inmueble_Documentos)'];
+        $resultadoCountDocuments = (int)$resultadoCountDocuments;
+
 
         $consultaDatosBasicos = "SELECT * FROM datos_basicos WHERE Inmueble_idInmueble = $idInmueble";
         $consultaDatosBasicos = mysqli_fetch_assoc(mysqli_query($db, $consultaDatosBasicos));
@@ -79,12 +90,16 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
         $consultaColonia = "SELECT nombre, Codigo_postal FROM colonias WHERE id = '$colonia'";
         $consultaColonia = mysqli_fetch_assoc(mysqli_query($db, $consultaColonia));
+        
+        $consultaDocumentos = "SELECT idDocumentos, Titulo, id_Inmueble_Documentos FROM documentos WHERE id_Inmueble_Documentos = '$idInmueble'";
+        $consultaDocumentos = mysqli_query($db, $consultaDocumentos);
 
 
     $asesor = $consultaDatosInmueble['Nombre_Apellido'];
     $contrato = $consultaDatosInmueble['Nombre_Contrato'];
     $inmueble = $consultaDatosInmueble['Nombre_Tipo_Inmueble'] ;
     $operacion = $consultaDatosInmueble['Nombre_Operacion'];
+    $disponible = $consultaDatosInmueble['Activo'];
     $superficie_terreno = (int)$consultaCaracteristicas['Superficie_Terreno'];
     $superficie_construccion = (int)$consultaCaracteristicas['Superficie_Construccion'];
     $habitaciones = $consultaCaracteristicas['Habitaciones'];
@@ -96,6 +111,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
     $urlAnuncio = $consultaDatosBasicos['Url_anuncio_web'];
     $urlVideo = $consultaDatosBasicos['Url_video'];
     $colonia = $consultaColonia['nombre'];
+    $codigoPostal = $consultaColonia['Codigo_postal'];
 
     $foto1 = $consultaDatosBasicos['Fotos_idFotos1'];
     $foto2 = $consultaDatosBasicos['Fotos_idFotos2'];
@@ -123,7 +139,68 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
     }
 
 
+    require('reporte.php');
 
+    $documentos;
+
+    if($resultadoCountDocuments != 0){
+        $documentos = 1;
+    } else {
+        $documentos = 0;
+    }
+
+
+    if(isset($_POST['download'])){
+        $download = 1;
+        $share = 0;
+        $print = 0;
+        pdf($idInmueble, 
+        $foto1,
+        $operacion, 
+        $precio ,
+        $inmueble, 
+        $disponible, 
+        $habitaciones, 
+        $estacionamiento, 
+        $contrato, 
+        $superficie_construccion, 
+        $superficie_terreno, 
+        $colonia, 
+        $codigoPostal, 
+        $otras,
+        $download,
+        $share,
+        $print,
+        $documentos
+    
+    );
+    }
+
+    if(isset($_POST['print']) or isset($_POST['share'])){
+        $download = 0;
+        $share = 1;
+        $print = 1;
+        pdf($idInmueble, 
+        $foto1,
+        $operacion, 
+        $precio ,
+        $inmueble, 
+        $disponible, 
+        $habitaciones, 
+        $estacionamiento, 
+        $contrato, 
+        $superficie_construccion, 
+        $superficie_terreno, 
+        $colonia, 
+        $codigoPostal, 
+        $otras,
+        $download,
+        $share,
+        $print,
+        $documentos
+    
+    );
+    }
 
 
 
@@ -175,9 +252,10 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                 <nav>
                     <ul>
                         <li><a href="../Listado/index.php"><span>Inmuebles</span></a></li>
-                        <li><a href=""><span>VoBo Inmuebles</span></a></li>
+                        <li><a href="../VoBo/index.php"><span>VoBo Inmuebles</span></a></li>
                         <li><a href="../../Empleados/Listado/index.php">Asesores</a></li>
                         <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
+                        <li><a href="../Documentos/index.php">Documentos/Inmuebles</a></li>
                         <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </nav>
@@ -185,20 +263,20 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
             <section  class="main__formulario">
                 <form action="" method="POST">
-                        <label for="">
+                        <label for="" class="normal">
                             <span>Asesor</span>
                             <p> <?php echo $asesor ?></p>
                         </label>
 
 
 
-                        <label for="">
+                        <label for="" class="normal">
                             <span>Tipo de Contrato</span>
                             <p> <?php echo $contrato ?></p>
                         </label>
 
 
-                        <label for="">
+                        <label for="" class="normal">
                             <span>Tipo de Inmueble</span>
                             <p> <?php echo $inmueble ?></p>
                         </label>
@@ -207,98 +285,129 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
 
                         
-                        <label for="">
+                        <label for="" class="normal">
                             <span>Tipo de Operación</span>
                             <p> <?php echo $operacion ?></p>
                         </label>
 
 
-                    <label for="">
+                    <label for="" class="normal">
                         <span>Superficie del Terreno</span>
                         <p><?php echo $superficie_terreno;  ?></p>
                     </label>
 
-                    <label for="superficie_construccion">
+                    <label for="superficie_construccion" class="normal">
                         <span>Superficie de Construcción</span>
                         <p><?php echo $superficie_construccion;  ?></p>
                     </label>
 
-                    <label for="habitaciones">
+                    <label for="habitaciones" class="normal">
                         <span>Habitaciones</span>
                         <p><?php echo $habitaciones;  ?></p>
                     </label>
 
-                    <label for="estacionamiento">
+                    <label for="estacionamiento" class="normal">
                         <span>Lugares de Estacionamiento</span>
                         <p><?php echo $estacionamiento;  ?></p>
                     </label>
 
-                    <label for="otras">
+                    <label for="otras" class="normal">
                         <span>Otras Características</span>
                         <p><?php echo $otras;  ?></p>
                     </label>
                     
-                    <label for="">
+                    <label for="" class="normal">
+                    <span>Código Postal </span>
+                    <p><?php echo $codigoPostal;  ?></p>
+                    </label>
+
+                    <label for="" class="normal">
                     <span>Colonia </span>
                     <p><?php echo $colonia;  ?></p>
                     </label>
 
-                    <label for="direccion">
+                    <label for="direccion" class="normal">
                         <span>Dirección</span>
                         <p><?php echo $direccion;  ?></p>
                     </label>
 
-                    <label for="precio">
+                    <label for="precio" class="normal">
                         <span>Precio</span>
                         <p><?php echo "$" .$precio;  ?></p>
                     </label>
 
-                    <label for="ubicacion">
+                    <label for="ubicacion" class="normal">
                         <span>Ubicación</span>
                         <p><?php echo $ubicacion;  ?></p>
                     </label>
 
-                    <label for="urlAnuncio">
+                    <label for="urlAnuncio" class="normal">
                         <span>URL del Anuncio</span>
                         <a href=""></a>
                         <p><a href="<?php echo $urlAnuncio;  ?>" target="_blank"><?php echo $urlAnuncio;  ?></a></p>
                     </label>
 
-                    <label for="urlVideo">
+                    <label for="urlVideo" class="normal">
                         <span>URL del video</span>
                         <p><a href="<?php echo $urlAnuncio;  ?>" target="_blank"><?php echo $urlAnuncio;  ?></a></p>
                     </label>
 
-                    <label for="foto1">
+                    <label for="foto1" class="normal">
                         <span>Foto 1</span>
                         <p><img src="../Imagenes/<?php  echo $foto1?>" alt=""></p>
                     </label>
 
-                    <label for="foto2">
+                    <label for="foto2" class="normal">
                         <span>Foto 2</span>
                         <p><img src="../Imagenes/<?php  echo $foto2?>" alt=""></p>
                     </label>
 
-                    <label for="foto3">
+                    <label for="foto3" class="normal">
                         <span>Foto 3</span>
                         <p><img src="../Imagenes/<?php  echo $foto3?>" alt=""></p>
                     </label>
 
-                    <label for="foto4">
+                    <label for="foto4" class="normal">
                         <span>Foto 4</span>
                         <p><img src="../Imagenes/<?php  echo $foto4?>" alt=""></p>
                     </label>
 
-                    <label for="foto5">
+                    <label for="foto5" class="normal">
                         <span>Foto 5</span>
                         <p><img src="../Imagenes/<?php  echo $foto5?>" alt=""></p>
                     </label>
 
+                    <label for="descargar" class="input__download">
+                        <span>Generar reporte del Inmueble en PDF</span>
+                        <section>
+                            <input type="submit" name="download" value="" class="download">
+                            <input type="submit"  target="_blank" name="share" value="" class="share">
+                            <input type="submit" target="_blank" name="print" value="" class="print">
+                        </section>
+
+                    </label>
+
+                    <?php while($row = mysqli_fetch_assoc($resultadoDocuments)): ?>
+
+                        <label for="descargar" class="input__download">
+                            <span>Documento (<?php echo $row['Titulo']?>)</span>
+                            <section>
+                                <a href="../Documentos/Documents/<?php echo $row['idDocumentos']?>" download="<?php echo $row['idDocumentos']?>"></a>
+                            </section>
+
+                        </label>
+                    <?php endwhile; ?>
                 </form>
             </section>
 
         </section>
 </main>
+
+<footer>
+    <section></section>
+</footer>
+
+
 <script src="JS/menu.js" ></script>
 
 </body>

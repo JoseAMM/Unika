@@ -61,6 +61,10 @@ $errores = [];
     $consultaOperacion = "SELECT idTipo_Operacion, Nombre_Operacion, Activo FROM tipo_operacion WHERE Activo = 1;";
     $resultadoOperacion = mysqli_query($db, $consultaOperacion);
 
+// Consulta de los clientes activos para el select 
+
+    $consultaCliente = "SELECT idCliente, Correo FROM cliente WHERE Activo = 1;";
+    $resultadoCliente = mysqli_query($db, $consultaCliente);
 
 
 // Consulta de la información del inmueble
@@ -69,7 +73,8 @@ $errores = [];
             empleado.idEmpleado,
             tipo_contrato.idTipo_Contrato,
             tipo_inmueble.idTipo_Inmueble,
-            tipo_operacion.idTipo_Operacion
+            tipo_operacion.idTipo_Operacion,
+            inmueble.idCliente
         FROM
             (
                 (
@@ -101,6 +106,7 @@ $errores = [];
     $contrato = $consultaDatosInmueble['idTipo_Contrato'];
     $inmueble = $consultaDatosInmueble['idTipo_Inmueble'] ;
     $operacion = $consultaDatosInmueble['idTipo_Operacion'];
+    $cliente = $consultaDatosInmueble['idCliente'];
     $superficie_terreno = (int)$consultaCaracteristicas['Superficie_Terreno'];
     $superficie_construccion = (int)$consultaCaracteristicas['Superficie_Construccion'];
     $habitaciones = $consultaCaracteristicas['Habitaciones'];
@@ -163,6 +169,7 @@ $errores = [];
         $inmueble = $_POST['inmueble'];
         $operacion = $_POST['operacion'];
         $colonia = $_POST['colonia'];
+        $cliente = $_POST['cliente'];
 
         $superficie_terreno = filter_var(mysqli_real_escape_string($db, $_POST['superficie_terreno']), FILTER_SANITIZE_NUMBER_FLOAT);
         $superficie_construccion = filter_var(mysqli_real_escape_string($db, $_POST['superficie_construccion']), FILTER_SANITIZE_NUMBER_FLOAT);
@@ -334,6 +341,9 @@ $errores = [];
         $queryInmueble = "UPDATE inmueble SET id_Empleado = $asesor WHERE idInmueble = $idInmueble";
         $resultadoInmueble = mysqli_query($db, $queryInmueble);
 
+        $queryInmueble = "UPDATE inmueble SET idCliente = $cliente WHERE idInmueble = $idInmueble";
+        $resultadoInmueble = mysqli_query($db, $queryInmueble);
+
         $queryCaracteristicas = "UPDATE caracteristicas SET Superficie_Terreno = $superficie_terreno WHERE idInmueble = '$idInmueble'";
         $resultadoCaracteristicas = mysqli_query($db, $queryCaracteristicas);
 
@@ -425,6 +435,7 @@ $errores = [];
                         <li><a href="../VoBo/index.php"><span>VoBo Inmuebles</span></a></li>
                         <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
                         <li><a href="../../Mensaje/index.php">Mensaje</a></li>
+                        <li><a href="../Documentos/index.php">Documentos/Inmuebles</a></li>
                         <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </nav>
@@ -485,6 +496,18 @@ $errores = [];
                     </select>
                     <div class="button__new">
                         <a class="new" href="../Operacion/index.php">Nueva Operación</a>
+                    </div>
+                </section>
+                <section class="select__config">
+                    <span>Cliente*</span>
+                    <select name="cliente" id="" required>
+                        <option value=''><--Selecciona--></option>
+                        <?php while($row = mysqli_fetch_assoc($resultadoCliente)) : ?>
+                            <option <?php echo $cliente == $row['idCliente'] ? 'selected' : ''; ?> required value="<?php echo $row['idCliente']; ?>"><?php echo $row['Correo']; ?></option>
+                        <?php endwhile; ?>
+                    </select>
+                    <div class="button__new">i
+                        <a class="new" href="../../Empleados/Nuevo/index.php">Nuevo Cliente</a>
                     </div>
                 </section>
                 <label for="superficie_terreno">

@@ -1,0 +1,107 @@
+main {
+    width: 100%;
+    min-width: 36rem;
+    margin-bottom: 5rem;
+    background-color: white;
+
+
+    .main__presentation {
+
+        width: 100%;
+        height: 80vh;
+        text-align: center;
+        font-family: 'Montserrat';
+        background-image: url('../../../../Assets/fondo-inicio.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        
+        h1 {
+            font-size: 5rem;
+            font-weight: 400;
+            padding-top: 15rem;
+            color: rgb(90, 69, 38);
+        }
+        
+        p {
+            padding-top: 6rem;
+            font-size: 2.5rem;
+            color: rgb(193, 137, 52);
+        }
+    }
+
+    .main__oficinas {
+        width: 60%;
+        margin: 0 auto;
+        
+        section {
+            ul {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                .main__oficinas--li {
+                    list-style: none;
+                    width: 50%;
+                    max-width: 50rem;
+                    min-width: 33rem;
+                    text-align: center;
+                    margin-top: 5rem;
+
+                    .oficina__title {
+                        font-family: 'Montserrat';
+                        color: red;
+                        font-size:2rem;
+                        text-align: center;
+                    }
+
+                    .oficina__content {
+                        display: flex;
+                        width: 100%;
+                        margin: 0 auto;
+                        align-items: center;
+                        font-family: 'Montserrat';
+                        
+
+                        .mail {
+                            display: block;
+                            width: 3rem;
+                            height: 3rem;
+                            background-image: url('../../../../Assets/mail.png');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            margin-top: 1rem;
+                        }
+
+                        .whatsapp {
+                            display: block;
+                            width: 3rem;
+                            height: 3rem;
+                            background-image: url('../../../../Assets/whatsapp.png');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            margin-top: 1rem;
+                        }
+
+                        .telephone {
+                            display: block;
+                            width: 3rem;
+                            height: 3rem;
+                            background-image: url('../../../../Assets/telephone.png');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            margin-top: 1rem;
+                        }
+                        
+                        p {
+                            margin-left: 1rem;
+                            font-size: 1.5rem;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

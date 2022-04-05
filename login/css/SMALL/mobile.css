@@ -136,8 +136,8 @@ html {
   font-weight: 700;
 }
 .main__login section {
-  width: 30rem;
-  height: 21.3rem;
+  width: 33rem;
+  height: 33rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -223,4 +223,9 @@ html {
 .main__login section form .content__buttons .login__submit:hover {
   background-color: red;
   cursor: pointer;
+}
+
+.captcha {
+  padding-top: 2rem;
+  margin: 0 auto;
 }

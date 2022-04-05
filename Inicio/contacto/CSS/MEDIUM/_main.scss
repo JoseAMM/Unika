@@ -1,0 +1,157 @@
+main {
+    width: 100%;
+    min-width: 36rem;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+    transition: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+
+    .main__formulario {
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+
+        h1 {
+            font-family: 'Montserrat';
+            font-size: 4rem;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 80%;
+            margin: 0 auto;
+
+            .input__complete {
+
+                width: 100%;
+                height: 5rem;
+                font-family: 'Montserrat';
+                font-size: 2rem;
+                padding-left: 2rem;
+                margin-bottom: 1rem;
+                margin-top: 1rem;
+
+            }
+
+            section {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                width: 100%;
+
+                input {
+                    width: 48%;
+                    height: 5rem;
+                    font-family: 'Montserrat';
+                    font-size: 2rem;
+                    padding-left: 2rem;
+    
+                }
+            }
+
+            .input__big {
+                width: 100%;
+                height: 20rem;
+                font-family: 'Montserrat';
+                font-size: 2rem;
+                padding-left: 2rem;
+                margin-bottom: 1rem;
+                margin-top: 1rem;
+                overflow-y:scroll;
+                resize: none;
+                padding-top: 2rem;
+            }
+
+            .input__submit{
+                width: 30%;
+                height: 5rem;
+                margin: 0 auto;
+                background-color:rgb(179, 138, 76);
+                color: white;
+                font-family: 'Montserrat';
+                font-size: 2rem;
+                font-weight: 400;
+                cursor: pointer;
+            }
+
+
+        }
+    }
+
+    
+    .main__oficinas {
+        width: 60%;
+        margin: 0 auto;
+        
+        section {
+            ul {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                .main__oficinas--li {
+                    list-style: none;
+                    width: 50%;
+                    max-width: 50rem;
+                    min-width: 33rem;
+                    text-align: center;
+                    margin-top: 5rem;
+
+                    .oficina__title {
+                        font-family: 'Montserrat';
+                        color: red;
+                        font-size: 3rem;
+                        text-align: center;
+                    }
+
+                    .oficina__content {
+                        display: flex;
+                        width: 100%;
+                        margin: 0 auto;
+                        align-items: center;
+                        font-family: 'Montserrat';
+                        
+
+                        .mail {
+                            display: block;
+                            width: 4rem;
+                            height: 4rem;
+                            background-image: url('../../../../Assets/mail.png');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            margin-top: 1rem;
+                        }
+
+                        .whatsapp {
+                            display: block;
+                            width: 4rem;
+                            height: 4rem;
+                            background-image: url('../../../../Assets/whatsapp.png');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            margin-top: 1rem;
+                        }
+
+                        .telephone {
+                            display: block;
+                            width: 4rem;
+                            height: 4rem;
+                            background-image: url('../../../../Assets/telephone.png');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            margin-top: 1rem;
+                        }
+                        
+                        p {
+                            margin-left: 1rem;
+                            font-size: 2rem;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}

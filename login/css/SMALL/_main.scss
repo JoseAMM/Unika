@@ -31,8 +31,8 @@
     }
 
     section {
-        width: 30rem;
-        height: 21.3rem;
+        width: 33rem;
+        height: 33rem;
         display: flex;
         justify-content: center;
         text-align: center;
@@ -116,4 +116,9 @@
 
     }
 
+}
+
+.captcha {
+    padding-top: 2rem;
+    margin: 0 auto;
 }

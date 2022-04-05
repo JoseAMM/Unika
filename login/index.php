@@ -2,7 +2,7 @@
 
     //Conexión a la base de datos
 
-    require 'includes/config/database.php';
+    require '../includes/config/database.php';
 
     $db = conectarDB();
 
@@ -17,7 +17,7 @@
         $password = mysqli_real_escape_string($db, $_POST['password']);
         $ip = $_SERVER['REMOTE_ADDR'];
         $captcha = $_POST['g-recaptcha-response'];
-        $secretkey = "6Lf8UqUeAAAAAGRvq7HxYsF16nTp-TJjK2s1cm9y";
+        $secretkey = "6LfyQDsfAAAAAO_yoUMgkyN35t4X8LGn-K5VT5ox";
         $respuesta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretkey&response=$captcha&remoteip=$ip");
         $atributos = json_decode($respuesta, TRUE);
 
@@ -56,14 +56,14 @@
 
                         if ($resultadoEmpleado['Rol_idRol'] == 1){
                             session_start();
-                            header('Location:admin/Propiedades/Listado/index.php');
+                            header('Location:../admin/Propiedades/Listado/index.php');
                             $_SESSION['usuario'] = $resultadoComprobacion['Correo'];
                             $_SESSION['idUsuarios'] = $resultadoComprobacion['idUsuarios'];
                             $_SESSION['login'] = true;
                             $_SESSION['time'] = time();
                         } else if ($resultadoEmpleado['Rol_idRol'] == 2){
                             session_start();
-                            header('Location:Asesor/Propiedades/Listado/index.php');
+                            header('Location:../Asesor/Propiedades/Listado/index.php');
                             $_SESSION['usuario'] = $resultadoComprobacion['Correo'];
                             $_SESSION['idUsuarios'] = $resultadoComprobacion['idUsuarios'];
                             $_SESSION['login'] = true;
@@ -78,7 +78,7 @@
                         header('Location: Inactivo/index.php');
                     } else {
                         if ($resultadoCliente['Cliente_idRol'] == 3 ){
-                            header('Location: Cliente/Listado/index.php');
+                            header('Location: ../Cliente/Listado/index.php');
                             session_start();
                             $_SESSION['usuario'] = $resultadoComprobacion['Correo'];
                             $_SESSION['idUsuarios'] = $resultadoComprobacion['idUsuarios'];
@@ -114,15 +114,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unika|Bienes Raíces</title>
-    <link rel="stylesheet" href="login/css/SMALL/mobile.css" media="(max-width: 840px)">
-    <link rel="stylesheet" href="login/css/MEDIUM/mobile.css" media="(min-width: 840px )">
+    <link rel="stylesheet" href="css/SMALL/mobile.css" media="(max-width: 840px)">
+    <link rel="stylesheet" href="css/MEDIUM/mobile.css" media="(min-width: 840px )">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap" rel="stylesheet"/>
     
 
 </head>
 <body>
     <header class="header__global">
-        <section><img src="Assets/logo.png" alt=""></section>
+        <section><img src="../Assets/logo.png" alt=""></section>
         <nav>
             <ul>
                 <li><a href="" target="_blanck">Inicio</a></li>
@@ -154,11 +154,11 @@
             </label>
             <section class="content__buttons">
             <input type="submit" value = "Entrar" class = "login__submit">
-            <a class="login__submit"href="singup/index.php">Registrarme</a>
+            <a class="login__submit"href="../singup/index.php">Registrarme</a>
             </section>
 
             <div class="captcha">
-            <div class="g-recaptcha" data-sitekey="6Lf8UqUeAAAAAMcuV8LP0YFnsTIRzbhi5vcXfJd3"></div>
+            <div class="g-recaptcha" data-sitekey="6LfyQDsfAAAAAPTRFJVSAZqsMFFl8_7x3HFOc5md"></div>
             </div>
         </form>
 
@@ -167,7 +167,7 @@
     </main>
 <?php
 
-    require 'includes/footer.php'
+    require '../includes/footer.php'
 
 ?>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>

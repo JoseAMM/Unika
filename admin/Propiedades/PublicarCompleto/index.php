@@ -54,6 +54,11 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
     $consultaOperacion = "SELECT idTipo_Operacion, Nombre_Operacion, Activo FROM tipo_operacion WHERE Activo = 1;";
     $resultadoOperacion = mysqli_query($db, $consultaOperacion);
 
+// Consulta de los clientes activos para el select 
+
+    $consultaCliente = "SELECT idCliente, Correo FROM cliente WHERE Activo = 1;";
+    $resultadoCliente = mysqli_query($db, $consultaCliente);
+
 
 
 
@@ -66,6 +71,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             
             $cp = $_POST['cp'];
             $asesor = $_POST['asesor'];
+            $cliente = $_POST['cliente'];
             
             $consultaColonia = "SELECT id, nombre FROM colonias WHERE Codigo_postal = $cp ";
             $resultadoColonia = mysqli_query($db, $consultaColonia);
@@ -96,6 +102,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             $inmueble = $_POST['inmueble'];
             $operacion = $_POST['operacion'];
             $colonia = $_POST['colonia'];
+            $cliente = $_POST['cliente'];
 
 
             
@@ -119,7 +126,20 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             $urlVideo = limpieza( filter_var(mysqli_real_escape_string($db, $_POST['urlVideo']), FILTER_SANITIZE_URL));
             
             
-            $queryInmueble = "INSERT INTO inmueble (Activo, idTipo_Contrato, idTipo_Inmueble, idTipo_Operacion, id_Empleado, VoBo) VALUES (1, $contrato, $inmueble, $operacion, $asesor, 1)";
+            $queryInmueble = "INSERT INTO inmueble (Activo, 
+            idTipo_Contrato, 
+            idTipo_Inmueble, 
+            idTipo_Operacion, 
+            id_Empleado, 
+            VoBo, 
+            idCliente) 
+            VALUES (1, 
+            $contrato, 
+            $inmueble, 
+            $operacion, 
+            $asesor, 
+            1,
+            $cliente)";
             $resultadoInmueble = mysqli_query($db, $queryInmueble);
             
             
@@ -307,9 +327,10 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                 <nav>
                     <ul>
                         <li><a href="../Listado/index.php"><span>Inmuebles</span></a></li>
-                        <li><a href=""><span>VoBo Inmuebles</span></a></li>
+                        <li><a href="../VoBo/index.php"><span>VoBo Inmuebles</span></a></li>
                         <li><a href="../../Empleados/Listado/index.php">Asesores</a></li>
                         <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
+                        <li><a href="../Documentos/index.php">Documentos/Inmuebles</a></li>
                         <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
                     </ul>
                 </nav>
@@ -370,6 +391,18 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                     </select>
                     <div class="button__new">
                         <a class="new" href="../Operacion/index.php">Nueva Operación</a>
+                    </div>
+                </section>
+                <section class="select__config">
+                    <span>Cliente*</span>
+                    <select name="cliente" id="" required>
+                        <option value=''><--Selecciona--></option>
+                        <?php while($row = mysqli_fetch_assoc($resultadoCliente)) : ?>
+                            <option <?php echo $cliente == $row['idCliente'] ? 'selected' : ''; ?> required value="<?php echo $row['idCliente']; ?>"><?php echo $row['Correo']; ?></option>
+                        <?php endwhile; ?>
+                    </select>
+                    <div class="button__new">i
+                        <a class="new" href="../../Empleados/Nuevo/index.php">Nuevo Cliente</a>
                     </div>
                 </section>
                 <label for="superficie_terreno">
@@ -438,7 +471,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
                 <label for="urlVideo">
                     <span>Foto 1 (Max: 4 Mb)</span>
-                    <input type="file" id= "foto1" name= "foto1" accept="image/jpeg, image/png">
+                    <input type="file" id= "foto1" name= "foto1" accept="image/jpeg">
                 </label>
                 <label for="urlVideo">
                     <span>Foto 2 (Max: 4 Mb)</span>

@@ -149,16 +149,18 @@ main {
             }
         }
 
+
+
         .main__formulario {
             display: flex;
             width: 80%;
             height: auto;
-            position:absolute;
+            position: absolute;
             left: 10%;
             margin-right: 2rem;
             text-align: center;
             align-items: center;
-            
+
 
             form {
                 display: flex;
@@ -168,11 +170,11 @@ main {
                 margin-top: 5rem;
                 border-radius: 2rem;
                 padding: 2rem;
-    
+
                 flex-direction: column;
 
 
-                label {
+                .normal {
                     width: 100%;
                     display: flex;
                     justify-content: space-evenly;
@@ -214,12 +216,84 @@ main {
 
                         img {
                             width: 20rem;
-    
+
                         }
                     }
 
 
                 }
+
+                .input__download {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+
+                    span {
+                        font-family: "Arial", sans-serif;
+                        width: 50%;
+                        text-align: center;
+                        font-size: 1.8rem;
+
+                    }
+
+                    section {
+
+                        width: 50%;
+                        display: flex;
+                        justify-content: space-evenly;
+                        align-items: center;
+
+                        input {
+                            outline: 0;
+                            border: none;
+                            background-color: transparent;
+                            text-align: center;
+                            margin-top: 10px;
+                        }
+
+                        .download {
+                            width: 4rem;
+                            height: 4rem;
+                            padding: 2rem;
+                            background-image: url('../../../../Assets/download.png');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            cursor: pointer;
+
+                        }
+
+                        .share {
+                            width: 4rem;
+                            height: 4rem;
+                            padding: 2rem;
+                            background-image: url('../../../../Assets/share.png');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            cursor: pointer;
+
+                        }
+
+                        .print {
+                            width: 4rem;
+                            height: 4rem;
+                            padding: 2rem;
+                            background-image: url('../../../../Assets/print.png');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            cursor: pointer;
+
+                        }
+
+                    }
+
+
+
+
+                }
+
+
+
 
                 .select {
                     display: flex;

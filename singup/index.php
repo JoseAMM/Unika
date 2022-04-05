@@ -294,7 +294,7 @@
                 
                 
                 
-                <a class="signup__submit" href="../index.php">Volver</a>
+                <a class="signup__submit" href="../login/index.php">Volver</a>
                 <input type="submit" value = "Registrar" class = "signup__submit">
                 
                 
