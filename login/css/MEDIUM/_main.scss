@@ -77,6 +77,10 @@
                 }
             }
 
+            .restore__password {
+                font-size: 1.2rem;
+            }
+
             .content__buttons {
                 display: flex;
                 width: 100%;
@@ -85,6 +89,7 @@
                 
                 height: auto;
                 margin: 0;
+                background-color: transparent;
 
                 .login__submit {
                     width: 40%;

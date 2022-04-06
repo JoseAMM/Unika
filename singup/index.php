@@ -37,7 +37,7 @@
 
 
         // Asignación de variables y escape de datos para la prevención de inyección SQL
-
+        
         $nombre = limpieza(mysqli_real_escape_string($db, $_POST['nombre']));
         $apellido = limpieza(mysqli_real_escape_string($db, $_POST['apellido']));
         $correo = limpieza(mysqli_real_escape_string($db, $_POST['correo']));
@@ -53,9 +53,11 @@
         $secretkey = "6Lf8UqUeAAAAAGRvq7HxYsF16nTp-TJjK2s1cm9y";
         $respuesta = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secretkey&response=$captcha&remoteip=$ip");
         $atributos = json_decode($respuesta, TRUE);
-
+        $telefono = filter_var($telefono, FILTER_SANITIZE_NUMBER_INT);
+        
 
         
+        // Función que valida que la contraseña tenga lo complejidad necesaria 
 
         function validar_clave($password){
             if(strlen($password) < 8){
@@ -77,16 +79,23 @@
             return true;
          }
 
-         $validar = validar_clave($password,$errores);
 
-        // Sanitización de datos
+         // Manda el password del usuario a la función y valida si tiene la complejidad
+         // necesaria
 
-        $telefono = filter_var($telefono, FILTER_SANITIZE_NUMBER_INT);
+        $validar = validar_clave($password);
 
+         // Query que comprueba si el correo al registrarse ya existe en la base de datos
         $queryComprobacion = "SELECT Correo FROM usuarios WHERE Correo = '$correo' ";
         $resultadoComprobacion = mysqli_fetch_assoc( mysqli_query($db, $queryComprobacion));
 
+
+
+         // Evalua si el password tiene la complejidad necesaria y si el correo no existe aún
+         // en la base de datos
         if($resultadoComprobacion == NULL && $validar == true ){
+
+            // Comprueba si el captcha está verificado
 
             if(!$atributos['success']){
 
@@ -149,7 +158,7 @@
                     VALUES ('$nombre', '$apellido','$ine','$telefono', '$correo', '$Usuarios_idUsuarios', '$rol', 0)";
                     $resultado = mysqli_query($db, $queryEmpleado);
                     if($resultado){
-                        header('Location: ../index.php');
+                        header('Location: ../login/index.php');
                     }
                 }
            
@@ -202,15 +211,11 @@
 </head>
 <body>
     <header class="header__global">
-            <section><img src="../Assets/logo.png" alt=""></section>
-            <nav>
-                <ul>
-                    <li><a href="" target="_blanck">Inicio</a></li>
-                    <li><a href="" target="_blanck">Nosotros</a></li>
-                    <li><a href="" target="_blanck">Contacto</a></li>
-                    <li><a href="" target="_blanck">Servicios</a></li>
-                </ul>
-            </nav>
+        <section>
+                <a href="../index.html">
+                    <img src="../Assets/logo.png" alt="">
+                </a>
+        </section>
     </header>
 
     <main class="main__signup">

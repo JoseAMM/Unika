@@ -66,7 +66,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             $titulo = limpieza($_POST['titulo']);
 
 
-            $queryDocuments = "SELECT COUNT(id_Inmueble_Documentos) FROM Documentos WHERE id_Inmueble_Documentos = $inmueble";
+            $queryDocuments = "SELECT COUNT(id_Inmueble_Documentos) FROM documentos WHERE id_Inmueble_Documentos = $inmueble";
             $resultadoDocuments = mysqli_query($db, $queryDocuments);
             $resultadoDocuments = mysqli_fetch_assoc($resultadoDocuments);
             $resultadoDocuments = $resultadoDocuments['COUNT(id_Inmueble_Documentos)'];

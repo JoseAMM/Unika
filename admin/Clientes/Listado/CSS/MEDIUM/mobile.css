@@ -448,8 +448,7 @@ main .main__content .main__table .table__content table tr td {
       -ms-flex-align: center;
           align-items: center;
   width: 12.5%;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow: scroll;
   font-size: 1rem;
   font-family: "Montserrat";
   font-weight: 700;

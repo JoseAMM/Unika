@@ -380,8 +380,7 @@ main {
                             justify-content: center;
                             align-items: center;
                             width: 12.5%;
-                            overflow: hidden;
-                            text-overflow: ellipsis;
+                            overflow: scroll;
                             font-size: 1rem;
                             font-family: 'Montserrat';
                             font-weight: 700;

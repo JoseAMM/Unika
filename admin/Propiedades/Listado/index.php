@@ -100,13 +100,17 @@ if(isset($_GET['del'])) {
 if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
-    // isset($_POST['id_Empleado']) != NULL OR isset($_POST['idTipo_Contrato']) != NULL OR isset($_POST['idTipo_Inmueble']) != NULL OR isset($_POST['idTipo_Operacion']) != NULL OR isset($_POST['idInmueble']) != NULL OR isset($_POST['activo']) != NULL OR  isset($_POST['Superficie_Terreno']) != NULL OR isset($_POST['Superficie_Construccion']) != NULL
-    // $_POST['id_Empleado']!= NULL OR $_POST['idTipo_Contrato'] != NULL OR $_POST['idTipo_Inmueble'] != NULL OR $_POST['idTipo_Operacion'] != NULL OR $_POST['idInmueble'] != NULL OR $_POST['activo'] != NULL
+    // Se reciben las variables estén asignadas o no a $_POST
 
-    if(isset($_POST['idTipo_Contrato']) != NULL OR isset($_POST['idTipo_Inmueble']) != NULL OR isset($_POST['idTipo_Operacion']) != NULL OR  isset($_POST['activo']) != NULL OR isset($_POST['Superficie_Terreno']) != NULL OR isset($_POST['Superficie_Construccion']) != NULL) {
+    if(isset($_POST['idTipo_Contrato']) != NULL 
+    OR isset($_POST['idTipo_Inmueble']) != NULL 
+    OR isset($_POST['idTipo_Operacion']) != NULL 
+    OR  isset($_POST['activo']) != NULL 
+    OR isset($_POST['Superficie_Terreno']) != NULL 
+    OR isset($_POST['Superficie_Construccion']) != NULL) {
 
 
-    // Asignación de variables y escape de datos para la prevención de inyección SQL
+    // Asignación de variables 
 
         $contrato = (int)$_POST['idTipo_Contrato'];
         $inmueble = (int)$_POST['idTipo_Inmueble'];
@@ -120,6 +124,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $queryInmueble = $queryInmueble ." WHERE ";
 
 
+
+        // Implementación de un ciclo foreach para depurar el array
+        // si está vacío la posicion del array, se elimina del array.
+
         foreach ($_POST as $key => $value) {
 
             if ($value == NULL){
@@ -127,6 +135,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
+
+        // Asignación del query para buscar las propiedades
 
         $queryBuscar = "SELECT
         inmueble.idInmueble,
@@ -155,6 +165,9 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         INNER JOIN datos_basicos ON inmueble.idInmueble = datos_basicos.Inmueble_idInmueble
 
         WHERE ";
+
+        // Implementación de un ciclo foreach para el array ya depurado, se agregan las key y los value en formato de texto al
+        // query, para hacer la busqueda por distintos parametros
 
         foreach ($_POST as $key => $value) {
 
@@ -188,14 +201,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
-        // echo '<pre>';
-        // var_dump($queryBuscar);
-        // echo '</pre>';
-
-
+        // Consulta a la base de datos con el query ya finalizado
         
-
-
         $resultadoBuscar = mysqli_query($db, $queryBuscar);
     }
 

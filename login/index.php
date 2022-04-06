@@ -50,7 +50,7 @@
 
                 if($resultadoEmpleado){
                     if($resultadoEmpleado['Activo'] == 0){
-                        header('Location: Inactivo/index.php');
+                        header('Location: ../Inactivo/index.php');
                     }
                     else {
 
@@ -75,7 +75,7 @@
                 if($resultadoCliente){
 
                     if($resultadoCliente['Activo'] == 0){
-                        header('Location: Inactivo/index.php');
+                        header('Location: ../Inactivo/index.php');
                     } else {
                         if ($resultadoCliente['Cliente_idRol'] == 3 ){
                             header('Location: ../Cliente/Listado/index.php');
@@ -122,15 +122,11 @@
 </head>
 <body>
     <header class="header__global">
-        <section><img src="../Assets/logo.png" alt=""></section>
-        <nav>
-            <ul>
-                <li><a href="" target="_blanck">Inicio</a></li>
-                <li><a href="" target="_blanck">Nosotros</a></li>
-                <li><a href="" target="_blanck">Contacto</a></li>
-                <li><a href="" target="_blanck">Servicios</a></li>
-            </ul>
-        </nav>
+        <section>
+            <a href="../index.html">
+                <img src="../Assets/logo.png" alt="">
+            </a>
+        </section>
     </header>
     <main class="main__login">
 
@@ -142,20 +138,21 @@
             
             <section>
                 <form action="" method="POST">
-            <label for="correo">
 
-                
+                    <label for="correo">
+                        <input type="email" id= "correo" name="correo" placeholder = "Correo" required>
+                    </label>
 
-                <input type="email" id= "correo" name="correo" placeholder = "Correo" required>
-            </label>
-            <label for="password">
-               
-                <input type="password" id="password" name="password" placeholder = "Contraseña" required>
-            </label>
-            <section class="content__buttons">
-            <input type="submit" value = "Entrar" class = "login__submit">
-            <a class="login__submit"href="../singup/index.php">Registrarme</a>
-            </section>
+                    <label for="password">
+                        <input type="password" id="password" name="password" placeholder = "Contraseña" required>
+                    </label>
+
+                    <a href="../Password/index.php" class="restore__password">Olvide Mi Contraseña</a>
+
+                    <section class="content__buttons">
+                        <input type="submit" value = "Entrar" class = "login__submit">
+                        <a class="login__submit"href="../singup/index.php">Registrarme</a>
+                    </section>
 
             <div class="captcha">
             <div class="g-recaptcha" data-sitekey="6LfyQDsfAAAAAPTRFJVSAZqsMFFl8_7x3HFOc5md"></div>
