@@ -53,16 +53,6 @@
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-        // $contrato = limpieza( mysqli_real_escape_string($db, $_POST['contrato']));
-
-
-        // $queryNewContrato = "INSERT INTO tipo_contrato (Nombre_Contrato, Activo) VALUES ('$contrato', '1')";
-
-        // $resultadoNewContrato = mysqli_query($db, $queryNewContrato);
-
-        // if($resultadoNewContrato) {
-        // header('Location:../Listado/index.php');
-        // }
 
         if (isset( $_POST['Activo'])){
             
