@@ -141,8 +141,8 @@ FROM
 
                 <section class="cardInfo">
                     <h2>  COLONIA: <?php echo  " " . strtoupper( $row['nombre'])?></h2>
-                    <p>Superficie de Construccion:<?php echo  " ". $row['Superficie_Construccion'] . " m2"?></p>
-                    <p>Superficie de Terreno:<?php echo  " ". $row['Superficie_Terreno']?> . " m2"</p>
+                    <p>Superficie de Construccion:<?php echo  " ". $row['Superficie_Construccion'] .  ' m2'?></p>
+                    <p>Superficie de Terreno:<?php echo  " ". $row['Superficie_Terreno']?> . ' m2'</p>
                     <p>Habitaciones: <?php echo " ".  $row['Habitaciones']?> </p>
                     <p>Estacionamiento:  <?php echo " ". $row['Puestos_Estacionamiento']?> </p>
                     <p>Precio: $ <?php echo $row['Precio'] . " MXN"?></p>
