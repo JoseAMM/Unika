@@ -46,6 +46,12 @@
             width: 100%;
             
             flex-direction: column;
+
+            p {
+                font-size: 1rem;
+                margin-bottom: 1rem;
+                color: red;
+            }
             
 
             label {

@@ -10,7 +10,7 @@
         $cellphone = limpieza($_POST['cellphone']);
         $asunto = limpieza($_POST['asunto']);
         $contenido = limpieza($_POST['contenido']);
-        $mail = "vicvans@hotmail.com";
+        $mail = "joseamm@comunidad.unam.mx";
         $contenido = "Telefono:" . $cellphone . "\r\n" . "Nombre: ". $name. "\r\n". $contenido;
         $header = "From: " . $email . "\r\n";
         $header.= "Reply-to: contacto@unika.com" ."\r\n";

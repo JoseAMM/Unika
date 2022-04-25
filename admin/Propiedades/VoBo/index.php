@@ -463,12 +463,34 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     </section>
 
     </main>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <script type="text/javascript">
 
         function preguntar(id){
-            if(confirm('¿Estas seguro que deseas borrar el inmueble?')){
-                window.location.href = "index.php?del=" + id;
-            }
+            // id.preventDefault();
+
+            Swal.fire({
+            title: '¿Estás seguro de borrar este inmueble?',
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, borrarlo'
+            }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Borrado!',
+                    'El inmueble ha sido borrado.',
+                    'success'
+                    )
+                    setTimeout(function(){
+                        window.location.href = "index.php?del=" + id;
+                    }, 1750);
+                }
+                
+            })
         }
 
     </script>

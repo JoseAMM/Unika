@@ -227,7 +227,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         <link rel="stylesheet" href="CSS/MOBILE/mobile.css" media="(max-width: 840px)">
         <link rel="stylesheet" href="CSS/MEDIUM/mobile.css" media="(min-width: 840px )">
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap" rel="stylesheet"/>
-        <title>Unika|Listado Propiedades</title>
+        <title>Unika|Listado Asesores</title>
 </head>
 <body>
     <header class="header__propiedades">
@@ -463,15 +463,37 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     </section>
 
     </main>
-    <script type="text/javascript">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script type="text/javascript">
 
     function preguntar(id){
-        if(confirm('¿Estas seguro que deseas borrar este empleado?')){
-            window.location.href = "index.php?del=" + id;
-        }
+        // id.preventDefault();
+
+        Swal.fire({
+        title: '¿Estás seguro de borrar este Asesor?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrarlo'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Borrado!',
+                'El Asesor ha sido borrado.',
+                'success'
+                )
+                setTimeout(function(){
+                    window.location.href = "index.php?del=" + id;
+                }, 2000);
+            }
+            
+        })
     }
 
-    </script>
+</script>
         <script src="JS/menu.js" ></script>
 </body>
 </html>

@@ -263,6 +263,7 @@ main {
                             cursor: pointer;
                         }
 
+
                         .download {
                             width: 4rem;
                             height: 4rem;
@@ -382,6 +383,33 @@ main {
             }
         }
     }
+}
+
+
+
+.input-borrar {
+    width: 4rem;
+    height: 4rem;
+    color: transparent;
+    border: 0px;
+    background-color: transparent;
+    background-image: url('../../../../../Assets/borrar.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+
+}
+
+.input-borrar:hover {
+    width: 50px;
+    height: 50px;
+    color: transparent;
+    border: 0px;
+    background-color: transparent;
+    background-image: url('../../../../../Assets/borrar-open.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+
 }
 
 .menu__move {

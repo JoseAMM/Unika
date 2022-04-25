@@ -202,7 +202,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
 
         // Consulta a la base de datos con el query ya finalizado
-        
+        echo $queryBuscar;
         $resultadoBuscar = mysqli_query($db, $queryBuscar);
     }
 
@@ -236,7 +236,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         
     }
 
-    if(isset($resultadoBuscar)){
+    if($resultadoBuscar){
         $resultadoInmueble = $resultadoBuscar;
     }
 }
@@ -518,13 +518,41 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     </main>
     <script type="text/javascript">
 
-        function preguntar(id){
-            if(confirm('¿Estas seguro que deseas borrar el inmueble?')){
-                window.location.href = "index.php?del=" + id;
-            }
-        }
+                        
 
     </script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script >
+
+    function preguntar(id){
+        // id.preventDefault();
+
+        Swal.fire({
+        title: '¿Estás seguro de borrar este inmueble?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrarlo'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Borrado!',
+                'El inmueble ha sido borrado.',
+                'success'
+                )
+                setTimeout(function(){
+                    window.location.href = "index.php?del=" + id;
+                }, 2000);
+            }
+            
+        })
+    }
+
+</script>
 
     <script src="JS/menu.js" ></script>
     <script src="JS/borrar.js" ></script>

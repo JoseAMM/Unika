@@ -1,5 +1,4 @@
 <?php
-
 //Sesion
 
 require '../../sesion.php';
@@ -9,7 +8,7 @@ $idInmueble = $_GET['id'];
 $idInmueble = filter_var($idInmueble, FILTER_VALIDATE_INT);
 
 if(!$idInmueble) {
-    header('Location:../../');
+    header('Location: ../Listado/index.php');
 }
 
 
@@ -202,10 +201,16 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
     );
     }
 
+    if(isset($_GET['del'])) {
+        $idMensaje = $_GET['del'];
+        $queryBorrarMensaje = "DELETE FROM mensajes where idMensaje = '$idMensaje'";
+        $resultadoBorrar = mysqli_query($db, $queryBorrarMensaje);
+        header('Location: index.php');
+    }
+
 
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -389,13 +394,23 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
                     <?php while($row = mysqli_fetch_assoc($resultadoDocuments)): ?>
 
+                        <?php 
+                            static $contador = 0;
+                            $contador = $contador +1 ?>
+
                         <label for="descargar" class="input__download">
                             <span>Documento (<?php echo $row['Titulo']?>)</span>
                             <section>
                                 <a href="../Documentos/Documents/<?php echo $row['idDocumentos']?>" download="<?php echo $row['idDocumentos']?>"></a>
+                                <input type="hidden"  class="input-borrar" name="borrar"  onclick="preguntar(<?php echo $contador .' ,' . $idInmueble?>)" >
+                                <input type="button" class="input-borrar" alt="" onclick="preguntar(<?php echo $contador .' ,' . $idInmueble?>)" >
                             </section>
 
                         </label>
+
+
+
+
                     <?php endwhile; ?>
                 </form>
             </section>
@@ -406,6 +421,38 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 <footer>
     <section></section>
 </footer>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script  type="text/javascript">
+
+
+    function preguntar(id, Inmueble){
+        // id.preventDefault();
+
+        Swal.fire({
+        title: '¿Estás seguro de borrar este documento?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrarlo'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Borrado!',
+                'El documento ha sido borrado.',
+                'success'
+                )
+                setTimeout(function(){
+                    window.location.href = "borrar.php?del=" + id + "&id=" +  Inmueble;
+                }, 2000);
+            }
+            
+        })
+    }
+</script>
 
 
 <script src="JS/menu.js" ></script>

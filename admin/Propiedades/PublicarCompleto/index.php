@@ -423,7 +423,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                 </label>
 
                 <label for="superficie_construccion">
-                    <span>Superficie de Construcción*/span>
+                    <span>Superficie de Construcción</span>
                     <input type="number" id= "superficie_construccion"  value="<?php echo $superficie_construccion?>" name="superficie_construccion"  placeholder = "En m2"  min="50"  maxlength="45">
                 </label>
 

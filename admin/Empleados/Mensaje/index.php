@@ -274,6 +274,7 @@
 
 
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script type="text/javascript">
 
@@ -305,13 +306,7 @@
 
 </script>
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-
-
-
-</script>
 <script src="JS/menu.js" ></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>

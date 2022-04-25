@@ -239,13 +239,35 @@ require '../../../includes/footer.php'
 
 ?>
 
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script type="text/javascript">
 
-function preguntar(id){
-    if(confirm('¿Estas seguro que deseas borrar esta oficina?')){
-        window.location.href = "index.php?del=" + id;
+    function preguntar(id){
+        // id.preventDefault();
+
+        Swal.fire({
+        title: '¿Estás seguro de borrar esta oficina?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrarlo'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Borrado!',
+                'La oficina ha sido borrada.',
+                'success'
+                )
+                setTimeout(function(){
+                    window.location.href = "index.php?del=" + id;
+                }, 2000);
+            }
+            
+        })
     }
-}
 
 </script>
 <script src="JS/menu.js" ></script>
