@@ -5,7 +5,7 @@ main {
     height: auto;
     text-align: center;
     font-family: 'Montserrat';
-    background-image: url('../../../../../../Assets/fondo.jpeg');
+    background-image: url('../../../../../Assets/fondo.jpeg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -16,7 +16,7 @@ main {
         background-color: rgba(255, 255, 255, 0.7);
 
         .main__menu {
-            width: 40%;
+            width: 50%;
             display: flex;
             // justify-content: flex-end;
             padding-left: 2rem;
@@ -45,7 +45,7 @@ main {
 
 
         .main__nav {
-            width: 40%;
+            width: 50%;
             height: auto;
             margin: 0;
             background-color: white;

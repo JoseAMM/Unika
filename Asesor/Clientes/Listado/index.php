@@ -137,6 +137,9 @@ else {
 
 
             <div class="button__new">
+                <a class="new" href="../Mensaje/index.php">Nuevo Mensaje</a>
+            </div>
+            <div class="button__new">
                 <a class="new" href="../Publicar/index.php">Nuevo Cliente</a>
             </div>
         </section>

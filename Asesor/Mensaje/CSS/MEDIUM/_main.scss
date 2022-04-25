@@ -157,10 +157,10 @@ main {
 
     display: flex;
     position: absolute;
-    width: 70%;
+    width: 80%;
     margin: 0 auto;
     margin-top: 5rem;
-    left: 15%;
+    left: 10%;
     flex-direction: column;
     background-color: rgba(255, 255, 255, 0.7);
     padding: 2rem;
@@ -170,7 +170,7 @@ main {
 
         display: flex;
         justify-content: space-between;
-        width: 90%;
+        width: 80%;
         margin: 0 auto;
 
         .button__volver {
@@ -227,7 +227,7 @@ main {
 
     .table__title {
         // min-width: 36rem;
-        width: 90%;
+        width: 80%;
         margin: 0 auto;
         border-spacing: 0;
         display: flex;
@@ -250,7 +250,7 @@ main {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    width: 33%;
+                    width: 25%;
                     // text-align: center;
                     font-size: 1.5rem;
                     font-family: 'Montserrat';
@@ -275,7 +275,7 @@ main {
 
     .table__content {
 
-        width: 90%;
+        width: 80%;
         margin: 0 auto;
 
 
@@ -301,7 +301,8 @@ main {
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    width: 33%;
+                    width: 25%;
+                    padding: 1rem;
                     font-size: 1.2rem;
                     font-family: 'Montserrat';
                     font-weight: 700;
@@ -338,7 +339,7 @@ main {
                         color: transparent;
                         border: 0px;
                         background-color: transparent;
-                        background-image: url('../../../../../Assets/borrar.png');
+                        background-image: url('../../../../Assets/borrar.png');
                         background-size: contain;
                         background-repeat: no-repeat;
                         cursor: pointer;
@@ -351,7 +352,7 @@ main {
                         color: transparent;
                         border: 0px;
                         background-color: transparent;
-                        background-image: url('../../../../../Assets/borrar-open.png');
+                        background-image: url('../../../../Assets/borrar-open.png');
                         background-size: contain;
                         background-repeat: no-repeat;
 
@@ -363,7 +364,7 @@ main {
                         color: transparent;
                         border: 0px;
                         background-color: transparent;
-                        background-image: url('../../../../../Assets/activo.png');
+                        background-image: url('../../../../Assets/activo.png');
                         background-size: contain;
                         background-repeat: no-repeat;
                         cursor: pointer;
@@ -376,7 +377,7 @@ main {
                         color: transparent;
                         border: 0px;
                         background-color: transparent;
-                        background-image: url('../../../../../Assets/inactivo.png');
+                        background-image: url('../../../../Assets/inactivo.png');
                         background-size: contain;
                         background-repeat: no-repeat;
                         cursor: pointer;

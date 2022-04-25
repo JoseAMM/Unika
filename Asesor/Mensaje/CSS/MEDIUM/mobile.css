@@ -245,10 +245,10 @@ main .main__content .error p {
   display: -ms-flexbox;
   display: flex;
   position: absolute;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   margin-top: 5rem;
-  left: 15%;
+  left: 10%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -264,7 +264,7 @@ main .main__content .error p {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 }
 .main__table .table__buttons .button__volver {
@@ -328,7 +328,7 @@ main .main__content .error p {
   color: white;
 }
 .main__table .table__title {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
   border-spacing: 0;
   display: -webkit-box;
@@ -358,7 +358,7 @@ main .main__content .error p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 33%;
+  width: 25%;
   font-size: 1.5rem;
   font-family: "Montserrat";
   font-weight: 700;
@@ -368,7 +368,7 @@ main .main__content .error p {
   color: black;
 }
 .main__table .table__content {
-  width: 90%;
+  width: 80%;
   margin: 0 auto;
 }
 .main__table .table__content table {
@@ -395,7 +395,8 @@ main .main__content .error p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 33%;
+  width: 25%;
+  padding: 1rem;
   font-size: 1.2rem;
   font-family: "Montserrat";
   font-weight: 700;
@@ -435,7 +436,7 @@ main .main__content .error p {
   color: transparent;
   border: 0px;
   background-color: transparent;
-  background-image: url("../../../../../Assets/borrar.png");
+  background-image: url("../../../../Assets/borrar.png");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -446,7 +447,7 @@ main .main__content .error p {
   color: transparent;
   border: 0px;
   background-color: transparent;
-  background-image: url("../../../../../Assets/borrar-open.png");
+  background-image: url("../../../../Assets/borrar-open.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -456,7 +457,7 @@ main .main__content .error p {
   color: transparent;
   border: 0px;
   background-color: transparent;
-  background-image: url("../../../../../Assets/activo.png");
+  background-image: url("../../../../Assets/activo.png");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -467,7 +468,7 @@ main .main__content .error p {
   color: transparent;
   border: 0px;
   background-color: transparent;
-  background-image: url("../../../../../Assets/inactivo.png");
+  background-image: url("../../../../Assets/inactivo.png");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;

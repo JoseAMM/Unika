@@ -10,11 +10,11 @@
 
     $db = conectarDB();
 
-    $idMensajeCliente = $_GET['id'];
-    $idMensajeCliente = filter_var($idMensajeCliente, FILTER_VALIDATE_INT);
+    $idMensaje = $_GET['id'];
+    $idMensaje = filter_var($idMensaje, FILTER_VALIDATE_INT);
 
-    if(!$idMensajeCliente) {
-        header('Location: ../../Listado/index.php');
+    if(!$idMensaje) {
+        header('Location: ../../Propiedades/Listado/index.php');
 }
 
 
@@ -40,7 +40,7 @@
 
     $errores = [];
 
-    $queryConsulta = "SELECT * FROM mensajecliente WHERE idMensajeCliente = $idMensajeCliente";
+    $queryConsulta = "SELECT * FROM mensajes WHERE idMensaje = $idMensaje";
     $resultado = mysqli_query($db, $queryConsulta);
     $resultado = mysqli_fetch_assoc($resultado);
     
@@ -54,8 +54,8 @@
         $titulo = limpieza( mysqli_real_escape_string($db, $_POST['titulo']));
         $mensaje = limpieza( mysqli_real_escape_string($db, $_POST['mensaje']));
 
-        $queryEditarTitulo = "UPDATE mensajecliente SET Titulo = '$titulo' WHERE idMensajeCliente = $idMensajeCliente";
-        $queryEditarMensaje = "UPDATE mensajecliente SET Mensaje = '$mensaje' WHERE idMensajeCliente = $idMensajeCliente";
+        $queryEditarTitulo = "UPDATE mensajes SET Titulo = '$titulo' WHERE idMensaje = $idMensaje";
+        $queryEditarMensaje = "UPDATE mensajes SET Mensaje = '$mensaje' WHERE idMensaje = $idMensaje";
 
         $resultadoEditarTitulo = mysqli_query($db, $queryEditarTitulo);
         $resultadoEditarMensaje = mysqli_query($db, $queryEditarMensaje);
@@ -79,13 +79,13 @@
     <link rel="stylesheet" href="CSS/MOBILE/mobile.css" media="(max-width: 840px)">
     <link rel="stylesheet" href="CSS/MEDIUM/mobile.css" media="(min-width: 840px )">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap" rel="stylesheet"/>
-    <title>Unika|Nuevo Contrato</title>
+    <title>Unika|Editar Mensaje</title>
 </head>
 <body>
 <header class="header__propiedades">
         <div>
             <section class="header__logo">
-                <a href="../../../index.php"><img src="../../../../Assets/logo.png" alt=""></a>
+                <a href="#"><img src="../../../../Assets/logo.png" alt=""></a>
             </section>
 
             <section class="header__name" >
@@ -115,10 +115,11 @@
         <section class="main__nav" id="main__nav">
             <nav>
                 <ul>
-                    <li><a href="../../Listado/index.php">Inmuebles</a></li>
-                    <li><a href="">Mensaje</a></li>
-                    <li><a href="">Asesores</a></li>
-                    <li><a href="">Clientes</a></li>
+                    <li><a href="../../../Propiedades/Listado/index.php"><span>Inmuebles</span></a></li>
+                    <li><a href="../../../Propiedades/VoBo/index.php"><span>VoBo Inmuebles</span></a></li>
+                    <li><a href="../../Listado/index.php">Clientes</a></li>
+                    <li><a href="../../../Mensaje/index.php">Mensaje</a></li>
+                    <li><a href="../../../Propiedades/Documentos/index.php">Documentos/Inmuebles</a></li>
                     <li class="nav__logout"><a href="../../../cerrar-sesion.php">Cerrar Sesión</a></li>
                 </ul>
             </nav>
@@ -166,11 +167,7 @@
     </main>
 
 
-<?php
 
-require '../../../../includes/footer.php'
-
-?>
 <script src="JS/menu.js" ></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>

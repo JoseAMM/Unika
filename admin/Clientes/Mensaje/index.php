@@ -13,7 +13,7 @@
 
     // Funcion para la limpieza de datos
 
-    require '../../limpieza.php';
+    require '../limpieza.php';
 
     $queryEmpleado = "SELECT * FROM empleado WHERE $idUsuarios = empleado.Usuarios_idUsuarios";
 
@@ -25,6 +25,8 @@
 
     $idRolEmpleado = (int)$idRolEmpleado;
 
+    $idAsesor = $resultadoEmpleadoNombre['idEmpleado'];
+
 
     $queryRol = "SELECT Nombre_rol FROM rol WHERE idRol = $idRolEmpleado";
     $resultadoRolEmpleado = mysqli_query($db, $queryRol);
@@ -33,14 +35,14 @@
 
     $errores = [];
 
-    $queryConsulta = "SELECT * FROM mensajecliente ORDER BY idMensajeCliente DESC";
+    $queryConsulta = "SELECT * FROM mensajes WHERE Destinatario = 1 ORDER BY idMensaje DESC";
     $resultadoConsulta = mysqli_query($db, $queryConsulta);
 
  
 
     if(isset($_GET['del'])) {
-        $idMensajeCliente = $_GET['del'];
-        $queryBorrar = "DELETE FROM mensajecliente WHERE idMensajeCliente = $idMensajeCliente";
+        $idMensaje = $_GET['del'];
+        $queryBorrar = "DELETE FROM mensajes WHERE idMensaje = $idMensaje";
         $resultadoBorrar = mysqli_query($db, $queryBorrar);
         header('Location: index.php');
     }
@@ -53,28 +55,32 @@
 
         if (isset( $_POST['Activo'])){
             
-            $idMensajeCliente = (int)$_POST['Activo'];
+            $idMensaje = (int)$_POST['Activo'];
     
-            $queryActivo = "SELECT Activo FROM mensajecliente WHERE idMensajeCliente = $idMensajeCliente";
+            $queryActivo = "SELECT Activo FROM mensajes WHERE idMensaje = $idMensaje";
             $resultadoActivo = mysqli_query($db, $queryActivo);
             $resultadoActivo = mysqli_fetch_assoc($resultadoActivo);
             
             
             
             if ($resultadoActivo['Activo'] == 1){
-                $queryDesactivar = "UPDATE mensajecliente SET Activo = 0 WHERE idMensajeCliente = $idMensajeCliente";
+                $queryDesactivar = "UPDATE mensajes SET Activo = 0 WHERE idMensaje = $idMensaje";
                 $resultadoDesactivar = mysqli_query($db, $queryDesactivar);
                 header('Location:index.php');
                 
             }
             else {
-                $queryActivar = "UPDATE mensajecliente SET Activo = 1 WHERE idMensajeCliente = $idMensajeCliente";
+                $queryActivar = "UPDATE mensajes SET Activo = 1 WHERE idMensaje = $idMensaje";
                 $resultadoDesactivar = mysqli_query($db, $queryActivar);
                 header('Location:index.php');
                 
             }
             
             
+        }
+
+        if(isset($_POST['borrar'])){
+
         }
     }
 
@@ -98,7 +104,7 @@
 <header class="header__propiedades">
         <div>
             <section class="header__logo">
-                <a href="../../index.php"><img src="../../../Assets/logo.png" alt=""></a>
+                <a href="index.php"><img src="../../../Assets/logo.png" alt=""></a>
             </section>
 
             <section class="header__name" >
@@ -128,10 +134,10 @@
             <section class="main__nav" id="main__nav">
                 <nav>
                     <ul>
-                        <li><a href="../../Propiedades/Listado/index.php"><span>Inmuebles</span></a></li>
-                        <li><a href="../../Propiedades/VoBo/index.php"><span>VoBo Inmuebles</span></a></li>
-                        <li><a href="../../Empleados/Listado/index.php">Asesores</a></li>
-                        <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
+                        <li><a href="../../Propiedades/Listado/index.php">Inmuebles</a></li>
+                        <li><a href="../../Propiedades/VoBo/index.php">VoBo Inmuebles</a></li>
+                        <li><a href="../Listado/index.php">Clientes</a></li>
+                        <li><a href="index.php">Mensajes</a></li>
                         <li><a href="../../Propiedades/Documentos/index.php">Documentos/Inmuebles</a></li>
                         <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
                     </ul>
@@ -152,10 +158,12 @@
                 <section  class="table__title">
                     <table>
                         <tr>
-                            <td>ID</td>
+                            <td>Remitente</td>
+                            <td>Destinatario</td>
                             <td>Título</td>
                             <td>Editar</td>
                             <td>Activo</td>
+                            <td>Ver</td>
                             <td>Borrar</td>
                         </tr>
 
@@ -171,46 +179,80 @@
                     <table>
                         <tr>
 
-                            <td><?php  echo $row['idMensajeCliente']?></td>
+                            <td><?php
+                                $idRemitente = $row['Remitente'];
+                                $queryNombre = "SELECT Nombre_Apellido FROM empleado WHERE idEmpleado = $idRemitente";
+
+                                $resultadoNombre = mysqli_query($db, $queryNombre);
+
+                                
+                                $resultadoNombre = mysqli_fetch_assoc($resultadoNombre);
+                                echo $resultadoNombre['Nombre_Apellido'];?></td>
+                            <td><?php  
+                            if ($row['Destinatario'] == 0){
+                                echo "Todos los Asesores";
+                            } 
+                            if($row['Destinatario'] == 1){
+                                echo "Todos los clientes";
+                            }
+                            if ($row['Destinatario'] != 0 AND $row['Destinatario'] != 1) {
+                                $idEmpleado = $row['Destinatario'];
+                                $queryNombre = "SELECT Nombre_Apellido FROM empleado WHERE idEmpleado = $idEmpleado";
+
+                                $resultadoNombre = mysqli_query($db, $queryNombre);
+
+                                
+                                $resultadoNombre = mysqli_fetch_assoc($resultadoNombre);
+                                echo $resultadoNombre['Nombre_Apellido'];
+                            } ?></td>
                             <td><?php  echo $row['Titulo']?></td>
                             <td class="table__editar">
-                                <a href="EditarMensaje/index.php?id=<?php echo $row['idMensajeCliente']?>">
-                                    <img src="../../../Assets/editar.png" alt="">
+                                <a href="<?php echo "EditarMensaje/index.php?id=" . $row['idMensaje'];?>">
+
+                                <!-- "EditarMensaje/index.php?id=<?php //echo $row['idMensajeEmpleado']?> -->
+                                    <img src="<?php echo "../../../Assets/editar.png";?>" alt="">
                                 </a>
                             </td>
                             <td class="table__editar">
-                                <form method="POST">
+                                <form method="POST" class="formulario-eliminar">
                                 <?php
 
-                                if($row['Activo'] == 1){
+                                    if($row['Activo'] == 1){
+
+                                        ?>
+                                        <a href="">
+                                            <input type="hidden"  class="input-activar" name="Activo" value="<?php echo $row['idMensaje']?>">
+                                            <input type="submit" class="input-activar" alt="">
+                                        </a>
+                                        
+                                    <?php
+                                    }
+                                    else{
 
                                     ?>
-                                    <a href="">
-                                        <input type="hidden"  class="input-activar" name="Activo" value="<?php echo $row['idMensajeCliente']?>">
-                                        <input type="submit" class="input-activar" alt="" >
-                                    </a>
-                                    
-                                <?php
-                                }
-                                else{
+                                        <a href="">
+                                            <input type="hidden"  class="input-desactivar" name="Activo" value="<?php echo $row['idMensaje']?>">
 
-                                ?>
-                                    <a href="">
-                                        <input type="hidden"  class="input-desactivar" name="Activo" value="<?php echo $row['idMensajeCliente']?>">
-                                        <input type="submit" class="input-desactivar" alt="" >
-                                    </a>
-                                <?php
+                                            <input type="submit" class="input-desactivar" alt="" >
+                                        </a>
+                                    <?php
 
-                                }
+                                    }
                                 ?>
                                 </form>
                             </td>
 
                             <td class="table__editar">
-
-                                        <input type="hidden"  class="input-borrar" onclick="preguntar(<?php echo $row['idMensajeCliente']?>)" >
-                                        <input type="button" class="input-borrar" alt="" onclick="preguntar(<?php echo $row['idMensajeCliente']?>)">
+                                <a href="VerMensaje/index.php?id=<?php echo $row['idMensaje']?>">
+                                    <img src="../../../Assets/ver.png" alt="">
+                                </a>
                             </td>
+
+                                <td class="table__editar">
+                                    <input type="hidden"  class="input-borrar" onclick="preguntar(<?php echo $row['idMensaje']?>)">
+                                    <input type="button" class="input-borrar"  onclick="preguntar(<?php echo $row['idMensaje']?>)">
+                                </td>
+
                         </tr>
                     </table>
                 </section>
@@ -231,19 +273,43 @@
     </main>
 
 
-<?php
 
-require '../../../includes/footer.php'
-
-?>
 
 <script type="text/javascript">
 
-function preguntar(id){
-    if(confirm('¿Estas seguro que deseas borrar este mensaje?')){
-        window.location.href = "index.php?del=" + id;
+    function preguntar(id){
+        // id.preventDefault();
+
+        Swal.fire({
+        title: '¿Estás seguro de borrar este mensaje?',
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, borrarlo'
+        }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+                'Borrado!',
+                'El mensaje ha sido borrado.',
+                'success'
+                )
+                setTimeout(function(){
+                    window.location.href = "index.php?del=" + id;
+                }, 2000);
+            }
+            
+        })
     }
-}
+
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+
 
 </script>
 <script src="JS/menu.js" ></script>

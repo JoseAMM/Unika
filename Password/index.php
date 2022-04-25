@@ -21,7 +21,6 @@
         // Asignación de variables y escape de datos para la prevención de inyección SQL
 
         $correo = limpieza(mysqli_real_escape_string($db, $_POST['correo']));
-        $password = mysqli_real_escape_string($db, $_POST['password']);
         $Usuarios_idUsuarios = null;
         $ip = $_SERVER['REMOTE_ADDR'];
         $captcha = $_POST['g-recaptcha-response'];
@@ -31,35 +30,6 @@
 
 
 
-
-        // Función que valida que la contraseña tenga lo complejidad necesaria 
-
-        function validar_clave($password){
-            if(strlen($password) < 8){
-               return false;
-            }
-            if (!preg_match('`[a-z]`',$password)){
-               
-               return false;
-            }
-            if (!preg_match('`[A-Z]`',$password)){
-               
-               return false;
-            }
-            if (!preg_match('`[0-9]`',$password)){
-              
-               return false;
-            }
-            
-            return true;
-         }
-
-
-         // Manda el password del usuario a la función y valida si tiene la complejidad
-         // necesaria
-
-        $validar = validar_clave($password);
-
          // Query que comprueba si el correo al registrarse ya existe en la base de datos
         $queryComprobacion = "SELECT Correo FROM usuarios WHERE Correo = '$correo' ";
         $resultadoComprobacion = mysqli_fetch_assoc( mysqli_query($db, $queryComprobacion));
@@ -68,7 +38,7 @@
 
          // Evalua si el password tiene la complejidad necesaria y si el correo no existe aún
          // en la base de datos
-        if($resultadoComprobacion != NULL && $validar == true ){
+        if($resultadoComprobacion != NULL ){
 
             // Comprueba si el captcha está verificado
 
@@ -77,58 +47,48 @@
                 $errores[] = "Verifica el Captcha";
             } else {
 
-            $passwordMail = $password;
+                function generatePassword($length)
+                {
+                    $key = "";
+                    $pattern = "1234567890abcdefghijklmnopqrstuvwxyz.#!¿?";
+                    $max = strlen($pattern)-1;
+                    for($i = 0; $i < $length; $i++){
+                        $key .= substr($pattern, mt_rand(0,$max), 1);
+                    }
+                    $key = $key . "#?";
+                    return $key;
+                }
 
-            // Hash de la contraseña antes de insertar en la base de datos
+                $passwordMail = generatePassword(6);
 
-            $passwordHash= password_hash($password, PASSWORD_DEFAULT);
+                $password = $passwordMail;
+
+                // Hash de la contraseña antes de insertar en la base de datos
+
+                $passwordHash= password_hash($password, PASSWORD_DEFAULT);
 
 
-            // Actualización de contraseña
+                // Actualización de contraseña
 
-            $queryActualizar = "UPDATE usuarios SET Contrasena = '$passwordHash' WHERE Correo = '$correo'";
-            $resultadoActualizar = mysqli_query($db, $queryActualizar);
+                $queryActualizar = "UPDATE usuarios SET Contrasena = '$passwordHash' WHERE Correo = '$correo'";
+                $resultadoActualizar = mysqli_query($db, $queryActualizar);
 
-            $mail = $correo;
-            $contenido = "Tu nueva contraseña es: " . $passwordMail . "\r\n" . "Atentamente: Unika - Soporte";
-            $header = "From: " . "contacto@unika.com" . "\r\n";
-            $header.= "Reply-to: contacto@unika.com" ."\r\n";
-            $header.= "X-Mailer: PHP/" . phpversion();
-            $mail = @mail($mail, $asunto, $contenido, $header);
+                $mail = $correo;
+                $contenido = "Tu nueva contrasena es: " . $passwordMail . "\r\n" . "Atentamente: Unika - Soporte";
+                $header = "From: " . "admin@unika.com" . "\r\n";
+                $header.= "Reply-to: admin@unika.com" ."\r\n";
+                $header.= "X-Mailer: PHP/" . phpversion();
+                $mail = @mail($mail, $asunto, $contenido, $header);
 
-            if($mail){
-                header('Location: ../login/index.php');
+                if($mail){
+                    header('Location: ../login/index.php');
+                }
+
+
+
+
             }
-
-
-
-
-            }
-        } else {
-
-            if($resultadoComprobacion != NULL ){
-                $errores[] = "El usuario no existe, intenta con otro correo";
-            }
-
-            if( !$validar == true){
-                if(strlen($password) < 8){
-                    $errores[] = "La clave debe tener al menos 8 caracteres";
-                    
-                 }
-                 if (!preg_match('`[a-z]`',$password)){
-                    $errores[] = "La clave debe tener al menos una letra minúscula";
-                    
-                 }
-                 if (!preg_match('`[A-Z]`',$password)){
-                    $errores[] = "La clave debe tener al menos una letra mayúscula";
-                    
-                 }
-                 if (!preg_match('`[0-9]`',$password)){
-                    $errores[] = "La clave debe tener al menos un caracter numérico";
-                    
-                 }
-            }
-        }
+        } 
 
         
 
@@ -169,29 +129,19 @@
         <form action="" method="POST">
 
 
-
+        <p>Tu nueva contraseña será enviada a tu correo electrónico</p>
             <label for="correo">
+
                 <span>Correo Electrónico</span>
                 <input type="email" id= "correo" name="correo" placeholder = "Correo Electrónico" required maxlength="45">
             </label>
-
-            <label for="password">
-                <span>Nueva Constraseña</span>
-                <input type="password" id= "password" name="password" placeholder = "Contraseña" required>
-            </label>
-
-
-
-
-
-
 
             <section class="content__buttons">
 
 
 
                 <a class="signup__submit" href="../login/index.php">Volver</a>
-                <input type="submit" value = "Registrar" class = "signup__submit">
+                <input type="submit" value = "Enviar" class = "signup__submit">
 
 
 

@@ -19,6 +19,26 @@
     require '../../limpieza.php';
 
 
+
+    // Consulta del nombre y rol del usuario 
+
+    $queryEmpleado = "SELECT * FROM empleado WHERE $idUsuarios = empleado.Usuarios_idUsuarios";
+
+    $resultadoEmpleadoNombre = mysqli_query($db, $queryEmpleado);
+
+    $resultadoEmpleadoNombre = mysqli_fetch_assoc($resultadoEmpleadoNombre);
+
+    $idRolEmpleado = $resultadoEmpleadoNombre['Rol_idRol'];
+
+    $idRolEmpleado = (int)$idRolEmpleado;
+
+
+    $queryRol = "SELECT Nombre_rol FROM rol WHERE idRol = $idRolEmpleado";
+    $resultadoRolEmpleado = mysqli_query($db, $queryRol);
+    $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
+
+
+
     $errores = [];
 
     // Consulta de los tipos de roles para el select
@@ -125,93 +145,148 @@
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="CSS/SMALL/mobile.css">
-    
+    <link rel="stylesheet" href="CSS/MOBILE/mobile.css" media="(max-width: 840px)">
+    <link rel="stylesheet" href="CSS/MEDIUM/mobile.css" media="(min-width: 840px )">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap" rel="stylesheet"/>
-    <title>Unika|Editar Asesor</title>
+    <title>Unika|Nuevo Empleado</title>
 </head>
 <body>
-    <header class="header__propiedades">
+<header class="header__propiedades">
         <div>
             <section class="header__logo">
                 <a href="../../index.php"><img src="../../../Assets/logo.png" alt=""></a>
             </section>
 
+            <section class="header__name" >
+                <p> Bienvenido <?php echo $resultadoEmpleadoNombre['Nombre_Apellido']?></p>
+                <p class="name__rol"> Su Rol es: <?php echo $resultadoRolEmpleado['Nombre_rol']?> </p>
+            </section>
+
         </div>
 
-        <section class="header__tittle">
-            <p>Editar Empleado</p>
-        </section>
     </header>
 
+
     <main>
-        <div class="button__volver">
-            <a class="volver" href="../Listado/index.php">Volver</a>
-        </div>
+
+    <section class="main__menu--content">
+        <section class="main__menu" id="main__menu">
+            <i>
+                <a id="button_open" href="#">
+                    <img src="../../../Assets/menu.png" alt="">
+                </a>
+            </i>
+        </section>
+        </section>
+
+        <section class="main__content">
+
+        <section class="main__nav" id="main__nav">
+            <nav>
+                <ul>
+                    <li><a href="../../Propiedades/Listado/index.php"><span>Inmuebles</span></a></li>
+                    <li><a href="../../Propiedades/VoBo/index.php"><span>VoBo Inmuebles</span></a></li>
+                    <li><a href="../Listado/index.php">Asesores</a></li>
+                    <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
+                    <li><a href="../../Propiedades/Documentos/index.php">Documentos/Inmuebles</a></li>
+                    <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
+                </ul>
+            </nav>
+        </section>
+
 
         <?php foreach($errores as $error):?>
 
         <div class="error"><p><?php  echo $error ?></p></div>
 
         <?php endforeach?>
-        <section>
+        <section class="formulario__content">
+        <section class="formulario">
 
         <form action="" method="POST">
 
             <label for="nombre">
                 <span>Nombre y Apellido</span>
-                <input value="<?php echo $nombre;  ?>" type="text" id= "nombre" name="nombre" placeholder = "Nombre y Apellido" required maxlength="50">
+                <input value="<?php echo $nombre;?>" type="text" id= "nombre" name="nombre" placeholder = "Nombre y Apellido" required maxlength="50">
             </label>
 
             <label for="correo">
                 <span>Correo Electrónico</span>
-                <input value="<?php echo $correo;  ?>" type="email" id= "correo" name="correo" placeholder = "Correo Electrónico" required maxlength="45">
+                <input value="<?php echo $correo;?>" type="email" id= "correo" name="correo" placeholder = "Correo Electrónico" required maxlength="45">
             </label>
-
 
             <label for="telefono">
                 <span>Teléfono</span>
-                <input value="<?php echo $telefono;  ?>" maxlength="10" class="form__buttonNumber" type="tel" id= "telefono" name="telefono" placeholder = "Teléfono" required >
+                <input  value="<?php echo $telefono;  ?>"  maxlength="10" class="form__buttonNumber" type="tel" id= "telefono" name="telefono" placeholder = "Teléfono" required >
             </label>
 
             <label for="doc_identidad">
                 <span>Documento de Identidad</span>
-                <input value="<?php echo $doc_identidad;  ?>" type="text" id= "doc_identidad" name= "doc_identidad"  placeholder = "Documento de Identidad" required maxlength="45">
+                <input  value="<?php echo $doc_identidad;  ?>"  type="text" id= "doc_identidad" name= "doc_identidad"  placeholder = "Documento de Identidad" required maxlength="45">
             </label>
 
-            <span>Rol</span>
-            <select name="rol" id="">
-                <option value="0"><--Selecciona--></option>
-                <?php while($row = mysqli_fetch_assoc($resultadoRol)) : ?>
+
+            <section class="select">
+                <span>Rol</span>
+                <select name="rol" id="">
+                    <option value="0"><--Selecciona--></option>
+                    <?php while($row = mysqli_fetch_assoc($resultadoRol)) : ?>
                     <option <?php echo $Rol_idRol == $row['idRol'] ? 'selected' : '' ; ?> value="<?php echo $row['idRol']; ?>"><?php echo $row['Nombre_rol']; ?></option>
-                <?php endwhile; ?>
-            </select>
+                    <?php endwhile; ?>
+                </select>
+                <div class="button__new">
+                    <a class="new" href="../Rol/index.php">Nuevo Rol</a>
+                </div>
+            </section>
 
-            <span>¿Qué cargo desempeñas?</span>
-            <select name="cargo" id="">
-                <option ><--Selecciona--></option>
-                <?php while($row = mysqli_fetch_assoc($resultadoCargo)) : ?>
+            <section class="select">
+                <span>Cargo</span>
+                <select name="cargo" id="">
+                    <option ><--Selecciona--></option>
+                    <?php while($row = mysqli_fetch_assoc($resultadoCargo)) : ?>
                     <option  <?php echo $Cargo_idCargo == $row['idCargo'] ? 'selected' : '' ; ?> value="<?php echo $row['idCargo']; ?>"><?php echo $row['Nombre_Cargo']; ?></option>
-                <?php endwhile; ?>
+                    <?php endwhile; ?>
 
-            </select>
+                </select>
 
-            <span>¿En que oficina laborará?</span>
-            <select name="oficina" id="">
-                <option><--Selecciona--></option>
-                <?php while($row = mysqli_fetch_assoc($resultadoOficina)) : ?>
+                <div class="button__new">
+                    <a class="new" href="../Cargo/index.php">Nuevo Cargo</a>
+                </div>
+            </section>
+
+            <section class="select">
+                <span>Oficina</span>
+                <select name="oficina" id="">
+                    <option><--Selecciona--></option>
+                    <?php while($row = mysqli_fetch_assoc($resultadoOficina)) : ?>
                     <option <?php echo $Oficina_idOficina == $row['idOficina'] ? 'selected' : '' ; ?> required value="<?php echo $row['idOficina']; ?>"><?php echo $row['Nombre_Oficina']; ?></option>
-                <?php endwhile; ?>
-            </select>
+                    <?php endwhile; ?>
+                </select>
+                <div class="button__new">
+                    <a class="new" href="../Oficina/index.php">Nueva Oficina</a>
+                </div>
+            </section>
 
-            <input type="submit" value = "Registrar" class = "signup__submit">
+            <section class="content__buttons">
+                
+                
+                <a class="signup__submit" href="../Listado/index.php">Volver</a>
+                <input type="submit" value = "Registrar" class = "signup__submit">
+               
+                
+                
+
+            </section>
+            
         </form>
+        </section>
         </section>
 
     </main>
@@ -222,5 +297,7 @@
 require '../../../includes/footer.php'
 
 ?>
+<script src="JS/menu.js" ></script>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

@@ -147,12 +147,6 @@ function pdf($idInmueble, $foto1, $operacion, $precio ,$inmueble, $disponible, $
     $pdf->SetFont('Arial','',10);
     $pdf->MultiCell(90, 5,utf8_decode($otras));
 
-    if($documentos == 1){
-        $pdf->SetY(274);
-        $pdf->SetX(13);
-        $pdf->SetFont('Arial','BIU',15);
-        $pdf->Write(1, utf8_decode('Este inmueble tiene archivos adjuntos'));
-    }
 
     $name = $pdf->SetTitle($idInmueble.'reporte.pdf');
 

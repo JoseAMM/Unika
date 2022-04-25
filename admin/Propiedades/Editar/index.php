@@ -523,22 +523,22 @@ $errores = [];
 
                 <label for="superficie_construccion">
                     <span>Superficie de Construcción</span>
-                    <input   value="<?php echo $superficie_construccion;  ?>" type="number" id= "superficie_construccion" name="superficie_construccion"  placeholder = "En m2"  min="50" required maxlength="45">
+                    <input   value="<?php echo $superficie_construccion;  ?>" type="number" id= "superficie_construccion" name="superficie_construccion"  placeholder = "En m2"    maxlength="45">
                 </label>
 
                 <label for="habitaciones">
                     <span>Introduce el Número de Habitaciones</span>
-                    <input   value="<?php echo $habitaciones;  ?>" type="number" id= "habitaciones" name="habitaciones" placeholder = "N° de Habitaciones" min="1" required>
+                    <input   value="<?php echo $habitaciones;  ?>" type="number" id= "habitaciones" name="habitaciones" placeholder = "N° de Habitaciones" >
                 </label>
 
                 <label for="estacionamiento">
                     <span>Introduce el Número de Lugares de Estacionamiento</span>
-                    <input value="<?php echo $estacionamiento;  ?>" type="number" id= "estacionamiento" name="estacionamiento" placeholder = "N° de Lugares" min="0" required >
+                    <input value="<?php echo $estacionamiento;  ?>" type="number" id= "estacionamiento" name="estacionamiento" placeholder = "N° de Lugares"   >
                 </label>
 
                 <label for="otras">
                     <span>Otras Características</span>
-                    <input  value="<?php echo $otras;  ?>" type="text" id= "otras" name= "otras"  placeholder = "Otras Características" required  maxlength="100">
+                    <input  value="<?php echo $otras;  ?>" type="text" id= "otras" name= "otras"  placeholder = "Otras Características"   maxlength="100">
                 </label>
 
                 <label for="cp">

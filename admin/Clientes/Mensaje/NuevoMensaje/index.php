@@ -13,7 +13,7 @@
 
     // Funcion para la limpieza de datos
 
-    require '../../../limpieza.php';
+    require '../../limpieza.php';
 
     $queryEmpleado = "SELECT * FROM empleado WHERE $idUsuarios = empleado.Usuarios_idUsuarios";
 
@@ -30,19 +30,32 @@
     $resultadoRolEmpleado = mysqli_query($db, $queryRol);
     $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
+    // Consulta de los asesores activos para el select
+
+    $consultaAsesor = "SELECT * FROM empleado WHERE Activo = 1";
+    $resultadoAsesor = mysqli_query($db, $consultaAsesor);
+
 
     $errores = [];
+
+    $idAsesor = $resultadoEmpleadoNombre['idEmpleado'];
 
 
     if($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+        $destinatario = limpieza( mysqli_real_escape_string($db, $_POST['destinatario']));
         $titulo = limpieza( mysqli_real_escape_string($db, $_POST['titulo']));
         $mensaje = limpieza( mysqli_real_escape_string($db, $_POST['mensaje']));
 
 
-        $queryNew = "INSERT INTO mensajecliente (Titulo, Mensaje, Activo) VALUES ('$titulo', '$mensaje' ,'1')";
+        $queryNew = "INSERT INTO mensajes (Remitente, Destinatario ,Titulo, Mensaje, Activo) VALUES ('$idAsesor','$destinatario','$titulo', '$mensaje' ,'1')";
 
         $resultadoNew = mysqli_query($db, $queryNew);
+
+
+
+
+
 
         if($resultadoNew) {
         header('Location: ../index.php');
@@ -63,13 +76,13 @@
     <link rel="stylesheet" href="CSS/MOBILE/mobile.css" media="(max-width: 840px)">
     <link rel="stylesheet" href="CSS/MEDIUM/mobile.css" media="(min-width: 840px )">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap" rel="stylesheet"/>
-    <title>Unika|Nuevo Contrato</title>
+    <title>Unika|Nuevo Mensaje</title>
 </head>
 <body>
 <header class="header__propiedades">
         <div>
             <section class="header__logo">
-                <a href="../../../index.php"><img src="../../../../Assets/logo.png" alt=""></a>
+                <a href="index.php"><img src="../../../../Assets/logo.png" alt=""></a>
             </section>
 
             <section class="header__name" >
@@ -99,12 +112,12 @@
         <section class="main__nav" id="main__nav">
             <nav>
                 <ul>
-                        <li><a href="../../../Propiedades/Listado/index.php"><span>Inmuebles</span></a></li>
-                        <li><a href="../../../Propiedades/VoBo/index.php"><span>VoBo Inmuebles</span></a></li>
-                        <li><a href="../../../Empleados/Listado/index.php">Asesores</a></li>
-                        <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
+                <li><a href="../../../Propiedades/Listado/index.php">Inmuebles</a></li>
+                        <li><a href="../../../Propiedades/VoBo/index.php">VoBo Inmuebles</a></li>
+                        <li><a href="../../Listado/index.php">Clientes</a></li>
+                        <li><a href="../index.php">Mensajes</a></li>
                         <li><a href="../../../Propiedades/Documentos/index.php">Documentos/Inmuebles</a></li>
-                        <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
+                        <li class="nav__logout"><a href="../../../cerrar-sesion.php">Cerrar Sesión</a></li>
                 </ul>
             </nav>
         </section>
@@ -120,9 +133,18 @@
 
         <form action="" method="POST">
 
+            <section class="select">
+                <span>Destinatario</span>
+                <select name="destinatario" id="" required >
+                    <option value=""><--Selecciona--></option>
+                    <option value="1">Todos los Clientes</option>
+                </select>
+
+            </section>
+
             <label for="titulo">
                 <span>Título del Mensaje</span>
-                <input type="text" id= "titulo" name="titulo" placeholder = "Titutlo" required maxlength="25">
+                <input type="text" id= "titulo" name="titulo" placeholder = "Título" required maxlength="25">
             </label>
 
             <label for="mensaje">
@@ -135,7 +157,7 @@
                 
                 
                 <a class="signup__submit" href="../index.php">Volver</a>
-                <input type="submit" value = "Registrar" class = "signup__submit">
+                <input type="submit" value = "Enviar" class = "signup__submit">
                
                 
                 
@@ -151,11 +173,7 @@
     </main>
 
 
-<?php
 
-require '../../../../includes/footer.php'
-
-?>
 <script src="JS/menu.js" ></script>
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>

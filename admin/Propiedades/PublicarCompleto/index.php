@@ -158,7 +158,15 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
             
             
-            
+            if($superficie_construccion == NULL ){
+                $superficie_construccion = 0.0;
+            }
+            if ($habitaciones == NULL){
+                $habitaciones = 0;
+            }
+            if ($estacionamiento == NULL){
+                $estacionamiento = 0;
+            }
             
             
             
@@ -173,7 +181,11 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             $estacionamiento,
             '$otras',
             $resultadoAsignarFK);";
+            echo $queryCaracteristicas;
             $resultadoCaracteristicas = mysqli_query($db, $queryCaracteristicas);
+            echo mysqli_error($db);
+
+
             
             
 
@@ -411,23 +423,23 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                 </label>
 
                 <label for="superficie_construccion">
-                    <span>Superficie de Construcción*</span>
-                    <input type="number" id= "superficie_construccion"  value="<?php echo $superficie_construccion?>" name="superficie_construccion"  placeholder = "En m2"  min="50" required maxlength="45">
+                    <span>Superficie de Construcción*/span>
+                    <input type="number" id= "superficie_construccion"  value="<?php echo $superficie_construccion?>" name="superficie_construccion"  placeholder = "En m2"  min="50"  maxlength="45">
                 </label>
 
                 <label for="habitaciones">
-                    <span>Introduce el Número de Habitaciones*</span>
-                    <input type="number" id= "habitaciones"  value="<?php echo $habitaciones?>" name="habitaciones" placeholder = "N° de Habitaciones" min="1" required>
+                    <span>Introduce el Número de Habitaciones</span>
+                    <input type="number" id= "habitaciones"  value="<?php echo $habitaciones?>" name="habitaciones" placeholder = "N° de Habitaciones" min="1" >
                 </label>
 
                 <label for="estacionamiento">
-                    <span>Introduce el Número de Lugares de Estacionamiento*</span>
-                    <input type="number" id= "estacionamiento"  value="<?php echo $estacionamiento?>" name="estacionamiento" placeholder = "N° de Lugares" min="0" required >
+                    <span>Introduce el Número de Lugares de Estacionamiento</span>
+                    <input type="number" id= "estacionamiento"  value="<?php echo $estacionamiento?>" name="estacionamiento" placeholder = "N° de Lugares" min="0"  >
                 </label>
 
                 <label for="otras">
-                    <span>Otras Características*</span>
-                    <input type="text" id= "otras" name= "otras"  value="<?php echo $otras?>" placeholder = "Otras Características" required  maxlength="100">
+                    <span>Otras Características</span>
+                    <input type="text" id= "otras" name= "otras"  value="<?php echo $otras?>" placeholder = "Otras Características"   maxlength="100">
                 </label>
 
                 <label for="cp">

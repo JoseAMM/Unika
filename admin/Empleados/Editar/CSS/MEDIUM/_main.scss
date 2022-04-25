@@ -1,0 +1,272 @@
+main {
+    width: 100%;
+    min-width: 36rem;
+    // margin: 0 auto;
+    height: auto;
+    text-align: center;
+    font-family: 'Montserrat';
+
+
+
+    .main__menu {
+        width: 0px;
+        height: 0px;
+
+
+
+        i {
+
+            a {
+                img {
+                    width: 0px;
+                    height: 0px;
+                }
+
+
+            }
+        }
+    }
+
+    .main__content {
+
+        display: flex;
+        width: 100%;
+
+        .main__nav {
+            width: 20%;
+            height: auto;
+            margin: 0;
+            background-color: rgba(255, 255, 255, 0.7);
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07),
+                0 2px 4px rgba(0, 0, 0, 0.07),
+                0 4px 8px rgba(0, 0, 0, 0.07),
+                0 8px 16px rgba(0, 0, 0, 0.07),
+                0 16px 32px rgba(0, 0, 0, 0.07),
+                0 32px 64px rgba(0, 0, 0, 0.07);
+
+
+
+            nav {
+                width: 100%;
+                margin: 0 auto;
+                margin-bottom: 1rem;
+
+                ul {
+                    display: flex;
+                    width: 100%;
+                    margin: 0 auto;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    align-items: center;
+                    list-style: none;
+
+                    li {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 100%;
+                        height: 6rem;
+                        padding: 10px;
+                        margin: 0.2rem;
+
+
+                        a {
+                            display: flex;
+                            justify-content: center;
+                            align-items: center;
+                            font-family: Arial, sans-serif;
+                            font-size: 1.65rem;
+                            // font-weight: 700;
+                            text-decoration: none;
+                            color: black;
+                        }
+                    }
+
+                    li:hover {
+                        background-color: rgba(253, 151, 99, 0.4);
+                        color: black;
+                        cursor: pointer;
+
+                        a {
+
+                            color: black;
+                            cursor: pointer;
+
+                        }
+
+                    }
+
+                    .nav__logout:hover {
+                        background-color: red;
+                        border: none;
+                    }
+                }
+            }
+        }
+
+        .error {
+            display: flex;
+            width: 20rem;
+            height: 3.5rem;
+            padding: 1rem;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 0, 0, 0.549);
+            border-width: 0.2rem;
+            border-style: groove;
+            border-color: black;
+            border-radius: 8rem;
+
+            p {
+                color: black;
+                font-weight: 700;
+            }
+        }
+
+        .formulario__content {
+            width: 100%;
+
+            .formulario {
+                display: flex;
+                width: 80%;
+                height: auto;
+                margin: 0 auto;
+                text-align: center;
+                align-items: center;
+                background-color: rgba(255, 255, 255, 0.7);
+                margin-top: 5rem;
+                border-radius: 2rem;
+                padding: 2rem;
+
+                form {
+                    display: flex;
+                    width: 100%;
+
+                    flex-direction: column;
+
+
+                    label {
+                        width: 100%;
+                        display: flex;
+                        justify-content: space-evenly;
+                        align-items: center;
+
+                        input {
+                            width: 50%;
+                            font-family: "Arial", sans-serif;
+                            outline: 0;
+                            background-color: rgba(253, 151, 99, 0.4);
+                            border: 0;
+                            border-radius: 1rem;
+                            margin: 0 0 1.5rem;
+                            padding: 1.5rem;
+                            box-sizing: border-box;
+                            font-size: 1.4rem;
+
+                        }
+
+                        span {
+                            font-family: "Arial", sans-serif;
+                            width: 50%;
+                            text-align: center;
+                            font-size: 1.8rem;
+
+                        }
+                    }
+
+                    .select {
+                        display: flex;
+                        align-items: center;
+
+
+                        select {
+                            width: 40%;
+                            font-family: "Arial", sans-serif;
+                            outline: 0;
+                            background-color: rgba(253, 151, 99, 0.4);
+                            border: 0;
+                            border-radius: 1rem;
+                            margin: 0 0 1.5rem;
+                            padding: 1.5rem;
+                            box-sizing: border-box;
+                            font-size: 1.4rem;
+                        }
+
+                        span {
+                            font-family: "Arial", sans-serif;
+                            width: 50%;
+                            text-align: center;
+                            font-size: 1.8rem;
+
+                        }
+                        .button__new {
+                            display: flex;
+                            width: 10%;
+                            height: 4rem;
+                            background-color: #4CAF50;
+                            opacity: 0.7;
+                            border-radius: 1rem;
+                            text-align: center;
+    
+                            .new {
+                                display: flex;
+                                width: 10%;
+                                height: 4rem;
+                                margin: 0 auto;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 1.2rem;
+                                text-decoration: none;
+                                font-family: "Montserrat";
+                                font-weight: 700;
+                                color: white;
+                            }
+    
+                        }
+                    }
+
+
+                    .content__buttons {
+                        display: flex;
+                        width: 100%;
+                        justify-content: space-evenly;
+                        background-color: transparent;
+
+                        height: auto;
+                        margin: 0;
+
+                        .signup__submit {
+                            width: 40%;
+                            font-family: "Arial", sans-serif;
+                            text-transform: uppercase;
+                            outline: 0;
+                            background: #4CAF50;
+                            opacity: 0.7;
+                            border: 0;
+                            border-radius: 10px;
+                            text-align: center;
+                            padding: 15px;
+                            margin-top: 10px;
+                            color: #FFFFFF;
+                            font-size: 14px;
+                            cursor: pointer;
+                            text-decoration: none;
+                            font-weight: 100;
+
+                        }
+
+                        .signup__submit:hover {
+
+                            cursor: pointer;
+                        }
+
+
+                    }
+                }
+
+            }
+        }
+    }
+}

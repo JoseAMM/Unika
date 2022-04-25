@@ -194,23 +194,23 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
                 </label>
 
                 <label for="superficie_construccion">
-                    <span>Superficie de Construcción*</span>
-                    <input  class="input__text" type="number" id= "superficie_construccion" name="superficie_construccion"  placeholder = "En m2"  min="50" required maxlength="45">
+                    <span>Superficie de Construcción</span>
+                    <input  class="input__text" type="number" id= "superficie_construccion" name="superficie_construccion"  placeholder = "En m2"  min="50"  maxlength="45">
                 </label>
 
                 <label for="habitaciones">
-                    <span>Introduce el Número de Habitaciones*</span>
-                    <input  class="input__text" type="number" id= "habitaciones" name="habitaciones" placeholder = "N° de Habitaciones" min="1" required>
+                    <span>Introduce el Número de Habitaciones</span>
+                    <input  class="input__text" type="number" id= "habitaciones" name="habitaciones" placeholder = "N° de Habitaciones" min="1" >
                 </label>
 
                 <label for="estacionamiento">
-                    <span>Introduce el Número de Lugares de Estacionamiento*</span>
-                    <input  class="input__text" type="number" id= "estacionamiento" name="estacionamiento" placeholder = "N° de Lugares" min="0" required >
+                    <span>Introduce el Número de Lugares de Estacionamiento</span>
+                    <input  class="input__text" type="number" id= "estacionamiento" name="estacionamiento" placeholder = "N° de Lugares" min="0"  >
                 </label>
 
                 <label for="otras">
-                    <span>Otras Características*</span>
-                    <input  class="input__text" type="text" id= "otras" name= "otras"  placeholder = "Otras Características" required  maxlength="100">
+                    <span>Otras Características</span>
+                    <input  class="input__text" type="text" id= "otras" name= "otras"  placeholder = "Otras Características"   maxlength="100">
                 </label>
                 <section class="select__config">
                 <label for="cp">

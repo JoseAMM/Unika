@@ -167,7 +167,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         WHERE ";
 
         // Implementación de un ciclo foreach para el array ya depurado, se agregan las key y los value en formato de texto al
-        // query, para hacer la busqueda por distintos parametros
+        // query, para hacer la busqueda por distintos parámetros
 
         foreach ($_POST as $key => $value) {
 

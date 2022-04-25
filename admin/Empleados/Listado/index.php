@@ -280,7 +280,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         <section class="table__buttons">
 
             <div class="button__new">
-                <a class="new" href="../Mensaje/index.php">Nuevo Mensaje</a>
+                <a class="new" href="../Mensaje/index.php">Mensajes</a>
             </div>
             <div class="button__new">
                 <a class="new" href="../Nuevo/index.php">Nuevo Asesor</a>

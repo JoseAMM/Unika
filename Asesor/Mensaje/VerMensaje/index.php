@@ -10,10 +10,10 @@
 
     $db = conectarDB();
 
-    $idMensajeEmpleado = $_GET['id'];
-    $idMensajeEmpleado = filter_var($idMensajeEmpleado, FILTER_VALIDATE_INT);
+    $idMensaje = $_GET['id'];
+    $idMensaje = filter_var($idMensaje, FILTER_VALIDATE_INT);
 
-    if(!$idMensajeEmpleado) {
+    if(!$idMensaje) {
         header('Location: ../../Propiedades/Listado/index.php');
 }
 
@@ -40,10 +40,31 @@
 
     $errores = [];
 
-    $queryConsulta = "SELECT * FROM mensajeempleado WHERE idMensajeEmpleado = $idMensajeEmpleado";
+    $queryConsulta = "SELECT * FROM mensajes WHERE idMensaje = $idMensaje";
     $resultado = mysqli_query($db, $queryConsulta);
     $resultado = mysqli_fetch_assoc($resultado);
-    
+    $idRemitente = $resultado['Remitente'];
+    $idDestinatario = $resultado['Destinatario'];
+
+
+    $queryNombreRemitente = "SELECT Nombre_Apellido FROM empleado WHERE idEmpleado = $idRemitente";
+    $resultadoNombreRemitente = mysqli_query($db, $queryNombreRemitente);
+    $resultadoNombreRemitente = mysqli_fetch_assoc($resultadoNombreRemitente);
+    $remitente = $resultadoNombreRemitente['Nombre_Apellido'];
+
+
+
+    if($idDestinatario == 0){
+        $destinatario = "Todos los Asesores";
+    }else if($idDestinatario == 1){
+        $destinatario = "Todos los clientes";
+    } else {
+        $queryNombreDestinatario = "SELECT Nombre_Apellido FROM empleado WHERE idEmpleado = $idDestinatario";
+        $resultadoNombreDestinatario = mysqli_query($db, $queryNombreDestinatario);
+        $resultadoNombreDestinatario = mysqli_fetch_assoc($resultadoNombreDestinatario);
+        $destinatario = $resultadoNombreDestinatario['Nombre_Apellido'];
+    }
+
 
     $titulo   = $resultado['Titulo'];
     $mensaje   = $resultado['Mensaje'];
@@ -79,7 +100,7 @@
     <link rel="stylesheet" href="CSS/MOBILE/mobile.css" media="(max-width: 840px)">
     <link rel="stylesheet" href="CSS/MEDIUM/mobile.css" media="(min-width: 840px )">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap" rel="stylesheet"/>
-    <title>Unika|Nuevo Contrato</title>
+    <title>Unika|Ver Mensaje</title>
 </head>
 <body>
 <header class="header__propiedades">
@@ -115,12 +136,12 @@
         <section class="main__nav" id="main__nav">
             <nav>
                 <ul>
-                    <li><a href="../../Propiedades/Listado/index.php"><span>Inmuebles</span></a></li>
-                    <li><a href="../../Propiedades/VoBo/index.php"><span>VoBo Inmuebles</span></a></li>
+                    <li><a href="../../Propiedades/Listado/index.php">Inmuebles</a></li>
+                    <li><a href="../../Propiedades/VoBo/index.php">VoBo Inmuebles</a></li>
                     <li><a href="../../Clientes/Listado/index.php">Clientes</a></li>
-                    <li><a href="../index.php">Mensaje</a></li>
+                    <li><a href="../index.php">Mensajes</a></li>
                     <li><a href="../../Propiedades/Documentos/index.php">Documentos/Inmuebles</a></li>
-                    <li class="nav__logout"><a href="../../../cerrar-sesion.php">Cerrar Sesión</a></li>
+                    <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
                 </ul>
             </nav>
         </section>
@@ -135,6 +156,16 @@
         <section class="formulario">
 
         <form action="" method="POST">
+
+            <label for="Remitente">
+                <span>Remitente</span>
+                <input type="text"  value="<?php echo $remitente?>" readonly>
+            </label>
+            
+            <label for="Destinatario">
+                <span>Destinatario</span>
+                <input type="text"  value="<?php echo $destinatario?>" readonly>
+            </label>
 
             <label for="titulo">
                 <span>Título</span>

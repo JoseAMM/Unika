@@ -11,6 +11,7 @@ html {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+  font-family: "Montserrat";
 }
 
 .header__propiedades {
@@ -396,6 +397,7 @@ main .main__content .error p {
       -ms-flex-align: center;
           align-items: center;
   width: 25%;
+  padding: 1rem;
   font-size: 1.2rem;
   font-family: "Montserrat";
   font-weight: 700;

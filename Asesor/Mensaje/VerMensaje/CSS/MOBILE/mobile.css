@@ -7,7 +7,7 @@
 
 html {
   font-size: 62.5%;
-  background-image: url("../../../../../../Assets/fondo.jpeg");
+  background-image: url("../../../../../Assets/fondo.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -107,7 +107,7 @@ main {
   height: auto;
   text-align: center;
   font-family: "Montserrat";
-  background-image: url("../../../../../../Assets/fondo.jpeg");
+  background-image: url("../../../../../Assets/fondo.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -117,7 +117,7 @@ main .main__menu--content {
   background-color: rgba(255, 255, 255, 0.7);
 }
 main .main__menu--content .main__menu {
-  width: 40%;
+  width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -136,7 +136,7 @@ main .main__content {
   width: 100%;
 }
 main .main__content .main__nav {
-  width: 40%;
+  width: 50%;
   height: auto;
   margin: 0;
   background-color: white;

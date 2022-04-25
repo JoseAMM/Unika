@@ -7,7 +7,7 @@
 
 html {
   font-size: 62.5%;
-  background-image: url("../../../../../../Assets/fondo.jpeg");
+  background-image: url("../../../../../Assets/fondo.jpeg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
@@ -117,7 +117,7 @@ main .main__menu--content {
   background-color: rgba(255, 255, 255, 0.7);
 }
 main .main__menu--content .main__menu {
-  width: 20%;
+  width: 50%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -140,11 +140,11 @@ main .main__content {
           flex-direction: column;
 }
 main .main__content .main__nav {
-  width: 20%;
+  width: 50%;
   height: auto;
   margin: 0;
   z-index: -100;
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: white;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
           box-shadow: 0 1px 2px rgba(0, 0, 0, 0.07), 0 2px 4px rgba(0, 0, 0, 0.07), 0 4px 8px rgba(0, 0, 0, 0.07), 0 8px 16px rgba(0, 0, 0, 0.07), 0 16px 32px rgba(0, 0, 0, 0.07), 0 32px 64px rgba(0, 0, 0, 0.07);
 }
@@ -270,7 +270,7 @@ main .main__content .error p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 9rem;
+  width: 6rem;
   height: 3rem;
   background-color: red;
   border-radius: 1rem;
@@ -284,7 +284,7 @@ main .main__content .error p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 7rem;
+  width: 6rem;
   height: 4rem;
   margin: 0 auto;
   -webkit-box-align: center;
@@ -293,7 +293,7 @@ main .main__content .error p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-decoration: none;
   font-family: "Montserrat";
   font-weight: 700;
@@ -303,7 +303,7 @@ main .main__content .error p {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 9rem;
+  width: 6rem;
   height: 3rem;
   background-color: #4CAF50;
   opacity: 0.7;
@@ -326,7 +326,7 @@ main .main__content .error p {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-decoration: none;
   font-family: "Montserrat";
   font-weight: 700;
@@ -363,8 +363,8 @@ main .main__content .error p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 25%;
-  font-size: 1rem;
+  width: 16.6%;
+  font-size: 0.7rem;
   font-family: "Montserrat";
   font-weight: 700;
   border: ridge;
@@ -400,8 +400,8 @@ main .main__content .error p {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 25%;
-  font-size: 0.8rem;
+  width: 16.6%;
+  font-size: 0.6rem;
   font-family: "Montserrat";
   font-weight: 700;
   border: ridge;
@@ -440,7 +440,7 @@ main .main__content .error p {
   color: transparent;
   border: 0px;
   background-color: transparent;
-  background-image: url("../../../../../Assets/borrar.png");
+  background-image: url("../../../../Assets/borrar.png");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -451,7 +451,7 @@ main .main__content .error p {
   color: transparent;
   border: 0px;
   background-color: transparent;
-  background-image: url("../../../../../Assets/borrar-open.png");
+  background-image: url("../../../../Assets/borrar-open.png");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -461,7 +461,7 @@ main .main__content .error p {
   color: transparent;
   border: 0px;
   background-color: transparent;
-  background-image: url("../../../../../Assets/activo.png");
+  background-image: url("../../../../Assets/activo.png");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -472,7 +472,7 @@ main .main__content .error p {
   color: transparent;
   border: 0px;
   background-color: transparent;
-  background-image: url("../../../../../Assets/inactivo.png");
+  background-image: url("../../../../Assets/inactivo.png");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
