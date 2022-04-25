@@ -162,6 +162,11 @@ html {
       -ms-flex-direction: column;
           flex-direction: column;
 }
+.main__signup section form p {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: red;
+}
 .main__signup section form label {
   width: 100%;
   display: -webkit-box;

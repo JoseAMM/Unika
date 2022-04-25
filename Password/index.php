@@ -129,7 +129,7 @@
         <form action="" method="POST">
 
 
-        <p>Tu nueva contraseña será enviada a tu correo electrónico</p>
+        <p>¡Tu nueva contraseña será enviada a tu correo electrónico!</p>
             <label for="correo">
 
                 <span>Correo Electrónico</span>

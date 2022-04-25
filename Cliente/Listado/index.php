@@ -96,6 +96,7 @@ $resultadoInmueble = mysqli_query($db, $queryInmueble);
                 <ul>
                     <li><a href="../Editar/index.php"><span>Mi Cuenta</span></a></li>
                     <li><a href="index.php"><span>Inmuebles</span></a></li>
+                    <li><a href="../Mensaje/index.php"><span>Mensajes</span></a></li>
                     <li class="nav__logout"><a href="../cerrar-sesion.php">Cerrar Sesión</a></li>
                 </ul>
             </nav>
