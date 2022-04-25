@@ -4,7 +4,7 @@
 
     require 'limpieza.php';
 
-    if(isset($_POST['enviar'])){
+    if($_POST['enviar']){
         $name = limpieza($_POST['name']);
         $email = limpieza($_POST['email']);
         $cellphone = limpieza($_POST['cellphone']);
