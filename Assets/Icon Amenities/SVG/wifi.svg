@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.26 14">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <g id="transport">
+    <g id="wi_fi" data-name="wi fi">
+      <path class="cls-1" d="M.5,3.87C2.58,1.79,5.45,.5,8.63,.5s6.05,1.29,8.13,3.37"/>
+      <path class="cls-1" d="M14.64,5.99c-1.54-1.54-3.67-2.49-6.01-2.49s-4.47,.95-6.01,2.49"/>
+      <path class="cls-1" d="M12.52,8.11c-.99-.99-2.37-1.61-3.89-1.61s-2.9,.62-3.89,1.61"/>
+      <circle class="cls-1" cx="8.63" cy="12" r="1.5"/>
+    </g>
+  </g>
+</svg>

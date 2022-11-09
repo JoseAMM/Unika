@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 19">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <g id="transport">
+    <g>
+      <g id="tv_set" data-name="tv set">
+        <rect class="cls-1" x=".5" y=".5" width="23" height="15" rx="1" ry="1"/>
+        <polyline class="cls-1" points="19.5 18.5 17.5 15.5 6.5 15.5 4.5 18.5"/>
+      </g>
+      <line class="cls-1" x1="4.5" y1="3.5" x2="2.5" y2="5.5"/>
+      <line class="cls-1" x1="8.5" y1="3.5" x2="2.5" y2="9.5"/>
+    </g>
+  </g>
+</svg>

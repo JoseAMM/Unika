@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 16">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <g id="transport">
+    <g>
+      <path class="cls-1" d="M23.5,8s-4,7.5-11.5,7.5S.5,8,.5,8C.5,8,4.5,.5,12,.5s11.5,7.5,11.5,7.5Z"/>
+      <circle class="cls-1" cx="12" cy="8" r="4.5"/>
+    </g>
+  </g>
+</svg>

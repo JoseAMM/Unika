@@ -181,9 +181,8 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             $estacionamiento,
             '$otras',
             $resultadoAsignarFK);";
-            echo $queryCaracteristicas;
             $resultadoCaracteristicas = mysqli_query($db, $queryCaracteristicas);
-            echo mysqli_error($db);
+
 
 
             
@@ -210,7 +209,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
 
            
 
-            if($_FILES['foto1']['size'] != 0){
+            if(isset($_FILES['foto1']['size']) != NULL){
                 $imagen1 = $_FILES['foto1'];
                 $nombreImagen = 'inmueble_'.$resultadoAsignarFK . 'foto1'. '.jpg';
                 move_uploaded_file($imagen1['tmp_name'], $carpetaImagenes . $nombreImagen);

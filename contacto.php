@@ -4,13 +4,13 @@
 
     require 'limpieza.php';
 
-    if($_POST['enviar']){
+    if($_POST['enviar'] != NULL){
         $name = limpieza($_POST['name']);
         $email = limpieza($_POST['email']);
         $cellphone = limpieza($_POST['cellphone']);
         $asunto = limpieza($_POST['asunto']);
         $contenido = limpieza($_POST['contenido']);
-        $mail = "joseamm@comunidad.unam.mx";
+        $mail = "vicvans@hotmail.com";
         $contenido = "Telefono:" . $cellphone . "\r\n" . "Nombre: ". $name. "\r\n". $contenido;
         $header = "From: " . $email . "\r\n";
         $header.= "Reply-to: contacto@unika.com" ."\r\n";

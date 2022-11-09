@@ -112,12 +112,12 @@
         <section class="main__nav" id="main__nav">
             <nav>
                 <ul>
-                    <li><a href="../../Propiedades/Listado/index.php">Inmuebles</a></li>
-                    <li><a href="../../Propiedades/VoBo/index.php">VoBo Inmuebles</a></li>
-                    <li><a href="../../Listado/index.php">Clientes</a></li>
-                    <li><a href="../index.php">Mensajes</a></li>
-                    <li><a href="../../Propiedades/Documentos/index.php">Documentos/Inmuebles</a></li>
-                    <li class="nav__logout"><a href="../../cerrar-sesion.php">Cerrar Sesión</a></li>
+                <li><a href="../../../Propiedades/Listado/index.php">Inmuebles</a></li>
+                        <li><a href="../../../Propiedades/VoBo/index.php">VoBo Inmuebles</a></li>
+                        <li><a href="../../../Clientes/Listado/index.php">Clientes</a></li>
+                        <li><a href="../index.php">Mensajes</a></li>
+                        <li><a href="../../../Propiedades/Documentos/index.php">Documentos/Inmuebles</a></li>
+                        <li class="nav__logout"><a href="../../../cerrar-sesion.php">Cerrar Sesión</a></li>
                 </ul>
             </nav>
         </section>

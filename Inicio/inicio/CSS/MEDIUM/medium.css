@@ -67,12 +67,12 @@ html {
   width: 12rem;
   text-decoration: none;
   padding: 1rem;
-  background-color: #b38a4c;
+  background-color: rgb(179, 138, 76);
   color: white;
   font-weight: 400;
 }
 .header__content .header__up .header__up--buttons .buttons__contacto a:hover {
-  background-color: #eaab4c;
+  background-color: rgb(234, 171, 76);
 }
 .header__content .header__up .header__up--buttons .buttons__login {
   display: -webkit-box;
@@ -126,7 +126,7 @@ html {
   width: 70%;
   height: 5rem;
   margin: 0 auto;
-  background-color: #eee8d8;
+  background-color: rgb(238, 232, 216);
   margin-top: 2rem;
   border-radius: 5rem;
 }
@@ -152,11 +152,11 @@ html {
   color: black;
 }
 .header__content .header__down nav ul li:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 5rem 0 5rem 5rem;
 }
 .header__content .header__down nav ul .nav__left:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 5rem 0 5rem 5rem;
 }
 
@@ -181,12 +181,12 @@ main .main__presentation h1 {
   font-size: 8rem;
   font-weight: 400;
   padding-top: 15rem;
-  color: #5a4526;
+  color: rgb(90, 69, 38);
 }
 main .main__presentation p {
   padding-top: 6rem;
   font-size: 3.5rem;
-  color: #c18934;
+  color: rgb(193, 137, 52);
 }
 main .main__oficinas {
   width: 60%;
@@ -269,7 +269,7 @@ main .main__oficinas section ul .main__oficinas--li .oficina__content p {
 footer {
   width: 100%;
   height: 50vh;
-  background-color: #eee8d8;
+  background-color: rgb(238, 232, 216);
 }
 footer section {
   display: -webkit-box;

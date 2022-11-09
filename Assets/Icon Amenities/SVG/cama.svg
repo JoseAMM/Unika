@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Capa_2" data-name="Capa 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 15">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+    </style>
+  </defs>
+  <g id="transport">
+    <g id="double_bed" data-name="double bed">
+      <path class="cls-1" d="M1.5,7.5H22.5c.55,0,1,.45,1,1v4H.5v-4c0-.55,.45-1,1-1Z"/>
+      <path class="cls-1" d="M4.5,.5h15c1.1,0,2,.9,2,2V7.5H2.5V2.5c0-1.1,.9-2,2-2Z"/>
+      <path class="cls-1" d="M6.5,3.5h3c.55,0,1,.45,1,1v3H5.5v-3c0-.55,.45-1,1-1Z"/>
+      <path class="cls-1" d="M14.5,3.5h3c.55,0,1,.45,1,1v3h-5v-3c0-.55,.45-1,1-1Z"/>
+      <line class="cls-1" x1="1.5" y1="12.5" x2="1.5" y2="14.5"/>
+      <line class="cls-1" x1="22.5" y1="12.5" x2="22.5" y2="14.5"/>
+    </g>
+  </g>
+</svg>

@@ -225,6 +225,7 @@ main {
                     display: flex;
                     width: 100%;
                     align-items: center;
+                    margin: 0 0 1.5rem;
 
 
                     select {
@@ -234,7 +235,7 @@ main {
                         background-color: rgba(253, 151, 99, 0.4);
                         border: 0;
                         border-radius: 1rem;
-                        margin: 0 0 1.5rem;
+
                         padding: 1.5rem;
                         box-sizing: border-box;
                         font-size: 1.4rem;
@@ -292,6 +293,7 @@ main {
     border-radius: 1rem;
     text-align: center;
 
+
     .new {
         display: flex;
         width: 100%;
@@ -307,6 +309,66 @@ main {
         font-family: "Montserrat";
         font-weight: 700;
         color: white;
+    }
+
+}
+.button__add {
+    display: flex;
+    width: 10%;
+    height: 3rem;
+    // background-color: #3e59f4;
+    opacity: 0.7;
+    border-radius: 1rem;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+
+    .add {
+        display: flex;
+        width: 100%;
+        height: 4rem;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        text-decoration: none;
+        background-color: #3e59f4;
+        border-radius: 1rem;
+        border:none;
+        font-family: "Montserrat";
+        font-weight: 700;
+        color: white;
+        cursor: pointer;
+    }
+
+}
+.button__delete {
+    display: flex;
+    width: 10%;
+    height: 3rem;
+    // background-color: #3e59f4;
+    opacity: 0.7;
+    border-radius: 1rem;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+
+    .delete {
+        display: flex;
+        width: 100%;
+        height: 4rem;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        text-decoration: none;
+        background-color: #f43e3e;
+        border-radius: 1rem;
+        border:none;
+        font-family: "Montserrat";
+        font-weight: 700;
+        color: white;
+        cursor: pointer;
     }
 
 }
