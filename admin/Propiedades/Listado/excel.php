@@ -7,13 +7,14 @@ use \PhpOffice\PhpSpreadsheet\IOFactory;
 $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
 
 
-if(isset($_POST['excel']) == NULL){
+if (isset($_POST['excel']) == NULL) {
     header('Location: index.php');
 }
 $queryExcel = $_POST['excel'];
 
 //Conexión a la base de datos
-$db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
+// $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
+$db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
 
 $resultadoExcel = mysqli_query($db, $queryExcel);
 
@@ -24,17 +25,17 @@ $spreadsheet->setActiveSheetIndex(0);
 $hojaActiva = $spreadsheet->getActiveSheet();
 $i = 6;
 
-    while($row = $resultadoExcel->fetch_assoc()){
-        $hojaActiva->setCellValue('A'.$i, $row['idInmueble']);
-        $hojaActiva->setCellValue('C'.$i, $row['Nombre_Apellido']);
-        $hojaActiva->setCellValue('D'.$i, $row['Direccion']);
-        $hojaActiva->setCellValue('E'.$i, '$'.$row['Precio']);
-        $hojaActiva->setCellValue('F'.$i, $row['Superficie_Terreno'] . ' m2'); 
-        $hojaActiva->setCellValue('G'.$i, $row['Superficie_Construccion']. ' m2'); 
-        $hojaActiva->setCellValue('H'.$i, $row['Descripcion']); 
-        $hojaActiva->setCellValue('J'.$i, $row['Nombre_Contrato']);
-        $i++;
-    }
+while ($row = $resultadoExcel->fetch_assoc()) {
+    $hojaActiva->setCellValue('A' . $i, $row['idInmueble']);
+    $hojaActiva->setCellValue('C' . $i, $row['Nombre_Apellido']);
+    $hojaActiva->setCellValue('D' . $i, $row['Direccion']);
+    $hojaActiva->setCellValue('E' . $i, '$' . $row['Precio']);
+    $hojaActiva->setCellValue('F' . $i, $row['Superficie_Terreno'] . ' m2');
+    $hojaActiva->setCellValue('G' . $i, $row['Superficie_Construccion'] . ' m2');
+    $hojaActiva->setCellValue('H' . $i, $row['Descripcion']);
+    $hojaActiva->setCellValue('J' . $i, $row['Nombre_Contrato']);
+    $i++;
+}
 
 
 
@@ -48,4 +49,3 @@ header("$content");
 header('Cache-Control: max-age=0');
 $writer = IOFactory::createWriter($spreadsheet, 'Xlsx');
 $writer->save('php://output');
-
