@@ -1,7 +1,7 @@
 <?php
 $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
 ob_end_clean();
-require('../../../Reportes_PDF/fpdf.php');
+require_once('../../../Reportes_PDF/fpdf.php');
 
 //Conexión a la base de datos
 

@@ -2,15 +2,14 @@
 $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
 ob_end_clean();
 
-require('../Reportes_PDF/fpdf.php');
+require('../../../Reportes_PDF/fpdf.php');
 
-// $hashInmueble = password_hash('inmueble', PASSWORD_DEFAULT);
-// $id = 150;
-// $documento = "Aviso-de-privacidad";
-
-
+$id = $_GET['id'];
+$documento = $_GET['document'];
+$nombreImagenSubida = $_GET['imagen'];
 
 
+$nombreImagen = '../../../Canva/' . $nombreImagenSubida;
 
 
 
@@ -71,7 +70,7 @@ $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(255, 0, 0);
 
 // Logo Unika BR
-// $pdf->Image('../../../Assets/logo.png', 22, 10, 60.2, 28);
+$pdf->Image('../../../Assets/logo.png', 22, 10, 60.2, 28);
 
 // Línea
 $pdf->SetDrawColor(255, 0, 0);
@@ -146,21 +145,21 @@ $pdf->SetY(200);
 $pdf->SetX(22);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('Nombre del cliente: '));
+$pdf->Write(1, utf8_decode('Nombre del cliente: Iván'));
 
 // Texto: Domicilio
 $pdf->SetY(210);
 $pdf->SetX(22);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('Dirección: '));
+$pdf->Write(1, utf8_decode('Dirección: San Pedro Martir'));
 
 // Texto: Teléfono
 $pdf->SetY(220);
 $pdf->SetX(22);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('Teléfono: '));
+$pdf->Write(1, utf8_decode('Teléfono: 5617745135'));
 
 // Texto: RFC
 $pdf->SetY(220);
@@ -174,25 +173,12 @@ $pdf->SetY(230);
 $pdf->SetX(22);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('Correo Electrónico: '));
-
-
-
-// Colores de los bordes, fondo y texto
-$pdf->SetDrawColor(255, 0, 0);
-// Colores de los bordes, fondo y texto
-$pdf->SetFillColor(255, 0, 0);
-// Rectángulo
-$pdf->Rect(82, 240, 46, 10, 'FD');
-// $pdf->Link(82, 240, 46, 10, '../../../Canva/index.php?context=' . $hashInmueble . '&id=' . $id . '&document=' . $documento);
-
+$pdf->Write(1, utf8_decode('Correo Electrónico: joseamm@comunidad.unam.mx'));
 
 // Texto: Click aquí para firmar
 $pdf->SetY(245);
 $pdf->SetX(84);
-$pdf->SetTextColor(255, 255, 255);
-$pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('Click aquí para firmar'));
+$pdf->Image($nombreImagen, 95, 235, 20, 20 );
 
 // Línea
 $pdf->SetDrawColor(255, 0, 0);
@@ -207,7 +193,7 @@ $pdf->SetFont('Bold', '', 9);
 $pdf->Write(1, utf8_decode('Heriberto Frías 1149 Ofna 1, Col. Del Valle, CDMX // unikacdmx@gmail.com // Tel 56828888'));
 
 $name = $pdf->SetTitle('Aceptacion-Seguimiento' . '.pdf');
-$pdf->Output('D', 'Prueba');
+$pdf->Output();
 
     // $pdf->Output('D', 'Aceptacion-Seguimiento-'. 'reporte.pdf');
 

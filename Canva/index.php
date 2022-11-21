@@ -1,15 +1,10 @@
 <?php
-$hashInmueble = $_GET['context'];
-$id = $_GET['id'];
+$idInmueble = $_GET['id'];
 $documento = $_GET['document'];
+$queryComprobacionDocumentoPrivacidad = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND NombreDocumentosOficial = '$documento' AND Activo = 1";
+$consultaComprobacionDocumentoPrivacidad = mysqli_fetch_assoc(mysqli_query($db, $queryComprobacionDocumentoPrivacidad));
 
-if (!$hashInmueble) {
-  header('Location: ../index.html');
-}
-
-$verifyHash = password_verify('inmueble', $hashInmueble);
-
-if (!$verifyHash) {
+if ($consultaComprobacionDocumentoPrivacidad != NULL) {
   header('Location: ../index.html');
 }
 

@@ -198,7 +198,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             '$observaciones',
             '$descripcion',
             $resultadoAsignarFK);";
-            echo $queryCaracteristicas;
+
             $resultadoCaracteristicas = mysqli_query($db, $queryCaracteristicas);
 
 
