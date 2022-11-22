@@ -82,6 +82,6 @@ firmar.onclick = async () => {
   // );
 
   setTimeout(function () {
-    location.href = '../admin/Propiedades/Ver/avisoPrivacidadFirma.php?context=' + hashInmueble + '&id=' + id + '&document=' + documento + '&imagen=' + nombreImagenSubida;
-  }, 500);
+    location.href = '../admin/Propiedades/Ver/DocumentosCanva/avisoPrivacidadFirma.php?&id=' + id + '&document=' + documento + '&imagen=' + nombreImagenSubida;
+  }, 10);
 };

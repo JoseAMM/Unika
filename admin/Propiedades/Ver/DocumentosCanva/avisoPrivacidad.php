@@ -186,7 +186,7 @@ de Privacidad.'));
     $pdf->SetFillColor(255, 0, 0);
     // Rectángulo
     $pdf->Rect(82, 240, 46, 10, 'FD');
-    $pdf->Link(82, 240, 46, 10, 'localhost/Proyecto/Canva/index.php?id=' . $idInmueble . '&document=' . $nombreDocumento);
+    $pdf->Link(82, 240, 46, 10, 'https://unikabienesraices.com/Canva/index.php?id=' . $idInmueble . '&document=' . $nombreDocumento);
 
 
     // Texto: Click aquí para firmar

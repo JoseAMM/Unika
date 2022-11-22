@@ -1,17 +1,17 @@
 <?php
 // $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
-$db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
-$idInmueble = $_GET['id'];
-$documento = $_GET['document'];
-$queryComprobacionDocumentoPrivacidad = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND NombreDocumentosOficial = '$documento' AND Activo = 1";
-$consultaComprobacionDocumentoPrivacidad = mysqli_fetch_assoc(mysqli_query($db, $queryComprobacionDocumentoPrivacidad));
+// $db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
+// $idInmueble = $_GET['id'];
+// $documento = $_GET['document'];
+// $queryComprobacionDocumentoPrivacidad = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND NombreDocumentosOficial = '$documento' AND Activo = 1";
+// $consultaComprobacionDocumentoPrivacidad = mysqli_fetch_assoc(mysqli_query($db, $queryComprobacionDocumentoPrivacidad));
 
-if ($consultaComprobacionDocumentoPrivacidad != NULL) {
-  header('Location: ../index.html');
-}
+// if ($consultaComprobacionDocumentoPrivacidad != NULL) {
+//   header('Location: ../index.html');
+// }
 
 
-$link = '../admin/Propiedades/Ver/avisoPrivacidad.php?context=' . $hashInmueble . '&id=' . $id . '&document=' . $documento;
+// $link = '../admin/Propiedades/Ver/avisoPrivacidad.php?context=' . $hashInmueble . '&id=' . $id . '&document=' . $documento;
 ?>
 <!DOCTYPE html>
 <html lang="es">
