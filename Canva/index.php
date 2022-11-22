@@ -6,7 +6,11 @@ $documento = $_GET['document'];
 $queryComprobacionDocumentoPrivacidad = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND NombreDocumentosOficial = '$documento' AND Activo = 1";
 $consultaComprobacionDocumentoPrivacidad = mysqli_fetch_assoc(mysqli_query($db, $queryComprobacionDocumentoPrivacidad));
 
-if ($consultaComprobacionDocumentoPrivacidad != NULL) {
+echo $queryComprobacionDocumentoPrivacidad;
+var_dump($consultaComprobacionDocumentoPrivacidad);
+exit;
+
+if ($consultaComprobacionDocumentoPrivacidad == NULL) {
   header('Location: ../index.html');
 }
 
@@ -32,7 +36,7 @@ if ($consultaComprobacionDocumentoPrivacidad != NULL) {
       <button class="btn__clear" id="btn__clear">Limpiar</button>
       <button class="btn__keep" id="btn__keep">Firmar y Descargar</button>
     </section>
-    <p id="id" value="<?php echo $id ?>"></p>
+    <p id="id" value="<?php echo $idInmueble ?>"></p>
     <p id="documento" value="<?php echo $documento ?>"></p>
   </main>
   <script src="assets/index.js"></script>
