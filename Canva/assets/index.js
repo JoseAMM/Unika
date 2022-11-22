@@ -62,10 +62,8 @@ mainCanvas.addEventListener("touchstart", mouseDown);
 firmar.onclick = async () => {
   let id = document.getElementById("id");
   let documento = document.getElementById("documento");
-  let hashInmueble = document.getElementById("hashInmueble");
   id = id.getAttribute("value");
   documento = documento.getAttribute("value");
-  hashInmueble = hashInmueble.getAttribute("value");
   const data = mainCanvas.toDataURL("image/png");
 
   const fd = new FormData();
