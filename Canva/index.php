@@ -1,4 +1,6 @@
 <?php
+// $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
+$db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
 $idInmueble = $_GET['id'];
 $documento = $_GET['document'];
 $queryComprobacionDocumentoPrivacidad = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND NombreDocumentosOficial = '$documento' AND Activo = 1";

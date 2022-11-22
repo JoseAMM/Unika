@@ -6,6 +6,8 @@ function conectarDB(){
     
     if(!$db) {
 
+        echo ("conexion fallida");
+
     exit;
 } else {
     
