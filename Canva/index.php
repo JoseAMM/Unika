@@ -6,11 +6,8 @@ $documento = $_GET['document'];
 $queryComprobacionDocumentoPrivacidad = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND NombreDocumentosOficial = '$documento' AND Activo = 1";
 $consultaComprobacionDocumentoPrivacidad = mysqli_fetch_assoc(mysqli_query($db, $queryComprobacionDocumentoPrivacidad));
 
-echo $queryComprobacionDocumentoPrivacidad;
-var_dump($consultaComprobacionDocumentoPrivacidad);
-exit;
 
-if ($consultaComprobacionDocumentoPrivacidad == NULL) {
+if (!$consultaComprobacionDocumentoPrivacidad) {
   header('Location: ../index.html');
 }
 
