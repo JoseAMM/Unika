@@ -9,10 +9,10 @@ require_once('../../../../Reportes_PDF/fpdf.php');
 
 
 $idInmueble = $_GET['id'];
-$documento = $_GET['document'];
+$nombreDocumento = $_GET['document'];
 $nombreImagenSubida = $_GET['imagen'];
 
-$queryTablaTemporalDocumentosOficiales = "SELECT * FROM informaciontemporaldocumentosoficiales WHERE idInmueble_InformacionTemporalDocumentosOficiales = $idInmueble";
+$queryTablaTemporalDocumentosOficiales = "SELECT * FROM informaciontemporaldocumentosoficiales WHERE idInmueble_InformacionTemporalDocumentosOficiales = $idInmueble AND NombreDocumento = '$nombreDocumento'";
 $consultaTablaTemporalDocumentosOficiales = mysqli_fetch_assoc(mysqli_query($db, $queryTablaTemporalDocumentosOficiales));
 
 $nombrePrivacidad = $consultaTablaTemporalDocumentosOficiales['NombreCliente'];
@@ -157,7 +157,7 @@ $pdf->SetY(200);
 $pdf->SetX(22);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('Nombre del cliente: '. $nombrePrivacidad));
+$pdf->Write(1, utf8_decode('Nombre del cliente: ' . $nombrePrivacidad));
 
 // Texto: Domicilio
 $pdf->SetY(210);
@@ -178,14 +178,14 @@ $pdf->SetY(220);
 $pdf->SetX(104);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('RFC: '. $rfcPrivacidad));
+$pdf->Write(1, utf8_decode('RFC: ' . $rfcPrivacidad));
 
 // Texto: Correo Electrónico
 $pdf->SetY(230);
 $pdf->SetX(22);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('Correo Electrónico: '.$emailPrivacidad));
+$pdf->Write(1, utf8_decode('Correo Electrónico: ' . $emailPrivacidad));
 
 // Texto: Click aquí para firmar
 $pdf->SetY(245);
@@ -204,6 +204,9 @@ $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 9);
 $pdf->Write(1, utf8_decode('Heriberto Frías 1149 Ofna 1, Col. Del Valle, CDMX // unikacdmx@gmail.com // Tel 56828888'));
 
+$queryBorrarDatosTemporales = "DELETE * FROM informaciontemporaldocumentosoficiales WHERE idInmueble_InformacionTemporalDocumentosOficiales = $idInmueble AND NombreDocumento = $nombreDocumento";
+
+mysqli_query($db, $queryBorrarDatosTemporales);
 
 $name = $pdf->SetTitle('AvisoDePrivacidad.pdf');
 $pdf->Output('D', 'AvisoDePrivacidad.pdf');
