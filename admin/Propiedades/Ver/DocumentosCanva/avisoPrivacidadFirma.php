@@ -208,5 +208,8 @@ $queryBorrarDatosTemporales = "DELETE FROM informaciontemporaldocumentosoficiale
 
 mysqli_query($db, $queryBorrarDatosTemporales);
 
-$name = $pdf->SetTitle('AvisoDePrivacidad.pdf');
-$pdf->Output('D', 'AvisoDePrivacidad.pdf');
+$name = $pdf->SetTitle('AvisoDePrivacidad'. $idInmueble.'.pdf');
+
+$pdf->Output('F', '../DocumentosFirmados/AvisoDePrivacidad'. $idInmueble.'.pdf');
+$pdf->Output('D', 'AvisoDePrivacidad'. $idInmueble.'.pdf');
+
