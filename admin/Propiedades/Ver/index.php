@@ -105,12 +105,12 @@ if ($resultadoCountDocuments != 0) {
     $documentos = 0;
 }
 
-$queryDocumentoPrivacidad = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND Activo = 0" ;
+$queryDocumentoPrivacidad = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND Activo = 0";
 $consultaDocumentoPrivacidad = mysqli_fetch_assoc(mysqli_query($db, $queryDocumentoPrivacidad));
 
-if($consultaDocumentoPrivacidad != NULL){
+if ($consultaDocumentoPrivacidad != NULL) {
     $classDescargarPrivacidad = "descargarPrivacidadEnabled";
-}else {
+} else {
     $classDescargarPrivacidad = "descargarPrivacidadDisabled";
 }
 
@@ -127,20 +127,17 @@ if (isset($_POST['activarPrivacidad'])) {
     $consultaComprobacionDocumentoPrivacidad = mysqli_fetch_assoc(mysqli_query($db, $queryComprobacionDocumentoPrivacidad));
 
 
-    
+
     if ($consultaComprobacionDocumentoPrivacidad != NULL) {
         $idDocumentosOficiales = $consultaComprobacionDocumentoPrivacidad['idDocumentosOficiales'];
         $queryActualizarDocumentoPrivacidad = "UPDATE documentosoficiales SET Activo = 1 WHERE idDocumentosOficiales = $idDocumentosOficiales";
         $resultadoActualizarDocumentoPrivacidad = mysqli_query($db, $queryActualizarDocumentoPrivacidad);
-        
     } else {
         $queryInsertarDocumentoPrivacidad = "INSERT INTO documentosoficiales (NombreDocumentosOficial, idInmueble_DocumentosOficiales, Activo) VALUES ('AvisoPrivacidad', $idInmueble, 1)";
         $resultadoInsertarDocumentoPrivacidad = mysqli_query($db, $queryInsertarDocumentoPrivacidad);
-        
     }
-    
+
     avisoPrivacidad($nombrePrivacidad, $domicilioPrivacidad, $telefonoPrivacidad, $rfcPrivacidad, $emailPrivacidad, $idInmueble, 'AvisoPrivacidad');
-    
 }
 if (isset($_POST['download'])) {
     $download = 1;
@@ -226,7 +223,11 @@ if (isset($_GET['del'])) {
                     '<section class="parametros" id="parametros">' +
                     '<section>' +
                     '<span>Nombre del cliente</span>' +
-                    '<input type="text" value="<?php if($consultaCliente['Nombre'] != NULL){ echo ($consultaCliente['Nombre']);} else {echo ("Sin nombre registrado");}?>" name="nombrePrivacidad" required>' +
+                    '<input type="text" value="<?php if ($consultaCliente['Nombre'] != NULL) {
+                                                    echo ($consultaCliente['Nombre']);
+                                                } else {
+                                                    echo ("Sin nombre registrado");
+                                                } ?>" name="nombrePrivacidad" required>' +
                     '</section>' +
                     '<section>' +
                     '<span>Domicilio</span>' +
@@ -234,7 +235,11 @@ if (isset($_GET['del'])) {
                     '</section>' +
                     '<section>' +
                     '<span>Teléfono</span>' +
-                    '<input  type="text" value="<?php if($consultaCliente['Telefono'] != NULL){ echo ($consultaCliente['Telefono']);} else {echo ("Sin teléfono registrado");}?>" name="telefonoPrivacidad" required>' +
+                    '<input  type="text" value="<?php if ($consultaCliente['Telefono'] != NULL) {
+                                                    echo ($consultaCliente['Telefono']);
+                                                } else {
+                                                    echo ("Sin teléfono registrado");
+                                                } ?>" name="telefonoPrivacidad" required>' +
                     '</section>' +
                     '<section>' +
                     '<span>R.F.C</span>' +
@@ -242,16 +247,20 @@ if (isset($_GET['del'])) {
                     '</section>' +
                     '<section>' +
                     '<span>Email</span>' +
-                    '<input  type="text" value="<?php if($consultaCliente['Correo'] != NULL){ echo ($consultaCliente['Correo']);} else {echo ("Sin correo registrado");}?>" name="emailPrivacidad" required>' +
+                    '<input  type="text" value="<?php if ($consultaCliente['Correo'] != NULL) {
+                                                    echo ($consultaCliente['Correo']);
+                                                } else {
+                                                    echo ("Sin correo registrado");
+                                                } ?>" name="emailPrivacidad" required>' +
                     '</section>' +
                     '</section>');
-                    $('#activarPrivacidad').prop("disabled" , false);
-                    $('#activarPrivacidad').removeClass("activarPrivacidadDisabled");
-                    $('#activarPrivacidad').addClass("activarPrivacidadEnabled");
-                    
+                $('#activarPrivacidad').prop("disabled", false);
+                $('#activarPrivacidad').removeClass("activarPrivacidadDisabled");
+                $('#activarPrivacidad').addClass("activarPrivacidadEnabled");
+
             } else {
                 $('#parametros').remove();
-                $('#activarPrivacidad').prop("disabled" , true);
+                $('#activarPrivacidad').prop("disabled", true);
                 $('#activarPrivacidad').removeClass("activarPrivacidadEnabled");
                 $('#activarPrivacidad').addClass("activarPrivacidadDisabled");
             }
@@ -389,7 +398,7 @@ if (isset($_GET['del'])) {
                         <span>Aviso de Privacidad</span>
                         <section class="contenedor__firma">
                             <section class="acciones__firma" id="acciones__firma">
-                                <input type="submit" name="downloadPrivacidad" value="Descargar PDF firmado" class="<?php echo $classDescargarPrivacidad?>">
+                                <input type="submit" name="downloadPrivacidad" value="Descargar PDF firmado" class="<?php echo $classDescargarPrivacidad ?>">
                                 <input disabled id="activarPrivacidad" type="submit" value="Activar PDF para firma" name="activarPrivacidad" class="activarPrivacidadDisabled">
                                 <button id="editarPrivacidad" class="editarPrivacidad">Editar parámetros del PDF</button>
                             </section>
@@ -406,7 +415,7 @@ if (isset($_GET['del'])) {
                         <label for="descargar" class="input__download">
                             <span>Documento (<?php echo $row['Titulo'] ?>)</span>
                             <section>
-                                <a href="DocumentosFirmados/<?php echo $row['NombreDocumentosOficial'] . $idInmueble . '.pdf' ?>" download="<?php echo $row['idDocumentos'] ?>"></a>
+                                <a href="DocumentosFirmados/<?php echo $row['NombreDocumentosOficial'] . $idInmueble . '.pdf' ?>" download></a>
                                 <input type="hidden" class="input-borrar" name="borrar" onclick="preguntar(<?php echo $contador . ' ,' . $idInmueble ?>)">
                                 <input type="button" class="input-borrar" alt="" onclick="preguntar(<?php echo $contador . ' ,' . $idInmueble ?>)">
                             </section>
