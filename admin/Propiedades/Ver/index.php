@@ -105,12 +105,12 @@ if ($resultadoCountDocuments != 0) {
     $documentos = 0;
 }
 
-$queryDocumentoPrivacidad = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND Activo = 0" ;
+$queryDocumentoPrivacidad = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND Activo = 0";
 $consultaDocumentoPrivacidad = mysqli_fetch_assoc(mysqli_query($db, $queryDocumentoPrivacidad));
 
-if($consultaDocumentoPrivacidad != NULL){
+if ($consultaDocumentoPrivacidad != NULL) {
     $classDescargarPrivacidad = "descargarPrivacidadEnabled";
-}else {
+} else {
     $classDescargarPrivacidad = "descargarPrivacidadDisabled";
 }
 
@@ -127,20 +127,17 @@ if (isset($_POST['activarPrivacidad'])) {
     $consultaComprobacionDocumentoPrivacidad = mysqli_fetch_assoc(mysqli_query($db, $queryComprobacionDocumentoPrivacidad));
 
 
-    
+
     if ($consultaComprobacionDocumentoPrivacidad != NULL) {
         $idDocumentosOficiales = $consultaComprobacionDocumentoPrivacidad['idDocumentosOficiales'];
         $queryActualizarDocumentoPrivacidad = "UPDATE documentosoficiales SET Activo = 1 WHERE idDocumentosOficiales = $idDocumentosOficiales";
         $resultadoActualizarDocumentoPrivacidad = mysqli_query($db, $queryActualizarDocumentoPrivacidad);
-        
     } else {
         $queryInsertarDocumentoPrivacidad = "INSERT INTO documentosoficiales (NombreDocumentosOficial, idInmueble_DocumentosOficiales, Activo) VALUES ('AvisoPrivacidad', $idInmueble, 1)";
         $resultadoInsertarDocumentoPrivacidad = mysqli_query($db, $queryInsertarDocumentoPrivacidad);
-        
     }
-    
+
     avisoPrivacidad($nombrePrivacidad, $domicilioPrivacidad, $telefonoPrivacidad, $rfcPrivacidad, $emailPrivacidad, $idInmueble, 'AvisoPrivacidad');
-    
 }
 if (isset($_POST['download'])) {
     $download = 1;
@@ -255,18 +252,9 @@ if (isset($_GET['del'])) {
                 $('#activarPrivacidad').removeClass("activarPrivacidadEnabled");
                 $('#activarPrivacidad').addClass("activarPrivacidadDisabled");
             }
-
-
-
-
-
-
-
-
         });
     });
 </script>
-
 <body>
     <header class="header__propiedades">
         <div>
@@ -389,7 +377,7 @@ if (isset($_GET['del'])) {
                         <span>Aviso de Privacidad</span>
                         <section class="contenedor__firma">
                             <section class="acciones__firma" id="acciones__firma">
-                                <a href="DocumentosFirmados/AvisoPrivacidad" <?php echo $idInmueble . '.pdf'?>  class="<?php echo $classDescargarPrivacidad?>">Descargar PDF firmado</a>
+                                <a href="DocumentosFirmados/AvisoPrivacidad <?php echo ($idInmueble . '.pdf') ?>" class="<?php echo $classDescargarPrivacidad ?>" download="AvisoPrivacidad <?php echo ($idInmueble . '.pdf') ?> ">Descargar PDF firmado</a>
                                 <input disabled id="activarPrivacidad" type="submit" value="Activar PDF para firma" name="activarPrivacidad" class="activarPrivacidadDisabled">
                                 <button id="editarPrivacidad" class="editarPrivacidad">Editar parámetros del PDF</button>
                             </section>
