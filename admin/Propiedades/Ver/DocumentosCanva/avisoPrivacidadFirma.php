@@ -17,8 +17,6 @@ $nombreImagenSubida = $_GET['imagen'];
 $nombreImagen = '../../../../Canva/assets/Firmas/' . $nombreImagenSubida;
 
 
-
-
 global $db;
 class PDF extends FPDF
 {
