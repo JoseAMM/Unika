@@ -31,7 +31,7 @@ if (!$consultaComprobacionDocumentoPrivacidad) {
     <canvas id="main-canvas" class="main-canvas" style="border: 5px solid rgb(255, 0, 0)"></canvas>
     <section class="container__btn">
       <button class="btn__clear" id="btn__clear">Limpiar</button>
-      <button class="btn__keep" id="btn__keep">Firmar y Descargar</button>
+      <button class="btn__keep" id="btn__keep" onclick="firmar()">Firmar y Descargar</button>
     </section>
     <p id="id" value="<?php echo $idInmueble ?>"></p>
     <p id="documento" value="<?php echo $documento ?>"></p>

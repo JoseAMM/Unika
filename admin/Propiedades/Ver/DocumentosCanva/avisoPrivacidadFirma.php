@@ -2,14 +2,19 @@
 // $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
 $db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
 
-require('../../../Reportes_PDF/fpdf.php');
+
+
+
+require_once('../../../../Reportes_PDF/fpdf.php');
+
 
 $id = $_GET['id'];
 $documento = $_GET['document'];
 $nombreImagenSubida = $_GET['imagen'];
 
 
-$nombreImagen = '../../../Canva/' . $nombreImagenSubida;
+
+$nombreImagen = '../../../../Canva/' . $nombreImagenSubida;
 
 
 
@@ -70,7 +75,7 @@ $pdf->SetFillColor(255, 255, 255);
 $pdf->SetTextColor(255, 0, 0);
 
 // Logo Unika BR
-$pdf->Image('../../../Assets/logo.png', 22, 10, 60.2, 28);
+$pdf->Image('../../../../Assets/logo.png', 22, 10, 60.2, 28);
 
 // Línea
 $pdf->SetDrawColor(255, 0, 0);
@@ -192,22 +197,6 @@ $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 9);
 $pdf->Write(1, utf8_decode('Heriberto Frías 1149 Ofna 1, Col. Del Valle, CDMX // unikacdmx@gmail.com // Tel 56828888'));
 
-$name = $pdf->SetTitle('Aceptacion-Seguimiento' . '.pdf');
-$pdf->Output();
 
-    // $pdf->Output('D', 'Aceptacion-Seguimiento-'. 'reporte.pdf');
-
-
-
-
-
-    // $name = $pdf->SetTitle($idInmueble . 'reporte.pdf');
-
-
-    // if ($download == 1) {
-    //     $pdf->Output('D', $idInmueble . 'reporte.pdf');
-    // }
-
-    // if ($print == 1 or $share == 1) {
-    //     $pdf->Output();
-    // }
+$name = $pdf->SetTitle('AvisoDePrivacidad.pdf');
+$pdf->Output('D', 'AvisoDePrivacidad.pdf');

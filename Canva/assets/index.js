@@ -1,6 +1,6 @@
 //Guardar el elemento y el contexto
 const mainCanvas = document.getElementById("main-canvas");
-const firmar = document.getElementById("btn__keep");
+// const firmar = document.getElementById("btn__keep");
 const clearCanvas = document.getElementById("btn__clear");
 const context = mainCanvas.getContext("2d");
 let rect = mainCanvas.getBoundingClientRect();
@@ -59,35 +59,40 @@ const mouseUp = () => {
 
 mainCanvas.addEventListener("touchstart", mouseDown);
 
-firmar.onclick = async () => {
+ function firmar() {
   let id = document.getElementById("id");
   let documento = document.getElementById("documento");
   id = id.getAttribute("value");
   documento = documento.getAttribute("value");
   const data = mainCanvas.toDataURL("image/png");
+  var n = Math.floor(Math.random() * 10000);
+  let nombreDocumento = id + documento + n + ".png";
 
   const fd = new FormData();
   fd.append("imagen", data); // Se llama "imagen", en PHP lo recuperamos con $_POST["imagen"]
   fd.append("id", id); // Se llama "id", en PHP lo recuperamos con $_POST["id"]
   fd.append("documento", documento); // Se llama "documento", en PHP lo recuperamos con $_POST["documento"]
-  const respuestaHttp = await fetch("pngFirma.php", {
+  fd.append("nombreDocumento", nombreDocumento); // Se llama "documento", en PHP lo recuperamos con $_POST["documento"]
+  const respuestaHttp = fetch("pngFirma.php", {
     method: "POST",
     body: fd,
   });
-  const nombreImagenSubida = await respuestaHttp.json();
   // console.log(
   //   "La imagen ha sido enviada y tiene el nombre de: " + nombreImagenSubida
   // );
 
   setTimeout(function () {
-    location.href =
-      "../admin/Propiedades/Ver/DocumentosCanva/avisoPrivacidadFirma.php?id=" +
+    window.location.href =
+      "https://unikabienesraices.com/admin/Propiedades/Ver/DocumentosCanva/avisoPrivacidadFirma.php?id=" +
       id +
       "&document=" +
       documento +
       "&imagen=" +
-      nombreImagenSubida;
-  }, 10);
+      nombreDocumento;
+  }, 1500);
+      setTimeout(function () {
+    window.location.replace('http://unikabienesraices.com/index.html');}, 4000)
+
 };
 
 // location.href = '../../../admin/Propiedades/Ver/DocumentosCanva/avisoPrivacidadFirma.php?id=' + id + '&document=' + documento + '&imagen=' + nombreImagenSubida;
