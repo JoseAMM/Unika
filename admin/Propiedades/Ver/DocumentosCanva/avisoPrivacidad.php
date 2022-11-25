@@ -216,7 +216,4 @@ de Privacidad.'));
 
     $name = $pdf->SetTitle('AvisoDePrivacidad.pdf');
     $pdf->Output('D', 'AvisoDePrivacidad.pdf');
-
-
-
 }

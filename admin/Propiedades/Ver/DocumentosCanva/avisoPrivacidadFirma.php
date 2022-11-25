@@ -8,9 +8,18 @@ $db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_biene
 require_once('../../../../Reportes_PDF/fpdf.php');
 
 
-$id = $_GET['id'];
+$idInmueble = $_GET['id'];
 $documento = $_GET['document'];
 $nombreImagenSubida = $_GET['imagen'];
+
+$queryTablaTemporalDocumentosOficiales = "SELECT * FROM informaciontemporaldocumentosoficiales WHERE idInmueble_InformacionTemporalDocumentosOficiales = $idInmueble";
+$consultaTablaTemporalDocumentosOficiales = mysqli_fetch_assoc(mysqli_query($db, $queryTablaTemporalDocumentosOficiales));
+
+$nombrePrivacidad = $consultaTablaTemporalDocumentosOficiales['NombreCliente'];
+$domicilioPrivacidad = $consultaTablaTemporalDocumentosOficiales['Domicilio'];
+$telefonoPrivacidad = $consultaTablaTemporalDocumentosOficiales['Telefono'];
+$rfcPrivacidad = $consultaTablaTemporalDocumentosOficiales['RFC'];
+$emailPrivacidad = $consultaTablaTemporalDocumentosOficiales['Correo'];
 
 
 
@@ -85,7 +94,7 @@ $pdf->SetY(50);
 $pdf->SetX(78);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 15);
-$pdf->Write(1, utf8_decode($documento));
+$pdf->Write(1, utf8_decode('Aviso de Privacidad'));
 
 // Línea
 $pdf->SetDrawColor(0, 0, 0);
@@ -148,40 +157,40 @@ $pdf->SetY(200);
 $pdf->SetX(22);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('Nombre del cliente: Iván'));
+$pdf->Write(1, utf8_decode('Nombre del cliente: '. $nombrePrivacidad));
 
 // Texto: Domicilio
 $pdf->SetY(210);
 $pdf->SetX(22);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('Dirección: San Pedro Martir'));
+$pdf->Write(1, utf8_decode('Dirección: ' . $domicilioPrivacidad));
 
 // Texto: Teléfono
 $pdf->SetY(220);
 $pdf->SetX(22);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('Teléfono: 5617745135'));
+$pdf->Write(1, utf8_decode('Teléfono: ' . $telefonoPrivacidad));
 
 // Texto: RFC
 $pdf->SetY(220);
 $pdf->SetX(104);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('RFC: '));
+$pdf->Write(1, utf8_decode('RFC: '. $rfcPrivacidad));
 
 // Texto: Correo Electrónico
 $pdf->SetY(230);
 $pdf->SetX(22);
 $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 10);
-$pdf->Write(1, utf8_decode('Correo Electrónico: joseamm@comunidad.unam.mx'));
+$pdf->Write(1, utf8_decode('Correo Electrónico: '.$emailPrivacidad));
 
 // Texto: Click aquí para firmar
 $pdf->SetY(245);
 $pdf->SetX(84);
-$pdf->Image($nombreImagen, 95, 235, 20, 20 );
+$pdf->Image($nombreImagen, 95, 235, 20, 20);
 
 // Línea
 $pdf->SetDrawColor(255, 0, 0);
