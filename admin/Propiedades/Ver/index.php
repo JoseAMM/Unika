@@ -389,7 +389,7 @@ if (isset($_GET['del'])) {
                         <span>Aviso de Privacidad</span>
                         <section class="contenedor__firma">
                             <section class="acciones__firma" id="acciones__firma">
-                                <input type="submit" name="downloadPrivacidad" value="Descargar PDF firmado" class="<?php echo $classDescargarPrivacidad?>">
+                                <a href="DocumentosFirmados/AvisoPrivacidad" <?php echo $idInmueble . '.pdf'?>  class="<?php echo $classDescargarPrivacidad?>">Descargar PDF firmado</a>
                                 <input disabled id="activarPrivacidad" type="submit" value="Activar PDF para firma" name="activarPrivacidad" class="activarPrivacidadDisabled">
                                 <button id="editarPrivacidad" class="editarPrivacidad">Editar parámetros del PDF</button>
                             </section>
@@ -406,7 +406,7 @@ if (isset($_GET['del'])) {
                         <label for="descargar" class="input__download">
                             <span>Documento (<?php echo $row['Titulo'] ?>)</span>
                             <section>
-                                <a href="DocumentosFirmados/<?php echo $row['NombreDocumentosOficial'] . $idInmueble . '.pdf' ?>" download>"></a>
+                                <a href="../Documentos/Documents/<?php echo $row['idDocumentos'] ?>" download="<?php echo $row['idDocumentos'] ?>"></a>
                                 <input type="hidden" class="input-borrar" name="borrar" onclick="preguntar(<?php echo $contador . ' ,' . $idInmueble ?>)">
                                 <input type="button" class="input-borrar" alt="" onclick="preguntar(<?php echo $contador . ' ,' . $idInmueble ?>)">
                             </section>
