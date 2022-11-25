@@ -87,16 +87,23 @@ function pdf(
     $i = 1;
 
     while ($row = mysqli_fetch_assoc($consultaFotos)) {
-        // switch($i){
-        //     case 1:
+        switch ($i) {
+            case 1:
+                $pdf->Image('../Imagenes/' . $row['NombreFotos'], 135, 35, 160, 80);
+                break;
+            case 2:
+                $pdf->Image('../Imagenes/' . $row['NombreFotos'], 135, 116, 50, 50);
 
-        // }
-        $pdf->Image('../Imagenes/' . $row['NombreFotos'], 135, 35, 160, 80);
-        $pdf->Image('../Imagenes/' . $row['NombreFotos'], 135, 116, 50, 50);
-        $pdf->Image('../Imagenes/' . $row['NombreFotos'], 190, 116, 50, 50);
-        $pdf->Image('../Imagenes/' . $row['NombreFotos'], 245, 116, 50, 50);
+                break;
+            case 3:
+                $pdf->Image('../Imagenes/' . $row['NombreFotos'], 190, 116, 50, 50);
+                break;
+            case 4:
+                $pdf->Image('../Imagenes/' . $row['NombreFotos'], 245, 116, 50, 50);
+                break;
+        }
+        $i++;
         // $pdf->Image('../Imagenes/' . $row['NombreFotos'], 10, 100, 50, 25);
-
     }
 
 
@@ -116,7 +123,7 @@ function pdf(
     $pdf->SetX(180);
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Black', '', 40);
-    $pdf->Write(1, '$'. utf8_decode($precio));
+    $pdf->Write(1, '$' . utf8_decode($precio));
     $pdf->SetY(10);
     $pdf->SetX(135);
     $pdf->SetTextColor(255, 0, 0);
@@ -176,7 +183,7 @@ function pdf(
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Regular', '', 7);
     $pdf->MultiCell(100, 5, $descripcion);
-    
+
 
     $consultaAmenidades = "SELECT otras_caracteristicas.idAmenidades, 
     NombreAmenidades
@@ -189,7 +196,7 @@ function pdf(
 
     while ($row = mysqli_fetch_assoc($consultaAmenidades)) {
 
-        if ($i == 11){
+        if ($i == 11) {
             $y = 110;
             $x = 15;
         }
@@ -232,7 +239,7 @@ function pdf(
                 $i++;
                 break;
             case 12:
-                $pdf->Image('../../../Assets/Icon Amenities/Karaoke.png', $x + 1 , $y, 4, 7);
+                $pdf->Image('../../../Assets/Icon Amenities/Karaoke.png', $x + 1, $y, 4, 7);
                 $i++;
                 break;
             case 13:
@@ -252,7 +259,6 @@ function pdf(
 
 
         $x = $x + 10;
-        
     }
 
 
