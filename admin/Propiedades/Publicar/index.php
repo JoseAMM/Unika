@@ -566,7 +566,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     <label for="urlVideo">
                         <span>Foto 1 (Max: 4 Mb)</span>
-                        <input class="input__text" type="file" id="foto1" name="foto1" accept="image/jpeg" required>
+                        <input class="input__text" type="file" id="foto1" name="foto1" accept="image/jpeg, image/png" required>
                     </label>
                     <label for="urlVideo">
                         <span>Foto 2 (Max: 4 Mb)</span>
@@ -586,7 +586,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </label>
                     <label for="urlVideo">
                         <span>Foto 6 (Max: 4 Mb)</span>
-                        <input class="input__text" type="file" id="foto6" name="foto6" accept="image/jpeg">
+                        <input class="input__text" type="file" id="foto6" name="foto6" accept="image/jpeg, image/png">
                     </label>
                     <label for="urlVideo">
                         <span>Foto 7 (Max: 4 Mb)</span>
@@ -606,7 +606,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </label>
                     <label for="urlVideo">
                         <span>Foto 11 (Max: 4 Mb)</span>
-                        <input class="input__text" type="file" id="foto11" name="foto11" accept="image/jpeg">
+                        <input class="input__text" type="file" id="foto11" name="foto11" accept="image/jpeg, image/png">
                     </label>
                     <label for="urlVideo">
                         <span>Foto 12 (Max: 4 Mb)</span>
