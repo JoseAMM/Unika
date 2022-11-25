@@ -210,12 +210,13 @@ de Privacidad.'));
     $pdf->SetFont('Bold', '', 9);
     $pdf->Write(1, utf8_decode('Heriberto Frías 1149 Ofna 1, Col. Del Valle, CDMX // unikacdmx@gmail.com // Tel 56828888'));
 
-    $name = $pdf->SetTitle('AvisoDePrivacidad.pdf');
-    $pdf->Output('D', 'AvisoDePrivacidad.pdf');
-
     $queryInsertarEnTablaTemporal = "INSERT INTO InformacionTemporalDocumentosOficiales (NombreCliente, Domicilio, Telefono, RFC, idInmueble_InformacionTemporalDocumentosOficiales) VALUES ($nombrePrivacidad, $domicilioPrivacidad, $telefonoPrivacidad, $rfcPrivacidad, $emailPrivacidad, $emailPrivacidad, $idInmueble)";
 
     $consultaInsertarEnTablaTemporal = mysqli_query($db, $queryInsertarEnTablaTemporal);
+    
+    $name = $pdf->SetTitle('AvisoDePrivacidad.pdf');
+    $pdf->Output('D', 'AvisoDePrivacidad.pdf');
+
 
 
 }
