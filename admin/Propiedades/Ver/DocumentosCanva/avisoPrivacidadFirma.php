@@ -208,7 +208,10 @@ $queryBorrarDatosTemporales = "DELETE FROM informaciontemporaldocumentosoficiale
 
 mysqli_query($db, $queryBorrarDatosTemporales);
 
-$name = $pdf->SetTitle('AvisoDePrivacidad'. $idInmueble.'.pdf');
+$queryDesactivarFirma = "UPDATE documentosoficiales SET Activo = 0 WHERE idInmueble_DocumentosOficiales = $idInmueble AND NombreDocumentosOficial = '$nombreDocumento'";
+mysqli_query($db, $queryDesactivarFirma);
+
+$name = $pdf->SetTitle('AvisoPrivacidad'. $idInmueble.'.pdf');
 
 $pdf->Output('F', '../DocumentosFirmados/AvisoDePrivacidad'. $idInmueble.'.pdf');
 $pdf->Output('D', 'AvisoDePrivacidad'. $idInmueble.'.pdf');

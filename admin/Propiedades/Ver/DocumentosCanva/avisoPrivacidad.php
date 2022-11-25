@@ -59,7 +59,7 @@ function avisoPrivacidad(
     }
     global $pdf;
     global $db;
-
+    unlink('../DocumentosFirmados/AvisoPrivacidad' . $idInmueble . '.pdf');
     $pdf = new PDF();
     $pdf->AddPage('P', 'Letter');
     $pdf->AddFont('Regular', '', 'Montserrat-Regular.php');
