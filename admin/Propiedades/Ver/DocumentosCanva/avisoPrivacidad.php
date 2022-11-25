@@ -218,6 +218,6 @@ de Privacidad.'));
 
     mysqli_query($db, $queryInsertarEnTablaTemporal);
 
-    $name = $pdf->SetTitle('AvisoDePrivacidad.pdf');
-    $pdf->Output('D', 'AvisoDePrivacidad.pdf');
+    $name = $pdf->SetTitle('AvisoPrivacidad.pdf');
+    $pdf->Output('D', 'AvisoPrivacidad.pdf');
 }

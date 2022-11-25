@@ -406,7 +406,7 @@ if (isset($_GET['del'])) {
                         <label for="descargar" class="input__download">
                             <span>Documento (<?php echo $row['Titulo'] ?>)</span>
                             <section>
-                                <a href="../Documentos/Documents/<?php echo $row['idDocumentos'] ?>" download="<?php echo $row['idDocumentos'] ?>"></a>
+                                <a href="DocumentosFirmados/<?php echo $row['NombreDocumentosOficial'] . $idInmueble . '.pdf' ?>" download="<?php echo $row['idDocumentos'] ?>"></a>
                                 <input type="hidden" class="input-borrar" name="borrar" onclick="preguntar(<?php echo $contador . ' ,' . $idInmueble ?>)">
                                 <input type="button" class="input-borrar" alt="" onclick="preguntar(<?php echo $contador . ' ,' . $idInmueble ?>)">
                             </section>
