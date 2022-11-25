@@ -14,7 +14,7 @@ $nombreImagenSubida = $_GET['imagen'];
 
 
 
-$nombreImagen = '../../../../Canva/' . $nombreImagenSubida;
+$nombreImagen = '../../../../Canva/assets/Firmas/' . $nombreImagenSubida;
 
 
 
