@@ -204,7 +204,7 @@ $pdf->SetTextColor(0, 0, 0);
 $pdf->SetFont('Bold', '', 9);
 $pdf->Write(1, utf8_decode('Heriberto Frías 1149 Ofna 1, Col. Del Valle, CDMX // unikacdmx@gmail.com // Tel 56828888'));
 
-$queryBorrarDatosTemporales = "DELETE * FROM informaciontemporaldocumentosoficiales WHERE idInmueble_InformacionTemporalDocumentosOficiales = $idInmueble AND NombreDocumento = $nombreDocumento";
+$queryBorrarDatosTemporales = "DELETE FROM informaciontemporaldocumentosoficiales WHERE idInmueble_InformacionTemporalDocumentosOficiales = $idInmueble AND NombreDocumento = $nombreDocumento";
 
 mysqli_query($db, $queryBorrarDatosTemporales);
 
