@@ -213,6 +213,6 @@ mysqli_query($db, $queryDesactivarFirma);
 
 $name = $pdf->SetTitle('AvisoPrivacidad'. $idInmueble.'.pdf');
 
-$pdf->Output('F', '../DocumentosFirmados/AvisoDePrivacidad'. $idInmueble.'.pdf');
+$pdf->Output('F', '../DocumentosFirmados/AvisoPrivacidad'. $idInmueble.'.pdf');
 $pdf->Output('D', 'AvisoPrivacidad'. $idInmueble.'.pdf');
 
