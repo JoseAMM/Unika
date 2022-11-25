@@ -377,7 +377,7 @@ if (isset($_GET['del'])) {
                         <span>Aviso de Privacidad</span>
                         <section class="contenedor__firma">
                             <section class="acciones__firma" id="acciones__firma">
-                                <a href="DocumentosFirmados/AvisoPrivacidad<?php echo($idInmueble . '.pdf')?>" class="<?php echo $classDescargarPrivacidad ?>" download="AvisoPrivacidad <?php echo ($idInmueble . '.pdf') ?> ">Descargar PDF firmado</a>
+                                <a href="./DocumentosFirmados/AvisoPrivacidad<?php echo($idInmueble . '.pdf')?>" class="<?php echo $classDescargarPrivacidad ?>" download>Descargar PDF firmado</a>
                                 <input disabled id="activarPrivacidad" type="submit" value="Activar PDF para firma" name="activarPrivacidad" class="activarPrivacidadDisabled">
                                 <button id="editarPrivacidad" class="editarPrivacidad">Editar parámetros del PDF</button>
                             </section>
