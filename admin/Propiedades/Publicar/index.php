@@ -242,14 +242,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                     if ($_FILES['foto' . "$i"] == $_FILES['foto1']) {
                         $imagen = $_FILES['foto' . "$i"];
-                        $nombreImagen = 'inmueble_' . $resultadoAsignarFK . 'foto' . $i . '.jpg';
+                        //"image/jpeg, image/png"
+                        if($imagen['type'] == "image/jpeg"){
+                            $extension = ".jpg";
+                        }else if($imagen['type'] == "image/png"){
+                            $extension = ".png";
+                        }
+                        $nombreImagen = 'inmueble_' . $resultadoAsignarFK . 'foto' . $i . $extension;
                         move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
                         $queryFotos = "INSERT INTO fotos (id_Inmueble_Fotos, NombreFotos, FotoPortada) VALUES ($resultadoAsignarFK, '$nombreImagen', '$nombreImagen')";
                         $resultadoFotos = mysqli_query($db, $queryFotos);
                     } else {
 
                         $imagen = $_FILES['foto' . "$i"];
-                        $nombreImagen = 'inmueble_' . $resultadoAsignarFK . 'foto' . $i . '.jpg';
+                        if($imagen['type'] == "image/jpeg"){
+                            $extension = ".jpg";
+                        }else if($imagen['type'] == "image/png"){
+                            $extension = ".png";
+                        }
+                        $nombreImagen = 'inmueble_' . $resultadoAsignarFK . 'foto' . $i . $extension;
                         move_uploaded_file($imagen['tmp_name'], $carpetaImagenes . $nombreImagen);
                         $queryFotos = "INSERT INTO fotos (id_Inmueble_Fotos, NombreFotos) VALUES ($resultadoAsignarFK, '$nombreImagen')";
                         $resultadoFotos = mysqli_query($db, $queryFotos);
