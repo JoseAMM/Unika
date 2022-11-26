@@ -94,7 +94,7 @@ if (isset($_GET['del'])) {
     $idInmueble = $_GET['del'];
     $queryBorrarInmueble = "DELETE from inmueble where idInmueble = $idInmueble";
     $queryBorrarDatosBasicos = "DELETE from datos_basicos where Inmueble_idInmueble = $idInmueble";
-    $queryBorrarCaracteristicas = "DELETE from caracteristicas where idInmueble = $idInmueble";
+    $queryBorrarCaracteristicas = "DELETE from caracteristicas where idInmueble_Caracteristicas = $idInmueble";
     $resultadoBorrar = mysqli_query($db, $queryBorrarDatosBasicos);
     $resultadoBorrar = mysqli_query($db, $queryBorrarCaracteristicas);
     $resultadoBorrar = mysqli_query($db, $queryBorrarInmueble);

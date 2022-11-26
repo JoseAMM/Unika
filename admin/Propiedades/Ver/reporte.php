@@ -181,7 +181,7 @@ function pdf(
     $pdf->SetY(120);
     $pdf->SetX(15);
     $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Regular', '', 7);
+    $pdf->SetFont('Regular', '', 10);
     $pdf->MultiCell(100, 5, $descripcion);
 
 

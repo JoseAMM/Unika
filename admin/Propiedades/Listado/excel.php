@@ -43,7 +43,7 @@ while ($row = $resultadoExcel->fetch_assoc()) {
 // $writer->save('Mi excel.xlsx');
 
 $fecha = 'prueba';
-$content = 'Content-Disposition: attachment;filename=' . "$fecha" . '.xlsx"';
+$content = 'Content-Disposition: attachment;filename=' . "$fecha" . '.xlsx';
 header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 header("$content");
 header('Cache-Control: max-age=0');
