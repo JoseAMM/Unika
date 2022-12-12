@@ -29,7 +29,7 @@ while ($row = $resultadoExcel->fetch_assoc()) {
     $hojaActiva->setCellValue('A' . $i, $row['idInmueble']);
     $hojaActiva->setCellValue('B' . $i, $row['Oficina']);
     $hojaActiva->setCellValue('C' . $i, $row['Nombre_Apellido']);
-    $hojaActiva->setCellValue('D' . $i, $row['Direccion']);
+    $hojaActiva->setCellValue('D' . $i, utf8_decode( $row['Direccion']));
     $hojaActiva->setCellValue('E' . $i, $row['nombre']);
     $hojaActiva->setCellValue('F' . $i, '$' . $row['Precio']);
     $hojaActiva->setCellValue('G' . $i, $row['Superficie_Terreno']);
