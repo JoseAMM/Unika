@@ -240,7 +240,7 @@ main .main__content .main__table .table__config .table__buttons .button__volver 
   display: flex;
   width: 7rem;
   height: 4rem;
-  background-color: red;
+  background-color: rgb(255, 0, 0);
   border-radius: 1rem;
   opacity: 0.7;
   text-align: center;
@@ -294,6 +294,18 @@ main .main__content .main__table .table__config .table__buttons .button__new .ne
   font-weight: 700;
   color: white;
 }
+main .main__content .main__table .table__config .table__buttons .input-excel {
+  width: 12rem;
+  height: 4rem;
+  background-color: #4CAF50;
+  opacity: 0.7;
+  border: none;
+  border-radius: 1rem;
+  text-align: center;
+  font-family: "Montserrat";
+  font-weight: 700;
+  color: white;
+}
 main .main__content .main__table .table__config .table__search {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -313,7 +325,7 @@ main .main__content .main__table .table__config .table__search .search__title {
   display: flex;
   width: 7%;
   height: 4rem;
-  background-color: #0400ff;
+  background-color: rgb(4, 0, 255);
   border-radius: 10rem;
   text-align: center;
 }
@@ -353,7 +365,7 @@ main .main__content .main__table .table__config .table__search .search__title in
   text-decoration: none;
   font-family: "Montserrat";
   font-weight: 700;
-  background-color: #0400ff;
+  background-color: rgb(4, 0, 255);
   border-radius: 10rem;
   border-style: none;
   color: white;
@@ -529,24 +541,24 @@ main .main__content .main__table .table__content table tr td .input-borrar:hover
   background-size: contain;
   background-repeat: no-repeat;
 }
-main .main__content .main__table .table__content table tr td .input-aprobar {
-  width: 50px;
-  height: 50px;
+main .main__content .main__table .table__content table tr td .input-activar {
+  width: 60px;
+  height: 30px;
   color: transparent;
   border: 0px;
   background-color: transparent;
-  background-image: url("../../../../../Assets/notapproved.png");
+  background-image: url("../../../../../Assets/activo.png");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
 }
-main .main__content .main__table .table__content table tr td .input-aprobar:hover {
-  width: 50px;
-  height: 50px;
+main .main__content .main__table .table__content table tr td .input-desactivar {
+  width: 60px;
+  height: 30px;
   color: transparent;
   border: 0px;
   background-color: transparent;
-  background-image: url("../../../../../Assets/approved.png");
+  background-image: url("../../../../../Assets/inactivo.png");
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -586,7 +598,7 @@ main .main__content .main__table .table__content table tr:hover {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  background-color: red;
+  background-color: rgb(255, 0, 0);
   padding-right: 2rem;
 }
 

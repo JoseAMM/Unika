@@ -233,7 +233,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
     <header class="header__propiedades">
         <div>
             <section class="header__logo">
-                <a href="../../index.php"><img src="../../../Assets/logo.png" alt=""></a>
+                <a href="../../Propiedades/Listado/index.php"><img src="../../../Assets/logo.png" alt=""></a>
             </section>
 
             <section class="header__name" >

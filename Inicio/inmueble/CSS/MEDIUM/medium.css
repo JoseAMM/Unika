@@ -1,0 +1,283 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.header__content {
+  width: 100%;
+}
+.header__content .header__up {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 90%;
+  height: 25rem;
+  margin: 0 auto;
+  border-bottom: 0.1rem solid black;
+}
+.header__content .header__up .header__up--logo {
+  width: 33%;
+}
+.header__content .header__up .header__up--logo img {
+  width: 30rem;
+}
+.header__content .header__up .header__up--slogan {
+  width: 33%;
+  text-align: center;
+}
+.header__content .header__up .header__up--slogan p {
+  font-family: "Montserrat";
+  font-size: 2.2rem;
+}
+.header__content .header__up .header__up--buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 33%;
+  font-family: "Montserrat";
+  font-size: 2rem;
+}
+.header__content .header__up .header__up--buttons .buttons__contacto a {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  width: 12rem;
+  text-decoration: none;
+  padding: 1rem;
+  background-color: rgb(179, 138, 76);
+  color: white;
+  font-weight: 400;
+}
+.header__content .header__up .header__up--buttons .buttons__contacto a:hover {
+  background-color: rgb(234, 171, 76);
+}
+.header__content .header__up .header__up--buttons .buttons__login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  width: 100%;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-top: 2rem;
+}
+.header__content .header__up .header__up--buttons .buttons__login a {
+  display: block;
+  text-align: center;
+  margin: 0 auto;
+  width: 15rem;
+  text-decoration: none;
+  padding: 1rem;
+  color: black;
+  border: 0.2rem solid black;
+  font-weight: 400;
+}
+.header__content .header__up .header__up--buttons .buttons__login a:hover {
+  background-color: black;
+  color: white;
+}
+.header__content .header__down {
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 1.5rem;
+  border-bottom: 0.6rem solid gray;
+}
+.header__content .header__down nav ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 70%;
+  height: 5rem;
+  margin: 0 auto;
+  background-color: rgb(238, 232, 216);
+  margin-top: 2rem;
+  border-radius: 5rem;
+}
+.header__content .header__down nav ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 14.28%;
+  height: 100%;
+  list-style: none;
+  text-align: center;
+}
+.header__content .header__down nav ul li a {
+  text-decoration: none;
+  font-family: "Montserrat";
+  font-size: 1.3rem;
+  color: black;
+}
+.header__content .header__down nav ul li:hover {
+  background-color: rgb(225, 195, 113);
+  border-radius: 5rem 0 5rem 5rem;
+}
+.header__content .header__down nav ul .nav__left:hover {
+  background-color: rgb(225, 195, 113);
+  border-radius: 5rem 0 5rem 5rem;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  width: 80%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 0 auto;
+}
+
+/* Hide the images by default */
+.mySlides img {
+  width: 50%;
+  height: 100%;
+}
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  width: 80%;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  border-radius: 0 3px 3px 0;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* Container for image text */
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 16.66%;
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+
+footer {
+  width: 100%;
+  height: 50vh;
+  background-image: url("../../../../Assets/fondo-inicio.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+footer section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 50%;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+footer section img {
+  width: 30rem;
+}

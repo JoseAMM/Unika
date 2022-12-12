@@ -86,9 +86,10 @@
 <body>
 <header class="header__propiedades">
         <div>
-            <section class="header__logo">
-                <a href="../../../index.php"><img src="../../../../Assets/logo.png" alt=""></a>
+        <section class="header__logo">
+                <a href="../../../Propiedades/Listado/index.php"><img src="../../../../Assets/logo.png" alt=""></a>
             </section>
+
 
             <section class="header__name" >
                 <p> Bienvenido <?php echo $resultadoEmpleadoNombre['Nombre_Apellido']?></p>

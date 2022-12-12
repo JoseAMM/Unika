@@ -19,10 +19,7 @@ $db = conectarDB();
 
     // echo $queryBuscar;
     $resultadoBuscar = mysqli_query($db, $queryBuscar);
-    // $resultadoBuscar = mysqli_fetch_assoc($resultadoBuscar);
-    // echo '<pre>';
-    // var_dump($resultadoBuscar) ;
-    // echo '</pre>';
+
 
     $contador = 1;
     while($row =  mysqli_fetch_assoc($resultadoBuscar)){

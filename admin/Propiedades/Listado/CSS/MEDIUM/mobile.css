@@ -295,10 +295,11 @@ main .main__content .main__table .table__config .table__buttons .button__new .ne
   color: white;
 }
 main .main__content .main__table .table__config .table__buttons .input-excel {
-  width: 9rem;
+  width: 12rem;
   height: 4rem;
   background-color: #4CAF50;
   opacity: 0.7;
+  border: none;
   border-radius: 1rem;
   text-align: center;
   font-family: "Montserrat";
@@ -550,6 +551,7 @@ main .main__content .main__table .table__content table tr td .input-activar {
   background-size: contain;
   background-repeat: no-repeat;
   cursor: pointer;
+  text-decoration: none;
 }
 main .main__content .main__table .table__content table tr td .input-desactivar {
   width: 60px;

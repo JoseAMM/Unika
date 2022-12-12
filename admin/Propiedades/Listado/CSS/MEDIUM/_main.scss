@@ -205,10 +205,11 @@ main {
                     }
 
                     .input-excel{
-                        width: 9rem;
+                        width: 12rem;
                         height: 4rem;
                         background-color: #4CAF50;
                         opacity: 0.7;
+                        border: none;
                         border-radius: 1rem;
                         text-align: center;
                         font-family: "Montserrat";
@@ -390,6 +391,7 @@ main {
                     margin: 0 auto;
 
 
+
                     tr {
 
                         width: 100%;
@@ -477,6 +479,7 @@ main {
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 cursor: pointer;
+                                text-decoration: none;
 
                             }
 

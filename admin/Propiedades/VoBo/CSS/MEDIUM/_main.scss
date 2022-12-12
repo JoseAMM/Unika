@@ -204,6 +204,19 @@ main {
 
                     }
 
+                    .input-excel{
+                        width: 12rem;
+                        height: 4rem;
+                        background-color: #4CAF50;
+                        opacity: 0.7;
+                        border: none;
+                        border-radius: 1rem;
+                        text-align: center;
+                        font-family: "Montserrat";
+                        font-weight: 700;
+                        color: white;
+                    }
+
                 }
 
 
@@ -455,32 +468,31 @@ main {
 
                             }
 
-                            .input-aprobar {
-                                width: 50px;
-                                height: 50px;
+                            .input-activar {
+                                width: 60px;
+                                height: 30px;
                                 color: transparent;
                                 border: 0px;
                                 background-color: transparent;
-                                background-image: url('../../../../../Assets/notapproved.png');
+                                background-image: url('../../../../../Assets/activo.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 cursor: pointer;
 
                             }
 
-                            .input-aprobar:hover {
-                                width: 50px;
-                                height: 50px;
+                            .input-desactivar {
+                                width: 60px;
+                                height: 30px;
                                 color: transparent;
                                 border: 0px;
                                 background-color: transparent;
-                                background-image: url('../../../../../Assets/approved.png');
+                                background-image: url('../../../../../Assets/inactivo.png');
                                 background-size: contain;
                                 background-repeat: no-repeat;
                                 cursor: pointer;
 
                             }
-
                         }
 
 

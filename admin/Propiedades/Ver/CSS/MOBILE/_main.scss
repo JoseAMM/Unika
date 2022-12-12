@@ -296,6 +296,153 @@ main {
 
                 }
 
+                .input__firma {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    margin-top: 2rem;
+
+                    span {
+                        font-family: "Arial", sans-serif;
+                        width: 50%;
+                        text-align: center;
+                        font-size: 1rem;
+                    }
+                    a{
+                        font-family: "Arial", sans-serif;
+                    }
+
+                    .contenedor__firma {
+                        width: 50%;
+
+                        .acciones__firma {
+                            display: flex;
+                            justify-content: space-evenly;
+
+                            input, button {
+                                outline: 0;
+                                border: none;
+                                background-color: transparent;
+                                text-align: center;
+                            }
+
+                            .descargarPrivacidadDisabled {
+                                display: flex;
+                                align-items: center;
+                                width: 6rem;
+                                height: 7rem;
+                                padding: 0.5rem;
+                                background-color: #e13535;
+                                border-radius: 1rem;
+                                color: #FFFFFF;
+                                font-size: 1rem;
+                                text-decoration: none;
+                                cursor: not-allowed;
+                            }
+
+                            .descargarPrivacidadEnabled {
+                                display: flex;
+                                align-items: center;
+                                width: 6rem;
+                                height: 7rem;
+                                padding: 0.5rem;
+                                background-color: #4c4eaf;
+                                border-radius: 1rem;
+                                color: #FFFFFF;
+                                font-size: 1rem;
+                                cursor: pointer;
+                            }
+
+                            .activarPrivacidadDisabled {
+                                display: flex;
+                                align-items: center;
+                                width: 6rem;
+                                height: 7rem;
+                                padding: 0.5rem;
+                                background-color: #e13535;
+                                border-radius: 1rem;
+                                color: #FFFFFF;
+                                font-size: 1rem;
+                                text-align: center;
+                                cursor: not-allowed;
+                            }
+
+                            .activarPrivacidadEnabled{
+                                display: flex;
+                                align-items: center;
+                                width: 6rem;
+                                height: 7rem;
+                                background-color: #4CAF50;
+                                padding: 0.5rem;
+                                border-radius: 1rem;
+                                color: #FFFFFF;
+                                font-size: 1rem;
+                                cursor: pointer;
+                            }
+
+                            .editarPrivacidad {
+                                display: flex;
+                                align-items: center;
+                                width: 6rem;
+                                height: 7rem;
+                                background-color: #afaa4c;
+                                border-radius: 1rem;
+                                color: #FFFFFF;
+                                font-size: 1rem;
+                                cursor: pointer;
+                            }
+
+                            .download {
+                                display: flex;
+                                align-items: center;
+                                width: 6rem;
+                                height: 7rem;
+                                padding: 2rem;
+                                background-image: url('../../../../../Assets/download.png');
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                cursor: pointer;
+                            }
+                        }
+
+                        .parametros {
+                            display: flex;
+                            flex-direction: column;
+                            margin-top: 1.5rem;
+
+                            section {
+                                display: flex;
+                                justify-content: start;
+
+                                span {
+                                    width: 30%;
+                                    justify-content: start;
+                                    align-self: center;
+
+                                }
+
+                                input {
+                                    width: 70%;
+                                    font-family: "Arial", sans-serif;
+                                    outline: 0;
+                                    background-color: rgba(253, 151, 99, 0.4);
+                                    border: 0;
+                                    border-radius: 1rem;
+                                    margin: 0 0 1.5rem;
+                                    padding: 1.5rem;
+                                    box-sizing: border-box;
+                                    font-size: 1rem;
+                                }
+                            }
+
+
+                        }
+                    }
+
+                }
+
+
             }
         }
     }

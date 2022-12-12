@@ -46,6 +46,22 @@ $consultaDatosInmueble = mysqli_fetch_assoc(mysqli_query($db, $consultaDatosInmu
 $consultaCaracteristicas = "SELECT * FROM caracteristicas WHERE idInmueble_Caracteristicas = $idInmueble";
 $consultaCaracteristicas = mysqli_fetch_assoc(mysqli_query($db, $consultaCaracteristicas));
 
+/**
+ * * Consulta otras características
+ */
+$consultaOtrasCaracteristicas = "SELECT
+otras_caracteristicas.idOtras_Caracteristicas,
+otras_caracteristicas.idAmenidades,
+amenidades.NombreAmenidades
+FROM
+(
+    otras_caracteristicas
+    INNER JOIN amenidades ON otras_caracteristicas.idAmenidades = amenidades.idAmenidades
+)
+WHERE
+id_Inmueble = $idInmueble";
+$consultaOtrasCaracteristicas = mysqli_query($db, $consultaOtrasCaracteristicas);
+
 // Consulta de documentos asociados al inmueble
 $queryDocuments = "SELECT * FROM documentos WHERE id_Inmueble_Documentos = $idInmueble";
 $resultadoDocuments = mysqli_query($db, $queryDocuments);
@@ -324,10 +340,14 @@ if (isset($_GET['del'])) {
                         <span>Lugares de Estacionamiento</span>
                         <p><?php echo $estacionamiento;  ?></p>
                     </label>
+
+                    <?php while ($rowOtrasCaracteristicas = mysqli_fetch_assoc($consultaOtrasCaracteristicas)) : ?>
                     <label for="otras" class="normal">
                         <span>Otras Características</span>
-                        <p><?php echo $otras;  ?></p>
+                        <p><?php echo $rowOtrasCaracteristicas['NombreAmenidades'];  ?></p>
                     </label>
+
+                    <?php endwhile;?>
                     <label for="" class="normal">
                         <span>Código Postal </span>
                         <p><?php echo $codigoPostal;  ?></p>
@@ -369,17 +389,15 @@ if (isset($_GET['del'])) {
                         <span>Generar reporte del Inmueble en PDF</span>
                         <section>
                             <input type="submit" name="download" value="" class="download">
-                            <input type="submit" target="_blank" name="share" value="" class="share">
-                            <input type="submit" target="_blank" name="print" value="" class="print">
                         </section>
                     </label>
                     <label for="descargar" class="input__firma">
                         <span>Aviso de Privacidad</span>
                         <section class="contenedor__firma">
                             <section class="acciones__firma" id="acciones__firma">
-                                <a href="./DocumentosFirmados/AvisoPrivacidad<?php echo($idInmueble . '.pdf')?>" class="<?php echo $classDescargarPrivacidad ?>" download>Descargar PDF firmado</a>
-                                <input disabled id="activarPrivacidad" type="submit" value="Activar PDF para firma" name="activarPrivacidad" class="activarPrivacidadDisabled">
                                 <button id="editarPrivacidad" class="editarPrivacidad">Editar parámetros del PDF</button>
+                                <input disabled id="activarPrivacidad" type="submit" value="Activar PDF para firma" name="activarPrivacidad" class="activarPrivacidadDisabled">
+                                <a href="./DocumentosFirmados/AvisoPrivacidad<?php echo($idInmueble . '.pdf')?>" class="<?php echo $classDescargarPrivacidad ?>" download>Descargar PDF firmado</a>
                             </section>
 
                         </section>

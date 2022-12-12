@@ -389,12 +389,187 @@ main .main__content .main__formulario form .input__download section .print {
   background-repeat: no-repeat;
   cursor: pointer;
 }
+main .main__content .main__formulario form .input__firma {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: 2rem;
+}
+main .main__content .main__formulario form .input__firma span {
+  font-family: "Arial", sans-serif;
+  width: 50%;
+  text-align: center;
+  font-size: 1rem;
+}
+main .main__content .main__formulario form .input__firma a {
+  font-family: "Arial", sans-serif;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma {
+  width: 50%;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma input, main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma button {
+  outline: 0;
+  border: none;
+  background-color: transparent;
+  text-align: center;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .descargarPrivacidadDisabled {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 6rem;
+  height: 7rem;
+  padding: 0.5rem;
+  background-color: #e13535;
+  border-radius: 1rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+  text-decoration: none;
+  cursor: not-allowed;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .descargarPrivacidadEnabled {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 6rem;
+  height: 7rem;
+  padding: 0.5rem;
+  background-color: #4c4eaf;
+  border-radius: 1rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+  cursor: pointer;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .activarPrivacidadDisabled {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 6rem;
+  height: 7rem;
+  padding: 0.5rem;
+  background-color: #e13535;
+  border-radius: 1rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+  text-align: center;
+  cursor: not-allowed;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .activarPrivacidadEnabled {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 6rem;
+  height: 7rem;
+  background-color: #4CAF50;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+  cursor: pointer;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .editarPrivacidad {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 6rem;
+  height: 7rem;
+  background-color: #afaa4c;
+  border-radius: 1rem;
+  color: #FFFFFF;
+  font-size: 1rem;
+  cursor: pointer;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .download {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 6rem;
+  height: 7rem;
+  padding: 2rem;
+  background-image: url("../../../../../Assets/download.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .parametros {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 1.5rem;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .parametros section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .parametros section span {
+  width: 30%;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .parametros section input {
+  width: 70%;
+  font-family: "Arial", sans-serif;
+  outline: 0;
+  background-color: rgba(253, 151, 99, 0.4);
+  border: 0;
+  border-radius: 1rem;
+  margin: 0 0 1.5rem;
+  padding: 1.5rem;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-size: 1rem;
+}
 
 .menu__move {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  background-color: red;
+  background-color: rgb(255, 0, 0);
   padding-right: 2rem;
 }
 

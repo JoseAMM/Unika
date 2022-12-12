@@ -2,7 +2,14 @@
 // $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
 $db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
 ob_end_clean();
+
+// if (is_dir('./Reportes_PDF/fpdf.php')){
+//     require_once('./Reportes_PDF/fpdf.php');
+// }
+
 require_once('../../../Reportes_PDF/fpdf.php');
+
+
 
 //Conexión a la base de datos
 
@@ -137,56 +144,101 @@ function pdf(
     $pdf->Write(1, utf8_decode($colonia));
     $pdf->SetY(35);
     $pdf->Cell(120, 131, '', 1, 2, 'C', true);
-    $pdf->SetY(45);
+    $pdf->SetY(42);
     $pdf->SetX(12);
     $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Bold', '', 35);
+    $pdf->SetFont('Bold', '', 25);
     $pdf->Write(1, utf8_decode('Características'));
-    $pdf->Image('../../../Assets/Icon Amenities/Sup.Terreno.png', 15, 60, 10, 10);
+    $pdf->Image('../../../Assets/Icon Amenities/Terreno.png', 15, 60, 10, 10);
+
+    $pdf->SetY(55);
+    $pdf->SetX(13);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFont('Regular', '', 9);
+    $pdf->Write(1, utf8_decode('Superficie de Terreno'));
+
     $pdf->SetY(65);
     $pdf->SetX(30);
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Bold', '', 35);
     $pdf->Write(1, utf8_decode($superficie_terreno) . ' m2');
+
+    $pdf->SetY(75);
+    $pdf->SetX(13);
+    $pdf->SetTextColor(0, 0, 0);
+    $pdf->SetFont('Regular', '', 9);
+    $pdf->Write(1, utf8_decode('Superficie de Construcción'));
+
+
     $pdf->Image('../../../Assets/Icon Amenities/Sup.Construccion.png', 15, 79, 6, 6);
     $pdf->SetY(82);
     $pdf->SetX(22);
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Regular', '', 15);
     $pdf->Write(1, utf8_decode($superficie_construccion) . ' m2');
-    $pdf->Image('../../../Assets/Icon Amenities/Habitacion.png', 70, 80, 7, 5);
-    $pdf->SetY(82);
-    $pdf->SetX(80);
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Regular', '', 15);
-    $pdf->Write(1, utf8_decode($habitaciones));
-    $pdf->Image('../../../Assets/Icon Amenities/Bano.png', 90, 80, 7, 5);
-    $pdf->SetY(82);
-    $pdf->SetX(100);
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Regular', '', 15);
-    $pdf->Write(1, $bano);
-    $pdf->Image('../../../Assets/Icon Amenities/Estacionamiento.png', 110, 80, 7, 5);
-    $pdf->SetY(82);
-    $pdf->SetX(120);
-    $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Regular', '', 15);
-    $pdf->Write(1, $estacionamiento);
+
+
+    if ($habitaciones != 0) {
+        $pdf->Image('../../../Assets/Icon Amenities/Recamaras.png', 70, 80, 7, 5);
+        $pdf->SetY(81);
+        $pdf->SetX(80);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFont('Regular', '', 15);
+        $pdf->Write(1, utf8_decode($habitaciones));
+
+        $pdf->SetY(88);
+        $pdf->SetX(68);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFont('Regular', '', 6);
+        $pdf->Write(1, utf8_decode('Habitaciones'));
+    }
+    if ($bano != 0) {
+        $pdf->Image('../../../Assets/Icon Amenities/Bano.png', 90, 80, 7, 5);
+        $pdf->SetY(82);
+        $pdf->SetX(100);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFont('Regular', '', 15);
+        $pdf->Write(1, $bano);
+
+        $pdf->SetY(88);
+        $pdf->SetX(90);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFont('Regular', '', 6);
+        $pdf->Write(1, utf8_decode('Baños'));
+    }
+    if ($estacionamiento != 0) {
+        $pdf->Image('../../../Assets/Icon Amenities/GarageSinTecho.png', 110, 80, 7, 5);
+        $pdf->SetY(82);
+        $pdf->SetX(120);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFont('Regular', '', 15);
+        $pdf->Write(1, $estacionamiento);
+
+        $pdf->SetY(88);
+        $pdf->SetX(108);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFont('Regular', '', 6);
+        $pdf->Write(1, utf8_decode('Estacionamiento'));
+    }
+
+
+
     $pdf->SetY(92);
     $pdf->SetX(15);
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Bold', '', 15);
     $pdf->Write(1, utf8_decode('Otras Características: '));
 
-    $pdf->SetY(120);
+    $pdf->SetY(130);
     $pdf->SetX(15);
     $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Regular', '', 10);
+    $pdf->SetFont('Regular', '', 8);
     $pdf->MultiCell(100, 5, $descripcion);
 
 
     $consultaAmenidades = "SELECT otras_caracteristicas.idAmenidades, 
-    NombreAmenidades
+    amenidades.NombreAmenidades,
+    amenidades.NombreImagenAmenidades
     FROM otras_caracteristicas
     INNER JOIN amenidades ON otras_caracteristicas.idAmenidades = amenidades.idAmenidades WHERE id_Inmueble = $idInmueble";
     $consultaAmenidades = mysqli_query($db, $consultaAmenidades);
@@ -194,71 +246,31 @@ function pdf(
     $x = 15;
     $i = 1;
 
+
     while ($row = mysqli_fetch_assoc($consultaAmenidades)) {
 
-        if ($i == 11) {
-            $y = 110;
+        if ($i == 8) {
+            $y = 115;
             $x = 15;
         }
-
-
-
-
-
-        switch ($row['idAmenidades']) {
-            case 1:
-                $pdf->Image('../../../Assets/Icon Amenities/Alberca.png', $x, $y, 7, 7);
-                $i++;
-                break;
-            case 3:
-                $pdf->Image('../../../Assets/Icon Amenities/AireAcondicionado.png', $x, $y, 7, 7);
-                $i++;
-                break;
-            case 5:
-                $pdf->Image('../../../Assets/Icon Amenities/Gimnasio.png', $x, $y + 1, 7, 5);
-                $i++;
-                break;
-            case 6:
-                $pdf->Image('../../../Assets/Icon Amenities/Bar.png', $x, $y, 7, 7);
-                $i++;
-                break;
-            case 7:
-                $pdf->Image('../../../Assets/Icon Amenities/Camaras.png', $x, $y, 7, 7);
-                $i++;
-                break;
-            case 8:
-                $pdf->Image('../../../Assets/Icon Amenities/Comedor.png', $x, $y, 7, 7);
-                $i++;
-                break;
-            case 9:
-                $pdf->Image('../../../Assets/Icon Amenities/Jardin.png', $x, $y, 7, 7);
-                $i++;
-                break;
-            case 11:
-                $pdf->Image('../../../Assets/Icon Amenities/Hidromasaje.png', $x, $y, 7, 7);
-                $i++;
-                break;
-            case 12:
-                $pdf->Image('../../../Assets/Icon Amenities/Karaoke.png', $x + 1, $y, 4, 7);
-                $i++;
-                break;
-            case 13:
-                $pdf->Image('../../../Assets/Icon Amenities/Portero.png', $x, $y, 7, 7);
-                $i++;
-                break;
-            case 14:
-                $pdf->Image('../../../Assets/Icon Amenities/Satelital.png', $x, $y, 7, 7);
-                $i++;
-                break;
-            case 16:
-                $pdf->Image('../../../Assets/Icon Amenities/FreeWifi.png', $x, $y, 7, 7);
-                // $i++;
-                break;
+        $width = 7;
+        $height = 7;
+        if (strlen($row['NombreAmenidades']) >= 10) {
+            $ajuste = 7;
+        } else {
+            $ajuste = 2;
         }
 
+        $pdf->Image('../../../Assets/Icon Amenities/' . $row['NombreImagenAmenidades'], $x, $y, $width, $height);
+        $pdf->SetY($y + 10);
+        $pdf->SetX($x - $ajuste);
+        $pdf->SetTextColor(0, 0, 0);
+        $pdf->SetFont('Regular', '', 6);
+        $pdf->Write(1, utf8_decode($row['NombreAmenidades']));
 
+        $i++;
 
-        $x = $x + 10;
+        $x = $x + 17;
     }
 
 

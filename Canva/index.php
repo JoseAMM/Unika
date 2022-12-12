@@ -5,18 +5,13 @@ $idInmueble = $_GET['id'];
 $documento = $_GET['document'];
 $queryComprobacionDocumentoPrivacidad = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND NombreDocumentosOficial = '$documento' AND Activo = 1";
 $consultaComprobacionDocumentoPrivacidad = mysqli_fetch_assoc(mysqli_query($db, $queryComprobacionDocumentoPrivacidad));
-
-
 if (!$consultaComprobacionDocumentoPrivacidad) {
   header('Location: ../index.html');
 }
-
-
 // $link = '../admin/Propiedades/Ver/avisoPrivacidad.php?context=' . $hashInmueble . '&id=' . $id . '&document=' . $documento;
 ?>
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -25,7 +20,6 @@ if (!$consultaComprobacionDocumentoPrivacidad) {
   <link rel="stylesheet" href="assets/style.css" />
   <script language="javascript" src="../jquery-3.6.1.min.js"></script>
 </head>
-
 <body>
   <main class="main-container">
     <canvas id="main-canvas" class="main-canvas" style="border: 5px solid rgb(255, 0, 0)"></canvas>
@@ -38,5 +32,4 @@ if (!$consultaComprobacionDocumentoPrivacidad) {
   </main>
   <script src="assets/index.js"></script>
 </body>
-
 </html>

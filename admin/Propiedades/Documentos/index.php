@@ -213,11 +213,11 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             <form action="" method="POST" enctype="multipart/form-data">
 
                 <section class="select">
-                    <span>Inmueble (Dirección - Asesor - Tipo de Inmueble)* </span>
+                    <span>Inmueble (ID - Asesor - Tipo de Inmueble)* </span>
                     <select name="inmueble" id="" required>
                         <option><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoInmueble)) : ?>
-                            <option required value="<?php echo $row['idInmueble']; ?>"><?php echo $row['Direccion'] ." - ". $row['Nombre_Apellido'] ." - ". $row['Nombre_Tipo_Inmueble']; ?></option>
+                            <option required value="<?php echo $row['idInmueble']; ?>"><?php echo $row['idInmueble'] ." - ". $row['Nombre_Apellido'] ." - ". $row['Nombre_Tipo_Inmueble']; ?></option>
                         <?php endwhile; ?>
                     </select>
                 </section>

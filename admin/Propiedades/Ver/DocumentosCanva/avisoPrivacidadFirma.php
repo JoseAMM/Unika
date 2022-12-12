@@ -1,5 +1,5 @@
 <?php
-// $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
+//$db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
 $db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
 require_once('../../../../Reportes_PDF/fpdf.php');
 
