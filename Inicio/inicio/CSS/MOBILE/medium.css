@@ -70,13 +70,13 @@ html {
   width: 7rem;
   text-decoration: none;
   padding: 1rem;
-  background-color: #b38a4c;
+  background-color: rgb(179, 138, 76);
   color: white;
   font-weight: 400;
   font-size: 1rem;
 }
 .header__content .header__up .header__up--buttons .buttons__contacto a:hover {
-  background-color: #eaab4c;
+  background-color: rgb(234, 171, 76);
 }
 .header__content .header__up .header__up--buttons .buttons__login {
   display: -webkit-box;
@@ -155,7 +155,7 @@ html {
   cursor: pointer;
 }
 .header__content .header__down nav .menu:hover {
-  background-color: #b38a4c;
+  background-color: rgb(179, 138, 76);
   border-radius: 2rem;
 }
 .header__content .header__down nav ul {
@@ -177,7 +177,7 @@ html {
   width: 80%;
   height: 40rem;
   margin: 0 auto;
-  background-color: #eee8d8;
+  background-color: rgb(238, 232, 216);
   margin-top: 5rem;
   border-radius: 5rem;
   z-index: -300;
@@ -204,15 +204,15 @@ html {
   color: black;
 }
 .header__content .header__down nav ul li:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 5rem 5rem 5rem 5rem;
 }
 .header__content .header__down nav ul .nav__left:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 0rem 0 5rem 5rem;
 }
 .header__content .header__down nav ul .nav__right:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 5rem 5rem 0rem 0rem;
 }
 
@@ -220,7 +220,7 @@ html {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  background-color: red;
+  background-color: rgb(255, 0, 0);
   padding-right: 2rem;
 }
 
@@ -248,12 +248,98 @@ main .main__presentation h1 {
   font-size: 5rem;
   font-weight: 400;
   padding-top: 15rem;
-  color: #5a4526;
+  color: rgb(90, 69, 38);
 }
 main .main__presentation p {
   padding-top: 6rem;
   font-size: 2.5rem;
-  color: #c18934;
+  color: rgb(193, 137, 52);
+}
+main .main__cityCards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  width: 80%;
+  max-width: 100rem;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 0 auto;
+  margin-top: 5rem;
+}
+main .main__cityCards .cityCard {
+  width: 28rem;
+  height: 35.2rem;
+  margin-bottom: 8em;
+  text-align: center;
+  font-family: "Montserrat";
+}
+main .main__cityCards .cityCard .cityImg img {
+  width: 28rem;
+  height: 35.2rem;
+}
+main .main__cityCards .cityCard .cityInfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 90%;
+  height: auto;
+  padding: 3rem;
+  position: relative;
+  bottom: 30%;
+  margin: 0 auto;
+  background-color: white;
+  border: 0.2rem solid black;
+  -webkit-transition: all 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition: all 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+}
+main .main__cityCards .cityCard .cityInfo p {
+  font-size: 2rem;
+  font-weight: 700;
+}
+main .main__cityCards .cityCard .cityInfo a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 80%;
+  height: 5rem;
+  margin: 0 auto;
+  margin-top: 1rem;
+  background-color: white;
+  font-size: 2.5rem;
+  font-weight: 100;
+  text-decoration: none;
+  color: black;
+  border: 0.2rem solid black;
+}
+main .main__cityCards .cityCard .cityInfo a:hover {
+  background-color: rgb(234, 171, 76);
+  color: white;
+  font-weight: 400;
+}
+main .main__cityCards .cityCard .cityInfo:hover {
+  -webkit-transition: all 200ms cubic-bezier(0.175, 0.885, 1.32, 2.275);
+  transition: all 200ms cubic-bezier(0.175, 0.885, 1.32, 2.275);
+  bottom: 35%;
+  background-color: black;
+}
+main .main__cityCards .cityCard .cityInfo:hover p {
+  color: white;
+}
+main .main__cityCards .cityCard .cityInfo:hover a {
+  border: white;
 }
 main .main__oficinas {
   width: 60%;
@@ -336,7 +422,7 @@ main .main__oficinas section ul .main__oficinas--li .oficina__content p {
 footer {
   width: 100%;
   height: 50vh;
-  background-color: #eee8d8;
+  background-color: rgb(238, 232, 216);
 }
 footer section {
   display: -webkit-box;
