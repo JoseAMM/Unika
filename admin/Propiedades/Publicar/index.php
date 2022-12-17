@@ -77,6 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $superficie_construccion = filter_var(mysqli_real_escape_string($db, $_POST['superficie_construccion']), FILTER_SANITIZE_NUMBER_FLOAT);
             $habitaciones = filter_var(mysqli_real_escape_string($db, $_POST['habitaciones']), FILTER_SANITIZE_NUMBER_INT);
             $estacionamiento = filter_var(mysqli_real_escape_string($db, $_POST['estacionamiento']), FILTER_SANITIZE_NUMBER_INT);
+            $banos =  filter_var(mysqli_real_escape_string($db, $_POST['banos']), FILTER_SANITIZE_NUMBER_INT); 
             $observaciones = limpieza(mysqli_real_escape_string($db, $_POST['observaciones']));
             $descripcion = limpieza(mysqli_real_escape_string($db, $_POST['descripcion']));
             $ubicacion = limpieza(mysqli_real_escape_string($db, $_POST['ubicacion']));

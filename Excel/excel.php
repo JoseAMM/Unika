@@ -29,11 +29,11 @@ while ($row = $resultadoExcel->fetch_assoc()) {
     $hojaActiva->setCellValue('A' . $i, $row['idInmueble']);
     $hojaActiva->setCellValue('B' . $i, $row['Oficina']);
     $hojaActiva->setCellValue('C' . $i, $row['Nombre_Apellido']);
-    $hojaActiva->setCellValue('D' . $i, utf8_decode( $row['Direccion']));
+    $hojaActiva->setCellValue('D' . $i, utf8_decode($row['Direccion']));
     $hojaActiva->setCellValue('E' . $i, $row['nombre']);
-    $hojaActiva->setCellValue('F' . $i, '$' . $row['Precio']);
-    $hojaActiva->setCellValue('G' . $i, $row['Superficie_Terreno']);
-    $hojaActiva->setCellValue('H' . $i, $row['Superficie_Construccion']);
+    $hojaActiva->setCellValue('F' . $i, number_format($row['Precio']));
+    $hojaActiva->setCellValue('G' . $i, number_format($row['Superficie_Terreno']));
+    $hojaActiva->setCellValue('H' . $i, number_format($row['Superficie_Construccion']));
     $hojaActiva->setCellValue('I' . $i, $row['Descripcion']);
     $hojaActiva->setCellValue('K' . $i, $row['Nombre_Contrato']);
     $i++;

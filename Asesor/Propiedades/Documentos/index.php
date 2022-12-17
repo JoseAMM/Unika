@@ -50,7 +50,7 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
     INNER JOIN tipo_contrato ON inmueble.idTipo_Contrato   = tipo_contrato.idTipo_Contrato
     INNER JOIN tipo_inmueble ON inmueble.idTipo_Inmueble   = tipo_inmueble.idTipo_Inmueble
     INNER JOIN tipo_operacion ON inmueble.idTipo_Operacion = tipo_operacion.idTipo_Operacion
-    INNER JOIN datos_basicos ON inmueble.idInmueble = datos_basicos.Inmueble_idInmueble WHERE VoBo = 1 ORDER BY idInmueble ASC";
+    INNER JOIN datos_basicos ON inmueble.idInmueble = datos_basicos.Inmueble_idInmueble  ORDER BY idInmueble ASC";
 
     $resultadoInmueble = mysqli_query($db, $queryInmueble);
 
@@ -213,11 +213,11 @@ $resultadoRolEmpleado = mysqli_fetch_assoc($resultadoRolEmpleado);
             <form action="" method="POST" enctype="multipart/form-data">
 
                 <section class="select">
-                    <span>Inmueble (Dirección - Asesor - Tipo de Inmueble)* </span>
+                    <span>Inmueble (ID - Asesor - Tipo de Inmueble)* </span>
                     <select name="inmueble" id="" required>
                         <option><--Selecciona--></option>
                         <?php while($row = mysqli_fetch_assoc($resultadoInmueble)) : ?>
-                            <option required value="<?php echo $row['idInmueble']; ?>"><?php echo $row['Direccion'] ." - ". $row['Nombre_Apellido'] ." - ". $row['Nombre_Tipo_Inmueble']; ?></option>
+                            <option required value="<?php echo $row['idInmueble']; ?>"><?php echo $row['idInmueble'] ." - ". $row['Nombre_Apellido'] ." - ". $row['Nombre_Tipo_Inmueble']; ?></option>
                         <?php endwhile; ?>
                     </select>
                 </section>

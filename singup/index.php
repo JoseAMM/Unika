@@ -73,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             return false;
         }
         if (!preg_match('`[0-9]`', $password)) {
+            // preg_match('`[@#_^*%/.+:;=]`', $password)
 
             return false;
         }

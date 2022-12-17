@@ -1,91 +1,386 @@
-* {
-    box-sizing: border-box;
-  }
-  
-  /* Position the image container (needed to position the left and right arrows) */
-  .container {
-    width: 80%;
-    justify-content:center ;
+main {
+  width: 100vw;
+  max-width: 190rem;
+  margin: 0 auto;
+
+  .main__fotos_informacion {
+    display: flex;
+    width: 100vw;
+    max-width: 190rem;
+    justify-content: center;
+    flex-wrap: wrap;
     margin: 0 auto;
-  }
-  
-  /* Hide the images by default */
-  .mySlides {
-    img{
-        width: 50%;
+
+    .main__fotos {
+      width: 60vw;
+      min-width: 78rem;
+      max-width: 90rem;
+      margin-top: 2rem;
+      position: relative;
+
+      /* On hover, add a black background color with a little bit see-through */
+      .main__buttonsSlides {
+        display: flex;
+        width: 100%;
+        position: absolute;
+        justify-content: space-between;
+        align-items: center;
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 6rem;
+          height: 50rem;
+          color: white;
+          font-weight: 900;
+          font-size: 4rem;
+          border-radius: 0 3px 3px 0;
+          user-select: none;
+          -webkit-user-select: none;
+          cursor: pointer;
+          text-decoration: none;
+          background-color: rgba(0, 0, 0, 0.200);
+        }
+
+        .prev:hover,
+        .next:hover {
+          background-color: rgba(0, 0, 0, 0.800);
+        }
+      }
+
+      /* Position the image container (needed to position the left and right arrows) */
+      .main__containerSlides {
+        width: 100%;
+
+        /* Hide the images by default */
+        .mySlides {
+          width: 100%;
+          height: 50rem;
+          display: flex;
+          justify-content: flex-start;
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        .containerSlides__row {
+          display: flex;
+          width: 100%;
+          justify-content: flex-start;
+
+          .column {
+
+            // width: auto;
+            img {
+              width: 100%;
+
+            }
+          }
+        }
+      }
+
+      /* Add a pointer when hovering over the thumbnail images */
+      .cursor {
+        cursor: pointer;
+      }
+
+      /* Add a transparency effect for thumnbail images */
+      .demo {
+        opacity: 0.4;
+        width: 100%;
         height: 100%;
+      }
+
+      .active,
+      .demo:hover {
+        opacity: 1;
+      }
+    }
+
+    .main__informacion {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 30vw;
+      min-width: 35rem;
+      max-width: 80rem;
+      margin-top: 2rem;
+
+      //background-color:rgb(225, 195, 113);
+      .informacion__basica {
+        font-family: 'Montserrat';
+        margin-left: 5rem;
+
+        .informacion__basica--tipoInmueble {
+          font-size: 3.5rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: rgb(193, 137, 52);
+
+        }
+
+        .informacion__basica--tipoOperacion {
+          margin-bottom: 1rem;
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: rgb(0, 0, 0);
+        }
+
+        .informacion__basica--ciudad {
+          font-size: 2rem;
+          font-weight: 400;
+          margin-bottom: 1.5rem;
+
+        }
+
+        .informacion__basica--colonia {
+          font-size: 2rem;
+          font-weight: 400;
+
+        }
+      }
+
+      .informacion__superficie {
+        width: auto;
+        margin-left: 5rem;
+        margin-top: 1.5rem;
+        font-family: 'Montserrat';
+        font-weight: 400;
+        font-size: 2rem;
+
+        .informacion__superficie--terreno {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 3rem;
+          }
+
+          p {
+            margin-left: 2rem;
+          }
+
+        }
+
+        .informacion__superficie--construccion {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 3rem;
+          }
+
+          p {
+            margin-left: 2rem;
+          }
+
+
+        }
+      }
+
+      .informacion__amenidadesBasicas {
+        width: auto;
+        margin-left: 5rem;
+        margin-top: 1.5rem;
+        font-family: 'Montserrat';
+        font-weight: 400;
+        font-size: 2rem;
+
+        .informacion__amenidadesBasicas--habitaciones {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 3rem;
+          }
+
+          p {
+            margin-left: 2rem;
+          }
+
+        }
+
+        .informacion__amenidadesBasicas--banos {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 3rem;
+          }
+
+          p {
+            margin-left: 2rem;
+          }
+
+        }
+
+        .informacion__amenidadesBasicas--estacionamiento {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 3rem;
+          }
+
+          p {
+            margin-left: 2rem;
+          }
+
+        }
+      }
+
+      .informacion__precio {
+        display: inline;
+        height: auto;
+        margin-left: 5rem;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        padding-right: 1.5rem;
+        padding-bottom: 1.5rem;
+        font-family: 'Montserrat';
+
+        // font-size: 4rem;
+        background-color: rgb(202, 156, 87);
+        border-radius: 1.5rem;
+
+        .informacion__precio--desde {
+          margin-left: 2rem;
+          font-weight: 400;
+          font-size: 1.5rem;
+          color: rgb(255, 255, 255);
+        }
+
+        .informacion__precio--cantidad {
+          margin-left: 2rem;
+          font-weight: 400;
+          font-size: 3rem;
+          color: rgb(255, 255, 255);
+
+        }
+      }
+
+      .informacion__precio:hover{
+        background-color: rgb(0, 0, 0);
+
+      }
+
+    }
+
+  }
+
+
+
+
+
+
+  .main__carcateristicasGenerales {
+    width: 100vw;
+    max-width: 190rem;
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-top: solid 0.1rem black;
+    border-bottom: solid 0.1rem black;
+    border-radius: 3rem;
+
+    .carcateristicasGenerales__descripcion {
+      width: 90vw;
+      max-width: 190rem;
+      margin: 0 auto;
+      font-family: 'Montserrat';
+
+
+      .main__carcateristicasGenerales--titulo1 {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-weight: 600;
+        font-size: 2.5rem;
+        text-decoration: underline 0.4rem;
+        text-decoration-color: rgb(193, 137, 52);
+
+      }
+
+      .main__carcateristicasGenerales--titulo2 {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-weight: 600;
+        font-size: 2.5rem;
+        text-decoration: underline 0.4rem;
+        text-decoration-color: rgb(193, 137, 52);
+
+      }
+
+      .main__carcateristicasGenerales--contenido {
+        font-weight: 400;
+        font-size: 1.5rem;
+        line-height: 3rem;
+      }
+
+
+    }
+
+    .carcateristicasGenerales__amenidades {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+
+      .carcateristicasGenerales__amenidades--amenidad {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 1.5rem 1.5rem 0 1.5rem;
+        text-align: center;
+        font-family: 'Montserrat';
+
+        img {
+          width: 3rem;
+        }
+
+        p {
+          font-weight: 500;
+          font-size: 1.5rem;
+        }
+      }
     }
   }
-  
-  /* Add a pointer when hovering over the thumbnail images */
-  .cursor {
-    cursor: pointer;
+
+  .main__pdf {
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5rem;
+    margin-top: 1rem;
+    margin-bottom: 10rem;
+
+    .pdf {
+      display: flex;
+      all: unset;
+      width: auto;
+      height: 5rem;
+      background-image: url('../../../../Assets/pdf.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      border: none;
+      background-color: none;
+      cursor: pointer;
+
+      p {
+        font-family: 'Montserrat';
+        margin-left: 6rem;
+        font-weight: 400;
+        font-size: 2rem;
+      }
+
+    }
+
+
   }
-  
-  /* Next & previous buttons */
-  .prev,
-  .next {
-    cursor: pointer;
-    width: 80%;
-    padding: 16px;
-    margin-top: -50px;
-    color: white;
-    font-weight: bold;
-    font-size: 20px;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-    -webkit-user-select: none;
-  }
-  
-  /* Position the "next button" to the right */
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-  
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover,
-  .next:hover {
-    background-color: rgba(0, 0, 0, 0.8);
-  }
-  
-  /* Number text (1/3 etc) */
-  .numbertext {
-    color: #f2f2f2;
-    font-size: 12px;
-    padding: 8px 12px;
-    position: absolute;
-    top: 0;
-  }
-  
-  /* Container for image text */
-  .caption-container {
-    text-align: center;
-    background-color: #222;
-    padding: 2px 16px;
-    color: white;
-  }
-  
-  .row:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  
-  /* Six columns side by side */
-  .column {
-    float: left;
-    width: 16.66%;
-  }
-  
-  /* Add a transparency effect for thumnbail images */
-  .demo {
-    opacity: 0.4;
-    width: 100%;
-    height: 100%;
-  }
-  
-  .active,
-  .demo:hover {
-    opacity: 1;
-  }
+}

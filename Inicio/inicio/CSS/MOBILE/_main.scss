@@ -3,10 +3,7 @@ main {
     min-width: 36rem;
     margin-bottom: 5rem;
     background-color: white;
-
-
     .main__presentation {
-
         width: 100%;
         height: 80vh;
         text-align: center;
@@ -29,9 +26,15 @@ main {
             color: rgb(193, 137, 52);
         }
     }
+    .bienvenida{
+        text-align: center;
+        margin-top: 2rem;
+        font-family: 'Montserrat';
+        font-size: 2rem;
+        font-weight: 400;
+    }
 
     .main__cityCards {
-
         display: flex;
         flex-wrap: wrap;
         width: 80%;
@@ -39,23 +42,18 @@ main {
         justify-content: space-evenly;
         margin: 0 auto;
         margin-top: 5rem;
-
         .cityCard {
             width: 28rem;
             height: 35.2rem;
             margin-bottom: 8em;
             text-align: center;
             font-family: 'Montserrat';
-
-
-
             .cityImg {
                 img {
                     width: 28rem;
                     height: 35.2rem;
                 }
             }
-
             .cityInfo {
                 display: flex;
                 flex-direction: column;
@@ -68,18 +66,16 @@ main {
                 background-color: white;
                 border: 0.2rem solid black;
                 transition: all 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-
                 p {
                     font-size: 2rem;
                     font-weight: 700;
                 }
-
                 a {
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     width: 80%;
-                    height: 5rem;
+                    height: 4rem;
                     margin: 0 auto;
                     margin-top: 1rem;
                     background-color: white;
@@ -89,32 +85,25 @@ main {
                     color: black;
                     border: 0.2rem solid black;
                 }
-
                 a:hover {
                     background-color: rgb(234, 171, 76);
                     color: white;
                     font-weight: 400;
                 }
-
             }
-
             .cityInfo:hover {
                 transition: all 200ms cubic-bezier(0.175, 0.885, 1.32, 2.275);
                 bottom: 35%;
-
                 background-color: black;
-
                 p {
                     color: white;
                 }
-
                 a {
                     border: white;
                 }
             }
         }
     }
-
     .main__oficinas {
         width: 60%;
         margin: 0 auto;
@@ -133,14 +122,12 @@ main {
                     min-width: 33rem;
                     text-align: center;
                     margin-top: 5rem;
-
                     .oficina__title {
                         font-family: 'Montserrat';
                         color: red;
                         font-size:2rem;
                         text-align: center;
                     }
-
                     .oficina__content {
                         display: flex;
                         width: 100%;
@@ -148,7 +135,6 @@ main {
                         align-items: center;
                         font-family: 'Montserrat';
                         
-
                         .mail {
                             display: block;
                             width: 3rem;
@@ -158,7 +144,6 @@ main {
                             background-repeat: no-repeat;
                             margin-top: 1rem;
                         }
-
                         .whatsapp {
                             display: block;
                             width: 3rem;
@@ -168,7 +153,6 @@ main {
                             background-repeat: no-repeat;
                             margin-top: 1rem;
                         }
-
                         .telephone {
                             display: block;
                             width: 3rem;
@@ -183,7 +167,6 @@ main {
                             margin-left: 1rem;
                             font-size: 1.5rem;
                         }
-
                     }
                 }
             }

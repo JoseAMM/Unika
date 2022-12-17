@@ -255,6 +255,13 @@ main .main__presentation p {
   font-size: 2.5rem;
   color: rgb(193, 137, 52);
 }
+main .bienvenida {
+  text-align: center;
+  margin-top: 2rem;
+  font-family: "Montserrat";
+  font-size: 2rem;
+  font-weight: 400;
+}
 main .main__cityCards {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -314,7 +321,7 @@ main .main__cityCards .cityCard .cityInfo a {
       -ms-flex-align: center;
           align-items: center;
   width: 80%;
-  height: 5rem;
+  height: 4rem;
   margin: 0 auto;
   margin-top: 1rem;
   background-color: white;

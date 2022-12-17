@@ -10,14 +10,9 @@ main {
     background-size: cover;
     background-attachment: fixed;
 
-
-
     .main__menu--content {
         width: 100%;
         background-color: rgba(255, 255, 255, 0.7);
-
-
-
 
         .main__menu {
             width: 20%;
@@ -26,29 +21,20 @@ main {
             padding-left: 2rem;
             transition: all 500ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
 
-
-
-
-
             i {
-
                 a {
                     img {
                         width: 30px;
                         height: 30px;
                     }
-
-
                 }
             }
         }
     }
 
     .main__content {
-
         display: flex;
         width: 100%;
-
 
         .main__nav {
             width: 20%;
@@ -57,9 +43,6 @@ main {
             position: relative;
             z-index: -100;
             transition: all 200ms cubic-bezier(0.785, 0.135, 0.15, 0.86);
-
-
-
 
             nav {
                 width: 100%;
@@ -72,8 +55,6 @@ main {
                     0 8px 16px rgba(0, 0, 0, 0.07),
                     0 16px 32px rgba(0, 0, 0, 0.07),
                     0 32px 64px rgba(0, 0, 0, 0.07);
-
-
 
                 ul {
                     display: flex;
@@ -93,7 +74,6 @@ main {
                         padding: 10px;
                         margin: 0.2rem;
 
-
                         a {
                             display: flex;
                             justify-content: center;
@@ -112,12 +92,9 @@ main {
                         cursor: pointer;
 
                         a {
-
                             color: black;
                             cursor: pointer;
-
                         }
-
                     }
 
                     .nav__logout:hover {
@@ -149,8 +126,6 @@ main {
             }
         }
 
-
-
         .main__formulario {
             display: flex;
             width: 80%;
@@ -161,7 +136,6 @@ main {
             text-align: center;
             align-items: center;
 
-
             form {
                 display: flex;
                 width: 100%;
@@ -170,9 +144,7 @@ main {
                 margin-top: 5rem;
                 border-radius: 2rem;
                 padding: 2rem;
-
                 flex-direction: column;
-
 
                 .normal {
                     width: 100%;
@@ -191,7 +163,6 @@ main {
                         padding: 1.5rem;
                         box-sizing: border-box;
                         font-size: 1.4rem;
-
                     }
 
                     span {
@@ -199,7 +170,6 @@ main {
                         width: 50%;
                         text-align: center;
                         font-size: 1.8rem;
-
                     }
 
                     p {
@@ -216,11 +186,8 @@ main {
 
                         img {
                             width: 20rem;
-
                         }
                     }
-
-
                 }
 
                 .input__download {
@@ -235,11 +202,9 @@ main {
                         width: 50%;
                         text-align: center;
                         font-size: 1.8rem;
-
                     }
 
                     section {
-
                         width: 50%;
                         display: flex;
                         justify-content: space-evenly;
@@ -271,7 +236,6 @@ main {
                             background-size: contain;
                             background-repeat: no-repeat;
                             cursor: pointer;
-
                         }
 
                         .share {
@@ -282,7 +246,6 @@ main {
                             background-size: contain;
                             background-repeat: no-repeat;
                             cursor: pointer;
-
                         }
 
                         .print {
@@ -293,23 +256,143 @@ main {
                             background-size: contain;
                             background-repeat: no-repeat;
                             cursor: pointer;
-
                         }
 
+                        .open {
+                            width: 4rem;
+                            height: 4rem;
+                            padding: 2rem;
+                            background-image: url('../../../../../Assets/ver.png');
+                            background-size: contain;
+                            background-repeat: no-repeat;
+                            cursor: pointer;
+                        }
                     }
-
-
-
-
                 }
 
+                .input__firma {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+                    margin-top: 2rem;
+
+                    span {
+                        font-family: "Arial", sans-serif;
+                        width: 50%;
+                        text-align: center;
+                        font-size: 1.8rem;
+                    }
+
+                    .contenedor__firma {
+                        width: 50%;
+
+                        .acciones__firma {
+                            display: flex;
+                            justify-content: space-evenly;
+
+                            input, button {
+                                outline: 0;
+                                border: none;
+                                background-color: transparent;
+                                text-align: center;
+                            }
+
+                            .descargarPrivacidadDisabled {
+                                padding: 1rem;
+                                background-color: #e13535;
+                                border-radius: 1rem;
+                                color: #FFFFFF;
+                                font-size: 1.5rem;
+                                cursor: not-allowed;
+                            }
+
+                            .descargarPrivacidadEnabled {
+                                padding: 1rem;
+                                background-color: #4c4eaf;
+                                border-radius: 1rem;
+                                color: #FFFFFF;
+                                font-size: 1.5rem;
+                                cursor: pointer;
+                            }
+
+                            .activarPrivacidadDisabled {
+                                padding: 1rem;
+                                background-color: #e13535;
+                                border-radius: 1rem;
+                                color: #FFFFFF;
+                                font-size: 1.5rem;
+                                cursor: not-allowed;
+                            }
+
+                            .activarPrivacidadEnabled{
+                                background-color: #4CAF50;
+                                padding: 1rem;
+                                border-radius: 1rem;
+                                color: #FFFFFF;
+                                font-size: 1.5rem;
+                                cursor: pointer;
+                            }
+
+                            .editarPrivacidad {
+                                padding: 1rem;
+                                background-color: #afaa4c;
+                                border-radius: 1rem;
+                                color: #FFFFFF;
+                                font-size: 1.5rem;
+                                cursor: pointer;
+                            }
+
+                            .download {
+                                width: 4rem;
+                                height: 4rem;
+                                padding: 2rem;
+                                background-image: url('../../../../../Assets/download.png');
+                                background-size: contain;
+                                background-repeat: no-repeat;
+                                cursor: pointer;
+                            }
+                        }
+
+                        .parametros {
+                            display: flex;
+                            flex-direction: column;
+                            margin-top: 1.5rem;
+
+                            section {
+                                display: flex;
+                                justify-content: start;
+
+                                span {
+                                    width: 30%;
+                                    justify-content: start;
+                                    align-self: center;
+
+                                }
+
+                                input {
+                                    width: 50%;
+                                    font-family: "Arial", sans-serif;
+                                    outline: 0;
+                                    background-color: rgba(253, 151, 99, 0.4);
+                                    border: 0;
+                                    border-radius: 1rem;
+                                    margin: 0 0 1.5rem;
+                                    padding: 1.5rem;
+                                    box-sizing: border-box;
+                                    font-size: 1.4rem;
+                                }
+                            }
 
 
+                        }
+                    }
+
+                }
 
                 .select {
                     display: flex;
                     align-items: center;
-
 
                     select {
                         width: 50%;
@@ -329,17 +412,14 @@ main {
                         width: 50%;
                         text-align: center;
                         font-size: 1.8rem;
-
                     }
                 }
-
 
                 .content__buttons {
                     display: flex;
                     width: 100%;
                     justify-content: space-evenly;
                     background-color: transparent;
-
                     height: auto;
                     margin: 0;
 
@@ -360,11 +440,9 @@ main {
                         cursor: pointer;
                         text-decoration: none;
                         font-weight: 100;
-
                     }
 
                     .signup__submit:hover {
-
                         cursor: pointer;
                     }
                 }
@@ -373,11 +451,33 @@ main {
     }
 }
 
+.input-borrar {
+    width: 4rem;
+    height: 4rem;
+    color: transparent;
+    border: 0px;
+    background-color: transparent;
+    background-image: url('../../../../../Assets/borrar.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+
+.input-borrar:hover {
+    width: 50px;
+    height: 50px;
+    color: transparent;
+    border: 0px;
+    background-color: transparent;
+    background-image: url('../../../../../Assets/borrar-open.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
 .menu__move {
     justify-content: flex-end;
     background-color: rgb(255, 0, 0);
     padding-right: 2rem;
-
 }
 
 .main__menu:hover {

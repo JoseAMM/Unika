@@ -1,6 +1,6 @@
 //Guardar el elemento y el contexto
 const mainCanvas = document.getElementById("main-canvas");
-// const firmar = document.getElementById("btn__keep");
+const firmCanvas = document.getElementById("btn__keep");
 const clearCanvas = document.getElementById("btn__clear");
 const context = mainCanvas.getContext("2d");
 let rect = mainCanvas.getBoundingClientRect();
@@ -63,6 +63,8 @@ mainCanvas.addEventListener("touchstart", mouseDown);
   let id = document.getElementById("id");
   let documento = document.getElementById("documento");
   id = id.getAttribute("value");
+  firmCanvas.setAttribute("disabled", "");
+  clearCanvas.setAttribute("disabled", "");
   documento = documento.getAttribute("value");
   const data = mainCanvas.toDataURL("image/png");
   var n = Math.floor(Math.random() * 10000);
@@ -89,9 +91,9 @@ mainCanvas.addEventListener("touchstart", mouseDown);
       documento +
       "&imagen=" +
       nombreDocumento;
-  }, 1500);
+  }, 1000);
       setTimeout(function () {
-    window.location.replace('http://unikabienesraices.com/index.html');}, 4000)
+    window.location.replace('http://unikabienesraices.com/index.html');}, 10000)
 
 };
 

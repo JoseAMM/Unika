@@ -1,13 +1,15 @@
 <?php
-// $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
-$db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
+ $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
+//$db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
 ob_end_clean();
 
-// if (is_dir('./Reportes_PDF/fpdf.php')){
-//     require_once('./Reportes_PDF/fpdf.php');
-// }
+// include_once('./Reportes_PDF/fpdf.php');
 
-require_once('../../../Reportes_PDF/fpdf.php');
+
+include_once('../../../Reportes_PDF/fpdf.php');
+
+
+
 
 
 
@@ -122,15 +124,16 @@ function pdf(
     $pdf->SetTextColor(255, 0, 0);
     // $pdf->Image('../../../Assets/logo.png', 50, 175, 43, 20);
     $pdf->Image('../../../Assets/logo.png', 50, 5, 43, 20);
-    $pdf->SetY(175);
-    $pdf->SetX(8);
-    $pdf->SetFont('Black', '', 40);
+    $pdf->SetY(185);
+    $pdf->SetX(135);
+
+    $pdf->SetFont('Black', '', 25);
     $pdf->Write(1, utf8_decode($operacion));
-    $pdf->SetY(178);
-    $pdf->SetX(180);
+    $pdf->SetY(185);
+    $pdf->SetX(227);
     $pdf->SetTextColor(0, 0, 0);
-    $pdf->SetFont('Black', '', 40);
-    $pdf->Write(1, '$' . utf8_decode($precio));
+    $pdf->SetFont('Black', '', 25);
+    $pdf->Write(1, '$' . number_format( utf8_decode($precio)));
     $pdf->SetY(10);
     $pdf->SetX(135);
     $pdf->SetTextColor(255, 0, 0);
@@ -143,7 +146,7 @@ function pdf(
     $pdf->SetFont('Bold', '', 16);
     $pdf->Write(1, utf8_decode($colonia));
     $pdf->SetY(35);
-    $pdf->Cell(120, 131, '', 1, 2, 'C', true);
+    $pdf->Cell(120, 153, '', 1, 2, 'C', 'L');
     $pdf->SetY(42);
     $pdf->SetX(12);
     $pdf->SetTextColor(0, 0, 0);
@@ -151,7 +154,7 @@ function pdf(
     $pdf->Write(1, utf8_decode('Características'));
     $pdf->Image('../../../Assets/Icon Amenities/Terreno.png', 15, 60, 10, 10);
 
-    $pdf->SetY(55);
+    $pdf->SetY(75);
     $pdf->SetX(13);
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Regular', '', 9);
@@ -163,7 +166,7 @@ function pdf(
     $pdf->SetFont('Bold', '', 35);
     $pdf->Write(1, utf8_decode($superficie_terreno) . ' m2');
 
-    $pdf->SetY(75);
+    $pdf->SetY(89);
     $pdf->SetX(13);
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Regular', '', 9);
@@ -193,7 +196,7 @@ function pdf(
         $pdf->Write(1, utf8_decode('Habitaciones'));
     }
     if ($bano != 0) {
-        $pdf->Image('../../../Assets/Icon Amenities/Bano.png', 90, 80, 7, 5);
+        $pdf->Image('../../../Assets/Icon Amenities/Bano.png', 90, 79, 7, 7);
         $pdf->SetY(82);
         $pdf->SetX(100);
         $pdf->SetTextColor(0, 0, 0);
@@ -223,13 +226,13 @@ function pdf(
 
 
 
-    $pdf->SetY(92);
+    $pdf->SetY(100);
     $pdf->SetX(15);
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Bold', '', 15);
-    $pdf->Write(1, utf8_decode('Otras Características: '));
+    $pdf->Write(1, utf8_decode('Amenidades: '));
 
-    $pdf->SetY(130);
+    $pdf->SetY(138);
     $pdf->SetX(15);
     $pdf->SetTextColor(0, 0, 0);
     $pdf->SetFont('Regular', '', 8);
@@ -242,7 +245,7 @@ function pdf(
     FROM otras_caracteristicas
     INNER JOIN amenidades ON otras_caracteristicas.idAmenidades = amenidades.idAmenidades WHERE id_Inmueble = $idInmueble";
     $consultaAmenidades = mysqli_query($db, $consultaAmenidades);
-    $y = 100;
+    $y = 108;
     $x = 15;
     $i = 1;
 
@@ -250,7 +253,7 @@ function pdf(
     while ($row = mysqli_fetch_assoc($consultaAmenidades)) {
 
         if ($i == 8) {
-            $y = 115;
+            $y = 123;
             $x = 15;
         }
         $width = 7;

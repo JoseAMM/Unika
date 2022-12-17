@@ -4,6 +4,12 @@ require 'includes/config/database.php';
 
 $db = conectarDB();
 
+if(isset($_GET['idTipo_Operacion'])){
+    $idTipo_Operacion = $_GET['idTipo_Operacion'];
+    if($idTipo_Operacion == 10){ $nombreOperacion = "Renta";}
+    if($idTipo_Operacion == 2){ $nombreOperacion = "Venta";}
+}
+
 
 // Consulta de la información del inmueble
 
@@ -41,6 +47,7 @@ WHERE
     AND municipios.estado = 9
     AND inmueble.VoBo = 1
     AND fotos.FotoPortada IS NOT NULL
+    AND inmueble.idTipo_Operacion = $idTipo_Operacion
 ORDER BY
     municipios.nombreMunicipio ASC";
 
@@ -112,7 +119,7 @@ $resultadoConsultaDatosInmueble = mysqli_query($db, $consultaDatosInmueble);
     <main>
 
         <section class="main__vender">
-            <h1>CASAS EN RENTA</h1>
+            <h1>CASAS EN <?php echo strtoupper($nombreOperacion)?></h1>
             <p>En CDMX</p>
         </section>
         <section class="main__inmuebles">
