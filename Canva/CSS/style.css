@@ -1,0 +1,318 @@
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+.main-container {
+  width: 100vw;
+  height: auto;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  scroll-behavior: inherit;
+  font-family: Montserrat;
+}
+.main-container canvas {
+  width: 370px;
+  height: 500px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  cursor: crosshair;
+  -webkit-box-shadow: rgb(0, 0, 0) 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(0, 0, 0) 10px -10px, #ffffff 20px -20px 0px -3px;
+          box-shadow: rgb(0, 0, 0) 0px 0px 0px 2px inset, rgb(255, 255, 255) 10px -10px 0px -3px, rgb(0, 0, 0) 10px -10px, #ffffff 20px -20px 0px -3px;
+}
+.main-container .writer {
+  position: absolute;
+  z-index: 1;
+  top: 60%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  height: 20px;
+  width: 200px;
+  min-width: 70px;
+  border-bottom: 3px solid #ff3d00;
+  -webkit-animation: drawLine 4s linear infinite;
+          animation: drawLine 4s linear infinite;
+}
+.main-container .writer:before {
+  content: "";
+  position: absolute;
+  left: calc(100% + 14px);
+  bottom: -6px;
+  width: 16px;
+  height: 100px;
+  border-radius: 20px 20px 50px 50px;
+  background-repeat: no-repeat;
+  background-image: linear-gradient(#ff3d00 6px, transparent 0), linear-gradient(45deg, rgba(0, 0, 0, 0.02) 49%, rgb(158, 158, 158) 51%), linear-gradient(315deg, rgba(0, 0, 0, 0.02) 49%, rgb(158, 158, 158) 51%), linear-gradient(to bottom, rgb(0, 0, 0) 10%, #ff3d00 10%, #ff3d00 90%, rgb(158, 158, 158) 90%);
+  background-size: 3px 3px, 8px 8px, 8px 8px, 16px 88px;
+  background-position: center bottom, left 88px, right 88px, left top;
+  -webkit-transform: rotate(25deg);
+          transform: rotate(25deg);
+  -webkit-animation: pencilRot 4s linear infinite;
+          animation: pencilRot 4s linear infinite;
+}
+@-webkit-keyframes drawLine {
+  0%, 100% {
+    width: 0px;
+  }
+  45%, 55% {
+    width: 200px;
+  }
+}
+@keyframes drawLine {
+  0%, 100% {
+    width: 0px;
+  }
+  45%, 55% {
+    width: 200px;
+  }
+}
+@-webkit-keyframes pencilRot {
+  0%, 45% {
+    bottom: -6px;
+    left: calc(100% + 14px);
+    -webkit-transform: rotate(25deg);
+            transform: rotate(25deg);
+  }
+  55%, 100% {
+    bottom: -12px;
+    left: calc(100% + 16px);
+    -webkit-transform: rotate(220deg);
+            transform: rotate(220deg);
+  }
+}
+@keyframes pencilRot {
+  0%, 45% {
+    bottom: -6px;
+    left: calc(100% + 14px);
+    -webkit-transform: rotate(25deg);
+            transform: rotate(25deg);
+  }
+  55%, 100% {
+    bottom: -12px;
+    left: calc(100% + 16px);
+    -webkit-transform: rotate(220deg);
+            transform: rotate(220deg);
+  }
+}
+.main-container .container__btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 370px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 0 auto;
+  margin-top: 57rem;
+}
+.main-container .container__btn .btn__clear {
+  width: 40%;
+  background: #FF4742;
+  border: 1px solid #FF4742;
+  border-radius: 6px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+          box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  min-height: 50px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+  text-rendering: geometricprecision;
+  text-transform: none;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  vertical-align: middle;
+}
+.main-container .container__btn .btn__clear:active {
+  background-color: white;
+  background-position: 0 0;
+  color: #FF4742;
+}
+.main-container .container__btn .btn__keep {
+  width: 40%;
+  background: #56ec77;
+  border: 1px solid #56ec77;
+  border-radius: 6px;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+          box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  color: #FFFFFF;
+  display: inline-block;
+  font-family: Montserrat;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  min-height: 50px;
+  outline: 0;
+  padding: 12px 14px;
+  text-align: center;
+}
+.main-container .container__btn .btn__keep:active {
+  background-color: white;
+  background-position: 0 0;
+  color: #13aa52;
+}
+.main-container .loader {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 200px;
+  height: 200px;
+  background-color: white;
+  border-radius: 50%;
+  background-image: url("../../../Assets/U-Unika.png");
+  background-repeat: no-repeat;
+  background-size: 10rem;
+  background-position: center;
+}
+.main-container .loader:before,
+.main-container .loader:after {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+  inset: 0;
+  -webkit-box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+          box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3) inset;
+}
+.main-container .loader:after {
+  -webkit-box-shadow: 3px 3px 3px 3px #FF3D00 inset;
+          box-shadow: 3px 3px 3px 3px #FF3D00 inset;
+  -webkit-animation: rotate 0.8s linear infinite;
+          animation: rotate 0.8s linear infinite;
+}
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.main-container lottie-player {
+  display: none;
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+.main-container .wait {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 85%;
+  left: 50%;
+  width: 370px;
+  height: 12px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+}
+.main-container .downloader {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 80%;
+  left: 50%;
+  width: 48px;
+  height: 12px;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: rgb(0, 0, 0);
+}
+.main-container .downloader::after {
+  content: "";
+  left: 50%;
+  bottom: 0;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  position: absolute;
+  border: 15px solid transparent;
+  border-top-color: rgb(0, 0, 0);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-animation: bump 0.4s ease-in-out infinite alternate;
+          animation: bump 0.4s ease-in-out infinite alternate;
+}
+.main-container .downloader::before {
+  content: "";
+  left: 50%;
+  bottom: 25px;
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
+  position: absolute;
+  width: 15px;
+  height: 20px;
+  background: rgb(0, 0, 0);
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-animation: bump 0.4s ease-in-out infinite alternate;
+          animation: bump 0.4s ease-in-out infinite alternate;
+}
+@-webkit-keyframes bump {
+  0% {
+    -webkit-transform: translate(-50%, 5px);
+            transform: translate(-50%, 5px);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -5px);
+            transform: translate(-50%, -5px);
+  }
+}
+@keyframes bump {
+  0% {
+    -webkit-transform: translate(-50%, 5px);
+            transform: translate(-50%, 5px);
+  }
+  100% {
+    -webkit-transform: translate(-50%, -5px);
+            transform: translate(-50%, -5px);
+  }
+}
+
+header {
+  width: 100%;
+}

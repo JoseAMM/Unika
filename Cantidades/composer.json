@@ -1,0 +1,5 @@
+{
+    "require": {
+        "luecano/numero-a-letras": "^3.0"
+    }
+}

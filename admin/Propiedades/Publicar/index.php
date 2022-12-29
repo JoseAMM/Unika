@@ -347,7 +347,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         </div>
                     </section>
                     <section class="select__config">
-                        <span>Cliente*</span>
+                        <span>Propietario*</span>
                         <select name="cliente" id="" required>
                             <option value=''>
                                 <--Selecciona-->
@@ -356,8 +356,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <option required value="<?php echo $row['idCliente']; ?>"><?php echo $row['Correo']; ?></option>
                             <?php endwhile; ?>
                         </select>
-                        <div class="button__new">i
-                            <a class="new" href="../../Empleados/Nuevo/index.php">Nuevo Cliente</a>
+                        <div class="button__new">
+                            <a class="new" href="../../Empleados/Nuevo/index.php">Nuevo Propietario</a>
                         </div>
                     </section>
                     <label for="superficie_terreno">

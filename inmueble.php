@@ -141,7 +141,7 @@ static $i = 1;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información de Propiedad</title>
-    <link rel="stylesheet" href="Inicio/inmueble/CSS/MOBILE/medium.css" media="(max-width: 950px)">
+    <link rel="stylesheet" href="Inicio/inmueble/CSS/MOBILE/medium.css" media="(max-width: 1000px)">
     <link rel="stylesheet" href="Inicio/inmueble/CSS/MEDIUM/medium.css" media="(min-width: 950px)">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;900&display=swap" rel="stylesheet" />
 </head>
