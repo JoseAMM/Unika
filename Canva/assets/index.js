@@ -383,23 +383,23 @@ function firmar() {
   var n = Math.floor(Math.random() * 10000);
   let nombreDocumento = id + documento + n + ".png";
   let nombreDocumentoReferencia = documento + "Firma.php";
-  let referencia =
-    "http://localhost:3000/admin/Propiedades/Ver/DocumentosCanva/" +
-    nombreDocumentoReferencia +
-    "?id=" +
-    id +
-    "&document=" +
-    documento +
-    "&imagen=" +
-    nombreDocumento;
-
   // let referencia =
-  //   "https://unikabienesraices.com/admin/Propiedades/Ver/DocumentosCanva/" +  nombreDocumentoReferencia + "?id=" +
+  //   "http://localhost:3000/admin/Propiedades/Ver/DocumentosCanva/" +
+  //   nombreDocumentoReferencia +
+  //   "?id=" +
   //   id +
   //   "&document=" +
   //   documento +
   //   "&imagen=" +
   //   nombreDocumento;
+
+  let referencia =
+    "https://unikabienesraices.com/admin/Propiedades/Ver/DocumentosCanva/" +  nombreDocumentoReferencia + "?id=" +
+    id +
+    "&document=" +
+    documento +
+    "&imagen=" +
+    nombreDocumento;
 
   /**
    * * Se envía a pngFirma.php para decodificarlo de base64 y guardar la imagen temporal de la firma en el servidor
