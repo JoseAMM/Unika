@@ -9,6 +9,32 @@ html {
   font-size: 62.5%;
 }
 
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  -webkit-box-shadow: 2px 2px 3px #999;
+          box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+}
+
+.float:hover {
+  text-decoration: none;
+  color: #25d366;
+  background-color: #fff;
+}
+
+.my-float {
+  margin-top: 16px;
+}
+
 .header__content {
   width: 100%;
   background-color: white;
@@ -70,13 +96,13 @@ html {
   width: 7rem;
   text-decoration: none;
   padding: 1rem;
-  background-color: #b38a4c;
+  background-color: rgb(179, 138, 76);
   color: white;
   font-weight: 400;
   font-size: 1rem;
 }
 .header__content .header__up .header__up--buttons .buttons__contacto a:hover {
-  background-color: #eaab4c;
+  background-color: rgb(234, 171, 76);
 }
 .header__content .header__up .header__up--buttons .buttons__login {
   display: -webkit-box;
@@ -155,7 +181,7 @@ html {
   cursor: pointer;
 }
 .header__content .header__down nav .menu:hover {
-  background-color: #b38a4c;
+  background-color: rgb(179, 138, 76);
   border-radius: 2rem;
 }
 .header__content .header__down nav ul {
@@ -177,7 +203,7 @@ html {
   width: 80%;
   height: 40rem;
   margin: 0 auto;
-  background-color: #eee8d8;
+  background-color: rgb(238, 232, 216);
   margin-top: 5rem;
   border-radius: 5rem;
   z-index: -300;
@@ -204,15 +230,15 @@ html {
   color: black;
 }
 .header__content .header__down nav ul li:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 5rem 5rem 5rem 5rem;
 }
 .header__content .header__down nav ul .nav__left:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 0rem 0 5rem 5rem;
 }
 .header__content .header__down nav ul .nav__right:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 5rem 5rem 0rem 0rem;
 }
 
@@ -220,7 +246,7 @@ html {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  background-color: red;
+  background-color: rgb(255, 0, 0);
   padding-right: 2rem;
 }
 
@@ -229,48 +255,124 @@ html {
 }
 
 main {
-  width: 100%;
-  min-width: 36rem;
-  padding-bottom: 5rem;
-  border-bottom: 1rem solid gray;
+  width: 100vw;
+  margin: 0 auto;
   background-color: white;
-  font-family: "Montserrat";
 }
-main .main__vender {
-  width: 100%;
-  height: 60vh;
-  text-align: center;
-  font-family: "Montserrat";
-  background-image: url("../../../../Assets/compracdmx.webp");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-}
-main .main__vender h1 {
-  font-size: 5rem;
-  font-weight: 400;
-  padding-top: 15rem;
-  color: #5a4526;
-}
-main .main__vender p {
-  padding-top: 6rem;
-  font-size: 2.5rem;
-  color: #c18934;
-}
-main .main__inmuebles {
-  width: 80%;
+main .main__fotos_informacion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin: 0 auto;
 }
-main .main__inmuebles .main__cardMunicipio {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
+main .main__fotos_informacion .main__fotos {
+  width: 100%;
+  margin-top: 2rem;
+  position: relative;
+  /* On hover, add a black background color with a little bit see-through */
+  /* Position the image container (needed to position the left and right arrows) */
+  /* Add a pointer when hovering over the thumbnail images */
+  /* Add a transparency effect for thumnbail images */
 }
-main .main__inmuebles .main__cardMunicipio h1 {
-  font-size: 3rem;
-  font-weight: 100;
-  color: #b38a4c;
+main .main__fotos_informacion .main__fotos .main__buttonsSlides {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  position: absolute;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  /* Next & previous buttons */
 }
-main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble {
+main .main__fotos_informacion .main__fotos .main__buttonsSlides .prev,
+main .main__fotos_informacion .main__fotos .main__buttonsSlides .next {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 6rem;
+  height: 20rem;
+  color: white;
+  font-weight: 900;
+  font-size: 4rem;
+  border-radius: 0 3px 3px 0;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
+  -webkit-user-select: none;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+main .main__fotos_informacion .main__fotos .main__buttonsSlides .prev:hover,
+main .main__fotos_informacion .main__fotos .main__buttonsSlides .next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+main .main__fotos_informacion .main__fotos .main__containerSlides {
+  width: 100%;
+  /* Hide the images by default */
+}
+main .main__fotos_informacion .main__fotos .main__containerSlides .mySlides {
+  width: 100%;
+  height: 50rem;
+  height: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+main .main__fotos_informacion .main__fotos .main__containerSlides .mySlides img {
+  width: 100%;
+  height: auto;
+  max-height: 50rem;
+}
+main .main__fotos_informacion .main__fotos .main__containerSlides .containerSlides__row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 0%;
+  height: 0rem;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+}
+main .main__fotos_informacion .main__fotos .main__containerSlides .containerSlides__row .column img {
+  width: 0%;
+}
+main .main__fotos_informacion .main__fotos .cursor {
+  cursor: pointer;
+}
+main .main__fotos_informacion .main__fotos .demo {
+  opacity: 0.4;
+  width: 100%;
+  height: 100%;
+}
+main .main__fotos_informacion .main__fotos .active,
+main .main__fotos_informacion .main__fotos .demo:hover {
+  opacity: 1;
+}
+main .main__fotos_informacion .main__informacion {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -278,56 +380,255 @@ main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-top: 1rem solid #b38a4c;
-  border-bottom: 1rem solid #b38a4c;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  width: 80vw;
+  min-width: 35rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
 }
-main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble .cardImg img {
-  width: 22.1rem;
-  height: 15.4rem;
+main .main__fotos_informacion .main__informacion .informacion__basica {
+  font-family: "Montserrat";
 }
-main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble .cardInfo {
-  width: 100%;
-  margin-left: 3rem;
+main .main__fotos_informacion .main__informacion .informacion__basica .informacion__basica--tipoInmueble {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: rgb(193, 137, 52);
 }
-main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble .cardInfo h2 {
-  font-size: 1.5rem;
+main .main__fotos_informacion .main__informacion .informacion__basica .informacion__basica--tipoOperacion {
+  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: rgb(0, 0, 0);
+}
+main .main__fotos_informacion .main__informacion .informacion__basica .informacion__basica--ciudad {
+  font-size: 2rem;
+  font-weight: 400;
   margin-bottom: 1.5rem;
 }
-main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble .cardInfo p {
-  margin-top: 0.3rem;
-  font-size: 1.4rem;
+main .main__fotos_informacion .main__informacion .informacion__basica .informacion__basica--colonia {
+  font-size: 2rem;
+  font-weight: 400;
 }
-main .main__inmuebles .cardMunicipio__cardInmueble {
+main .main__fotos_informacion .main__informacion .informacion__superficie {
+  width: auto;
+  margin-top: 1.5rem;
+  font-family: "Montserrat";
+  font-weight: 400;
+  font-size: 2rem;
+}
+main .main__fotos_informacion .main__informacion .informacion__superficie .informacion__superficie--terreno {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-top: 1rem solid #b38a4c;
-  border-bottom: 1rem solid #b38a4c;
 }
-main .main__inmuebles .cardMunicipio__cardInmueble .cardImg img {
-  width: 22.1rem;
-  height: 15.4rem;
+main .main__fotos_informacion .main__informacion .informacion__superficie .informacion__superficie--terreno img {
+  width: 3rem;
 }
-main .main__inmuebles .cardMunicipio__cardInmueble .cardInfo {
-  width: 100%;
-  margin-left: 3rem;
+main .main__fotos_informacion .main__informacion .informacion__superficie .informacion__superficie--terreno p {
+  margin-left: 2rem;
 }
-main .main__inmuebles .cardMunicipio__cardInmueble .cardInfo h2 {
+main .main__fotos_informacion .main__informacion .informacion__superficie .informacion__superficie--construccion {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+main .main__fotos_informacion .main__informacion .informacion__superficie .informacion__superficie--construccion img {
+  width: 3rem;
+}
+main .main__fotos_informacion .main__informacion .informacion__superficie .informacion__superficie--construccion p {
+  margin-left: 2rem;
+}
+main .main__fotos_informacion .main__informacion .informacion__amenidadesBasicas {
+  width: auto;
+  margin-top: 1.5rem;
+  font-family: "Montserrat";
+  font-weight: 400;
   font-size: 2rem;
-  margin-bottom: 3rem;
 }
-main .main__inmuebles .cardMunicipio__cardInmueble .cardInfo p {
-  font-size: 1.8rem;
+main .main__fotos_informacion .main__informacion .informacion__amenidadesBasicas .informacion__amenidadesBasicas--habitaciones {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+main .main__fotos_informacion .main__informacion .informacion__amenidadesBasicas .informacion__amenidadesBasicas--habitaciones img {
+  width: 3rem;
+}
+main .main__fotos_informacion .main__informacion .informacion__amenidadesBasicas .informacion__amenidadesBasicas--habitaciones p {
+  margin-left: 2rem;
+}
+main .main__fotos_informacion .main__informacion .informacion__amenidadesBasicas .informacion__amenidadesBasicas--banos {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+main .main__fotos_informacion .main__informacion .informacion__amenidadesBasicas .informacion__amenidadesBasicas--banos img {
+  width: 3rem;
+}
+main .main__fotos_informacion .main__informacion .informacion__amenidadesBasicas .informacion__amenidadesBasicas--banos p {
+  margin-left: 2rem;
+}
+main .main__fotos_informacion .main__informacion .informacion__amenidadesBasicas .informacion__amenidadesBasicas--estacionamiento {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+main .main__fotos_informacion .main__informacion .informacion__amenidadesBasicas .informacion__amenidadesBasicas--estacionamiento img {
+  width: 3rem;
+}
+main .main__fotos_informacion .main__informacion .informacion__amenidadesBasicas .informacion__amenidadesBasicas--estacionamiento p {
+  margin-left: 2rem;
+}
+main .main__fotos_informacion .main__informacion .informacion__precio {
+  display: inline;
+  height: auto;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  padding-right: 1.5rem;
+  padding-bottom: 1.5rem;
+  font-family: "Montserrat";
+  background-color: rgb(202, 156, 87);
+  border-radius: 1.5rem;
+}
+main .main__fotos_informacion .main__informacion .informacion__precio .informacion__precio--desde {
+  margin-left: 2rem;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: rgb(255, 255, 255);
+}
+main .main__fotos_informacion .main__informacion .informacion__precio .informacion__precio--cantidad {
+  margin-left: 2rem;
+  font-weight: 400;
+  font-size: 3rem;
+  color: rgb(255, 255, 255);
+}
+main .main__fotos_informacion .main__informacion .informacion__precio:hover {
+  background-color: rgb(0, 0, 0);
+}
+main .main__carcateristicasGenerales {
+  width: 100vw;
+  max-width: 190rem;
+  height: auto;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-top: solid 0.1rem black;
+  border-bottom: solid 0.1rem black;
+  border-radius: 3rem;
+}
+main .main__carcateristicasGenerales .carcateristicasGenerales__descripcion {
+  width: 90vw;
+  margin: 0 auto;
+  font-family: "Montserrat";
+  word-wrap: break-word;
+}
+main .main__carcateristicasGenerales .carcateristicasGenerales__descripcion .main__carcateristicasGenerales--titulo1 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 2.5rem;
+  -webkit-text-decoration: underline 0.4rem;
+          text-decoration: underline 0.4rem;
+  text-decoration-color: rgb(193, 137, 52);
+}
+main .main__carcateristicasGenerales .carcateristicasGenerales__descripcion .main__carcateristicasGenerales--titulo2 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  font-size: 2.5rem;
+  -webkit-text-decoration: underline 0.4rem;
+          text-decoration: underline 0.4rem;
+  text-decoration-color: rgb(193, 137, 52);
+}
+main .main__carcateristicasGenerales .carcateristicasGenerales__descripcion .main__carcateristicasGenerales--contenido {
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 3rem;
+}
+main .main__carcateristicasGenerales .carcateristicasGenerales__amenidades {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+main .main__carcateristicasGenerales .carcateristicasGenerales__amenidades .carcateristicasGenerales__amenidades--amenidad {
+  width: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin: 1.5rem 1.5rem 0 1.5rem;
+  text-align: center;
+  font-family: "Montserrat";
+}
+main .main__carcateristicasGenerales .carcateristicasGenerales__amenidades .carcateristicasGenerales__amenidades--amenidad img {
+  width: 3rem;
+}
+main .main__carcateristicasGenerales .carcateristicasGenerales__amenidades .carcateristicasGenerales__amenidades--amenidad p {
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+main .main__pdf {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100vw;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 1rem;
+  margin-bottom: 5rem;
+  margin-top: 5rem;
+}
+main .main__pdf .pdf {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  all: unset;
+  width: auto;
+  height: 5rem;
+  background-image: url("../../../../Assets/pdf.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  background-color: none;
+  cursor: pointer;
+}
+main .main__pdf .pdf p {
+  font-family: "Montserrat";
+  margin-left: 6rem;
+  font-weight: 400;
+  font-size: 2rem;
 }
 
 footer {

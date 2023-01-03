@@ -775,7 +775,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <span>Foto 15</span>
                         <p class="input__text"><img src="../Imagenes/<?php echo $foto15 ?>" alt=""></p>
                     </label>
-                    <input type="submit" value="Registrar" class="signup__submit">
+                    <input type="submit" value="VoBo/Registrar" class="signup__submit">
                 </form>
             </section>
         </section>

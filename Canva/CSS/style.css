@@ -9,6 +9,10 @@ html {
   font-size: 62.5%;
 }
 
+:root {
+  --form-control-color: rgb(255, 0, 0);
+}
+
 .main-container {
   width: 100vw;
   height: auto;
@@ -17,6 +21,45 @@ html {
   overflow-y: hidden;
   scroll-behavior: inherit;
   font-family: Montserrat;
+}
+.main-container .container__compraventa {
+  width: 37rem;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+.main-container .container__compraventa fieldset {
+  font-size: 1.2rem;
+}
+.main-container .container__compraventa .compraventa__radio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 1rem;
+}
+.main-container .container__compraventa .compraventa__radio .compraventa__radio--input {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 20%;
+  margin-top: 1rem;
+}
+.main-container .container__compraventa .compraventa__radio .compraventa__radio--input input[type=radio] {
+  width: 3rem;
+  height: 3rem;
+  border: 0.15rem solid currentColor;
+  border-radius: 20%;
 }
 .main-container canvas {
   width: 370px;

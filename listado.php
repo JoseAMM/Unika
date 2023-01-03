@@ -4,10 +4,14 @@ require 'includes/config/database.php';
 
 $db = conectarDB();
 
-if(isset($_GET['idTipo_Operacion'])){
+if (isset($_GET['idTipo_Operacion'])) {
     $idTipo_Operacion = $_GET['idTipo_Operacion'];
-    if($idTipo_Operacion == 10){ $nombreOperacion = "Renta";}
-    if($idTipo_Operacion == 2){ $nombreOperacion = "Venta";}
+    if ($idTipo_Operacion == 10) {
+        $nombreOperacion = "Renta";
+    }
+    if ($idTipo_Operacion == 2) {
+        $nombreOperacion = "Venta";
+    }
 }
 
 
@@ -65,8 +69,8 @@ $resultadoConsultaDatosInmueble = mysqli_query($db, $consultaDatosInmueble);
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="Inicio/rentacdmx/CSS/MOBILE/medium.css" media="(max-width: 950px)">
-    <link rel="stylesheet" href="Inicio/rentacdmx/CSS/MEDIUM/medium.css" media="(min-width: 950px)">
+    <link rel="stylesheet" href="Inicio/listado/CSS/MOBILE/medium.css" media="(max-width: 950px)">
+    <link rel="stylesheet" href="Inicio/listado/CSS/MEDIUM/medium.css" media="(min-width: 950px)">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700;900&display=swap" rel="stylesheet" />
     <title>Unika|Comprar</title>
 </head>
@@ -119,7 +123,7 @@ $resultadoConsultaDatosInmueble = mysqli_query($db, $consultaDatosInmueble);
     <main>
 
         <section class="main__vender">
-            <h1>CASAS EN <?php echo strtoupper($nombreOperacion)?></h1>
+            <h1>INMUEBLES EN <?php echo strtoupper($nombreOperacion) ?></h1>
             <p>En CDMX</p>
         </section>
         <section class="main__inmuebles">
@@ -128,7 +132,7 @@ $resultadoConsultaDatosInmueble = mysqli_query($db, $consultaDatosInmueble);
 
 
 
-                <a class="main__cardMunicipio" href="./inmueble.php?id=<?php echo $row['idInmueble'];?>">
+                <a class="main__cardMunicipio" href="./inmueble.php?id=<?php echo $row['idInmueble']; ?>">
                     <h1><?php echo  $row['nombreMunicipio'] ?></h1>
                     <section class="cardMunicipio__cardInmueble">
 
@@ -163,3 +167,9 @@ $resultadoConsultaDatosInmueble = mysqli_query($db, $consultaDatosInmueble);
             <?php endwhile; ?>
         </section>
     </main>
+    <script src="Inicio/JS/menu.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <a href="https://api.whatsapp.com/send?phone=5195508107&text=Hola,quisiera más información" class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float"></i>
+    </a>
+</body>

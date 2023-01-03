@@ -1,8 +1,8 @@
 <?php
-// $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
-$db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
+$db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
+//$db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
 
-require_once('../../../Reportes_PDF/fpdf.php');
+include_once('../../../Reportes_PDF/fpdf.php');
 
 
 
@@ -60,7 +60,7 @@ function avisoPrivacidad(
     global $pdf;
     global $db;
 
-    if (file_exists('../DocumentosFirmados/AvisoPrivacidad' . $idInmueble . '.pdf')){
+    if (file_exists('../DocumentosFirmados/AvisoPrivacidad' . $idInmueble . '.pdf')) {
         unlink('../DocumentosFirmados/AvisoPrivacidad' . $idInmueble . '.pdf');
     }
 
@@ -193,6 +193,7 @@ de Privacidad.'));
     // Rectángulo
     $pdf->Rect(82, 240, 46, 10, 'FD');
     $pdf->Link(82, 240, 46, 10, 'https://unikabienesraices.com/Canva/index.php?id=' . $idInmueble . '&document=' . $nombreDocumento);
+    //$pdf->Link(82, 240, 46, 10, 'http://localhost:3000/Canva/index.php?id=' . $idInmueble . '&document=' . $nombreDocumento);
 
 
     // Texto: Click aquí para firmar
@@ -214,8 +215,7 @@ de Privacidad.'));
     $pdf->SetFont('Bold', '', 9);
     $pdf->Write(1, utf8_decode('Heriberto Frías 1149 Ofna 1, Col. Del Valle, CDMX // unikacdmx@gmail.com // Tel 56828888'));
 
-    $queryInsertarEnTablaTemporal = "INSERT INTO informaciontemporaldocumentosoficiales (NombreCliente, Domicilio, Telefono, RFC, Correo, idInmueble_InformacionTemporalDocumentosOficiales, NombreDocumento) VALUES ('$nombrePrivacidad', '$domicilioPrivacidad', '$telefonoPrivacidad', '$rfcPrivacidad', '$emailPrivacidad', $idInmueble, '$nombreDocumento')";
-
+    $queryInsertarEnTablaTemporal = "INSERT INTO informaciontemporaldocumentosoficiales (NombreClientePrivacidad, DomicilioClientePrivacidad, TelefonoClientePrivacidad, RFCClientePrivacidad, CorreoClientePrivacidad, idInmueble_InformacionTemporalDocumentosOficiales, NombreDocumento) VALUES ('$nombrePrivacidad', '$domicilioPrivacidad', '$telefonoPrivacidad', '$rfcPrivacidad', '$emailPrivacidad', $idInmueble, '$nombreDocumento')";
     mysqli_query($db, $queryInsertarEnTablaTemporal);
 
     $name = $pdf->SetTitle('AvisoPrivacidad.pdf');

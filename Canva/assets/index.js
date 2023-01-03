@@ -347,24 +347,66 @@ miCanvasTemp.addEventListener("touchstart", empezarDibujo, false);
 miCanvasTemp.addEventListener("touchmove", dibujarLinea, false);
 miCanvasTemp.addEventListener("touchend", pararDibujar, false);
 
-// Firmar
+/**
+ * + Función para firmar el documento
+ */
 
 function firmar() {
+  /**
+   * * Estilos para el canvas y los botones para deshabilitarlos
+   */
+
   document.getElementById("loader").style.display = "initial";
   document.getElementById("btn__clear").style.cursor = "not-allowed";
   document.getElementById("btn__keep").style.cursor = "not-allowed";
-  let id = document.getElementById("id");
-  let documento = document.getElementById("documento");
-  id = id.getAttribute("value");
+  document.getElementById("pwCanvasMain").style.opacity = "0.2";
   firmCanvas.setAttribute("disabled", "");
   clearCanvas.setAttribute("disabled", "");
+
+  /**
+   * * Se obtiene el id del inmuble y el nombre del documento que se va a firmar
+   */
+
+  let id = document.getElementById("id");
+  id = id.getAttribute("value");
+  let documento = document.getElementById("documento");
   documento = documento.getAttribute("value");
+
+  /**
+   * * Se obtiene el png del canvas
+   */
   const data = miCanvas.toDataURL("image/png");
+
+  /**
+   * * El nombre del documento que aparecerá en la base de datos y que se guardará en el servidor y la referencia del documento que se va a firmar
+   */
   var n = Math.floor(Math.random() * 10000);
   let nombreDocumento = id + documento + n + ".png";
-  document.getElementById("pizarra").style.opacity = "0.2";
+  let nombreDocumentoReferencia = documento + "Firma.php";
+  let referencia =
+    "http://localhost:3000/admin/Propiedades/Ver/DocumentosCanva/" +
+    nombreDocumentoReferencia +
+    "?id=" +
+    id +
+    "&document=" +
+    documento +
+    "&imagen=" +
+    nombreDocumento;
+
+  // let referencia =
+  //   "https://unikabienesraices.com/admin/Propiedades/Ver/DocumentosCanva/" +  nombreDocumentoReferencia + "?id=" +
+  //   id +
+  //   "&document=" +
+  //   documento +
+  //   "&imagen=" +
+  //   nombreDocumento;
+
+  /**
+   * * Se envía a pngFirma.php para decodificarlo de base64 y guardar la imagen temporal de la firma en el servidor
+   */
 
   const fd = new FormData();
+
   fd.append("imagen", data); // Se llama "imagen", en PHP lo recuperamos con $_POST["imagen"]
   fd.append("id", id); // Se llama "id", en PHP lo recuperamos con $_POST["id"]
   fd.append("documento", documento); // Se llama "documento", en PHP lo recuperamos con $_POST["documento"]
@@ -373,25 +415,40 @@ function firmar() {
     method: "POST",
     body: fd,
   });
-  // // console.log(
-  // //   "La imagen ha sido enviada y tiene el nombre de: " + nombreImagenSubida
-  // // );
 
   setTimeout(function () {
     document.getElementById("success").style.display = "initial";
     document.getElementById("wait").style.display = "initial";
     document.getElementById("downloader").style.display = "initial";
     document.getElementById("loader").style.display = "none";
+    /**
+     * / Si el documento es AceptacionSeguimientoCompraVenta, se envía la decisión al documento para la firma
+     */
 
-    window.location.href =
-      "https://unikabienesraices.com/admin/Propiedades/Ver/DocumentosCanva/avisoPrivacidadFirma.php?id=" +
-      id +
-      "&document=" +
-      documento +
-      "&imagen=" +
-      nombreDocumento;
+    if (documento == "AceptacionSeguimientoCompraVenta") {
+      let decision = document.querySelector(
+        'input[name="decision"]:checked'
+      ).value;
+      window.location.href =
+        referencia +
+        id +
+        "&document=" +
+        documento +
+        "&imagen=" +
+        nombreDocumento +
+        "&decision=" +
+        decision;
+    } else {
+      window.location.href =
+        referencia +
+        id +
+        "&document=" +
+        documento +
+        "&imagen=" +
+        nombreDocumento;
+    }
   }, 6000);
   setTimeout(function () {
     window.location.replace("http://unikabienesraices.com/index.html");
-  }, 10000);
+  }, 40000);
 }

@@ -1,6 +1,6 @@
 <?php
-$db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
-//$db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
+//$db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
+$db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
 ob_end_clean();
 
 include_once('./Reportes_PDF/fpdf.php');

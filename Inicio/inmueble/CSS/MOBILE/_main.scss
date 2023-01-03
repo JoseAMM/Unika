@@ -1,111 +1,385 @@
 main {
-    width: 100%;
-    min-width: 36rem;
-    padding-bottom: 5rem;
-    border-bottom: 1rem solid gray;
-    background-color: white;
-    font-family: 'Montserrat';
+  width: 100vw;
+  margin: 0 auto;
+  background-color: white;
 
-    .main__vender {
+  .main__fotos_informacion {
+    display: flex;
+    width: 100vw;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 0 auto;
 
+    .main__fotos {
+      width: 100%;
+      margin-top: 2rem;
+      position: relative;
+
+      /* On hover, add a black background color with a little bit see-through */
+      .main__buttonsSlides {
+        display: flex;
         width: 100%;
-        height: 60vh;
+        position: absolute;
+        justify-content: space-between;
+        align-items: center;
+        top: 40%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 6rem;
+          height: 20rem;
+          color: white;
+          font-weight: 900;
+          font-size: 4rem;
+          border-radius: 0 3px 3px 0;
+          user-select: none;
+          -webkit-user-select: none;
+          cursor: pointer;
+          text-decoration: none;
+          background-color: rgba(0, 0, 0, 0.200);
+        }
+
+        .prev:hover,
+        .next:hover {
+          background-color: rgba(0, 0, 0, 0.800);
+        }
+      }
+
+      /* Position the image container (needed to position the left and right arrows) */
+      .main__containerSlides {
+        width: 100%;
+
+        /* Hide the images by default */
+        .mySlides {
+          width: 100%;
+          height: 50rem;
+          height: auto;
+          display: flex;
+          justify-content: flex-start;
+
+          img {
+            width: 100%;
+            height: auto;
+            max-height: 50rem;
+          }
+        }
+
+        .containerSlides__row {
+          display: flex;
+          width: 0%;
+          height: 0rem;
+          justify-content: flex-start;
+
+          .column {
+
+            // width: auto;
+            img {
+              width: 0%;
+
+            }
+          }
+        }
+      }
+
+      /* Add a pointer when hovering over the thumbnail images */
+      .cursor {
+        cursor: pointer;
+      }
+
+      /* Add a transparency effect for thumnbail images */
+      .demo {
+        opacity: 0.4;
+        width: 100%;
+        height: 100%;
+      }
+
+      .active,
+      .demo:hover {
+        opacity: 1;
+      }
+    }
+
+    .main__informacion {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      width: 80vw;
+      min-width: 35rem;
+      margin-top: 5rem;
+      margin-bottom: 5rem;
+
+      //background-color:rgb(225, 195, 113);
+      .informacion__basica {
+        font-family: 'Montserrat';
+
+        .informacion__basica--tipoInmueble {
+          font-size: 3.5rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          color: rgb(193, 137, 52);
+
+        }
+
+        .informacion__basica--tipoOperacion {
+          margin-bottom: 1rem;
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: rgb(0, 0, 0);
+        }
+
+        .informacion__basica--ciudad {
+          font-size: 2rem;
+          font-weight: 400;
+          margin-bottom: 1.5rem;
+
+        }
+
+        .informacion__basica--colonia {
+          font-size: 2rem;
+          font-weight: 400;
+
+        }
+      }
+
+      .informacion__superficie {
+        width: auto;
+        margin-top: 1.5rem;
+        font-family: 'Montserrat';
+        font-weight: 400;
+        font-size: 2rem;
+
+        .informacion__superficie--terreno {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 3rem;
+          }
+
+          p {
+            margin-left: 2rem;
+          }
+
+        }
+
+        .informacion__superficie--construccion {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 3rem;
+          }
+
+          p {
+            margin-left: 2rem;
+          }
+
+
+        }
+      }
+
+      .informacion__amenidadesBasicas {
+        width: auto;
+        margin-top: 1.5rem;
+        font-family: 'Montserrat';
+        font-weight: 400;
+        font-size: 2rem;
+
+        .informacion__amenidadesBasicas--habitaciones {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 3rem;
+          }
+
+          p {
+            margin-left: 2rem;
+          }
+
+        }
+
+        .informacion__amenidadesBasicas--banos {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 3rem;
+          }
+
+          p {
+            margin-left: 2rem;
+          }
+
+        }
+
+        .informacion__amenidadesBasicas--estacionamiento {
+          display: flex;
+          align-items: center;
+
+          img {
+            width: 3rem;
+          }
+
+          p {
+            margin-left: 2rem;
+          }
+
+        }
+      }
+
+      .informacion__precio {
+        display: inline;
+        height: auto;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        padding-right: 1.5rem;
+        padding-bottom: 1.5rem;
+        font-family: 'Montserrat';
+
+        // font-size: 4rem;
+        background-color: rgb(202, 156, 87);
+        border-radius: 1.5rem;
+
+        .informacion__precio--desde {
+          margin-left: 2rem;
+          font-weight: 400;
+          font-size: 1.5rem;
+          color: rgb(255, 255, 255);
+        }
+
+        .informacion__precio--cantidad {
+          margin-left: 2rem;
+          font-weight: 400;
+          font-size: 3rem;
+          color: rgb(255, 255, 255);
+
+        }
+      }
+
+      .informacion__precio:hover{
+        background-color: rgb(0, 0, 0);
+
+      }
+
+    }
+
+  }
+
+
+
+
+
+
+  .main__carcateristicasGenerales {
+    width: 100vw;
+    max-width: 190rem;
+    height: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-top: solid 0.1rem black;
+    border-bottom: solid 0.1rem black;
+    border-radius: 3rem;
+
+    .carcateristicasGenerales__descripcion {
+      width: 90vw;
+      margin: 0 auto;
+      font-family: 'Montserrat';
+      word-wrap: break-word;
+
+
+      .main__carcateristicasGenerales--titulo1 {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-weight: 600;
+        font-size: 2.5rem;
+        text-decoration: underline 0.4rem;
+        text-decoration-color: rgb(193, 137, 52);
+
+      }
+
+      .main__carcateristicasGenerales--titulo2 {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        font-weight: 600;
+        font-size: 2.5rem;
+        text-decoration: underline 0.4rem;
+        text-decoration-color: rgb(193, 137, 52);
+
+      }
+
+      .main__carcateristicasGenerales--contenido {
+        font-weight: 400;
+        font-size: 1.5rem;
+        line-height: 3rem;
+      }
+
+
+    }
+
+    .carcateristicasGenerales__amenidades {
+      display: flex;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+
+      .carcateristicasGenerales__amenidades--amenidad {
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin: 1.5rem 1.5rem 0 1.5rem;
         text-align: center;
         font-family: 'Montserrat';
-        background-image: url('../../../../Assets/compracdmx.webp');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        
-        h1 {
-            font-size: 5rem;
-            font-weight: 400;
-            padding-top: 15rem;
-            color: rgb(90, 69, 38);
+
+        img {
+          width: 3rem;
         }
-        
+
         p {
-            padding-top: 6rem;
-            font-size: 2.5rem;
-            color: rgb(193, 137, 52);
+          font-weight: 500;
+          font-size: 1.5rem;
         }
+      }
+    }
+  }
+
+  .main__pdf {
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 5rem;
+    margin-top: 5rem;
+
+    .pdf {
+      display: flex;
+      all: unset;
+      width: auto;
+      height: 5rem;
+      background-image: url('../../../../Assets/pdf.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      border: none;
+      background-color: none;
+      cursor: pointer;
+
+      p {
+        font-family: 'Montserrat';
+        margin-left: 6rem;
+        font-weight: 400;
+        font-size: 2rem;
+      }
+
     }
 
-    .main__inmuebles {
-        width: 80%;
-        margin: 0 auto;
 
-        .main__cardMunicipio {
-            margin-top: 3rem;
-            margin-bottom: 3rem;
-
-            h1 {
-                font-size: 3rem;
-                font-weight: 100;
-                color: rgb(179, 138, 76);
-            }
-
-            .cardMunicipio__cardInmueble {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-
-                border-top: 1rem solid rgb(179, 138, 76);
-                border-bottom: 1rem solid rgb(179, 138, 76);
-                .cardImg {
-                    img {
-                        width: 22.1rem;
-                        height: 15.4rem;
-                    }
-                }
-
-                .cardInfo {
-                    width: 100%;
-                    margin-left: 3rem;
-                    
-                    h2 {
-                        font-size: 1.5rem;
-                        margin-bottom: 1.5rem;
-                    }
-                    p {
-                        margin-top: 0.3rem;
-                        font-size: 1.4rem;
-                    }
-
-                }
-            }
-
-
-        }
-
-        .cardMunicipio__cardInmueble {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-
-            border-top: 1rem solid rgb(179, 138, 76);
-            border-bottom: 1rem solid rgb(179, 138, 76);
-            .cardImg {
-                img {
-                    width: 22.1rem;
-                    height: 15.4rem;
-                }
-            }
-
-            .cardInfo {
-                width: 100%;
-                margin-left: 3rem;
-                
-                h2 {
-                    font-size: 2rem;
-                    margin-bottom: 3rem;
-                }
-                p {
-                    font-size: 1.8rem;
-                }
-
-            }
-        }
-
-    }
+  }
 }

@@ -204,6 +204,7 @@ main {
                         box-sizing: border-box;
                         font-size: 1rem;
                         overflow: scroll;
+                        word-wrap: break-word;
 
                         img {
                             width: 8rem;
@@ -245,7 +246,7 @@ main {
                             margin-top: 10px;
                         }
 
-                        
+
                         a {
                             width: 2rem;
                             height: 2rem;
@@ -299,105 +300,80 @@ main {
                 .input__firma {
                     width: 100%;
                     display: flex;
-                    justify-content: space-evenly;
+                    justify-content: space-between;
                     align-items: center;
                     margin-top: 2rem;
 
                     span {
                         font-family: "Arial", sans-serif;
-                        width: 50%;
+                        width: 30%;
                         text-align: center;
                         font-size: 1rem;
                     }
-                    a{
-                        font-family: "Arial", sans-serif;
-                    }
 
                     .contenedor__firma {
-                        width: 50%;
+                        width: 70%;
 
                         .acciones__firma {
                             display: flex;
                             justify-content: space-evenly;
 
-                            input, button {
+                            input,
+                            button,
+                            a {
+                                display: flex;
+                                width: 33%;
+                                height: auto;
                                 outline: 0;
                                 border: none;
                                 background-color: transparent;
-                                text-align: center;
-                            }
-
-                            .descargarPrivacidadDisabled {
-                                display: flex;
                                 align-items: center;
-                                width: 6rem;
-                                height: 7rem;
-                                padding: 0.5rem;
-                                background-color: #e13535;
-                                border-radius: 1rem;
-                                color: #FFFFFF;
-                                font-size: 1rem;
+                                justify-content: center;
+                                text-align: center;
                                 text-decoration: none;
-                                cursor: not-allowed;
+                                font-family: "Arial", sans-serif;
+                                font-size: 0.5rem;
+                                border-radius: 0.5rem;
+                                padding: 0.5rem;
                             }
 
-                            .descargarPrivacidadEnabled {
-                                display: flex;
-                                align-items: center;
-                                width: 6rem;
-                                height: 7rem;
-                                padding: 0.5rem;
-                                background-color: #4c4eaf;
-                                border-radius: 1rem;
-                                color: #FFFFFF;
-                                font-size: 1rem;
-                                cursor: pointer;
-                            }
-
-                            .activarPrivacidadDisabled {
-                                display: flex;
-                                align-items: center;
-                                width: 6rem;
-                                height: 7rem;
-                                padding: 0.5rem;
+                            .descargarDisabled {
                                 background-color: #e13535;
-                                border-radius: 1rem;
+
                                 color: #FFFFFF;
-                                font-size: 1rem;
-                                text-align: center;
                                 cursor: not-allowed;
+
                             }
 
-                            .activarPrivacidadEnabled{
-                                display: flex;
-                                align-items: center;
-                                width: 6rem;
-                                height: 7rem;
-                                background-color: #4CAF50;
-                                padding: 0.5rem;
-                                border-radius: 1rem;
+                            .descargarEnabled {
+                                background-color: #4c4eaf;
+
                                 color: #FFFFFF;
-                                font-size: 1rem;
                                 cursor: pointer;
                             }
 
-                            .editarPrivacidad {
-                                display: flex;
-                                align-items: center;
-                                width: 6rem;
-                                height: 7rem;
-                                background-color: #afaa4c;
-                                border-radius: 1rem;
+                            .activarDisabled {
+                                background-color: #e13535;
+
                                 color: #FFFFFF;
-                                font-size: 1rem;
+                                cursor: not-allowed;
+                            }
+
+                            .activarEnabled {
+                                background-color: #4CAF50;
+                                color: #FFFFFF;
+                                cursor: pointer;
+                            }
+
+                            .editar {
+                                background-color: #afaa4c;
+                                color: #FFFFFF;
                                 cursor: pointer;
                             }
 
                             .download {
-                                display: flex;
-                                align-items: center;
-                                width: 6rem;
-                                height: 7rem;
+                                width: 4rem;
+                                height: 4rem;
                                 padding: 2rem;
                                 background-image: url('../../../../../Assets/download.png');
                                 background-size: contain;
@@ -414,25 +390,36 @@ main {
                             section {
                                 display: flex;
                                 justify-content: start;
+                                margin-bottom: 1.5rem;
 
                                 span {
                                     width: 30%;
                                     justify-content: start;
                                     align-self: center;
+                                    font-size: 0.5rem;
 
                                 }
 
                                 input {
-                                    width: 70%;
+                                    width: 60%;
                                     font-family: "Arial", sans-serif;
                                     outline: 0;
                                     background-color: rgba(253, 151, 99, 0.4);
                                     border: 0;
-                                    border-radius: 1rem;
-                                    margin: 0 0 1.5rem;
-                                    padding: 1.5rem;
+                                    font-size: 0.5rem;
+                                    border-radius: 0.5rem;
+                                    padding: 0.7rem;
                                     box-sizing: border-box;
-                                    font-size: 1rem;
+                                }
+
+                                input[type=number]::-webkit-inner-spin-button,
+                                input[type=number]::-webkit-outer-spin-button {
+                                    -webkit-appearance: none;
+                                    margin: 0;
+                                }
+
+                                input[type=number] {
+                                    -moz-appearance: textfield;
                                 }
                             }
 

@@ -11,11 +11,11 @@ $nombreImagenSubida = $_GET['imagen'];
 $queryTablaTemporalDocumentosOficiales = "SELECT * FROM informaciontemporaldocumentosoficiales WHERE idInmueble_InformacionTemporalDocumentosOficiales = $idInmueble AND NombreDocumento = '$nombreDocumento'";
 $consultaTablaTemporalDocumentosOficiales = mysqli_fetch_assoc(mysqli_query($db, $queryTablaTemporalDocumentosOficiales));
 
-$nombrePrivacidad = $consultaTablaTemporalDocumentosOficiales['NombreCliente'];
-$domicilioPrivacidad = $consultaTablaTemporalDocumentosOficiales['Domicilio'];
-$telefonoPrivacidad = $consultaTablaTemporalDocumentosOficiales['Telefono'];
-$rfcPrivacidad = $consultaTablaTemporalDocumentosOficiales['RFC'];
-$emailPrivacidad = $consultaTablaTemporalDocumentosOficiales['Correo'];
+$nombrePrivacidad = $consultaTablaTemporalDocumentosOficiales['NombreClientePrivacidad'];
+$domicilioPrivacidad = $consultaTablaTemporalDocumentosOficiales['DomicilioClientePrivacidad'];
+$telefonoPrivacidad = $consultaTablaTemporalDocumentosOficiales['TelefonoClientePrivacidad'];
+$rfcPrivacidad = $consultaTablaTemporalDocumentosOficiales['RFCClientePrivacidad'];
+$emailPrivacidad = $consultaTablaTemporalDocumentosOficiales['CorreoClientePrivacidad'];
 
 
 

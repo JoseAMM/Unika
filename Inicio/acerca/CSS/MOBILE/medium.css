@@ -7,7 +7,32 @@
 
 html {
   font-size: 62.5%;
-  background-color: white;
+}
+
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  -webkit-box-shadow: 2px 2px 3px #999;
+          box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+}
+
+.float:hover {
+  text-decoration: none;
+  color: #25d366;
+  background-color: #fff;
+}
+
+.my-float {
+  margin-top: 16px;
 }
 
 .header__content {
@@ -71,13 +96,13 @@ html {
   width: 7rem;
   text-decoration: none;
   padding: 1rem;
-  background-color: #b38a4c;
+  background-color: rgb(179, 138, 76);
   color: white;
   font-weight: 400;
   font-size: 1rem;
 }
 .header__content .header__up .header__up--buttons .buttons__contacto a:hover {
-  background-color: #eaab4c;
+  background-color: rgb(234, 171, 76);
 }
 .header__content .header__up .header__up--buttons .buttons__login {
   display: -webkit-box;
@@ -156,7 +181,7 @@ html {
   cursor: pointer;
 }
 .header__content .header__down nav .menu:hover {
-  background-color: #b38a4c;
+  background-color: rgb(179, 138, 76);
   border-radius: 2rem;
 }
 .header__content .header__down nav ul {
@@ -178,7 +203,7 @@ html {
   width: 80%;
   height: 40rem;
   margin: 0 auto;
-  background-color: #eee8d8;
+  background-color: rgb(238, 232, 216);
   margin-top: 5rem;
   border-radius: 5rem;
   z-index: -300;
@@ -205,15 +230,15 @@ html {
   color: black;
 }
 .header__content .header__down nav ul li:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 5rem 5rem 5rem 5rem;
 }
 .header__content .header__down nav ul .nav__left:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 0rem 0 5rem 5rem;
 }
 .header__content .header__down nav ul .nav__right:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 5rem 5rem 0rem 0rem;
 }
 
@@ -221,7 +246,7 @@ html {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  background-color: red;
+  background-color: rgb(255, 0, 0);
   padding-right: 2rem;
 }
 
@@ -250,24 +275,27 @@ main .main__acerca {
       flex-wrap: wrap;
   width: 95%;
   margin: 0 auto;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 main .main__acerca .main__acerca--info {
   width: 90%;
-  max-width: 70rem;
   min-width: 33rem;
   margin: 0 auto;
   font-family: "Montserrat";
-  background-color: #f7f7f7;
+  background-color: rgb(247, 247, 247);
+  padding-bottom: 4rem;
 }
 main .main__acerca .main__acerca--info h1 {
   width: 60%;
   margin: 0 auto;
   font-size: 2.5rem;
   font-weight: 400;
-  color: #c18934;
+  color: rgb(193, 137, 52);
   text-align: center;
   margin-top: 3rem;
 }
@@ -281,7 +309,7 @@ main .main__acerca .main__acerca--info h5 {
   margin-top: 3rem;
 }
 main .main__acerca .main__acerca--info p {
-  width: 60%;
+  width: 90%;
   margin: 0 auto;
   font-size: 1.4rem;
   font-weight: 400;
@@ -291,20 +319,19 @@ main .main__acerca .main__acerca--info p {
 }
 main .main__acerca .main__acerca--photo {
   width: 90%;
-  max-width: 65rem;
   min-width: 33rem;
   margin: 0 auto;
   text-align: center;
+  margin-top: 4rem;
 }
 main .main__acerca .main__acerca--photo img {
   width: 100%;
-  height: 86rem;
 }
 
 footer {
   width: 100%;
   height: 50vh;
-  background-color: #eee8d8;
+  background-color: rgb(238, 232, 216);
 }
 footer section {
   display: -webkit-box;

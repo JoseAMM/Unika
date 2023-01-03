@@ -147,19 +147,122 @@ main {
             position: absolute;
 
 
-                form {
+            form {
 
+                display: flex;
+                width: 100%;
+                height: auto;
+                margin: 0 auto;
+                background-color: rgba(255, 255, 255, 0.7);
+                margin-top: 5rem;
+                border-radius: 2rem;
+                padding: 2rem;
+
+                flex-direction: column;
+
+
+                label {
+                    width: 100%;
+                    display: flex;
+                    justify-content: space-evenly;
+                    align-items: center;
+
+                    input {
+                        width: 50%;
+                        font-family: "Arial", sans-serif;
+                        outline: 0;
+                        background-color: rgba(253, 151, 99, 0.4);
+                        border: 0;
+                        border-radius: 1rem;
+                        margin: 0 0 1.5rem;
+                        padding: 1.5rem;
+                        box-sizing: border-box;
+                        font-size: 1rem;
+
+                    }
+
+                    span {
+                        font-family: "Arial", sans-serif;
+                        width: 50%;
+                        text-align: center;
+                        font-size: 1rem;
+
+                    }
+
+                    p {
+
+                        width: 50%;
+                        font-family: "Arial", sans-serif;
+                        outline: 0;
+                        background-color: rgba(253, 151, 99, 0.4);
+                        border: 0;
+                        border-radius: 1rem;
+                        margin: 0 0 1.5rem;
+                        padding: 1.5rem;
+                        box-sizing: border-box;
+                        font-size: 1.4rem;
+
+                        img {
+                            width: 40%;
+                            margin: 0 auto;
+
+                        }
+                    }
+                }
+
+                .select {
+                    display: flex;
+                    align-items: center;
+
+
+                    select {
+                        width: 50%;
+                        font-family: "Arial", sans-serif;
+                        outline: 0;
+                        background-color: rgba(253, 151, 99, 0.4);
+                        border: 0;
+                        border-radius: 1rem;
+                        margin: 0 0 1.5rem;
+                        padding: 1.5rem;
+                        box-sizing: border-box;
+                        font-size: 1rem;
+                    }
+
+                    span {
+                        width: 50%;
+                        font-family: "Arial", sans-serif;
+                        text-align: center;
+                        font-size: 1rem;
+
+                    }
+                }
+
+                .select__config {
                     display: flex;
                     width: 100%;
-                    height: auto;
-                    margin: 0 auto;
-                    background-color: rgba(255, 255, 255, 0.7);
-                    margin-top: 5rem;
-                    border-radius: 2rem;
-                    padding: 2rem;
+                    align-items: center;
 
-                    flex-direction: column;
 
+                    select {
+                        width: 30%;
+                        font-family: "Arial", sans-serif;
+                        outline: 0;
+                        background-color: rgba(253, 151, 99, 0.4);
+                        border: 0;
+                        border-radius: 1rem;
+                        margin: 0 0 1.5rem;
+                        padding: 1.5rem;
+                        box-sizing: border-box;
+                        font-size: 1rem;
+                    }
+
+                    span {
+                        font-family: "Arial", sans-serif;
+                        width: 50%;
+                        text-align: center;
+                        font-size: 1rem;
+
+                    }
 
                     label {
                         width: 100%;
@@ -168,173 +271,71 @@ main {
                         align-items: center;
 
                         input {
-                            width: 50%;
-                            font-family: "Arial", sans-serif;
-                            outline: 0;
-                            background-color: rgba(253, 151, 99, 0.4);
-                            border: 0;
-                            border-radius: 1rem;
-                            margin: 0 0 1.5rem;
-                            padding: 1.5rem;
-                            box-sizing: border-box;
-                            font-size: 1rem;
-
-                        }
-
-                        span {
-                            font-family: "Arial", sans-serif;
-                            width: 50%;
-                            text-align: center;
-                            font-size: 1rem;
-
-                        }
-
-                        p {
-
-                            width: 50%;
-                            font-family: "Arial", sans-serif;
-                            outline: 0;
-                            background-color: rgba(253, 151, 99, 0.4);
-                            border: 0;
-                            border-radius: 1rem;
-                            margin: 0 0 1.5rem;
-                            padding: 1.5rem;
-                            box-sizing: border-box;
-                            font-size: 1.4rem;
-                            img {
-                                width: 40%;
-                                margin: 0 auto;
-                                
-                            }
-                        }
-                    }
-
-                    .select {
-                        display: flex;
-                        align-items: center;
-
-
-                        select {
-                            width: 50%;
-                            font-family: "Arial", sans-serif;
-                            outline: 0;
-                            background-color: rgba(253, 151, 99, 0.4);
-                            border: 0;
-                            border-radius: 1rem;
-                            margin: 0 0 1.5rem;
-                            padding: 1.5rem;
-                            box-sizing: border-box;
-                            font-size: 1rem;
-                        }
-
-                        span {
-                            width: 50%;
-                            font-family: "Arial", sans-serif;
-                            text-align: center;
-                            font-size: 1rem;
-
-                        }
-                    }
-
-                    .select__config {
-                        display: flex;
-                        width: 100%;
-                        align-items: center;
-    
-    
-                        select {
-                            width: 30%;
-                            font-family: "Arial", sans-serif;
-                            outline: 0;
-                            background-color: rgba(253, 151, 99, 0.4);
-                            border: 0;
-                            border-radius: 1rem;
-                            margin: 0 0 1.5rem;
-                            padding: 1.5rem;
-                            box-sizing: border-box;
-                            font-size: 1rem;
-                        }
-    
-                        span {
-                            font-family: "Arial", sans-serif;
-                            width: 50%;
-                            text-align: center;
-                            font-size: 1rem;
-    
-                        }
-    
-                        label {
-                            width: 100%;
-                            display: flex;
-                            justify-content: space-evenly;
-                            align-items: center;
-    
-                            input {
-                                width: 40%;
-                                font-family: "Arial", sans-serif;
-                                outline: 0;
-                                background-color: rgba(253, 151, 99, 0.4);
-                                border: 0;
-                                border-radius: 1rem;
-                                margin: 0 0 1.5rem;
-                                padding: 1.5rem;
-                                box-sizing: border-box;
-                                font-size: 1rem;
-    
-                            }
-    
-                            span {
-                                font-family: "Arial", sans-serif;
-                                width: 50%;
-                                text-align: center;
-                                font-size: 1rem;
-    
-                            }
-                        }
-                    }
-
-
-                    .content__buttons {
-                        display: flex;
-                        width: 100%;
-                        justify-content: space-evenly;
-                        background-color: transparent;
-
-                        height: auto;
-                        margin: 0;
-
-                        .signup__submit {
                             width: 40%;
                             font-family: "Arial", sans-serif;
-                            text-transform: uppercase;
                             outline: 0;
-                            background: #4CAF50;
-                            opacity: 0.7;
+                            background-color: rgba(253, 151, 99, 0.4);
                             border: 0;
-                            border-radius: 10px;
-                            text-align: center;
-                            padding: 15px;
-                            margin-top: 10px;
-                            color: #FFFFFF;
+                            border-radius: 1rem;
+                            margin: 0 0 1.5rem;
+                            padding: 1.5rem;
+                            box-sizing: border-box;
                             font-size: 1rem;
-                            cursor: pointer;
-                            text-decoration: none;
-                            font-weight: 100;
 
                         }
 
-                        .signup__submit:hover {
+                        span {
+                            font-family: "Arial", sans-serif;
+                            width: 50%;
+                            text-align: center;
+                            font-size: 1rem;
 
-                            cursor: pointer;
                         }
-
-
                     }
                 }
 
+
+                .content__buttons {
+                    display: flex;
+                    width: 100%;
+                    justify-content: space-evenly;
+                    background-color: transparent;
+
+                    height: auto;
+                    margin: 0;
+
+                    .signup__submit {
+                        width: 40%;
+                        font-family: "Arial", sans-serif;
+                        text-transform: uppercase;
+                        outline: 0;
+                        background: #4CAF50;
+                        opacity: 0.7;
+                        border: 0;
+                        border-radius: 10px;
+                        text-align: center;
+                        padding: 15px;
+                        margin-top: 10px;
+                        color: #FFFFFF;
+                        font-size: 1rem;
+                        cursor: pointer;
+                        text-decoration: none;
+                        font-weight: 100;
+
+                    }
+
+                    .signup__submit:hover {
+
+                        cursor: pointer;
+                    }
+
+
+                }
             }
+
         }
     }
+}
 
 .menu__move {
     justify-content: flex-end;
@@ -369,6 +370,68 @@ main {
         font-family: "Montserrat";
         font-weight: 700;
         color: white;
+    }
+
+}
+
+.button__add {
+    display: flex;
+    width: 20%;
+    height: 3rem;
+    // background-color: #3e59f4;
+    opacity: 0.7;
+    border-radius: 1rem;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+
+    .add {
+        display: flex;
+        width: 100%;
+        height: 4rem;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        text-decoration: none;
+        background-color: #3e59f4;
+        border-radius: 1rem;
+        border: none;
+        font-family: "Montserrat";
+        font-weight: 700;
+        color: white;
+        cursor: pointer;
+    }
+
+}
+
+.button__delete {
+    display: flex;
+    width: 20%;
+    height: 3rem;
+    // background-color: #3e59f4;
+    opacity: 0.7;
+    border-radius: 1rem;
+    text-align: center;
+    align-items: center;
+    cursor: pointer;
+
+    .delete {
+        display: flex;
+        width: 100%;
+        height: 4rem;
+        margin: 0 auto;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        text-decoration: none;
+        background-color: #f43e3e;
+        border-radius: 1rem;
+        border: none;
+        font-family: "Montserrat";
+        font-weight: 700;
+        color: white;
+        cursor: pointer;
     }
 
 }

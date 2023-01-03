@@ -9,6 +9,32 @@ html {
   font-size: 62.5%;
 }
 
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  -webkit-box-shadow: 2px 2px 3px #999;
+          box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+}
+
+.float:hover {
+  text-decoration: none;
+  color: #25d366;
+  background-color: #fff;
+}
+
+.my-float {
+  margin-top: 16px;
+}
+
 .header__content {
   width: 100%;
 }
@@ -67,12 +93,12 @@ html {
   width: 12rem;
   text-decoration: none;
   padding: 1rem;
-  background-color: #b38a4c;
+  background-color: rgb(179, 138, 76);
   color: white;
   font-weight: 400;
 }
 .header__content .header__up .header__up--buttons .buttons__contacto a:hover {
-  background-color: #eaab4c;
+  background-color: rgb(234, 171, 76);
 }
 .header__content .header__up .header__up--buttons .buttons__login {
   display: -webkit-box;
@@ -126,7 +152,7 @@ html {
   width: 70%;
   height: 5rem;
   margin: 0 auto;
-  background-color: #eee8d8;
+  background-color: rgb(238, 232, 216);
   margin-top: 2rem;
   border-radius: 5rem;
 }
@@ -152,11 +178,11 @@ html {
   color: black;
 }
 .header__content .header__down nav ul li:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 5rem 0 5rem 5rem;
 }
 .header__content .header__down nav ul .nav__left:hover {
-  background-color: #e1c371;
+  background-color: rgb(225, 195, 113);
   border-radius: 5rem 0 5rem 5rem;
 }
 
@@ -207,7 +233,7 @@ main .main__info .main__info--information {
   min-width: 36rem;
   max-width: 90rem;
   padding-bottom: 5rem;
-  background-color: #f7f7f7;
+  background-color: rgb(247, 247, 247);
   font-family: "Montserrat";
   margin-top: 3rem;
 }
@@ -216,7 +242,7 @@ main .main__info .main__info--information h1 {
   margin: 0 auto;
   font-size: 2.5rem;
   font-weight: 400;
-  color: #c18934;
+  color: rgb(193, 137, 52);
   text-align: center;
   margin-top: 3rem;
 }
@@ -251,7 +277,7 @@ main .main__info .main__info--photo img {
 footer {
   width: 100%;
   height: 50vh;
-  background-color: #eee8d8;
+  background-color: rgb(238, 232, 216);
 }
 footer section {
   display: -webkit-box;

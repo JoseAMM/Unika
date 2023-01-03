@@ -291,23 +291,26 @@ main {
                             display: flex;
                             justify-content: space-evenly;
 
-                            input, button {
+                            input, button, a {
                                 outline: 0;
                                 border: none;
                                 background-color: transparent;
                                 text-align: center;
+                                text-decoration: none;
+                                font-family: "Arial", sans-serif;
                             }
 
-                            .descargarPrivacidadDisabled {
+                            .descargarDisabled {
                                 padding: 1rem;
                                 background-color: #e13535;
                                 border-radius: 1rem;
                                 color: #FFFFFF;
                                 font-size: 1.5rem;
                                 cursor: not-allowed;
+
                             }
 
-                            .descargarPrivacidadEnabled {
+                            .descargarEnabled {
                                 padding: 1rem;
                                 background-color: #4c4eaf;
                                 border-radius: 1rem;
@@ -316,7 +319,7 @@ main {
                                 cursor: pointer;
                             }
 
-                            .activarPrivacidadDisabled {
+                            .activarDisabled {
                                 padding: 1rem;
                                 background-color: #e13535;
                                 border-radius: 1rem;
@@ -325,7 +328,7 @@ main {
                                 cursor: not-allowed;
                             }
 
-                            .activarPrivacidadEnabled{
+                            .activarEnabled{
                                 background-color: #4CAF50;
                                 padding: 1rem;
                                 border-radius: 1rem;
@@ -334,7 +337,7 @@ main {
                                 cursor: pointer;
                             }
 
-                            .editarPrivacidad {
+                            .editar {
                                 padding: 1rem;
                                 background-color: #afaa4c;
                                 border-radius: 1rem;
@@ -362,6 +365,7 @@ main {
                             section {
                                 display: flex;
                                 justify-content: start;
+                                margin-bottom: 2.5rem;
 
                                 span {
                                     width: 30%;
@@ -377,8 +381,7 @@ main {
                                     background-color: rgba(253, 151, 99, 0.4);
                                     border: 0;
                                     border-radius: 1rem;
-                                    margin: 0 0 1.5rem;
-                                    padding: 1.5rem;
+                                    padding: 2.2rem;
                                     box-sizing: border-box;
                                     font-size: 1.4rem;
                                 }

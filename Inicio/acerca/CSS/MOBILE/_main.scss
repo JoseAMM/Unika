@@ -12,16 +12,17 @@ main {
         flex-wrap: wrap;
         width: 95%;
         margin: 0 auto;
-        justify-content: space-evenly;
+        align-items: center;
+        justify-content: center;
 
         
         .main__acerca--info {
             width: 90%;
-            max-width: 70rem;
             min-width: 33rem;
             margin: 0 auto;
             font-family: 'Montserrat';
             background-color: rgb(247, 247, 247);
+            padding-bottom: 4rem;
             
             h1 {
                 width: 60%;
@@ -44,7 +45,7 @@ main {
             }
 
             p {
-                width: 60%;
+                width: 90%;
                 margin: 0 auto;
                 font-size: 1.4rem;
                 font-weight: 400;
@@ -56,14 +57,13 @@ main {
         .main__acerca--photo {
             
             width: 90%;
-            max-width: 65rem;
             min-width: 33rem;
             margin: 0 auto;
             text-align: center;
+            margin-top: 4rem;
             
             img {
                 width: 100%;
-                height: 86rem;
             }
         }
     }

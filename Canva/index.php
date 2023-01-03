@@ -1,17 +1,14 @@
 <?php
-// // $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
-// $db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
-// $idInmueble = $_GET['id'];
-// $documento = $_GET['document'];
-// $queryComprobacionDocumentoPrivacidad = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND NombreDocumentosOficial = '$documento' AND Activo = 1";
-// $consultaComprobacionDocumentoPrivacidad = mysqli_fetch_assoc(mysqli_query($db, $queryComprobacionDocumentoPrivacidad));
-// if (!$consultaComprobacionDocumentoPrivacidad) {
-//   header('Location: ../index.html');
-// }
+//$db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
+$db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
+$idInmueble = $_GET['id'];
+$documento = $_GET['document'];
+$queryComprobacionDocumentoActivo = "SELECT * FROM documentosoficiales WHERE idInmueble_DocumentosOficiales = $idInmueble AND NombreDocumentosOficial = '$documento' AND Activo = 1";
+$consultaComprobacionDocumentoActivo = mysqli_fetch_assoc(mysqli_query($db, $queryComprobacionDocumentoActivo));
+if ($consultaComprobacionDocumentoActivo == NULL) {
+  header('Location: ../index.html');
+}
 // // $link = '../admin/Propiedades/Ver/avisoPrivacidad.php?context=' . $hashInmueble . '&id=' . $id . '&document=' . $documento;
-
-$idInmueble = 8;
-$documento = 14;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -31,6 +28,27 @@ $documento = 14;
   <header>
   </header>
   <main id="main-container" class="main-container">
+
+    <?php if ($documento == 'AceptacionSeguimientoCompraVenta'):?>
+
+    <section class="container__compraventa">
+      <fieldset>
+        <legend>¿Deseas continuar con la compra-venta del inmueble?</legend>
+        <section class="compraventa__radio">
+          <section class="compraventa__radio--input">
+            <input type="radio" name="decision" id="" value="Sí" required>
+            <label for="">Sí</label>
+          </section>
+          <section class="compraventa__radio--input">
+            <input type="radio" name="decision" id="" value="No" required>
+            <label for="">No</label>
+          </section>
+        </section>
+      </fieldset>
+    </section>
+
+    <?php endif;?>
+
 
     <lottie-player id="success" src="https://assets5.lottiefiles.com/private_files/lf30_pY2XZv.json" mode="bounce" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
     <span class="writer" id="writer">Firma aquí</span>

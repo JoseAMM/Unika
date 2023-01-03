@@ -501,6 +501,7 @@ main .main__content .main__formulario form .input__firma .contenedor__firma .par
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
+  margin-bottom: 2.5rem;
 }
 main .main__content .main__formulario form .input__firma .contenedor__firma .parametros section span {
   width: 30%;
@@ -518,8 +519,7 @@ main .main__content .main__formulario form .input__firma .contenedor__firma .par
   background-color: rgba(253, 151, 99, 0.4);
   border: 0;
   border-radius: 1rem;
-  margin: 0 0 1.5rem;
-  padding: 1.5rem;
+  padding: 2.2rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   font-size: 1.4rem;

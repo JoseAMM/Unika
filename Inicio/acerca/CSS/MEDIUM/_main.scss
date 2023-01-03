@@ -1,6 +1,7 @@
 main {
     width: 100%;
     min-width: 36rem;
+    
     margin-bottom: 5rem;
     margin-top: 5rem;
     transition: cubic-bezier(0.95, 0.05, 0.795, 0.035);
@@ -10,20 +11,24 @@ main {
         flex-direction: row;
         flex-wrap: wrap;
         width: 95%;
+        max-width: 130rem;
         margin: 0 auto;
-        justify-content: space-evenly;
+        align-items: center;
+        justify-content: center;
+
 
         
         .main__acerca--info {
             width: 50%;
             max-width: 70rem;
-            min-width: 33rem;
             margin: 0 auto;
             font-family: 'Montserrat';
             background-color: rgb(247, 247, 247);
+            padding-bottom: 4rem;
+
             
             h1 {
-                width: 60%;
+                width: 100%;
                 margin: 0 auto;
                 font-size: 2.5rem;
                 font-weight: 400;
@@ -33,7 +38,7 @@ main {
             }
 
             h5 {
-                width: 60%;
+                width: 100%;
                 margin: 0 auto;
                 font-size: 1.5rem;
                 font-weight: 700;
@@ -43,7 +48,7 @@ main {
             }
 
             p {
-                width: 60%;
+                width: 80%;
                 margin: 0 auto;
                 font-size: 1.4rem;
                 font-weight: 400;
@@ -55,14 +60,12 @@ main {
         .main__acerca--photo {
             
             width: 50%;
-            max-width: 65rem;
-            min-width: 33rem;
             margin: 0 auto;
             text-align: center;
+            margin-top: 5rem;
             
             img {
-                width: 90%;
-                height: 86rem;
+                width: 100%;
             }
         }
     }

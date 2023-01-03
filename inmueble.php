@@ -141,8 +141,8 @@ static $i = 1;
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Información de Propiedad</title>
-    <link rel="stylesheet" href="Inicio/inmueble/CSS/MOBILE/medium.css" media="(max-width: 1000px)">
-    <link rel="stylesheet" href="Inicio/inmueble/CSS/MEDIUM/medium.css" media="(min-width: 950px)">
+    <link rel="stylesheet" href="Inicio/inmueble/CSS/MOBILE/medium.css" media="(max-width: 1260px)">
+    <link rel="stylesheet" href="Inicio/inmueble/CSS/MEDIUM/medium.css" media="(min-width: 1000px)">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;900&display=swap" rel="stylesheet" />
 </head>
 
@@ -312,5 +312,10 @@ static $i = 1;
         </section>
     </main>
     <footer></footer>
+    <script src="Inicio/JS/menu.js"></script>
+    <script src="./inmueble.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <a href="https://api.whatsapp.com/send?phone=5195508107&text=Hola,quisiera más información" class="float" target="_blank">
+        <i class="fa fa-whatsapp my-float"></i>
+    </a>
 </body>
-<script src="./inmueble.js"></script>

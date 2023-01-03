@@ -1,5 +1,5 @@
 <?php
-// $db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
+//$db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
 $db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
 ob_end_clean();
 
@@ -98,17 +98,17 @@ function pdf(
     while ($row = mysqli_fetch_assoc($consultaFotos)) {
         switch ($i) {
             case 1:
-                $pdf->Image('../Imagenes/' . $row['NombreFotos'], 135, 35, 160, 80);
+                $pdf->Image('../../../admin/Propiedades/Imagenes/' . $row['NombreFotos'], 135, 35, 160, 80);
                 break;
             case 2:
-                $pdf->Image('../Imagenes/' . $row['NombreFotos'], 135, 116, 50, 50);
+                $pdf->Image('../../../admin/Propiedades/Imagenes/' . $row['NombreFotos'], 135, 116, 50, 50);
 
                 break;
             case 3:
-                $pdf->Image('../Imagenes/' . $row['NombreFotos'], 190, 116, 50, 50);
+                $pdf->Image('../../../admin/Propiedades/Imagenes/' . $row['NombreFotos'], 190, 116, 50, 50);
                 break;
             case 4:
-                $pdf->Image('../Imagenes/' . $row['NombreFotos'], 245, 116, 50, 50);
+                $pdf->Image('../../../admin/Propiedades/Imagenes/' . $row['NombreFotos'], 245, 116, 50, 50);
                 break;
         }
         $i++;

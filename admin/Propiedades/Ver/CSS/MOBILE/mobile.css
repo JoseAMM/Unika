@@ -311,6 +311,7 @@ main .main__content .main__formulario form .normal p {
           box-sizing: border-box;
   font-size: 1rem;
   overflow: scroll;
+  word-wrap: break-word;
 }
 main .main__content .main__formulario form .normal p img {
   width: 8rem;
@@ -394,9 +395,9 @@ main .main__content .main__formulario form .input__firma {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -404,15 +405,12 @@ main .main__content .main__formulario form .input__firma {
 }
 main .main__content .main__formulario form .input__firma span {
   font-family: "Arial", sans-serif;
-  width: 50%;
+  width: 30%;
   text-align: center;
   font-size: 1rem;
 }
-main .main__content .main__formulario form .input__firma a {
-  font-family: "Arial", sans-serif;
-}
 main .main__content .main__formulario form .input__firma .contenedor__firma {
-  width: 50%;
+  width: 70%;
 }
 main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma {
   display: -webkit-box;
@@ -422,102 +420,58 @@ main .main__content .main__formulario form .input__firma .contenedor__firma .acc
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
 }
-main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma input, main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma button {
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma input,
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma button,
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 33%;
+  height: auto;
   outline: 0;
   border: none;
   background-color: transparent;
-  text-align: center;
-}
-main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .descargarPrivacidadDisabled {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  width: 6rem;
-  height: 7rem;
-  padding: 0.5rem;
-  background-color: #e13535;
-  border-radius: 1rem;
-  color: #FFFFFF;
-  font-size: 1rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
   text-decoration: none;
-  cursor: not-allowed;
-}
-main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .descargarPrivacidadEnabled {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 6rem;
-  height: 7rem;
+  font-family: "Arial", sans-serif;
+  font-size: 0.5rem;
+  border-radius: 0.5rem;
   padding: 0.5rem;
-  background-color: #4c4eaf;
-  border-radius: 1rem;
-  color: #FFFFFF;
-  font-size: 1rem;
-  cursor: pointer;
 }
-main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .activarPrivacidadDisabled {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 6rem;
-  height: 7rem;
-  padding: 0.5rem;
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .descargarDisabled {
   background-color: #e13535;
-  border-radius: 1rem;
   color: #FFFFFF;
-  font-size: 1rem;
-  text-align: center;
   cursor: not-allowed;
 }
-main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .activarPrivacidadEnabled {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 6rem;
-  height: 7rem;
-  background-color: #4CAF50;
-  padding: 0.5rem;
-  border-radius: 1rem;
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .descargarEnabled {
+  background-color: #4c4eaf;
   color: #FFFFFF;
-  font-size: 1rem;
   cursor: pointer;
 }
-main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .editarPrivacidad {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 6rem;
-  height: 7rem;
-  background-color: #afaa4c;
-  border-radius: 1rem;
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .activarDisabled {
+  background-color: #e13535;
   color: #FFFFFF;
-  font-size: 1rem;
+  cursor: not-allowed;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .activarEnabled {
+  background-color: #4CAF50;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .editar {
+  background-color: #afaa4c;
+  color: #FFFFFF;
   cursor: pointer;
 }
 main .main__content .main__formulario form .input__firma .contenedor__firma .acciones__firma .download {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 6rem;
-  height: 7rem;
+  width: 4rem;
+  height: 4rem;
   padding: 2rem;
   background-image: url("../../../../../Assets/download.png");
   background-size: contain;
@@ -541,6 +495,7 @@ main .main__content .main__formulario form .input__firma .contenedor__firma .par
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: start;
+  margin-bottom: 1.5rem;
 }
 main .main__content .main__formulario form .input__firma .contenedor__firma .parametros section span {
   width: 30%;
@@ -550,19 +505,27 @@ main .main__content .main__formulario form .input__firma .contenedor__firma .par
   -ms-flex-item-align: center;
       -ms-grid-row-align: center;
       align-self: center;
+  font-size: 0.5rem;
 }
 main .main__content .main__formulario form .input__firma .contenedor__firma .parametros section input {
-  width: 70%;
+  width: 60%;
   font-family: "Arial", sans-serif;
   outline: 0;
   background-color: rgba(253, 151, 99, 0.4);
   border: 0;
-  border-radius: 1rem;
-  margin: 0 0 1.5rem;
-  padding: 1.5rem;
+  font-size: 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.7rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-size: 1rem;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .parametros section input[type=number]::-webkit-inner-spin-button,
+main .main__content .main__formulario form .input__firma .contenedor__firma .parametros section input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+main .main__content .main__formulario form .input__firma .contenedor__firma .parametros section input[type=number] {
+  -moz-appearance: textfield;
 }
 
 .menu__move {

@@ -1,6 +1,5 @@
 <?php
-include_once('../../../../Reportes_PDF/fpdf.php');
-
+include_once('./DocumentosCanva/includeFormatos.php');
 class PDF extends FPDF
 {
     // Pie de página

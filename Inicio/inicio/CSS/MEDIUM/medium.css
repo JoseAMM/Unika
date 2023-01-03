@@ -9,6 +9,32 @@ html {
   font-size: 62.5%;
 }
 
+.float {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 40px;
+  right: 40px;
+  background-color: #25d366;
+  color: #FFF;
+  border-radius: 50px;
+  text-align: center;
+  font-size: 30px;
+  -webkit-box-shadow: 2px 2px 3px #999;
+          box-shadow: 2px 2px 3px #999;
+  z-index: 100;
+}
+
+.float:hover {
+  text-decoration: none;
+  color: #25d366;
+  background-color: #fff;
+}
+
+.my-float {
+  margin-top: 16px;
+}
+
 .header__content {
   width: 100%;
 }
@@ -168,8 +194,21 @@ main {
   transition: cubic-bezier(0.95, 0.05, 0.795, 0.035);
 }
 main .main__presentation {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 100%;
   height: 80vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   text-align: center;
   font-family: "Montserrat";
   background-image: url("../../../../Assets/fondo-inicio.png");
@@ -178,15 +217,19 @@ main .main__presentation {
   background-attachment: fixed;
 }
 main .main__presentation h1 {
+  padding: 1rem;
   font-size: 8rem;
   font-weight: 400;
-  padding-top: 15rem;
   color: rgb(90, 69, 38);
+  background-color: rgba(255, 255, 255, 0.61);
+  border-radius: 1rem;
 }
 main .main__presentation p {
-  padding-top: 6rem;
+  padding: 1rem;
   font-size: 3.5rem;
   color: rgb(193, 137, 52);
+  background-color: rgba(255, 255, 255, 0.61);
+  border-radius: 1rem;
 }
 main .bienvenida {
   text-align: center;

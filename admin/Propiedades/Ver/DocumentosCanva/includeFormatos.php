@@ -1,10 +1,14 @@
 <?php
-$db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
-//$db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
-include_once('../../../../Reportes_PDF/fpdf.php');
-include_once('./force_justify.php');
-include_once('../../../../Cantidades/vendor/autoload.php');
+//$db = mysqli_connect('localhost', 'root', '', 'bienes_raices');
+$db = mysqli_connect('localhost', 'unikabie_admin', 'Ivan1975*', 'unikabie_bienesraices');
+include_once('../../../Reportes_PDF/fpdf.php');
+include_once('./DocumentosCanva/force_justify.php');
+include_once('../../../Cantidades/vendor/autoload.php');
 
+$diassemana = array("Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado");
+$meses = array("Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+ 
+$fecha = $diassemana[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
 function widthString($texto, $size)
 {
     global $pdf;
@@ -33,7 +37,7 @@ function nuevaPagina()
     $pdf->SetDrawColor(190, 190, 190);
     $pdf->SetFillColor(255, 255, 255);
     $pdf->SetTextColor(255, 0, 0);
-    $pdf->Image('../../../../Assets/logo.png', 22, 10, 60.2, 28);
+    $pdf->Image('../../../Assets/logo.png', 22, 10, 60.2, 28);
     $pdf->SetDrawColor(255, 0, 0);
     $pdf->SetLineWidth(0.55);
     $pdf->Line(22, 41, 190, 41);
