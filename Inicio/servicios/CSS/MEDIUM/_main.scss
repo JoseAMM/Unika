@@ -1,27 +1,37 @@
 main {
     width: 100%;
     min-width: 36rem;
-    margin-bottom: 5rem;
-    margin-top: 5rem;
+    padding-bottom: 5rem;
+    padding-top: 8rem;
+    background-image: url('../../../../Assets/bienesraices__fondo.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 
     .main__info {
         width: 60%;
         margin: 0 auto;
+
         h1 {
             font-family: 'Montserrat';
-            text-align: center;
-            font-size: 3.5rem;
-            font-weight: 400;
-            color: rgb(193, 137, 52);
             margin-bottom: 2rem;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: rgb(193, 137, 52);
+            text-align: center;
+            text-decoration: underline 0.4rem ;
         }
-        
+
         p {
             font-family: 'Montserrat';
-            text-align: justify;
-            font-size: 1.5rem;
+            width: 100%;
+            margin: 0 auto;
+            font-size: 1.8rem;
             font-weight: 400;
-            line-height: 3.2rem;
+            line-height: 3.5rem;
+            color: black;
+            margin-top: 3rem;
+            text-align: justify;
         }
     }
 
@@ -29,13 +39,13 @@ main {
         display: flex;
         justify-content: space-between;
         flex-wrap: wrap;
-        width: 90%;
+        width: 60%;
         margin: 0 auto;
 
         .main__servicios--content {
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: justify;
             align-items: center;
             width: 33%;
             max-width: 42rem;
@@ -66,7 +76,7 @@ main {
                 h3 {
                     font-family: 'Montserrat';
                     text-align: center;
-                    font-size: 1.5rem;
+                    font-size: 1.8rem;
                     font-weight: 700;
                     color: rgb(193, 137, 52);
                     margin-top: 3rem;
@@ -76,7 +86,7 @@ main {
                 p {
                     font-family: 'Montserrat';
                     text-align: center;
-                    font-size: 1.5rem;
+                    font-size: 1.6rem;
                     font-weight: 400;
                     margin-top: 3rem;
                     margin-bottom: 2rem;
@@ -94,6 +104,7 @@ main {
         justify-content: center;
         width: 100%;
         margin: 0 auto;
+
         img {
             width: 30%;
             max-width: 45rem;

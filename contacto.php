@@ -185,7 +185,7 @@ if ($_POST['enviar'] != NULL) {
     </footer>
     <script src="Inicio/JS/menu.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-    <a href="https://api.whatsapp.com/send?phone=5195508107&text=Hola,quisiera más información" class="float" target="_blank">
+    <a href="https://api.whatsapp.com/send?phone=+525195508107&text=Hola,quisiera más información" class="float" target="_blank">
         <i class="fa fa-whatsapp my-float"></i>
     </a>
 </body>

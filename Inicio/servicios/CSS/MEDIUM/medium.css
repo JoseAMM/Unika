@@ -189,8 +189,12 @@ html {
 main {
   width: 100%;
   min-width: 36rem;
-  margin-bottom: 5rem;
-  margin-top: 5rem;
+  padding-bottom: 5rem;
+  padding-top: 8rem;
+  background-image: url("../../../../Assets/bienesraices__fondo.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 main .main__info {
   width: 60%;
@@ -198,18 +202,24 @@ main .main__info {
 }
 main .main__info h1 {
   font-family: "Montserrat";
-  text-align: center;
-  font-size: 3.5rem;
-  font-weight: 400;
-  color: rgb(193, 137, 52);
   margin-bottom: 2rem;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: rgb(193, 137, 52);
+  text-align: center;
+  -webkit-text-decoration: underline 0.4rem;
+          text-decoration: underline 0.4rem;
 }
 main .main__info p {
   font-family: "Montserrat";
-  text-align: justify;
-  font-size: 1.5rem;
+  width: 100%;
+  margin: 0 auto;
+  font-size: 1.8rem;
   font-weight: 400;
-  line-height: 3.2rem;
+  line-height: 3.5rem;
+  color: black;
+  margin-top: 3rem;
+  text-align: justify;
 }
 main .main__servicios {
   display: -webkit-box;
@@ -220,7 +230,7 @@ main .main__servicios {
           justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  width: 90%;
+  width: 60%;
   margin: 0 auto;
 }
 main .main__servicios .main__servicios--content {
@@ -231,9 +241,9 @@ main .main__servicios .main__servicios--content {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: justify;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -264,7 +274,7 @@ main .main__servicios .main__servicios--content .content__info h2 {
 main .main__servicios .main__servicios--content .content__info h3 {
   font-family: "Montserrat";
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: rgb(193, 137, 52);
   margin-top: 3rem;
@@ -273,7 +283,7 @@ main .main__servicios .main__servicios--content .content__info h3 {
 main .main__servicios .main__servicios--content .content__info p {
   font-family: "Montserrat";
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 400;
   margin-top: 3rem;
   margin-bottom: 2rem;

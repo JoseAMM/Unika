@@ -1,81 +1,58 @@
 main {
     width: 100%;
     min-width: 36rem;
+    padding-top: 5rem;
     padding-bottom: 5rem;
     border-bottom: 1rem solid gray;
-
-    .main__vender {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 50vh;
-        background-image: url('../../../../Assets/vender.jpeg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-
-        h1 {
-            width: 70%;
-            margin: 0 auto;
-            font-family: 'Montserrat';
-            font-size: 3rem;
-            font-weight: 400;
-            text-align: center;
-        }
-    }
+    background-color: white;
+    background-image: url('../../../../Assets/bienesraices__fondo.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 
     .main__info {
-        width: 100%;
         display: flex;
+        flex-direction: row;
         flex-wrap: wrap;
-        justify-content: center;
+        width: 100%;
+        min-width: 33rem;
         margin: 0 auto;
+        align-items: center;
+        justify-content: center;
 
 
         .main__info--information {
-
-            min-width: 36rem;
-            max-width: 90rem;
-            padding-bottom: 5rem;
-            background-color: rgb(247, 247, 247);
+            width: 80%;
+            margin: 0 auto;
             font-family: 'Montserrat';
-            margin-top: 3rem;
+            // background-color: rgb(247, 247, 247);
+            padding-bottom: 4rem;
 
             h1 {
-                width: 60%;
+                width: 100%;
                 margin: 0 auto;
                 font-size: 2.5rem;
-                font-weight: 400;
+                font-weight: 700;
                 color: rgb(193, 137, 52);
                 text-align: center;
-                margin-top: 3rem;
-            }
-
-            h5 {
-                width: 60%;
-                margin: 0 auto;
-                font-size: 1.5rem;
-                font-weight: 700;
-                color: black;
-                text-align: center;
-                margin-top: 3rem;
+                text-decoration: underline 0.4rem ;
             }
 
             p {
-                width: 60%;
+                width: 100%;
                 margin: 0 auto;
-                font-size: 1.4rem;
+                font-size: 1.5rem;
                 font-weight: 400;
                 line-height: 3rem;
                 color: black;
                 margin-top: 3rem;
+                text-align: justify;
             }
 
         }
 
         .main__info--photo {
-            width: 100%;
+            width: 80%;
             min-width: 33rem;
             max-width: 60rem;
             margin: 0 auto;
@@ -84,6 +61,7 @@ main {
             img {
                 width: 100%;
                 height: 100%;
+
             }
         }
     }

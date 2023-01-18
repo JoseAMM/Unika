@@ -1,17 +1,20 @@
 main {
     width: 100%;
     min-width: 36rem;
-    
-    margin-bottom: 5rem;
-    margin-top: 5rem;
+    padding-bottom: 5rem;
+    padding-top: 8rem;
     transition: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+    background-image: url('../../../../Assets/bienesraices__fondo.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 
     .main__acerca {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        width: 95%;
-        max-width: 130rem;
+        width: 100%;
+        // max-width: 130rem;
         margin: 0 auto;
         align-items: center;
         justify-content: center;
@@ -19,22 +22,22 @@ main {
 
         
         .main__acerca--info {
-            width: 50%;
-            max-width: 70rem;
+            width: 60%;
+            // max-width: 70rem;
             margin: 0 auto;
             font-family: 'Montserrat';
-            background-color: rgb(247, 247, 247);
+            // background-color: rgb(247, 247, 247);
             padding-bottom: 4rem;
 
             
             h1 {
                 width: 100%;
                 margin: 0 auto;
-                font-size: 2.5rem;
-                font-weight: 400;
+                font-size: 3.5rem;
+                font-weight: 700;
                 color: rgb(193, 137, 52);
                 text-align: center;
-                margin-top: 3rem;
+                text-decoration: underline 0.4rem ;
             }
 
             h5 {
@@ -48,18 +51,19 @@ main {
             }
 
             p {
-                width: 80%;
+                width: 100%;
                 margin: 0 auto;
-                font-size: 1.4rem;
+                font-size: 1.8rem;
                 font-weight: 400;
-                line-height: 3rem;
+                line-height: 3.5rem;
                 color: black;
                 margin-top: 3rem;
+                text-align: justify;
             }
         }
         .main__acerca--photo {
             
-            width: 50%;
+            width: 60%;
             margin: 0 auto;
             text-align: center;
             margin-top: 5rem;

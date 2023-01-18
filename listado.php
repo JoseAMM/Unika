@@ -3,9 +3,11 @@
 require 'includes/config/database.php';
 
 $db = conectarDB();
-
-if (isset($_GET['idTipo_Operacion'])) {
-    $idTipo_Operacion = $_GET['idTipo_Operacion'];
+$idTipo_Operacion = $_GET['idTipo_Operacion'];
+$idTipo_Operacion = filter_var($idTipo_Operacion, FILTER_VALIDATE_INT);
+if (!$idTipo_Operacion) {
+    header('Location: ./index.html');
+} else {
     if ($idTipo_Operacion == 10) {
         $nombreOperacion = "Renta";
     }
@@ -13,6 +15,8 @@ if (isset($_GET['idTipo_Operacion'])) {
         $nombreOperacion = "Venta";
     }
 }
+
+
 
 
 // Consulta de la información del inmueble
@@ -58,7 +62,11 @@ ORDER BY
 
 $resultadoConsultaDatosInmueble = mysqli_query($db, $consultaDatosInmueble);
 
-
+function utf8($string)
+{
+    $uft8 = mb_convert_encoding($string, 'ISO-8859-1', 'UTF-8');
+    return $uft8;
+}
 ?>
 
 
@@ -133,7 +141,7 @@ $resultadoConsultaDatosInmueble = mysqli_query($db, $consultaDatosInmueble);
 
 
                 <a class="main__cardMunicipio" href="./inmueble.php?id=<?php echo $row['idInmueble']; ?>">
-                    <h1><?php echo  $row['nombreMunicipio'] ?></h1>
+                    <h1><?php echo utf8($row['nombreMunicipio']) ?></h1>
                     <section class="cardMunicipio__cardInmueble">
 
 
@@ -159,7 +167,7 @@ $resultadoConsultaDatosInmueble = mysqli_query($db, $consultaDatosInmueble);
                                 <span class="cardInfo__banos"></span>
                                 <p>Baños: <?php echo " " . $row['Banos'] ?> </p>
                             <?php endif; ?>
-                            <p>Precio: $ <?php echo $row['Precio'] . " MXN" ?></p>
+                            <p>Precio: $ <?php echo number_format($row['Precio']) . " MXN" ?></p>
                         </section>
                     </section>
                 </a>
@@ -169,7 +177,7 @@ $resultadoConsultaDatosInmueble = mysqli_query($db, $consultaDatosInmueble);
     </main>
     <script src="Inicio/JS/menu.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-    <a href="https://api.whatsapp.com/send?phone=5195508107&text=Hola,quisiera más información" class="float" target="_blank">
+    <a href="https://api.whatsapp.com/send?phone=+525195508107&text=Hola,quisiera más información" class="float" target="_blank">
         <i class="fa fa-whatsapp my-float"></i>
     </a>
 </body>

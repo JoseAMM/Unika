@@ -260,6 +260,10 @@ main {
   padding-bottom: 5rem;
   border-bottom: 1rem solid gray;
   background-color: white;
+  background-image: url("../../../../Assets/bienesraices__fondo.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
   font-family: "Montserrat";
 }
 main a:link,
@@ -271,30 +275,34 @@ main a:active {
 }
 main .main__vender {
   width: 100%;
-  height: 50vh;
   text-align: center;
   font-family: "Montserrat";
-  background-image: url("../../../../Assets/rentacdmx.webp");
-  background-size: cover;
-  background-repeat: no-repeat;
 }
 main .main__vender h1 {
   font-size: 5rem;
   font-weight: 400;
-  padding-top: 15rem;
+  padding-top: 5rem;
   color: rgb(90, 69, 38);
 }
 main .main__vender p {
-  padding-top: 6rem;
+  padding-top: 3rem;
   font-size: 2.5rem;
   color: rgb(193, 137, 52);
 }
 main .main__inmuebles {
-  width: 80%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 90%;
   margin: 0 auto;
   margin-top: 3rem;
 }
 main .main__inmuebles .main__cardMunicipio {
+  width: 37rem;
   margin-top: 3rem;
   margin-bottom: 3rem;
 }
@@ -304,6 +312,7 @@ main .main__inmuebles .main__cardMunicipio h1 {
   color: rgb(179, 138, 76);
 }
 main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble {
+  width: auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -314,20 +323,15 @@ main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-top: 1rem solid rgb(179, 138, 76);
-  border-bottom: 1rem solid rgb(179, 138, 76);
-}
-main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble .cardImg {
-  width: 100%;
-  height: auto;
+  border: 0.5rem solid rgb(179, 138, 76);
 }
 main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble .cardImg img {
-  width: 100%;
-  height: auto;
+  width: 36rem;
+  height: 30rem;
 }
 main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble .cardInfo {
   width: 100%;
-  margin-left: 3rem;
+  text-align: center;
 }
 main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble .cardInfo h2 {
   font-size: 1.5rem;
@@ -336,35 +340,6 @@ main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble .cardInf
 main .main__inmuebles .main__cardMunicipio .cardMunicipio__cardInmueble .cardInfo p {
   margin-top: 0.3rem;
   font-size: 1.4rem;
-}
-main .main__inmuebles .cardMunicipio__cardInmueble {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-top: 1rem solid rgb(179, 138, 76);
-  border-bottom: 1rem solid rgb(179, 138, 76);
-}
-main .main__inmuebles .cardMunicipio__cardInmueble .cardImg img {
-  width: 22.1rem;
-  height: 15.4rem;
-}
-main .main__inmuebles .cardMunicipio__cardInmueble .cardInfo {
-  width: 100%;
-  margin-left: 3rem;
-}
-main .main__inmuebles .cardMunicipio__cardInmueble .cardInfo h2 {
-  font-size: 2rem;
-  margin-bottom: 3rem;
-}
-main .main__inmuebles .cardMunicipio__cardInmueble .cardInfo p {
-  font-size: 1.8rem;
 }
 
 footer {

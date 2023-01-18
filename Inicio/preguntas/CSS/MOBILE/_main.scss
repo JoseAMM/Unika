@@ -2,26 +2,30 @@ main {
     width: 100%;
     min-width: 36rem;
     padding-bottom: 5rem;
+    padding-top: 5rem;
     border-bottom: 1rem solid gray;
+    background-color: white;
+    background-image: url('../../../../Assets/bienesraices__fondo.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 
     .main__preguntas {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 100%;
-        height: 50vh;
-        background-image: url('../../../../Assets/preguntas.jpeg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
 
         h1 {
-            width: 70%;
+
+            width: 100%;
             margin: 0 auto;
-            font-family: 'Montserrat';
-            font-size: 3rem;
-            font-weight: 400;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: rgb(193, 137, 52);
             text-align: center;
+            text-decoration: underline 0.4rem;
+            font-family: 'Montserrat';
         }
     }
 
@@ -32,7 +36,7 @@ main {
         margin: 0 auto;
         font-family: 'Montserrat';
         margin-top: 3rem;
-        
+
         h5 {
             font-size: 2rem;
             font-weight: 700;
@@ -41,13 +45,14 @@ main {
         }
 
         p {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             line-height: 3rem;
             text-align: justify;
             margin-bottom: 3rem;
             font-weight: 400;
         }
     }
+
     .main__rentar2 {
         display: flex;
         justify-content: center;

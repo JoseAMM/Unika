@@ -92,6 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             $_SESSION['usuario'] = $resultadoComprobacion['Correo'];
                             $_SESSION['idUsuarios'] = $resultadoComprobacion['idUsuarios'];
+                            $_SESSION['rolUsuarios'] = $resultadoEmpleado['Rol_idRol'];
                             $_SESSION['login'] = true;
                             $_SESSION['time'] = time();
                         } else if ($resultadoEmpleado['Rol_idRol'] == 2) {
@@ -102,6 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             $_SESSION['usuario'] = $resultadoComprobacion['Correo'];
                             $_SESSION['idUsuarios'] = $resultadoComprobacion['idUsuarios'];
+                            $_SESSION['rolUsuarios'] = $resultadoEmpleado['Rol_idRol'];
                             $_SESSION['login'] = true;
                             $_SESSION['time'] = time();
                         }
@@ -118,6 +120,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             session_start();
                             $_SESSION['usuario'] = $resultadoComprobacion['Correo'];
                             $_SESSION['idUsuarios'] = $resultadoComprobacion['idUsuarios'];
+                            $_SESSION['rolUsuarios'] = $resultadoEmpleado['Rol_idRol'];
                             $_SESSION['login'] = true;
                             $_SESSION['time'] = time();
                         }
